@@ -1,0 +1,100 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#wrapper {
+    width: 1100px;
+    margin: auto;
+}
+
+#header {
+    
+}
+
+#head {
+    background-color: #084a7b;
+    height: 42px;
+    color: white;
+}
+
+#logo {
+    background-color: #084a7b;
+    width: 171px;
+    height: 111px;
+    margin-left: 94px;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-radius: 0 0 10px 10px;
+    float: left;
+}
+
+#logo img {
+    padding: 9px 2px 3px 4px;
+}
+
+#centr {
+    font-size: 24px;
+    font-family: Tahoma;
+    padding: 0 48px;
+    color: white;
+    font-weight: 100;
+    font-style: oblique;
+}
+
+#centr img {
+    padding: 0 10px 0 48px; 
+}
+
+#centr a {
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+#menu {
+    color: #242424;
+    margin: 50px 0 0 295px;
+    padding-left: 15px;
+    font-size: 15px;
+}
+
+#menu a {
+    padding-right: 60px;
+    
+}
