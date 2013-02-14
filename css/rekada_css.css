@@ -23,6 +23,14 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
+@font-face {
+    font-family: MyriadPro-Cond;
+    src: url('../font/MyriadPro-Cond.eot'); 
+    src: local('MyriadPro-Cond'),
+       url('../font/MyriadPro-Cond.ttf') format('ttf'),
+       url('../font/MyriadPro-Cond.svg#MyriadPro-Cond') format('svg');
+}
 ol, ul {
 	list-style: none;
 }
@@ -37,14 +45,6 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-
-@font-face {
-    font-family: MyriadPro-Cond;
-    src: url('../font/MyriadPro-Cond.eot'); 
-    src: local('MyriadPro-Cond'),
-       url('../font/MyriadPro-Cond.ttf') format('ttf'),
-       url('../font/MyriadPro-Cond.svg#MyriadPro-Cond') format('svg');
 }
 
 #wrapper {
@@ -125,28 +125,62 @@ table {
     margin-right: 6px;
     border-radius: 10px 10px 0 0;
     line-height: 38px;
-    text-align: center;
     padding: 12px 10px 8px 10px;
 }
 
 #product {
     background-image: url(../img/product_bg.png);
     background-repeat: repeat-x;
-    line-height: 40px;
     margin-left: 300px;
-    font-size: 15px;
+}
+
+#menu_bottom li {
+    display: inline-block;
 }
 
 .prod {
-    padding: 0 16px;
+    padding: 11px 16px;
+    line-height: 39px;
     color: white;
+    text-decoration: none;
+    font-size: 15px;
+    display: inline;
+}
+
+.hover_block {
+    padding: 0 22px 0 18px;
+    display: none;
+    background: url(../img/opacity.png);
+    line-height: 25px;
+    position: absolute;
+}
+
+.hover_block li {
+    display: inline;
+}
+
+.hover_block a {
+    text-decoration: none;
+    color: #2d2d2d;
+}
+
+.hover_block span {
+    padding: 0 15px;
+}
+
+.prod:hover {
+    background: url(../img/opacity_bg.png);
+}
+
+#menu_bottom li:hover .hover_block {
+    display: inline-block;
 }
 
 #keramo {
     width: 1100px;
     height: 402px;
     background: url(../img/keramo_bg.jpg) no-repeat;
-    
+    clear: both;
 }
 
 #search_button {
@@ -247,6 +281,56 @@ h2:hover {
     height: 192px;
     margin-left: 15px;
     float: left;
+    position: relative;
+}
+
+.block:hover .inblock {
+     display: inherit;
+     position: absolute;
+     top:0;
+     left: 0;
+}
+
+.inblock {
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: url(../img/nav_bg.png);
+    color: white;
+    font-size: 23px;
+    line-height: 34px;
+    font-weight: bold;
+}
+
+.inblock a {
+    color: white;
+}
+
+.look {
+    float: right;
+    font-size: 12px;
+    padding-right: 7px; 
+}
+
+.cost {
+    font-size: 23px;
+}
+
+.cost span {
+    vertical-align: super;
+    font-size: 14px;
+}
+
+.cost span a {
+    vertical-align: super;
+}
+
+.model {
+    font-size: 18px;
+}
+
+.zakaz {
+    font-size: 30px;
 }
 
 #news {

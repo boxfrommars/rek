@@ -4,8 +4,16 @@
         <title>Главная страница Rekada</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/rekada_css.css">
-        <!--<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>-->
-         <!--<script type="text/javascript" src="js/rekada.js"></script>-->
+        <link rel="stylesheet" type="text/css" href="css/shadowbox.css">
+        <script type="text/javascript" src="js/shadowbox.js"></script>
+        <script type="text/javascript">
+        Shadowbox.init({
+        handleOversize: "drag",
+        modal: true
+        });
+        </script>
+        <!--<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="js/rekada.js"></script>-->
     </head>
     <body>
         
@@ -17,9 +25,52 @@
                     </div>
                     <span id="centr">ЦЕНТР КЕРАМОГРАНИТА И ВЕНТФАСАДОВ<img src="img/phone.png"><a>(495)</a>921-40-44 </span>
                 </div>
-                <p id="menu"><a href="#">О КОМПАНИИ</a><a class="space" href="#">БАЗА ЗНАНИЙ</a><a class="space" href="#">ГАЛЕРЕЯ</a><a class="space" href="#">КОНТАКТЫ</a><span><strong class="menu_a">ЗАЯВКА</strong><strong class="menu_a">ПРАЙС</strong></span></p>
-                <div id="product"><span class="prod">КЕРАМОГРАНИТ</span><span class="prod">ВЕНТФАСАДЫ</span><span class="prod">НАТУРАЛЬНЫЙ КАМЕНЬ</span><span class="prod">ГИДРОАБРАЗИВНАЯ РЕЗКА</span></div>
-
+                <p id="menu">
+                    <a href="#">О КОМПАНИИ</a>
+                    <a class="space" href="#">БАЗА ЗНАНИЙ</a>
+                    <a class="space" href="#">ГАЛЕРЕЯ</a>
+                    <a class="space" href="#">КОНТАКТЫ</a>
+                    <span><strong class="menu_a">ЗАЯВКА</strong><strong class="menu_a">ПРАЙС</strong></span></p>
+                <div id="product">
+                    <ul id="menu_bottom">
+                        <li>
+                            <a class="prod" href ="#">КЕРАМОГРАНИТ</a>   
+                            <ul class ="hover_block"> 
+                                <li><a href="#">РОССИЯ</a><span>|</span></li>
+                                <li><a href="#">КИТАЙ</a><span>|</span></li>
+                                <li><a href="#">ИТАЛИЯ</a><span>|</span></li>
+                                <li><a href="#">ОАЭ</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="prod" href ="#">ВЕНТФАСАДЫ</a>    
+                            <div class ="hover_block">
+                                <a href="#">РОССИЯ</a><span>|</span>
+                                <a href="#">КИТАЙ</a><span>|</span>
+                                <a href="#">ИТАЛИЯ</a><span>|</span>
+                                <a href="#">ОАЭ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="prod" href ="#">НАТУРАЛЬНЫЙ КАМЕНЬ</a>    
+                            <div class ="hover_block" >
+                                <a href="#">РОССИЯ</a><span>|</span>
+                                <a href="#">КИТАЙ</a><span>|</span>
+                                <a href="#">ИТАЛИЯ</a><span>|</span>
+                                <a href="#">ОАЭ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="prod" href ="#">ГИДРОАБРАЗИВНАЯ РЕЗКА</a>   
+                            <div class ="hover_block">
+                                <a href="#">РОССИЯ</a><span>|</span>
+                                <a href="#">КИТАЙ</a><span>|</span>
+                                <a href="#">ИТАЛИЯ</a><span>|</span>
+                                <a href="#">ОАЭ</a>
+                            </div>
+                        </li>
+                    </ul>    
+                </div>
             <div id="content">
                 <div id="keramo">
                     <input type="image" src="img/search_button.png" value="" id="search_button" />
@@ -35,13 +86,19 @@
                 <div id="keramika">
                     <div id="gradient"></div>
                     <div id="choice">
-                        <h2><a href="#">АКЦИИ</a></h2>
+                        <h2><a href="#" >АКЦИИ</a></h2>
                         <h2><a href="#">ХИТЫ</a></h2>
                         <h2><a href="#">НОВИНКИ</a></h2>
                     </div>
                     <div id="plitka">
                         <div class="block"> <img src="img/block1.jpg">
-                            <div class="inblock"></div> 
+                            <div class="inblock">
+                                <p class="look"><a href="img/block1.jpg" rel="shadowbox"><img src="img/search.png" >посмотреть</a></p>
+                                <p class="cost"><a href="#">CGA6625K</a></p>
+                                <p class="model"><a href="#">Estima</a></p>
+                                <p class="cost">540 <span>руб./м<a>2</a></span></p>
+                                <p class="zakaz"><a href="">ЗАКАЗАТЬ</a></p>
+                            </div> 
                         </div>
                         <div class="block"> <img src="img/block2.jpg">
                             <div class="inblock"></div> 
