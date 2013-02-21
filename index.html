@@ -7,13 +7,11 @@
         <link rel="stylesheet" type="text/css" href="css/shadowbox.css">
         <script type="text/javascript" src="js/shadowbox.js"></script>
         <script type="text/javascript">
-        Shadowbox.init({
-        handleOversize: "drag",
-        modal: true
-        });
+            Shadowbox.init({
+            language: 'ru',
+            players: ['img']
+            });
         </script>
-        <!--<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-        <script type="text/javascript" src="js/rekada.js"></script>-->
     </head>
     <body>
         
@@ -23,14 +21,15 @@
                     <div id="logo">
                         <a href="#"><img src="img/logo.png"></a>
                     </div>
-                    <span id="centr">ЦЕНТР КЕРАМОГРАНИТА И ВЕНТФАСАДОВ<img src="img/phone.png"><a>(495)</a>921-40-44 </span>
+                    <div id="centr"><span>ЦЕНТР КЕРАМОГРАНИТА И ВЕНТФАСАДОВ</span><img src="img/phone.png"><span><a>(495)</a><strong>921-40-44</strong></span></div>
                 </div>
                 <p id="menu">
-                    <a href="#">О КОМПАНИИ</a>
+                    <a href="#" style="color: #242424; padding-right: 15px;">О КОМПАНИИ</a>
                     <a class="space" href="#">БАЗА ЗНАНИЙ</a>
                     <a class="space" href="#">ГАЛЕРЕЯ</a>
                     <a class="space" href="#">КОНТАКТЫ</a>
-                    <span><strong class="menu_a">ЗАЯВКА</strong><strong class="menu_a">ПРАЙС</strong></span></p>
+                    <a class="menu_left" href="#"></b>ЗАЯВКА</a>
+                    <a class="menu_left" href="#">ПРАЙС&nbsp;</a></p>
                 <div id="product">
                     <ul id="menu_bottom">
                         <li>
@@ -44,30 +43,30 @@
                         </li>
                         <li>
                             <a class="prod" href ="#">ВЕНТФАСАДЫ</a>    
-                            <div class ="hover_block">
-                                <a href="#">РОССИЯ</a><span>|</span>
-                                <a href="#">КИТАЙ</a><span>|</span>
-                                <a href="#">ИТАЛИЯ</a><span>|</span>
-                                <a href="#">ОАЭ</a>
-                            </div>
+                            <ul class ="hover_block">
+                                <li><a href="#">РОССИЯ</a><span>|</span></li>
+                                <li><a href="#">КИТАЙ</a><span>|</span></li>
+                                <li><a href="#">ИТАЛИЯ</a><span>|</span></li>
+                                <li><a href="#">ОАЭ</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a class="prod" href ="#">НАТУРАЛЬНЫЙ КАМЕНЬ</a>    
-                            <div class ="hover_block" >
-                                <a href="#">РОССИЯ</a><span>|</span>
-                                <a href="#">КИТАЙ</a><span>|</span>
-                                <a href="#">ИТАЛИЯ</a><span>|</span>
-                                <a href="#">ОАЭ</a>
-                            </div>
+                            <ul class ="hover_block" >
+                                <li><a href="#">РОССИЯ</a><span>|</span></li>
+                                <li><a href="#">КИТАЙ</a><span>|</span></li>
+                                <li><a href="#">ИТАЛИЯ</a><span>|</span></li>
+                                <li><a href="#">ОАЭ</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a class="prod" href ="#">ГИДРОАБРАЗИВНАЯ РЕЗКА</a>   
-                            <div class ="hover_block">
-                                <a href="#">РОССИЯ</a><span>|</span>
-                                <a href="#">КИТАЙ</a><span>|</span>
-                                <a href="#">ИТАЛИЯ</a><span>|</span>
-                                <a href="#">ОАЭ</a>
-                            </div>
+                            <ul class ="hover_block">
+                                <li><a href="#">РОССИЯ</a><span>|</span></li>
+                                <li><a href="#">КИТАЙ</a><span>|</span></li>
+                                <li><a href="#">ИТАЛИЯ</a><span>|</span></li>
+                                <li><a href="#">ОАЭ</a></li>
+                            </ul>
                         </li>
                     </ul>    
                 </div>
@@ -93,7 +92,7 @@
                     <div id="plitka">
                         <div class="block"> <img src="img/block1.jpg">
                             <div class="inblock">
-                                <p class="look"><a href="img/block1.jpg" rel="shadowbox"><img src="img/search.png" >посмотреть</a></p>
+                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/images/block1.jpg" ><img src="img/search.png" >посмотреть</a></div>
                                 <p class="cost"><a href="#">CGA6625K</a></p>
                                 <p class="model"><a href="#">Estima</a></p>
                                 <p class="cost">540 <span>руб./м<a>2</a></span></p>
@@ -101,19 +100,38 @@
                             </div> 
                         </div>
                         <div class="block"> <img src="img/block2.jpg">
-                            <div class="inblock"></div> 
+                            <div class="inblock">
+                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/images/block2.jpg" ><img src="img/search.png" >посмотреть</a></div>
+                                <p class="cost"><a href="#">CGA6625K</a></p>
+                                <p class="model"><a href="#">Estima</a></p>
+                                <p class="cost">540 <span>руб./м<a>2</a></span></p>
+                                <p class="zakaz"><a href="">ЗАКАЗАТЬ</a></p>
+                            </div> 
                         </div>
                         <div class="block"> <img src="img/block3.jpg">
-                            <div class="inblock"></div> 
+                            <div class="inblock">
+                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/images/block3.jpg" ><img src="img/search.png" >посмотреть</a></div>
+                                <p class="cost"><a href="#">CGA6625K</a></p>
+                                <p class="model"><a href="#">Estima</a></p>
+                                <p class="cost">540 <span>руб./м<a>2</a></span></p>
+                                <p class="zakaz"><a href="">ЗАКАЗАТЬ</a></p>
+                            </div> 
                         </div>
                         <div class="block"> <img src="img/block4.jpg">
-                            <div class="inblock"></div> 
+                            <div class="inblock">
+                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/images/block4.jpg" ><img src="img/search.png" >посмотреть</a></div>
+                                <p class="cost"><a href="#">CGA6625K</a></p>
+                                <p class="model"><a href="#">Estima</a></p>
+                                <p class="cost">540 <span>руб./м<a>2</a></span></p>
+                                <p class="zakaz"><a href="">ЗАКАЗАТЬ</a></p>
+                            </div> 
                         </div>
                     </div> 
                 </div>
                 <div>
                     <div id="news">
                         <h3><span>НОВОСТИ</span></h3>
+                        <div id="point"></div>
                         <div class="news">
                             <p>Акция на полированный керамогранит в ноябре 06.11.2012 <br> <a href="#">подробнее</a></p>
                             <p>Расширение линейки полированного керамогранита 31.10.2012<br> <a href="#">подробнее</a></p>
@@ -121,7 +139,8 @@
                         </div>
                     </div>
                     <div id="answer">
-                        <h3><span>ПОЧЕМУ ЛЮДИ ВЫБИРАЮТ НАС?</span></h3>
+                        <h3><span>ПОЧЕМУ ВЫБИРАЮТ НАС?</span></h3>
+                        <div id="point_answer"></div>
                         <div class="article">
                             <h4>Заголовок</h4>
                             <p>При необходимости срочного приобретения керамогранита, покупатель сталкивается с ситуацией, 

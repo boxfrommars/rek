@@ -16,7 +16,7 @@ time, mark, audio, video, input {
 	border: 0;
 	font-size: 100%;
 	vertical-align: baseline;
-    outline: none;
+    outline: none !important;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -25,11 +25,43 @@ footer, header, hgroup, menu, nav, section {
 }
 
 @font-face {
-    font-family: MyriadPro-Cond;
-    src: url('../font/MyriadPro-Cond.eot'); 
+    font-family: 'MyriadPro-Cond';
+    src: url('../font/MyriadPro-Cond.eot#'); 
     src: local('MyriadPro-Cond'),
-       url('../font/MyriadPro-Cond.ttf') format('ttf'),
-       url('../font/MyriadPro-Cond.svg#MyriadPro-Cond') format('svg');
+       url('../font/MyriadPro-Cond.woff') format('woff'),
+       url('../font/MyriadPro-Cond.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MyriadPro-Bold';
+    src: url('../font/MyriadPro-Bold.eot#'); 
+    src: local('MyriadPro-Bold'),
+       url('../font/MyriadPro-Bold.ttf') format('truetype'),
+       url('../font/MyriadPro-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'MyriadPro-Regular';
+    src: url('../font/MyriadPro-Regular.eot#'); 
+    src: local('MyriadPro-Regular'),
+       url('../font/MyriadPro-Regular.ttf') format('truetype'),
+       url('../font/MyriadPro-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'MyriadPro-Semibold';
+    src: url('../font/MyriadPro-Semibold.eot#'); 
+    src: local('MyriadPro-Semibold'),
+       url('../font/MyriadPro-Semibold.ttf') format('truetype'),
+       url('../font/MyriadPro-Semibold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'MyriadPro-BoldCond';
+    src: url('../font/MyriadPro-BoldCond.eot#'); 
+    src: local('MyriadPro-BoldCond'),
+       url('../font/MyriadPro-BoldCond.ttf') format('truetype'),
+       url('../font/MyriadPro-BoldCond.woff') format('woff');
 }
 ol, ul {
 	list-style: none;
@@ -49,7 +81,7 @@ table {
 
 #wrapper {
     width: 1100px;
-    margin: auto;
+    margin: 0 auto;
     background-color: white;
 }
 
@@ -75,6 +107,8 @@ table {
     border-right: 1px solid white;
     border-radius: 0 0 10px 10px;
     float: left;
+    behavior: url('PIE.htc');
+    position: relative;
 }
 
 #logo img {
@@ -82,14 +116,21 @@ table {
 }
 
 #centr {
-    font-size: 24px;
+    margin: 0 0 0 48px;
+    float: left;
+}
+
+#centr span {
+    font-size: 38px;
     font-family: MyriadPro-Cond;
-    padding: 0 48px;
+    font-style: italic;
     color: white;
+    float: left;
 }
 
 #centr img {
-    padding: 0 10px 0 48px; 
+    padding: 0 10px 0 48px;
+    float: left;
 }
 
 #centr a {
@@ -97,35 +138,43 @@ table {
     padding-right: 5px;
 }
 
+#centr strong {
+    font-size: 32px;
+}
+
 #menu {
     color: #242424;
     margin: 50px 0 0 300px;
     padding-left: 15px;
     font-size: 15px;
+    font-family: MyriadPro-Regular;
 }
 
 #menu a {
-    padding-right: 15px;
     text-decoration: none;
-    color: #242424;
 }
 
 .space {
     margin-left: 30px;
+    color: #242424;
+    padding-right: 15px;
 }
 
 #menu span {
     margin: 0 50px 0 15px;
 }
 
-.menu_a {
-    font-size: 20px;
-    color: #eaecee;
+.menu_left {
+    font-size: 20.71px;
     background-color: #084a7b;
     margin-right: 6px;
     border-radius: 10px 10px 0 0;
     line-height: 38px;
     padding: 12px 10px 8px 10px;
+    color: #eaecee;
+    font-family: MyriadPro-Semibold;
+    behavior: url('PIE.htc');
+    position: relative;
 }
 
 #product {
@@ -134,25 +183,36 @@ table {
     margin-left: 300px;
 }
 
+#menu_bottom {
+    font-size:0; /* для Opera*/
+}
+
 #menu_bottom li {
-    display: inline-block;
+    display: inline;
+    position: relative;
 }
 
 .prod {
-    padding: 11px 16px;
-    line-height: 39px;
+    padding: 10px 17px;
+    line-height: 40px;
     color: white;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 18px;
     display: inline;
+    font-family: MyriadPro-Semibold;
 }
 
 .hover_block {
-    padding: 0 22px 0 18px;
+    padding: 5px 22px 0 18px;
     display: none;
     background: url(../img/opacity.png);
-    line-height: 25px;
     position: absolute;
+    font-size: 15.47px;
+    font-family: MyriadPro-Semibold;
+    vertical-align: middle;
+    top: 17px;
+    left: 0;
+    white-space: nowrap;
 }
 
 .hover_block li {
@@ -200,28 +260,33 @@ table {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 60px;
     text-align: right;
-    padding-bottom: 80px;
+    padding-bottom: 75px;
+    font-weight: normal;
+    line-height: 60px;
 }
 
 h1 a {
     color: white;
     text-decoration: none;
-    border-bottom: 2px solid white; 
+    border-bottom: 2px solid white;
+    font-family: MyriadPro-BoldCond;
 }
 
 #keramo_text {
     width: 377px;
     height: 260px;
     float: right;
-    margin: 83px 47px 59px 0;
+    margin: 80px 47px 59px 0;
+    font-family: MyriadPro-Bold;
 }
 
 #keramo_text p {
     color: white;
     font-size: 18px;
     text-align: right;
+    font-family: MyriadPro-Bold;
 }
 
 #keramo_nal a {
@@ -248,19 +313,24 @@ h1 a {
 }
 
 h2 {
-    font-size: 30px;
     width: 156px;
     line-height: 48px;
     margin: 2px 0;
+    font-family: MyriadPro-Cond;
+    font-size: 45px;
+    font-weight: normal;
 }
 
 h2 a {
     color: #084a7b;
     text-decoration: none;
+    position:relative; 
+    top: 5px;
 }
 
 h2:hover {
     background: url(../img/choose.png) no-repeat;
+    opacity: 0.8;
 }
 
 #choice {
@@ -302,18 +372,33 @@ h2:hover {
     font-weight: bold;
 }
 
+.inblock p {
+    padding-left: 20px;
+}
+
 .inblock a {
     color: white;
 }
 
-.look {
+.pict {
     float: right;
     font-size: 12px;
-    padding-right: 7px; 
+    font-family: MyriadPro-Semibold;
+    margin: 0 7px 0 90px;
+}
+
+.pict img {
+    vertical-align: middle;
+}
+
+.pict a {
+    text-decoration: none;
+    
 }
 
 .cost {
     font-size: 23px;
+    font-family: MyriadPro-Cond;
 }
 
 .cost span {
@@ -327,10 +412,13 @@ h2:hover {
 
 .model {
     font-size: 18px;
+    font-family: MyriadPro-Bold;
 }
 
 .zakaz {
     font-size: 30px;
+    font-family: MyriadPro-Bold;
+    font-weight: normal;
 }
 
 #news {
@@ -341,8 +429,9 @@ h2:hover {
 
 #news p {
     color: #5a5a5a;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 12px;
+    font-family: MyriadPro-Cond;
 }
 
 #news p a {
@@ -350,14 +439,18 @@ h2:hover {
     font-size: 14px;
 }
 
-h3 {
-   margin-bottom: 40px; 
-}
 
-h3 span {
+h3 {
     color: #084a7b;
     font-size: 24px;
-    border-bottom: 1px dotted #5a5a5a;
+    font-family: MyriadPro-Regular;
+}
+
+#point {
+    width: 115px;
+    height:8px;
+    background: url(../img/point.png) repeat-x;
+    margin-bottom: 40px; 
 }
 
 .news {
@@ -371,16 +464,24 @@ h3 span {
 }
 
 #answer h3 {
-    margin:0 0 8px 25px;
+    margin-left: 25px;
+}
+
+#point_answer {
+     background: url(../img/point.png) repeat-x;
+     width: 290px;
+     height:8px;
+     margin-left: 25px;
 }
 
 .article {
     margin-left: 25px;
     width: 240px;
     height: 300px;
-    font-size: 12px;
+    font-size: 12.47px;
     color: #616161;
     float: left;
+    font-family: MyriadPro-Regular;
 }
 
 .article p {
@@ -390,7 +491,7 @@ h3 span {
 h4 {
     color: #32505f; 
     font-size: 24px;
-    padding-bottom: 5px;
+    padding: 3px 0 2px 0;
 }
 
 #partner {
@@ -411,19 +512,25 @@ h4 {
 }
 
 #info {
-    
+    margin-left: 90px;
+}
+
+#info p {
+    line-height: 23px;
 }
 
 .contact {
-    width: 207px;
+    width: 200px;
     float: left;
     color: #084a7b;
     font-size: 20px;
+    font-family: MyriadPro-Cond;
 }
 
 h5 {
     font-size: 30px;
-    padding: 20px 0;
+    padding: 20px 0 10px 0;
+    font-family: MyriadPro-Cond;
 }
 
 .contact a {
@@ -433,6 +540,7 @@ h5 {
 
 .contact p span {
     font-size: 20px;
+    font-weight: bold;
 }
 
 .line_y {
@@ -448,11 +556,8 @@ h5 {
     float: left;
     color: #084a7b;
     font-size: 20px;
+    font-family: MyriadPro-Cond;
 }
-
-
-
-
 
 #footer {
     background-color: white;
@@ -465,6 +570,7 @@ h5 {
     width: 100%;
     background-color: #084a7b;
     font-size: 14px;
+    font-family: MyriadPro-Cond;
 }
 
 #foot_right {
