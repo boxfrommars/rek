@@ -180,20 +180,29 @@ table {
 #product {
     background-image: url(../img/product_bg.png);
     background-repeat: repeat-x;
-    margin-left: 300px;
+    width: 800px;
+    height: 40px;
+    float: right;
+    clear: both;
 }
 
-#menu_bottom {
-    font-size:0; /* для Opera*/
-}
-
-#menu_bottom li {
-    display: inline;
+.dop_menu {
+    width: 20%;
     position: relative;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+
+.dop_menu2 {
+    width: 30%;
+    position: relative;
+    height: 100%;
+    float: left;
+    text-align: center;
 }
 
 .prod {
-    padding: 10px 17px;
     line-height: 40px;
     color: white;
     text-decoration: none;
@@ -204,18 +213,14 @@ table {
 
 .hover_block {
     padding: 5px 22px 0 18px;
-    display: none;
     background: url(../img/opacity.png);
-    position: absolute;
-    font-size: 15.47px;
+    font-size: 15px;
     font-family: MyriadPro-Semibold;
     vertical-align: middle;
-    top: 17px;
-    left: 0;
     white-space: nowrap;
 }
 
-.hover_block li {
+.hover_block>li {
     display: inline;
 }
 
@@ -225,15 +230,44 @@ table {
 }
 
 .hover_block span {
-    padding: 0 15px;
+    padding: 0 8px;
+    line-height: 26px;
 }
 
-.prod:hover {
+#podmenu {
+    width: 800px;
+    height: 26px;
+    float: right;
+}
+
+#granit {
+    float: left;
+    display: none;
+}
+
+#fasad {
+    float: left;
+    margin-left: 20%;
+    display: none;
+}
+
+#kamen {
+    float: left;
+    margin-left: 40%;
+    display: none;
+}
+
+#rezka {
+    float: right;
+    display: none;
+}
+
+.dop_menu:hover, .dop_menu2:hover {
     background: url(../img/opacity_bg.png);
 }
 
-#menu_bottom li:hover .hover_block {
-    display: inline-block;
+.dop_menu>a:hover .add_menu {
+    display: block;
 }
 
 #keramo {
@@ -278,7 +312,7 @@ h1 a {
     width: 377px;
     height: 260px;
     float: right;
-    margin: 80px 47px 59px 0;
+    margin: 54px 47px 59px 0;
     font-family: MyriadPro-Bold;
 }
 
@@ -330,7 +364,11 @@ h2 a {
 
 h2:hover {
     background: url(../img/choose.png) no-repeat;
-    opacity: 0.8;
+}
+
+h2:hover a {
+    opacity: .5;
+    filter: alpha(opacity=40); /*для ie8 включительно*/
 }
 
 #choice {
