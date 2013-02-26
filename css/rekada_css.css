@@ -231,7 +231,6 @@ table {
 
 .hover_block span {
     padding: 0 8px;
-    line-height: 26px;
 }
 
 #podmenu {
@@ -359,17 +358,17 @@ h2 a {
     color: #084a7b;
     text-decoration: none;
     position:relative; 
-    top: 5px;
+    top: 7px;
 }
 
 h2:hover {
     background: url(../img/choose.png) no-repeat;
 }
 
-h2:hover a {
+/*h2:hover a {
     opacity: .5;
-    filter: alpha(opacity=40); /*для ie8 включительно*/
 }
+*/
 
 #choice {
     padding: 8px 0 0 80px;
