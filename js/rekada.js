@@ -1,36 +1,25 @@
 $(document).ready(function(){
-   $('#toggle_1').click(function() {
-        $('.hide_block').hide();
-        $('#granit').show();
-        });
-   $('#toggle_2').click(function() {
-        $('.hide_block').hide();
-        $('#fasad').show();
-   });
-   $('#toggle_3').click(function() {
-        $('.hide_block').hide();
-        $('#kamen').show();
-   });
-   $('#toggle_4').click(function() {
-        $('.hide_block').hide();
-        $('#rezka').show();
+   $('#toggle_1, #granit').hover(function() {
+       $('#granit').css({"display": "block"});
+       }, function(){
+       $('#granit').css({'display': 'none'});
     });
-});
-
-$(document).click(function(e){
-    if ($(e.target).parents().filter('#toggle_1:visible').length != 1) {
-        $('#granit').hide();
-    };
-     if ($(e.target).parents().filter('#toggle_2:visible').length != 1) {
-        $('#fasad').hide();
-    };
-    if ($(e.target).parents().filter('#toggle_3:visible').length != 1) {
-        $('#kamen').hide();
-    };
-    if ($(e.target).parents().filter('#toggle_4:visible').length != 1) {
-        $('#rezka').hide();
-    }
-});
+   $('#toggle_2, #fasad').hover(function() {
+       $('#fasad').css({"display": "block"});
+       }, function(){
+       $('#fasad').css({'display': 'none'});
+   });
+   $('#toggle_3, #kamen').hover(function() {
+       $('#kamen').css({"display": "block"});
+       }, function(){
+       $('#kamen').css({'display': 'none'});
+   });
+   $('#toggle_4, #rezka').hover(function() {
+       $('#rezka').css({"display": "block"});
+       }, function(){
+       $('#rezka').css({'display': 'none'});
+    });
+}); 
 
 $(document).ready(function() {
   var opacity = 1.0, toOpacity = 0.5, duration = 400;
@@ -38,6 +27,5 @@ $(document).ready(function() {
           $(this).fadeTo(duration,toOpacity);
       }, function() {
           $(this).fadeTo(duration,opacity);
-      }
-  );
+      });
 });

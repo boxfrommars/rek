@@ -3,7 +3,7 @@
     <head>
         <title>Главная страница Rekada</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/rekada_css.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="css/shadowbox.css">
         <script type="text/javascript" src="js/shadowbox.js"></script>
         <script type="text/javascript">
@@ -12,27 +12,28 @@
             players: ['img']
             });
         </script>
-       <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="js/rekada.js"></script>
     </head>
     <body>
-        
         <div id="wrapper">
             <div id="header">
                 <div id="head">
                     <div id="logo">
-                        <a href="#"><img src="img/logo.png"></a>
+                        <a href="index.html"><img src="img/logo.png"></a>
                     </div>
                     <div id="centr"><span>ЦЕНТР КЕРАМОГРАНИТА И ВЕНТФАСАДОВ</span><img src="img/phone.png"><span><a>(495)</a><strong>921-40-44</strong></span></div>
                 </div>
                 <p id="menu">
                     <a href="#" style="color: #242424; padding-right: 15px;">О КОМПАНИИ</a>
                     <a class="space" href="#">БАЗА ЗНАНИЙ</a>
-                    <a class="space" href="#">ГАЛЕРЕЯ</a>
-                    <a class="space" href="#">КОНТАКТЫ</a>
+                    <a class="space" href="gallery.html">ГАЛЕРЕЯ</a>
+                    <a class="space" href="contacts.html">КОНТАКТЫ</a>
                     <a class="menu_left" href="#">ЗАЯВКА</a>
                     <a class="menu_left" href="#">ПРАЙС&nbsp;</a>
                 </p>
+                <input type="image" src="img/search_button.png" value="" id="search_button"/>
+                 <input id="search" type="text" value="&#160;поиск" onfocus="this.value=''" onblur="this.value='поиск'"/>
                 <div id="product">
                     <div id="toggle_1" class="dop_menu">
                         <a class="prod" href ="#">КЕРАМОГРАНИТ</a>
@@ -47,10 +48,9 @@
                         <a class="prod" href ="#">ГИДРОАБРАЗИВНАЯ РЕЗКА</a> 
                     </div>
                </div>
+            </div>
             <div id="content">
                 <div id="keramo">
-                    <<input type="image" src="img/search_button.png" value="" id="search_button" />
-                    <input id="search" type="text" value="&#160;поиск" onfocus="this.value=''" onblur="this.value='поиск'"/>
                     <div id="podmenu">
                         <div class="hide_block" id="granit">
                             <ul class ="hover_block"> 
@@ -103,7 +103,7 @@
                     <div id="plitka">
                         <div class="block"> <img src="img/block1.jpg">
                             <div class="inblock">
-                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/images/block1.jpg" ><img src="img/search.png" >посмотреть</a></div>
+                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/block1.jpg" ><img src="img/search.png" >посмотреть</a></div>
                                 <p class="cost"><a href="#">CGA6625K</a></p>
                                 <p class="model"><a href="#">Estima</a></p>
                                 <p class="cost">540 <span>руб./м<a>2</a></span></p>
@@ -112,7 +112,7 @@
                         </div>
                         <div class="block"> <img src="img/block2.jpg">
                             <div class="inblock">
-                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/images/block2.jpg" ><img src="img/search.png" >посмотреть</a></div>
+                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/block2.jpg" ><img src="img/search.png" >посмотреть</a></div>
                                 <p class="cost"><a href="#">CGA6625K</a></p>
                                 <p class="model"><a href="#">Estima</a></p>
                                 <p class="cost">540 <span>руб./м<a>2</a></span></p>
@@ -121,7 +121,7 @@
                         </div>
                         <div class="block"> <img src="img/block3.jpg">
                             <div class="inblock">
-                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/images/block3.jpg" ><img src="img/search.png" >посмотреть</a></div>
+                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/block3.jpg" ><img src="img/search.png" >посмотреть</a></div>
                                 <p class="cost"><a href="#">CGA6625K</a></p>
                                 <p class="model"><a href="#">Estima</a></p>
                                 <p class="cost">540 <span>руб./м<a>2</a></span></p>
@@ -130,7 +130,7 @@
                         </div>
                         <div class="block"> <img src="img/block4.jpg">
                             <div class="inblock">
-                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/images/block4.jpg" ><img src="img/search.png" >посмотреть</a></div>
+                                <div class="pict"><a rel="shadowbox[Vacation]" href="img/block4.jpg" ><img src="img/search.png" >посмотреть</a></div>
                                 <p class="cost"><a href="#">CGA6625K</a></p>
                                 <p class="model"><a href="#">Estima</a></p>
                                 <p class="cost">540 <span>руб./м<a>2</a></span></p>
@@ -141,7 +141,7 @@
                 </div>
                 <div>
                     <div id="news">
-                        <h3><span>НОВОСТИ</span></h3>
+                        <h3 class="news_title"><span>НОВОСТИ</span></h3>
                         <div id="point"></div>
                         <div class="news">
                             <p>Акция на полированный керамогранит в ноябре 06.11.2012 <br> <a href="#">подробнее</a></p>
@@ -150,7 +150,7 @@
                         </div>
                     </div>
                     <div id="answer">
-                        <h3><span>ПОЧЕМУ ВЫБИРАЮТ НАС?</span></h3>
+                        <h3 class="news_title"><span>ПОЧЕМУ ВЫБИРАЮТ НАС?</span></h3>
                         <div id="point_answer"></div>
                         <div class="article">
                             <h4>Заголовок</h4>
@@ -197,6 +197,8 @@
                     <img src="img/sinterra.png">
                     <img src="img/gasprom.png">
                 </div>
+            </div>
+            <div id="footer">
                 <div id="line">
                 </div>
                 <div id="info">
@@ -233,14 +235,12 @@
                         <p>Гидроабразивная резка</p>
                     </div>
                 </div>
-            </div>
-            
-            <div id="footer">
-                <div id="foot">
-                    <div id="foot_left"><a href="#">ГЛАВНАЯ</a><a href="#">О КОМПАНИИ</a><a href="#">КАТАЛОГ</a><a href="#">БАЗА ЗНАНИЙ</a><a href="#">ПОРТФОЛИО</a><a href="#">КОНТАКТЫ</a></div>
-                    <div id="foot_right">&copy;&nbsp;2010-2012&nbsp;РЕКАДА</div>
+                <div id="footer_footer">
+                    <div id="foot">
+                        <div id="foot_left"><a href="#">ГЛАВНАЯ</a><a href="#">О КОМПАНИИ</a><a href="#">КАТАЛОГ</a><a href="#">БАЗА ЗНАНИЙ</a><a href="#">ПОРТФОЛИО</a><a href="#">КОНТАКТЫ</a></div>
+                        <div id="foot_right">&copy;&nbsp;2010-2012&nbsp;РЕКАДА</div>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </body>
