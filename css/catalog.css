@@ -1,0 +1,458 @@
+/*              каталог продукции           */
+@font-face {
+    font-family: 'Trebuchet MS';
+    src: url('../font/Trebuchet MS.eot#'); 
+    src: local('Trebuchet MS'),
+       url('../font/Trebuchet MS.woff') format('woff'),
+       url('../font/Trebuchet MS.ttf') format('truetype');
+}
+
+#price_catalog {
+    height: 100px;
+    width: 175px;
+    float: left;
+    font-family: MyriadPro-Regular;
+}
+
+.niceCheck {
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    cursor: pointer;
+    background-image: url('../img/empty_checkbox.png');
+    border-radius: 3px;
+    behavior: url('PIE.htc');
+}
+
+.niceCheck input {
+    display: none;
+}
+
+#top_price {
+    height: 14px;
+    font-size: 10px;
+    margin-top: 5px;
+    text-align: right;
+}
+
+#top_price input, #bottom_price input {
+    width: 19px;
+}
+
+#top_price span, #bottom_price span {
+    font-size: 6px;
+    vertical-align: super;
+}
+
+#bottom_price {
+    width: 100%;
+    height: 14px;
+    margin-bottom: 14px;
+    font-size: 10px;
+}
+
+.checkbox_color {
+    background: url('../img/color_bg.png') no-repeat;
+    width: 100%;
+    height: 324px;
+}
+
+.checkbox_color span {
+    margin-top: 12px;
+}
+
+.checkbox_color p {
+    font-size: 10px;
+    font-family: MyriadPro-Semibold;
+    color: #3c3c3c;
+    line-height: 10px;
+    position: relative;
+    bottom: 0;
+}
+
+.checkbox_color>div {
+    width: 100%;
+    float: left;
+    max-height: 40px;
+}
+
+#thickness {
+    width: 100%;
+    float: left;
+}
+
+#thick {
+    font-family: MyriadPro-Regular;
+    font-size: 10px;
+    padding-top: 4px;
+    padding-left: 5px;
+}
+
+#thick span {
+    float: right;
+    padding-right: 4px;
+}
+
+#metka {
+    width: 100%;
+    height: 9px;
+    position: absolute;
+    z-index: 2;
+}
+
+.metka {
+    background-color: #c4c4c4 !important; 
+    width: 3px;
+    height: 9px;
+    
+    float: left;
+}
+
+.size_block, .area {
+    width: 100%;
+    border-top: 2px dotted #bcbcbc; 
+    float: left;
+}
+
+.size_block p {
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: bold;
+    float: left;
+    width: 50%;
+    font-family: Trebuchet MS;
+}
+
+.size_block p span, .area p span {
+   margin-right: 7px;
+   vertical-align: middle;
+}
+
+.area p {
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: middle;
+    font-family: Trebuchet MS;
+}
+
+
+.product_from_catalog {
+    float: left;
+    margin-right: 35px;
+    margin-top: 32px;
+    width: 231px;
+    font-family: MyriadPro-Semibold;
+    font-weight: 200;
+}
+
+.product_from_catalog p {
+    padding-left: 7px;
+    line-height: 35px;
+}
+
+.cat_product {
+    width: 231px;
+    height: 232px;
+    background: url('../img/catprod_bg.png') no-repeat;
+}
+
+.cat_product img {
+    width: 217px;
+    height: 217px;
+    padding: 5px 7px 10px 7px;
+}
+
+.price_prod {
+    font-size: 30px;
+    color: #084a7b;
+    font-family: MyriadPro-Semibold;
+}
+
+.price_prod>span {
+    font-size: 16px;
+    vertical-align: super;
+}
+
+.zakaz_but {
+    background: url('../img/zakaz_but.png') no-repeat;
+    width: 113px;
+    height: 35px;
+    cursor: pointer;
+    margin-left: 7px;
+}
+
+#list_page {
+    float: right;
+    height: 33px;
+    margin: 40px 30px 35px 0;
+}
+
+#list_page p {
+    font-size: 30px;
+    color: #084a7b;
+    font-family: MyriadPro-Semibold;
+    float: left;
+}
+
+#list_page a {
+    text-decoration: none;
+    color: #084a7b;
+    padding: 0 3px;
+}
+
+#list_page span {
+    font-weight: 600;
+}
+.prev_page {
+    float: left;
+    height: 33px;
+}
+
+.next_page {
+    float: left;
+    height: 33px;
+}
+
+.prev_page img, .next_page img {
+    width: 33px;
+    height: 33px;
+}
+
+
+
+/*          МИРАЖ           */
+#left_catalog {
+    padding: 37px 0 0 0;
+    float: left;
+    width: 175px;
+    margin-left: 94px; 
+}
+.back_to_resault, .back_to_resault a {
+    color: #084a7b;
+    font-family: MyriadPro-Semibold;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+#left_catalog hr {
+    width: 175px;
+    color: #747474;
+}
+
+.left_catalog_point {
+    line-height: 35px;
+    font-size: 18px;
+    font-family: MyriadPro-Semibold;
+    color: #084a7b;
+}
+
+.left_catalog_point a {
+    text-decoration: none;
+    color: #084a7b;
+}
+
+#collection {
+    cursor: pointer;
+    color: black;
+    float: left;
+    width: 50%;
+}
+
+#collection p {
+   border-top: 2px dotted #bcbcbc; 
+   line-height: 25px;
+   margin-right: 3px;
+   font-size: 14px;
+   font-weight: bold;
+   padding-left: 4px;
+   font-family: Trebuchet MS;
+}
+
+#dekor {
+    margin-top: 70px;
+    float: left;
+}
+
+#dekor img {
+    padding-top: 10px;
+}
+
+.dekor_model {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 26px;
+    font-family: Trebuchet MS;
+}
+
+.dekor_size {
+    font-size: 14px;
+    line-height: 26px;
+    font-family: Trebuchet MS;
+}
+
+#right_catalog {
+    float: left;
+    margin: 0 0 0 33px;
+    width: 798px;
+}
+
+.nav_catalog {
+    line-height: 40px;
+    font-size: 12px;
+    font-family: MyriadPro-Regular;
+    clear: both;
+}   
+
+.name_black {
+    font-size: 24px;
+    font-family: MyriadPro-Semibold;
+    line-height: 25px;
+}
+
+.name_blue {
+    font-size: 24px;
+    font-family: MyriadPro-Semibold;
+    color: #084a7b;
+    line-height: 26px;
+}
+
+.catalog_sample {
+    background: url('../img/catalog_bg.png') no-repeat;
+    margin: 12px 40px 0 0;
+    float: left;
+}
+
+.catalog_sample img {
+    width: 279px;
+    height: 279px;
+    padding: 5px 7px 8px 7px;
+}
+
+.sample_price {
+    float: left;
+}
+
+.sample_price p {
+    font-size: 18px;
+    font-family: MyriadPro-Semibold;
+}
+
+.sample_price span {
+    color: #084a7b;
+}
+
+#catalog_button {
+    background: url('../img/catalog_button.png') no-repeat;
+    width: 209px;
+    height: 63px;
+    cursor: pointer;
+    margin-top: 60px;
+    color: white;
+    font-size: 34px;
+    font-family: MyriadPro-Bold;
+}
+
+.price_catalog {
+    font-size: 54px !important;
+    color: #084a7b;
+}
+
+.price_catalog>span {
+    font-size: 32px;
+    vertical-align: super;
+}
+
+#catalog_info {
+    float: left;
+    color: #3c3c3c;
+    font-size: 20px;
+    font-family: MyriadPro-Regular;
+    margin: 30px 0;
+}
+
+#catalog_info span {
+    color: #3c3c3c;
+    font-weight: bold;
+}
+
+#available {
+    clear: both;
+}
+
+#available p {
+    padding-left: 6px;
+}
+
+.catalog_available {
+    background: url('../img/dostypno_bg.png') no-repeat;
+    width: 174px;
+    height: 175px;
+}
+
+.catalog_available img {
+    width: 162px;
+    height: 162px;
+    padding: 5px 6px 8px 6px;
+}
+
+.block_available {
+    width: 174px;
+    margin-right: 19px;
+    float: left;
+    font-family: Trebuchet MS;
+}
+
+.block_available p {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 26px;
+    padding-left: 7px;
+    clear: both;
+}
+
+#viewed {
+    margin: 30px 3px 30px 270px;
+    clear: both;
+}
+
+#viewed hr {
+    color: #747474;
+}
+
+#viewed_text {
+    border-radius: 0 0 10px 10px;
+    behavior: url('PIE.htc');
+    width: 295px;
+    height: 40px;
+    background-color: #084a7b;
+    float: left;
+    margin-left: 33px;
+}
+
+#viewed_text p {
+    color: white;
+    font-size: 24px;
+    font-family: MyriadPro-Semibold;
+    padding: 7px 0 0 7px;
+}
+
+#viewed_list {
+    margin-top: 20px;
+    width: 835px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.prev_viewed {
+    float: left;
+    position: relative;
+    top: 70px;
+}
+
+.next_viewed {
+    float: right;
+    position: relative;
+    left: -2px;
+    top: 70px;
+}
