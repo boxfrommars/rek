@@ -36,7 +36,7 @@
 	height: 250px;
 	margin: 0 auto;
 }
-#lightbox-container-image { padding: 10px; }
+#lightbox-container-image { padding: 30px; }
 #lightbox-loading {
 	position: absolute;
 	top: 40%;
@@ -57,45 +57,52 @@
 #lightbox-container-image-box > #lightbox-nav { left: 0; }
 #lightbox-nav a { outline: none;}
 #lightbox-nav-btnPrev, #lightbox-nav-btnNext {
-	width: 49%;
+	width: 45%;
 	height: 100%;
 	zoom: 1;
 	display: block;
 }
 #lightbox-nav-btnPrev { 
-	left: 0; 
+	position: absolute;
+    left: 30px;
 	float: left;
 }
 #lightbox-nav-btnNext { 
-	right: 0; 
+    position: absolute;
+	right: 30px; 
 	float: right;
 }
 #lightbox-container-image-data-box {
-	font: 10px Verdana, Helvetica, sans-serif;
+	font: 13px Arial, Verdana, Helvetica, sans-serif;
 	background-color: #fff;
 	margin: 0 auto;
 	line-height: 1.4em;
 	overflow: auto;
 	width: 100%;
-	padding: 0 10px 0;
+	padding: 0 30px 10px 30px;
 }
 #lightbox-container-image-data {
 	padding: 0 10px; 
 	color: #666; 
 }
 #lightbox-container-image-data #lightbox-image-details { 
-	width: 70%; 
+	width: 58%; 
 	float: left; 
 	text-align: left; 
 }	
+#lightbox-image-details img {
+    padding-top: 3px;
+}
 #lightbox-image-details-caption { font-weight: bold; }
 #lightbox-image-details-currentNumber {
 	display: block; 
-	clear: left; 
-	padding-bottom: 1.0em;	
+	padding-bottom: 1.0em;
+    padding-left: 5px;
+    padding-right: 5px;
+    vertical-align: middle;
 }			
 #lightbox-secNav-btnClose {
-	width: 66px; 
+	width: 72px; 
 	float: right;
 	padding-bottom: 0.7em;	
 }

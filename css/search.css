@@ -1,0 +1,73 @@
+/*          ПОИСК           */
+#content {
+    min-height: 550px;
+    margin: 0 40px 0 94px;
+}
+
+#search_field {
+    float: left;
+    width: 100%;
+    margin-bottom: 23px;
+    margin-left: -94px;
+}
+
+#search {
+    width: 340px !important;
+    border-bottom-right-radius: 2px;
+    behavior: url('PIE.htc');
+}
+
+#search_result {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+#search_result_field {
+    margin: 25px 0 25px 20px;
+    float: left;
+    font-family: MyriadPro-Semibold;
+    font-size: 14px;
+    color: #3c3c3c;
+}
+
+#search_catalog_result {
+    text-transform: uppercase;
+}
+
+.search_result_news {
+    margin-bottom: 20px;
+}
+
+#search_news a, #search_article a, #search_text a {
+    color: #29628d;
+}
+
+#search_news {
+    display: none;
+}
+
+#search_article {
+    display: none;
+}
+
+#search_text {
+    display: none;
+}
+
+#search_menu {
+    border-top: 1px solid #747474;
+    line-height: 25px;
+}
+
+#search_menu a {
+    padding: 7px 15px 3px 15px;
+    background-color: #084a7b;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    behavior: url('PIE.htc');
+    color: white;
+    font-size: 15px;
+    font-family: MyriadPro-Semibold;
+    margin-right: 3px;
+}

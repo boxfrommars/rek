@@ -33,7 +33,7 @@
 			imageBtnClose:			'img/lightbox/close.png',		// (string) Path and the name of the close btn
 			imageBlank:			'img/lightbox/lightbox-blank.gif',			// (string) Path and the name of a blank image (one pixel)
 			// Configuration related to container image box
-			containerBorderSize:	10,			// (integer) If you adjust the padding in the CSS for the container, #lightbox-container-image-box, you will need to update this value
+			containerBorderSize:	30,			// (integer) If you adjust the padding in the CSS for the container, #lightbox-container-image-box, you will need to update this value
 			containerResizeSpeed:	400,		// (integer) Specify the resize duration of container image. These number are miliseconds. 400 is default.
 			// Configuration related to texts in caption. For example: Image 2 of 8. You can alter either "Image" and "of" texts.
 			txtImage:				'',	// (string) Specify text "Image"
@@ -97,7 +97,7 @@
 					<div id="lightbox-container-image">
 						<img src="../fotos/XX.jpg" id="lightbox-image">
 						<div id="lightbox-nav">
-							<a href="#" id="lightbox-nav-btnPrev" style="margin-left: 10px"></a>
+							<a href="#" id="lightbox-nav-btnPrev"></a>
 							<a href="#" id="lightbox-nav-btnNext"></a>
 						</div>
 						<div id="lightbox-loading">
@@ -125,7 +125,7 @@
 		 */
 		function _set_interface() {
 			// Apply the HTML markup into body tag
-			$('body').append('<div id="jquery-overlay"></div><div id="jquery-lightbox"><div id="lightbox-container-image-box"><div id="lightbox-container-image"><img id="lightbox-image"><div style="" id="lightbox-nav"><a href="#" id="lightbox-nav-btnPrev"></a><a href="#" id="lightbox-nav-btnNext"></a></div><div id="lightbox-loading"><a href="#" id="lightbox-loading-link"><img src="' + settings.imageLoading + '"></a></div></div></div><div id="lightbox-container-image-data-box"><div id="lightbox-container-image-data"><div id="lightbox-image-details" style="margin:13px 0;"><span id="lightbox-image-details-currentNumber" style="float:left; color:#084a7b; font-weight:bold;"></span><span id="lightbox-image-details-caption" style="float:left; color:#084a7b; margin-left:50%;"></span></div><div id="lightbox-secNav"><a href="#" id="lightbox-secNav-btnClose" style="margin: 13px 0;"><img src="' + settings.imageBtnClose + '"></a></div></div></div></div>');	
+			$('body').append('<div id="jquery-overlay"></div><div id="jquery-lightbox"><div id="lightbox-container-image-box" ><div id="lightbox-container-image"><img id="lightbox-image"><div style="" id="lightbox-nav"><a href="#" id="lightbox-nav-btnPrev"></a><a href="#" id="lightbox-nav-btnNext"></a></div><div id="lightbox-loading"><a href="#" id="lightbox-loading-link"><img src="' + settings.imageLoading + '"></a></div></div></div><div id="lightbox-container-image-data-box"><div id="lightbox-container-image-data"><div id="lightbox-image-details"><a href="#" id="lightbox-nav-btnPrev"><img src="img/lightbox/image_prev.png" style="width:12px; height: 12px; float: left;"></a><span id="lightbox-image-details-currentNumber" style="float:left; color:#084a7b; font-weight:bold;"></span><img src="img/lightbox/image_next.png" style="width:12px; height: 12px; float: left;"><span id="lightbox-image-details-caption" style="float:right; color:#084a7b; font-size: 14px;"></span></div><div id="lightbox-secNav"><a href="#" id="lightbox-secNav-btnClose"><img src="' + settings.imageBtnClose + '"></a></div></div></div></div>');	
 			// Get page sizes
 			var arrPageSizes = ___getPageSize();
 			// Style overlay and show it
@@ -271,7 +271,7 @@
 				} else {
 					// Show the images button for Next buttons
 					$('#lightbox-nav-btnPrev').unbind().hover(function() {
-						$(this).css({ 'background' : 'url(' + settings.imageBtnPrev + ') left 15% no-repeat' });
+						$(this).css({ 'background' : 'url(' + settings.imageBtnPrev + ') left 50% no-repeat' });
 					},function() {
 						$(this).css({ 'background' : 'transparent url(' + settings.imageBlank + ') no-repeat' });
 					}).show().bind('click',function() {
@@ -295,7 +295,7 @@
 				} else {
 					// Show the images button for Next buttons
 					$('#lightbox-nav-btnNext').unbind().hover(function() {
-						$(this).css({ 'background' : 'url(' + settings.imageBtnNext + ') right 15% no-repeat' });
+						$(this).css({ 'background' : 'url(' + settings.imageBtnNext + ') right 50% no-repeat' });
 					},function() {
 						$(this).css({ 'background' : 'transparent url(' + settings.imageBlank + ') no-repeat' });
 					}).show().bind('click',function() {

@@ -20,13 +20,15 @@ $(document).ready(function(){
        $('#rezka').css({'display': 'none'});
     });
     
+  // полупрозрачность   
   var opacity = 1.0, toOpacity = 0.5, duration = 400;
   $('h2>a').css('opacity',opacity).hover(function() {
           $(this).fadeTo(duration,toOpacity);
       }, function() {
           $(this).fadeTo(duration,opacity);
       });
-       
+     
+     //подключение галереи 
     $(function() {
          $('.pict_gallery a').lightBox();
          });

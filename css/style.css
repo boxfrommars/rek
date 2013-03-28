@@ -279,7 +279,9 @@ table {
 }
 
 #search {
-    background: url('../img/search_bg.png') no-repeat;
+    background: url('../img/search_background.png');
+    border-bottom-right-radius: 2px;
+    behavior: url('PIE.htc');
     color: white;
     font-size: 16px;
     font-style: italic;
