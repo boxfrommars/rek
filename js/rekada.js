@@ -32,4 +32,26 @@ $(document).ready(function(){
     $(function() {
          $('.pict_gallery a').lightBox();
          });
+    
+    //поиск
+    $('#search_menu a').click(function(){
+        $(this).parent('#search_menu').find('a').css({ 'opacity':'0.6' });
+        $(this).css({'opacity':'1' });
+        var menuIndex = $(this).index();
+         $('.result_block').hide();
+        $('.result_block').eq(menuIndex).show();
+    });
+    
+    $('#search_catalog_result p').hover(function(){
+        $(this).addClass('hover_search');
+        }, function() {
+            $(this).removeClass('hover_search');
+    });
+    
+    //мираж
+    $('#collection p').hover(function(){
+        $(this).addClass('hover_search');
+        }, function() {
+            $(this).removeClass('hover_search');
+    });
 }); 

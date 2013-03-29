@@ -456,3 +456,8 @@
     left: -2px;
     top: 70px;
 }
+
+.hover_search {
+    color: #29628d;
+    text-decoration: underline;
+}
