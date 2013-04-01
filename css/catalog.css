@@ -22,6 +22,7 @@
     background-image: url('../img/empty_checkbox.png');
     border-radius: 3px;
     behavior: url('PIE.htc');
+    position: relative;
 }
 
 .niceCheck input {
@@ -136,7 +137,11 @@
     font-family: Trebuchet MS;
 }
 
-
+@media all and ( min-width : 0px )	 { 
+    .area p { 
+    letter-spacing: -1px;
+  } 
+}
 .product_from_catalog {
     float: left;
     margin-right: 35px;
@@ -257,6 +262,12 @@
     color: black;
     float: left;
     width: 50%;
+}
+
+@media all and ( min-width : 0px )	 { 
+    #collection p, .back_to_resault a { 
+    letter-spacing: -1px;
+  } 
 }
 
 #collection p {
@@ -421,7 +432,7 @@
 }
 
 #viewed_text {
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 5px 5px;
     behavior: url('PIE.htc');
     width: 295px;
     height: 40px;

@@ -35,10 +35,10 @@ $(document).ready(function(){
     
     //поиск
     $('#search_menu a').click(function(){
-        $(this).parent('#search_menu').find('a').css({ 'opacity':'0.6' });
+        $(this).parent('#search_menu').find('a').css({ 'opacity':'0.6', 'filter':'alpha(opacity=60)' });
         $(this).css({'opacity':'1' });
         var menuIndex = $(this).index();
-         $('.result_block').hide();
+        $('.result_block').hide();
         $('.result_block').eq(menuIndex).show();
     });
     

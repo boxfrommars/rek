@@ -159,9 +159,15 @@ table {
 .space {
     margin-left: 58px;
     color: #242424;
-    padding-right: 15px;
+    margin-right: 15px;
 }
-
+/*для ie8*/
+.space  {
+	margin-right: 20px\0/;
+}
+:root .space  {
+	margin-right: 15px\0/;
+}
 #menu span {
     margin: 0 50px 0 15px;
 }
@@ -280,7 +286,7 @@ table {
 
 #search {
     background: url('../img/search_background.png');
-    border-bottom-right-radius: 2px;
+    border-bottom-right-radius: 3px;
     behavior: url('PIE.htc');
     color: white;
     font-size: 16px;
@@ -290,6 +296,7 @@ table {
     width: 143px;
     height: 26px;
     margin-top: 13px;
+    position: relative;
 }
 
 h1 {
