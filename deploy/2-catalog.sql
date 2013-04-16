@@ -94,6 +94,8 @@ CREATE TABLE "product" (
   "title" VARCHAR(255) NOT NULL,   -- название на русском
   "article" VARCHAR(255) NOT NULL, -- артикул
   "cost" DECIMAL(10,2),            -- стоимость
+  "image" VARCHAR (255),
+  "thumbnail" VARCHAR (255),
 
   "id_color" INT NOT NULL REFERENCES "color" (id),     -- цвет
   "id_surface" INT NOT NULL REFERENCES "surface" (id), -- тип поверхности

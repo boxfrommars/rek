@@ -69,12 +69,21 @@ class Admin_Form_Product extends Admin_Form_Base
         ));
 
         $this->addElement('text', 'cost', array(
-            'label' => "Цена",
-            'required' => true,
-            'filters' => array('StringTrim'),
-            'validators' => array(),
-            'dimension' => 6
-        ));
+                'label' => "Цена",
+                'required' => true,
+                'filters' => array('StringTrim'),
+                'validators' => array(),
+                'dimension' => 6
+            ));
+
+        $this->addElement('text', 'image', array(
+                'label' => "Изображение",
+                'required' => true,
+                'filters' => array('StringTrim'),
+                'validators' => array(),
+                'class' => 'hidden image-upload',
+                'dimension' => 6,
+            ));
 
         $this->addElement('select', 'id_color', array(
             'label' => "Цвет",

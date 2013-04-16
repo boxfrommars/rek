@@ -5,7 +5,9 @@ define([
     'jquery',
     'router',
     'bootstrap',
-    'datepicker'
+    'datepicker',
+    'uiwidget',
+    'fileupload'
 ], function(_, Backbone, jQuery, Router, $) {
     var initialize = function() {
         jQuery('.datepicker').datepicker({
