@@ -1,0 +1,26 @@
+<?php echo $this->paginator; ?>
+<h2>Новости</h2>
+<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'news'), 'admin') ?>" role="button" class="btn btn-success add">Добавить новость</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Опубликован</th>
+            <th>Дата публикации</th>
+            <th>Заголовок</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->items as $item): ?>
+        <tr>
+            <td style="width: 100px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
+            <td style="width: 135px;"><?php echo $item['published_at'] ?></td>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'news', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'news', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'news', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php echo $this->paginator; ?>

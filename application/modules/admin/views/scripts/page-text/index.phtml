@@ -1,0 +1,25 @@
+<?php echo $this->paginator; ?>
+<h2>Тексты на страницах</h2>
+<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'page-text'), 'admin') ?>" role="button" class="btn btn-success add">Добавить текст</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Положение</th>
+            <th>Заголовок</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->items as $item): ?>
+        <tr>
+            <td style="width:200px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page-text', 'action' => 'edit'), 'admin') ?>"><?php echo $item['position']; ?></a></td>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page-text', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title']; ?></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page-text', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page-text', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php echo $this->paginator; ?>
+

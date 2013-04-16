@@ -1,0 +1,26 @@
+<?php if ($this->pageCount && $this->pageCount > 1): ?>
+
+    <div class="pagination pull-right">
+        <ul>
+            <?php if (isset($this->previous)): ?>
+                <li><a href="<?php echo $this->url(array('page' => $this->previous)); ?>">Предыдущая</a></li>
+            <?php else: ?>
+                <li class="disabled"><span>Предыдущая</span></li>
+            <?php endif; ?>
+
+            <?php foreach ($this->pagesInRange as $page): ?>
+                <?php if ($page != $this->current): ?>
+                    <li><a href="<?php echo $this->url(array('page' => $page)); ?>"><?php echo $page; ?></a></li>
+                <?php else: ?>
+                    <li class="active"><span><?php echo $page; ?></span></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <?php if (isset($this->next)): ?>
+                <li><a href="<?php echo $this->url(array('page' => $this->next)); ?>">Следующая</a></li>
+            <?php else: ?>
+                <li class="disabled"><span>Следующая</span></li>
+            <?php endif; ?>
+        </ul>
+    </div>
+<?php endif; ?>

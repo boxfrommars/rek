@@ -1,0 +1,35 @@
+<h1>Новости проекта</h1>
+<div class="news-list">
+    <?php foreach ($this->news as $news): ?>
+        <article>
+            <section class="clearfix">
+                <div class="news-tn"><img src="/p/images/tn_news.jpg"></div>
+                <div class="news-content">
+                    <div class="news-date-time"><span class="news-date"><?php echo date('d\.m\.Y', strtotime($news['published_at'])); ?></span><span class="news-time"><?php echo date('H:i', strtotime($news['published_at'])); ?></span></div>
+                    <h2><a href="<?php echo $this->url(array('id' => $news['id'], 'module' => 'news'), 'moduleview'); ?>"><?php echo $news['title']; ?></a></h2>
+                    <div class="news-text">
+                        <?php echo $news['content']; ?>
+                    </div>
+                </div>
+            </section>
+        </article>
+    <?php endforeach; ?>
+</div><!-- .news-list -->
+<div class="border-top-orange">
+    <div class="pagination clearfix">
+        <ul>
+            <li class="prev"><a href="#"><span class="arr">&laquo;</span> <span class="text">Назад</span></a></li>
+            <li class="current"><a href="#">1</a></li>
+<!--            <li><a href="#">2</a></li>-->
+<!--            <li><a href="#">3</a></li>-->
+<!--            <li><a href="#">4</a></li>-->
+<!--            <li><a href="#">5</a></li>-->
+<!--            <li><a href="#">6</a></li>-->
+<!--            <li><a href="#">7</a></li>-->
+<!--            <li><a href="#">8</a></li>-->
+<!--            <li><a href="#">9</a></li>-->
+<!--            <li><a href="#">10</a></li>-->
+            <li class="next"><a href="#"><span class="text">Вперед</span> <span class="arr">&raquo;</span></a></li>
+        </ul>
+    </div><!-- .pagination -->
+</div><!-- .border-top-orange -->
