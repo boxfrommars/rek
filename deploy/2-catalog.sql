@@ -14,28 +14,25 @@ CREATE TABLE "color" (
   UNIQUE ("hex")
 );
 
-INSERT INTO color (title, hex) VALUES
-('белый', '#ffffff'),
-('чёрный', '#000000'),
-('красный', '#ff0000');
+INSERT INTO color (title, hex) VALUES ('белый', '#ffffff');
+INSERT INTO color (title, hex) VALUES ('чёрный', '#000000');
+INSERT INTO color (title, hex) VALUES ('красный', '#ff0000');
 
 CREATE TABLE "surface" (
   "id" SERIAL NOT NULL,
   "title" VARCHAR(255) NOT NULL,
   PRIMARY KEY("id")
 );
-INSERT INTO surface (title) VALUES
-('Полированный'),
-('Неполированный');
+INSERT INTO surface (title) VALUES ('Полированный');
+INSERT INTO surface (title) VALUES ('Неполированный');
 
 CREATE TABLE "country" (
   "id" SERIAL NOT NULL,
   "title" VARCHAR(255) NOT NULL,
   PRIMARY KEY("id")
 );
-INSERT INTO country (title) VALUES
-('Россия'),
-('Италия');
+INSERT INTO country (title) VALUES ('Россия');
+INSERT INTO country (title) VALUES ('Италия');
 
 CREATE TABLE "category" (
   "id" SERIAL NOT NULL,
@@ -50,8 +47,8 @@ CREATE TABLE "category" (
   UNIQUE ("name")
 );
 
-INSERT INTO category (title, name) VALUES
-('Керамогранит', 'keramogranit'), ('Вентфасады', 'ventfadsadi');
+INSERT INTO category (title, name) VALUES ('Керамогранит', 'keramogranit');
+INSERT INTO category (title, name) VALUES ('Вентфасады', 'ventfadsadi');
 
 CREATE TABLE "brand" (
   "id" SERIAL NOT NULL,
@@ -67,8 +64,10 @@ CREATE TABLE "brand" (
   UNIQUE ("name")
 );
 
-INSERT INTO brand (title, id_category, name) VALUES
-('Estima', 1, 'estima'), ('Kerama Marazzi', 2, 'kerama-marazzi'), ('Italon', 1, 'italon'), ('Grassaro', 1, 'grassaro');
+INSERT INTO brand (title, id_category, name) VALUES ('Estima', 1, 'estima');
+INSERT INTO brand (title, id_category, name) VALUES ('Kerama Marazzi', 2, 'kerama-marazzi');
+INSERT INTO brand (title, id_category, name) VALUES ('Italon', 1, 'italon');
+INSERT INTO brand (title, id_category, name) VALUES ('Grassaro', 1, 'grassaro');
 
 CREATE TABLE "collection" (
   "id" SERIAL NOT NULL,
@@ -84,10 +83,9 @@ CREATE TABLE "collection" (
   UNIQUE ("name")
 );
 
-INSERT INTO "collection" (title, name, id_brand) VALUES
-('Standard', 'standard', 1),
-('Jazz NEW', 'jazz', 1),
-('Antica', 'antica', 2);
+INSERT INTO "collection" (title, name, id_brand) VALUES ('Standard', 'standard', 1);
+INSERT INTO "collection" (title, name, id_brand) VALUES ('Jazz NEW', 'jazz', 1);
+INSERT INTO "collection" (title, name, id_brand) VALUES ('Antica', 'antica', 2);
 
 
 CREATE TABLE "product" (

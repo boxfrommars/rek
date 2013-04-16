@@ -11,10 +11,9 @@ CREATE TABLE "role" (
   PRIMARY KEY ("id")
 );
 
-INSERT INTO "role" ("name") VALUES
-  ('admin'),
-  ('user'),
-  ('guest');
+INSERT INTO "role" ("name") VALUES ('admin');
+INSERT INTO "role" ("name") VALUES ('user');
+INSERT INTO "role" ("name") VALUES ('guest');
 
 CREATE TABLE "users" (
   "id" BIGSERIAL,
@@ -26,8 +25,7 @@ CREATE TABLE "users" (
   PRIMARY KEY ("id")
 );
 
-INSERT INTO "users" (username, password, email, id_role) VALUES
-  ('admin', MD5('admin'), 'admin@example.org', (SELECT "id" FROM "role" WHERE name = 'admin'));
+INSERT INTO "users" (username, password, email, id_role) VALUES ('admin', MD5('admin'), 'admin@example.org', (SELECT "id" FROM "role" WHERE name = 'admin'));
 
 CREATE TABLE "news" (
   "id" BIGSERIAL NOT NULL,
