@@ -26,7 +26,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     protected function _initModuleManager()
     {
         $moduleManager = Whale_Module_Manager::getInstance();
-        $moduleManager->setNames($this->getOption('app')['modules']);
+        $app = $this->getOption('app');
+        $moduleManager->setNames($app['modules']);
     }
 
     protected function _initAppRoutes()
