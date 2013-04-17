@@ -38,64 +38,84 @@ CREATE TABLE "category" (
   "id" SERIAL NOT NULL,
   "is_published" BOOL DEFAULT 'f',
   "title" VARCHAR(255) NOT NULL,
-  "name" VARCHAR(255) NOT NULL,
   "image" VARCHAR (255),
-  "description" TEXT,              -- описание
+  "description" TEXT,
+
+  "page_url" VARCHAR(255),
+  "page_title" VARCHAR (255),
+  "page_description" TEXT,
+  "page_keywords" TEXT,
+             -- описание
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   PRIMARY KEY("id"),
-  UNIQUE ("name")
+  UNIQUE ("page_url")
 );
 
-INSERT INTO category (title, name) VALUES ('Керамогранит', 'keramogranit');
-INSERT INTO category (title, name) VALUES ('Вентфасады', 'ventfadsadi');
+INSERT INTO category (title, page_url) VALUES ('Керамогранит', 'keramogranit');
+INSERT INTO category (title, page_url) VALUES ('Вентфасады', 'ventfadsadi');
 
 CREATE TABLE "brand" (
   "id" SERIAL NOT NULL,
   "is_published" BOOL DEFAULT 'f',
   "title" VARCHAR(255) NOT NULL,
-  "name" VARCHAR(255) NOT NULL,
   "image" VARCHAR (255),
   "description" TEXT,              -- описание
   "id_category" INT REFERENCES category("id"),
+
+  "page_url" VARCHAR(255),
+  "page_title" VARCHAR (255),
+  "page_description" TEXT,
+  "page_keywords" TEXT,
+
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   PRIMARY KEY("id"),
-  UNIQUE ("name")
+  UNIQUE ("page_url")
 );
 
-INSERT INTO brand (title, id_category, name) VALUES ('Estima', 1, 'estima');
-INSERT INTO brand (title, id_category, name) VALUES ('Kerama Marazzi', 2, 'kerama-marazzi');
-INSERT INTO brand (title, id_category, name) VALUES ('Italon', 1, 'italon');
-INSERT INTO brand (title, id_category, name) VALUES ('Grassaro', 1, 'grassaro');
+INSERT INTO brand (title, id_category, page_url) VALUES ('Estima', 1, 'estima');
+INSERT INTO brand (title, id_category, page_url) VALUES ('Kerama Marazzi', 2, 'kerama-marazzi');
+INSERT INTO brand (title, id_category, page_url) VALUES ('Italon', 1, 'italon');
+INSERT INTO brand (title, id_category, page_url) VALUES ('Grassaro', 1, 'grassaro');
 
 CREATE TABLE "collection" (
   "id" SERIAL NOT NULL,
   "is_published" BOOL DEFAULT 'f',
   "title" VARCHAR(255) NOT NULL,
-  "name" VARCHAR(255) NOT NULL,
   "image" VARCHAR (255),
   "description" TEXT,              -- описание
   "id_brand" INT REFERENCES brand("id"),
+
+  "page_url" VARCHAR(255),
+  "page_title" VARCHAR (255),
+  "page_description" TEXT,
+  "page_keywords" TEXT,
+
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   PRIMARY KEY("id"),
-  UNIQUE ("name")
+  UNIQUE ("page_url")
 );
 
-INSERT INTO "collection" (title, name, id_brand) VALUES ('Standard', 'standard', 1);
-INSERT INTO "collection" (title, name, id_brand) VALUES ('Jazz NEW', 'jazz', 1);
-INSERT INTO "collection" (title, name, id_brand) VALUES ('Antica', 'antica', 2);
+INSERT INTO "collection" (title, page_url, id_brand) VALUES ('Standard', 'standard', 1);
+INSERT INTO "collection" (title, page_url, id_brand) VALUES ('Jazz NEW', 'jazz', 1);
+INSERT INTO "collection" (title, page_url, id_brand) VALUES ('Antica', 'antica', 2);
 
 
 CREATE TABLE "product" (
   "id" SERIAL NOT NULL,
-  "name" VARCHAR(255) NOT NULL,    -- название на английском (часть урла)
   "title" VARCHAR(255) NOT NULL,   -- название на русском
   "article" VARCHAR(255) NOT NULL, -- артикул
   "cost" DECIMAL(10,2),            -- стоимость
   "image" VARCHAR (255),
   "thumbnail" VARCHAR (255),
+
+  "page_url" VARCHAR(255),
+  "page_title" VARCHAR (255),
+  "page_description" TEXT,
+  "page_keywords" TEXT,
+
 
   "id_color" INT NOT NULL REFERENCES "color" (id),     -- цвет
   "id_surface" INT NOT NULL REFERENCES "surface" (id), -- тип поверхности
@@ -112,5 +132,5 @@ CREATE TABLE "product" (
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   PRIMARY KEY("id"),
-  UNIQUE ("name", "article")
+  UNIQUE ("page_url", "article")
 );
