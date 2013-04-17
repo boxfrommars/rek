@@ -1,0 +1,24 @@
+<?php echo $this->paginator; ?>
+<h2>Поверхность</h2>
+<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'surface'), 'admin') ?>" role="button" class="btn btn-success add">
+        Добавить поверхность
+</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Заголовок</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->items as $item): ?>
+        <tr>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'surface', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'surface', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'surface', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php echo $this->paginator; ?>

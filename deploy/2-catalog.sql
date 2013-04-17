@@ -1,6 +1,5 @@
 DROP TABLE "color" CASCADE;
 DROP TABLE "surface" CASCADE;
-DROP TABLE "collection" CASCADE;
 DROP TABLE "brand" CASCADE;
 DROP TABLE "category" CASCADE;
 DROP TABLE "country" CASCADE;
@@ -79,29 +78,6 @@ INSERT INTO brand (title, id_category, page_url) VALUES ('Kerama Marazzi', 2, 'k
 INSERT INTO brand (title, id_category, page_url) VALUES ('Italon', 1, 'italon');
 INSERT INTO brand (title, id_category, page_url) VALUES ('Grassaro', 1, 'grassaro');
 
-CREATE TABLE "collection" (
-  "id" SERIAL NOT NULL,
-  "is_published" BOOL DEFAULT 'f',
-  "title" VARCHAR(255) NOT NULL,
-  "image" VARCHAR (255),
-  "description" TEXT,              -- описание
-  "id_brand" INT REFERENCES brand("id"),
-
-  "page_url" VARCHAR(255),
-  "page_title" VARCHAR (255),
-  "page_description" TEXT,
-  "page_keywords" TEXT,
-
-  "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
-  "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
-  PRIMARY KEY("id"),
-  UNIQUE ("page_url")
-);
-
-INSERT INTO "collection" (title, page_url, id_brand) VALUES ('Standard', 'standard', 1);
-INSERT INTO "collection" (title, page_url, id_brand) VALUES ('Jazz NEW', 'jazz', 1);
-INSERT INTO "collection" (title, page_url, id_brand) VALUES ('Antica', 'antica', 2);
-
 
 CREATE TABLE "product" (
   "id" SERIAL NOT NULL,
@@ -120,7 +96,7 @@ CREATE TABLE "product" (
   "id_color" INT NOT NULL REFERENCES "color" (id),     -- цвет
   "id_surface" INT NOT NULL REFERENCES "surface" (id), -- тип поверхности
   "id_country" INT NOT NULL REFERENCES "country" (id), -- страна
-  "id_collection" INT NOT NULL REFERENCES "collection" (id),     -- бренд
+  "id_brand" INT NOT NULL REFERENCES "brand" (id),     -- бренд
 
   "description" TEXT,              -- описание
 

@@ -34,7 +34,6 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
         $count = (int) $this->_model->getAdapter()->fetchOne(
             $this->_model->select()->from($this->_model, 'COUNT(*)')
         );
-        Whale_Log::log('index count: ' . $count);
 
         $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Null($count));
 

@@ -1,10 +1,17 @@
-$(document).ready(function(){
-
-    $('.image-upload').each(function(){
+$(document).ready(function() {
+    $('.image-upload').each(function() {
+        var insertImage = function(name, $insertBeforeElm, isNew) {
+            $('<a/>')
+                .addClass('fancybox admin-image ' + (isNew ? 'new-admin-image' : ''))
+                .attr('href', '/files/' + name)
+                .append(
+                    $('<img/>').attr('src', '/files/thumbnail/' + name)
+                ).insertBefore($insertBeforeElm);
+        }
         var $input = $(this);
 
         if ($(this).val().length > 0) {
-            $('<a/>').addClass('fancybox admin-image').attr('href', '/files/' + $(this).val()).append($('<img/>').attr('src', '/files/thumbnail/' + $(this).val())).insertBefore($input);
+            insertImage($(this).val(), $input, false);
         }
 
         var $fileInput = $('<input/>').attr('type', 'file').attr('name', 'files[]').attr('data-url', "/admin/system/upload");
@@ -15,7 +22,7 @@ $(document).ready(function(){
             done: function (e, data) {
                 $('.new-admin-image').remove();
                 $.each(data.result.files, function (index, file) {
-                    $('<a/>').addClass('fancybox admin-image new-admin-image').attr('href', '/files/' + file.name).append($('<img/>').attr('src', file.thumbnail_url)).insertBefore($input);
+                    insertImage(file.name, $input, true);
                     $input.val(file.name);
                 });
             }

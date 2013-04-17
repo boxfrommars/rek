@@ -8,17 +8,17 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
     protected function _initMiddleElements()
     {
         $colorService = new Catalog_Model_ColorService();
-        $collectionService = new Catalog_Model_CollectionService();
+        $brandService = new Catalog_Model_BrandService();
         $countryService = new Catalog_Model_CountryService();
         $surfaceService = new Catalog_Model_SurfaceService();
 
         $colors = $colorService->fetchAll();
-        $collections = $collectionService->fetchAll();
+        $brands = $brandService->fetchAll();
         $countries = $countryService->fetchAll();
         $surfaces = $surfaceService->fetchAll();
 
         $colorSelectOptions = array();
-        $collectionSelectOptions = array();
+        $brandSelectOptions = array();
         $countrySelectOptions = array();
         $surfaceSelectOptions = array();
 
@@ -26,8 +26,8 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             $colorSelectOptions[$color['id']] = $color['title'];
         }
 
-        foreach ($collections as $collection) {
-            $collectionSelectOptions[$collection['id']] = $collection['title'];
+        foreach ($brands as $brand) {
+            $brandSelectOptions[$brand['id']] = $brand['title'];
         }
 
         foreach ($countries as $country) {
@@ -70,12 +70,12 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'multiOptions' => $countrySelectOptions,
         ));
 
-        $this->addElement('select', 'id_collection', array(
-            'label' => "Коллекция",
+        $this->addElement('select', 'id_brand', array(
+            'label' => "Бренд",
             'required' => true,
             'validators' => array(),
             'dimension' => 6,
-            'multiOptions' => $collectionSelectOptions,
+            'multiOptions' => $brandSelectOptions,
         ));
 
         $this->addElement('select', 'id_surface', array(

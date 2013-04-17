@@ -10,7 +10,6 @@
             <th>Заголовок</th>
             <th>Категория</th>
             <th>Бренд</th>
-            <th>Коллекция</th>
             <th></th>
             <th></th>
         </tr>
@@ -22,7 +21,6 @@
             <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'catalog', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
             <td><?php echo $item['category_title']; ?></td>
             <td><?php echo $item['brand_title']; ?></td>
-            <td><?php echo $item['collection_title']; ?></td>
             <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'catalog', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
             <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'catalog', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
         </tr>

@@ -13,12 +13,9 @@ class Admin_SystemController extends Whale_Controller_Action
         Zend_Layout::getMvcInstance()->disableLayout();
         $this->_helper->viewRenderer->setNoRender(true);
 
-        $upload_handler = new UploadHandler(array(
+        new UploadHandler(array(
             'upload_dir' => APPLICATION_PATH . '/../public/files/',
             'upload_url' => '/files/',
         ));
     }
-
-
 }
-

@@ -13,14 +13,8 @@ class Catalog_Model_ProductService extends Whale_Db_TableCached
                 array('p' => $this->getName()),
                 array('*')
             )->joinLeft(
-                array('c' => 'collection'),
-                'p.id_collection = c.id',
-                array(
-                    'collection_title' => 'title'
-                )
-            )->joinLeft(
                 array('b' => 'brand'),
-                'c.id_brand = b.id',
+                'p.id_brand = b.id',
                 array(
                     'brand_title' => 'title'
                 )
