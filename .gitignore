@@ -1,5 +1,5 @@
 /nbproject/private/
 /.idea
 /.zfproject.xml
-/files/
-!/files/.htaccess
+/public/files/
+!/public/files/.htaccess

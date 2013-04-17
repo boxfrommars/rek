@@ -7,7 +7,7 @@ $(document).ready(function(){
             $('<a/>').addClass('fancybox admin-image').attr('href', '/files/' + $(this).val()).append($('<img/>').attr('src', '/files/thumbnail/' + $(this).val())).insertBefore($input);
         }
 
-        var $fileInput = $('<input/>').attr('type', 'file').attr('name', 'files[]').attr('data-url', "/vendor/jQuery-File-Upload/server/php/");
+        var $fileInput = $('<input/>').attr('type', 'file').attr('name', 'files[]').attr('data-url', "/admin/system/upload");
         $(this).before($fileInput);
 
         $fileInput.fileupload({
