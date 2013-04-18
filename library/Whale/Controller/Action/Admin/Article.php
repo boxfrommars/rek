@@ -115,6 +115,11 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
         return $this->_redirectToIndex();
     }
 
+    protected function _setRedirectByItem($item)
+    {
+        
+    }
+
     protected function _redirectToIndex($routeOptions = null, $routeName = null)
     {
         $routeOptions = $routeOptions ?: $this->_redirectOptions;
