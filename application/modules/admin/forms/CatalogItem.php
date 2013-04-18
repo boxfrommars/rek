@@ -11,6 +11,7 @@ class Admin_Form_CatalogItem extends Admin_Form_Base
         $this->_initTopElements();
         $this->_initMiddleElements();
         $this->_initBottomElements();
+        $this->_initButtons();
     }
 
 
@@ -21,20 +22,20 @@ class Admin_Form_CatalogItem extends Admin_Form_Base
             ));
 
         $this->addElement('text', 'title', array(
-                'label' => "Заголовок",
-                'required' => true,
-                'filters' => array('StringTrim'),
-                'validators' => array(),
-                'dimension' => 6
-            ));
+            'label' => "Заголовок",
+            'required' => true,
+            'filters' => array('StringTrim'),
+            'validators' => array(),
+            'dimension' => $this->_dimension,
+        ));
 
         $this->addElement('text', 'image', array(
-                'label' => "Изображение",
-                'required' => false,
-                'filters' => array('StringTrim'),
-                'validators' => array(),
-                'class' => 'hidden image-upload',
-                'dimension' => 6,
+            'label' => "Изображение",
+            'required' => false,
+            'filters' => array('StringTrim'),
+            'validators' => array(),
+            'class' => 'hidden image-upload',
+            'dimension' => $this->_dimension,
             ));
     }
 
@@ -49,7 +50,7 @@ class Admin_Form_CatalogItem extends Admin_Form_Base
                 'label' => 'Описание',
                 'required' => false,
                 'validators' => array(),
-                'dimension' => 6,
+                'dimension' => $this->_dimension,
                 'rows' => 4,
             ));
 
@@ -58,21 +59,21 @@ class Admin_Form_CatalogItem extends Admin_Form_Base
                 'required' => false,
                 'filters' => array('StringTrim'),
                 'validators' => array(),
-                'dimension' => 6
+                'dimension' => $this->_dimension,
             ));
         $this->addElement('text', 'page_title', array(
                 'label' => "SEO: Title",
                 'required' => false,
                 'filters' => array('StringTrim'),
                 'validators' => array(),
-                'dimension' => 6
+                'dimension' => $this->_dimension,
             ));
 
         $this->addElement('textarea', 'page_keywords', array(
                 'label' => 'SEO: Ключевые слова',
                 'required' => false,
                 'validators' => array(),
-                'dimension' => 6,
+                'dimension' => $this->_dimension,
                 'rows' => 2,
             ));
 
@@ -80,21 +81,25 @@ class Admin_Form_CatalogItem extends Admin_Form_Base
                 'label' => 'SEO: Описание',
                 'required' => false,
                 'validators' => array(),
-                'dimension' => 6,
+                'dimension' => $this->_dimension,
                 'rows' => 2,
             ));
+    }
+
+    protected function _initButtons()
+    {
 
         $this->addElement('button', 'submit', array(
-                'label' => 'Сохранить',
-                'type' => 'submit',
-                'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_SUCCESS,
-            ));
+            'label' => 'Сохранить',
+            'type' => 'submit',
+            'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_SUCCESS,
+        ));
 
         $this->addElement('button', 'reset', array(
-                'label' => 'Отмена',
-                'type' => 'reset',
-                'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_INFO,
-            ));
+            'label' => 'Отмена',
+            'type' => 'reset',
+            'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_INFO,
+        ));
 
         $this->addDisplayGroup(
             array('submit', 'reset'),
@@ -105,6 +110,4 @@ class Admin_Form_CatalogItem extends Admin_Form_Base
             )
         );
     }
-
-
 }

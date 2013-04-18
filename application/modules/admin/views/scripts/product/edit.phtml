@@ -1,0 +1,33 @@
+<a href="<?php echo $this->url(array('action' => 'index', 'id' => null, 'controller' => 'product'), 'admin'); ?>"><i class="icon-arrow-left"></i> вернуться к списку</a>
+<div class="row-fluid">
+    <div class="span7">
+        <h2>Редактирование товара</h2>
+        <?php print $this->form; ?>
+    </div>
+    <div class="span5">
+        <h2>Цвета товара</h2>
+        <p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'product-color', 'id' => $this->item['id']), 'admin') ?>" role="button" class="btn btn-success add">
+                Добавить
+            </a></p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Опубл.</th>
+                <th>Заголовок</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->productColors as $item): ?>
+                <tr>
+                    <td style="width: 50px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
+                    <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-color', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
+                    <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-color', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
+                    <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-color', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>

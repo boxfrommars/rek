@@ -1,9 +1,10 @@
-DROP TABLE "color" CASCADE;
-DROP TABLE "surface" CASCADE;
+DROP TABLE "product_color" CASCADE;
+DROP TABLE "product" CASCADE;
 DROP TABLE "brand" CASCADE;
 DROP TABLE "category" CASCADE;
 DROP TABLE "country" CASCADE;
-DROP TABLE "product" CASCADE;
+DROP TABLE "color" CASCADE;
+DROP TABLE "surface" CASCADE;
 
 CREATE TABLE "color" (
   "id" SERIAL NOT NULL,
@@ -85,28 +86,39 @@ CREATE TABLE "product" (
   "article" VARCHAR(255) NOT NULL, -- артикул
   "cost" DECIMAL(10,2),            -- стоимость
   "image" VARCHAR (255),
-  "thumbnail" VARCHAR (255),
+  "description" TEXT,              -- описание
 
   "page_url" VARCHAR(255),
   "page_title" VARCHAR (255),
   "page_description" TEXT,
   "page_keywords" TEXT,
 
-
-  "id_color" INT NOT NULL REFERENCES "color" (id),     -- цвет
   "id_surface" INT NOT NULL REFERENCES "surface" (id), -- тип поверхности
   "id_country" INT NOT NULL REFERENCES "country" (id), -- страна
   "id_brand" INT NOT NULL REFERENCES "brand" (id),     -- бренд
 
-  "description" TEXT,              -- описание
-
   "width" DECIMAL(10,1),           -- размер
   "height" DECIMAL(10,1),          -- высоты
-  "depth" DECIMAL(10,1),           -- глубина
+  "depth" DECIMAL(10,1),           -- толщина
 
   "is_published" BOOL DEFAULT 'f',
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   PRIMARY KEY("id"),
   UNIQUE ("page_url", "article")
+);
+
+CREATE TABLE "product_color" (
+  "id" SERIAL NOT NULL,
+  "title" VARCHAR(255) NOT NULL,                        -- название на русском
+  "image" VARCHAR (255),                                -- изображение
+
+  "id_color" INT NOT NULL REFERENCES "color" (id),      -- цвет
+  "id_product"  INT NOT NULL REFERENCES "product" (id), -- товар
+  "description" TEXT,                                   -- описание
+
+  "is_published" BOOL DEFAULT 'f',
+  "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
+  "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
+  PRIMARY KEY("id")
 );

@@ -1,0 +1,24 @@
+<?php foreach ($this->thesaurus as $thesaurus): ?>
+    <h2><?php echo $thesaurus['title']; ?></h2>
+    <p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => $thesaurus['controller']), 'admin') ?>" role="button" class="btn btn-success add">
+            Добавить
+        </a></p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Заголовок</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($thesaurus['items'] as $item): ?>
+            <tr>
+                <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $thesaurus['controller'], 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
+                <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $thesaurus['controller'], 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
+                <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $thesaurus['controller'], 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endforeach; ?>

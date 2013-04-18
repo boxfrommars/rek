@@ -5,26 +5,22 @@
  */
 class Admin_Form_Product extends Admin_Form_CatalogItem
 {
+    protected $_dimension = 12;
+
     protected function _initMiddleElements()
     {
-        $colorService = new Catalog_Model_ColorService();
+        $this->_addClassNames('row-fluid');
         $brandService = new Catalog_Model_BrandService();
         $countryService = new Catalog_Model_CountryService();
         $surfaceService = new Catalog_Model_SurfaceService();
 
-        $colors = $colorService->fetchAll();
         $brands = $brandService->fetchAll();
         $countries = $countryService->fetchAll();
         $surfaces = $surfaceService->fetchAll();
 
-        $colorSelectOptions = array();
         $brandSelectOptions = array();
         $countrySelectOptions = array();
         $surfaceSelectOptions = array();
-
-        foreach ($colors as $color) {
-            $colorSelectOptions[$color['id']] = $color['title'];
-        }
 
         foreach ($brands as $brand) {
             $brandSelectOptions[$brand['id']] = $brand['title'];
@@ -43,30 +39,22 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
-            'dimension' => 6
+            'dimension' => $this->_dimension,
         ));
 
         $this->addElement('text', 'cost', array(
-                'label' => "Цена",
-                'required' => true,
-                'filters' => array('StringTrim'),
-                'validators' => array(),
-                'dimension' => 6
-            ));
-
-        $this->addElement('select', 'id_color', array(
-            'label' => "Цвет",
+            'label' => "Цена",
             'required' => true,
+            'filters' => array('StringTrim'),
             'validators' => array(),
-            'dimension' => 6,
-            'multiOptions' => $colorSelectOptions,
+            'dimension' => $this->_dimension,
         ));
 
         $this->addElement('select', 'id_country', array(
             'label' => "Страна производитель",
             'required' => true,
             'validators' => array(),
-            'dimension' => 6,
+            'dimension' => 12,
             'multiOptions' => $countrySelectOptions,
         ));
 
@@ -74,7 +62,7 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'label' => "Бренд",
             'required' => true,
             'validators' => array(),
-            'dimension' => 6,
+            'dimension' => $this->_dimension,
             'multiOptions' => $brandSelectOptions,
         ));
 
@@ -82,7 +70,7 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'label' => "Поверхность",
             'required' => true,
             'validators' => array(),
-            'dimension' => 6,
+            'dimension' => $this->_dimension,
             'multiOptions' => $surfaceSelectOptions,
         ));
 
@@ -91,7 +79,7 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
-            'dimension' => 6
+            'dimension' => $this->_dimension,
         ));
 
         $this->addElement('text', 'height', array(
@@ -99,15 +87,15 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
-            'dimension' => 6
+            'dimension' => $this->_dimension,
         ));
 
         $this->addElement('text', 'depth', array(
-            'label' => "Глубина",
+            'label' => "Толщина",
             'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
-            'dimension' => 6,
+            'dimension' => $this->_dimension,
         ));
     }
 }

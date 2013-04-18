@@ -1,6 +1,6 @@
 <?php echo $this->paginator; ?>
 <h2>Товары</h2>
-<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'catalog'), 'admin') ?>" role="button" class="btn btn-success add">
+<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'product'), 'admin') ?>" role="button" class="btn btn-success add">
         Добавить товар
 </a></p>
 <table class="table">
@@ -18,11 +18,11 @@
     <?php foreach ($this->items as $item): ?>
         <tr>
             <td style="width: 100px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
-            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'catalog', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
             <td><?php echo $item['category_title']; ?></td>
             <td><?php echo $item['brand_title']; ?></td>
-            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'catalog', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
-            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'catalog', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

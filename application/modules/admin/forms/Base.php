@@ -5,6 +5,8 @@
  */
 class Admin_Form_Base extends Twitter_Bootstrap_Form_Horizontal
 {
+    protected $_dimension = 6;
+
     public function __construct($options = null) {
         parent::__construct($options);
         $token = new Zend_Form_Element_Hash('csrf_protect');

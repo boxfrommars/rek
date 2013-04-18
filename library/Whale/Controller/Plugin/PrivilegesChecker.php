@@ -61,8 +61,6 @@ class Whale_Controller_Plugin_PrivilegesChecker extends Zend_Controller_Plugin_A
     {
         $request->setControllerName('error');
         $request->setActionName('error');
-        $layout = Zend_Layout::getMvcInstance();
-        $layout->disableLayout();
         throw new Zend_Controller_Action_Exception('запрещено', 403);
     }
 

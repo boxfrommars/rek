@@ -12,6 +12,9 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
     protected $_order = array('created_at DESC');
     protected $_perPage = 25;
 
+    protected $_redirectOptions = array('action' => 'index');
+    protected $_redirectRouteName = 'admin';
+
     /**
      * @var Zend_Form
      */
@@ -52,10 +55,11 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
             if ($this->_form->isValid($request->getPost())) {
                 $values = $this->_form->getValues();
                 unset ($values['csrf_protect']);
-                $this->_model->insert($values);
+                $id = $this->_model->insert($values);
+                Whale_Log::log('inserted id: ' . $id);
                 $this->_flashMessenger->addMessage('Запись добавлена');
 
-                return $this->_helper->redirector('index');
+                return $this->_redirectToIndex(array('id' => $id, 'action' => 'edit'));
             }
         }
         $this->view->form = $this->_form;
@@ -72,6 +76,8 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
             return $this->_redirectToIndex();
         }
 
+        $this->view->item = $item;
+
         if ($this->getRequest()->isPost()) {
             $request = $this->getRequest();
             if ($this->_form->isValid($request->getPost())) {
@@ -80,7 +86,7 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
                 $this->_model->update($values, array('id = ?' => $id));
                 $this->_flashMessenger->addMessage('Запись сохранена');
 
-                return $this->_redirectToIndex();
+                return $this->_redirectToIndex(array('action' => 'edit'));
             }
         } else {
             $this->_form->populate($item->toArray());
@@ -94,11 +100,13 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
         $id = $this->_getParam('id');
         $item = $this->_model->fetchRow(array('id = ?' => $id));
 
-        if (true || empty($item)) {
-            $this->_flashMessenger->addMessage('В настоящий момент удаление отключено по причинам безопасности');
-//            $this->_flashMessenger->addMessage('Вы пытаетесь удалить несуществующую запись');
+        $this->_setRedirectByItem($item);
 
-            return $this->_helper->redirector('index');
+        if (empty($item)) {
+//            $this->_flashMessenger->addMessage('В настоящий момент удаление отключено по причинам безопасности');
+            $this->_flashMessenger->addMessage('Вы пытаетесь удалить несуществующую запись');
+
+            return $this->_redirectToIndex(array('controller' => 'index', 'action' => 'index', 'id' => null));
         }
 
         $this->_flashMessenger->addMessage('Запись удалена');
@@ -107,9 +115,13 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
         return $this->_redirectToIndex();
     }
 
-    protected function _redirectToIndex()
+    protected function _redirectToIndex($routeOptions = null, $routeName = null)
     {
-        return $this->_helper->redirector->gotoRoute(array('action' => 'index'), 'admin');
+        $routeOptions = $routeOptions ?: $this->_redirectOptions;
+        $routeName = $routeName ?: $this->_redirectRouteName;
+        Whale_Log::log($routeName);
+        Whale_Log::log($routeOptions);
+        return $this->_helper->redirector->gotoRoute($routeOptions, $routeName);
     }
 }
 
