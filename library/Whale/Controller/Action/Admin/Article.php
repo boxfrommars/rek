@@ -1,7 +1,7 @@
 <?php
 /**
  * @copyright  (c) 2013
- * @author Franky Calypso <franky.calypso@gmail.com>
+ * @author     Franky Calypso <franky.calypso@gmail.com>
  */
 class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
 {
@@ -27,14 +27,18 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
 
     public function indexAction()
     {
-        $page = (int) $this->getParam('page');
+        $page = (int)$this->getParam('page');
         if ($page < 1) {
             throw new Zend_Controller_Action_Exception("Invalid page {$page}", 404);
         }
-        $this->view->items = $this->_model->fetchAll(null, $this->_order, $this->_perPage, ($this->getParam('page') - 1) * $this->_perPage);
-        Whale_Log::log($this->view->items);
+        $this->view->items = $this->_model->fetchAll(
+            null,
+            $this->_order,
+            $this->_perPage,
+            ($this->getParam('page') - 1) * $this->_perPage
+        );
         // @TODO cache
-        $count = (int) $this->_model->getAdapter()->fetchOne(
+        $count = (int)$this->_model->getAdapter()->fetchOne(
             $this->_model->select()->from($this->_model, 'COUNT(*)')
         );
 
@@ -56,7 +60,6 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
                 $values = $this->_form->getValues();
                 unset ($values['csrf_protect']);
                 $id = $this->_model->insert($values);
-                Whale_Log::log('inserted id: ' . $id);
                 $this->_flashMessenger->addMessage('Запись добавлена');
 
                 return $this->_redirectToIndex(array('id' => $id, 'action' => 'edit'));
@@ -79,8 +82,7 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
         $this->view->item = $item;
 
         if ($this->getRequest()->isPost()) {
-            $request = $this->getRequest();
-            if ($this->_form->isValid($request->getPost())) {
+            if ($this->_form->isValid($this->getRequest()->getPost())) {
                 $values = $this->_form->getValues();
                 unset ($values['csrf_protect']);
                 $this->_model->update($values, array('id = ?' => $id));
@@ -99,7 +101,6 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
     {
         $id = $this->_getParam('id');
         $item = $this->_model->fetchRow(array('id = ?' => $id));
-
         $this->_setRedirectByItem($item);
 
         if (empty($item)) {
@@ -109,24 +110,19 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
             return $this->_redirectToIndex(array('controller' => 'index', 'action' => 'index', 'id' => null));
         }
 
-        $this->_flashMessenger->addMessage('Запись удалена');
         $this->_model->delete(array('id = ?' => $id));
+        $this->_flashMessenger->addMessage('Запись удалена');
 
         return $this->_redirectToIndex();
     }
 
-    protected function _setRedirectByItem($item)
-    {
-        
-    }
+    protected function _setRedirectByItem($item) {}
 
     protected function _redirectToIndex($routeOptions = null, $routeName = null)
     {
-        $routeOptions = $routeOptions ?: $this->_redirectOptions;
-        $routeName = $routeName ?: $this->_redirectRouteName;
-        Whale_Log::log($routeName);
-        Whale_Log::log($routeOptions);
+        $routeOptions = $routeOptions ? : $this->_redirectOptions;
+        $routeName = $routeName ? : $this->_redirectRouteName;
+
         return $this->_helper->redirector->gotoRoute($routeOptions, $routeName);
     }
 }
-

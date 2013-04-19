@@ -11,7 +11,8 @@ class Default_IndexController extends Whale_Controller_Action
 
     public function indexAction()
     {
-        // action body
+        $productService = new Catalog_Model_ProductService();
+        $this->view->items = $productService->fetchAll();
     }
 
     public function loginAction()

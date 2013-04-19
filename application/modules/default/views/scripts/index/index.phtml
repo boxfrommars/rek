@@ -1,2 +1,5 @@
-<a href="/sources/index.html">Вёрстку можно посмотреть здесь</a><br />
-<a href="/login">Войти в панель администратора</a>
+<?php foreach ($this->items as $item): ?>
+    <h3><a href="<?php echo $this->url(array('module' => 'product', 'id' => $item['page_url'] ?: $item['id']), 'default') ?>"><?php echo $item['title']; ?></a></h3>
+    <?php $item['description']; ?>
+    <img src="/files/thumbnail/<?php echo $item['image'] ?>" />
+<?php endforeach; ?>
