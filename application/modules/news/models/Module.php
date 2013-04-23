@@ -29,7 +29,6 @@ class News_Model_Module extends Whale_Module
                             'controller' => 'index',
                             'action' => 'view',
                             'label' => 'Подробности',
-                            'route' => 'moduleview',
                             'visible' => false
                         )
                     ),

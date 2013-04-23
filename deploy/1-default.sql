@@ -55,6 +55,7 @@ CREATE TABLE "page_text" (
   "id" SERIAL NOT NULL,
   "mark" VARCHAR(255) NOT NULL UNIQUE,
   "group" VARCHAR(255) NOT NULL,
+  "group_title" VARCHAR(255) DEFAULT NULL,
   "position" VARCHAR(255) NOT NULL,
   "title" VARCHAR(255) NOT NULL,
   "content" TEXT,

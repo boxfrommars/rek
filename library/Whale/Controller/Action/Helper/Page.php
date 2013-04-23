@@ -25,6 +25,12 @@ class Whale_Controller_Action_Helper_Page extends Zend_Controller_Action_Helper_
         $controller = $this->getRequest()->getControllerName();
         $action = $this->getRequest()->getActionName();
 
+        if ($module != 'admin') {
+            $categoryService = new Catalog_Model_CategoryService();
+            $view->categoryNavigation = $categoryService->fetchAll(array('is_published = ?' => true));
+            $view->page = new Whale_Page();
+        }
+
         $this->_switchLayout($layout, $module, $controller, $action);
         $this->_setTitle($view, $layout);
         $this->_appendScripts($view);

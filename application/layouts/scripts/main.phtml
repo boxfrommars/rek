@@ -1,106 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>Rekada</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dmitry Groza">
-    <link href="/vendor/bootstrap/css/metro.bootstrap.min.css" rel="stylesheet">
-    <link href="/vendor/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/vendor/datepicker/css/datepicker.css" rel="stylesheet">
-    <style>
-
-            /* sticky footer */
-        html, body {
-            height: 100%;
-        }
-
-        #wrap {
-            min-height: 100%;
-            height: auto !important;
-            height: 100%;
-            margin: 0 auto -60px;
-        }
-
-        footer {
-            height: 60px;
-        }
-        #push {
-            height: 80px;
-        }
-        @media (max-width: 767px) {
-            #footer {
-                margin-left: -20px;
-                margin-right: -20px;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
-            /* /sticky footer */
-
-        footer {
-            background-color: #f5f5f5;
-            line-height: 60px;
-        }
-    </style>
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script src="/vendor/jquery/jquery-1.8.2.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="/vendor/fancyBox/source/jquery.fancybox.js"></script>
-    <link rel="shortcut icon" href="/favicon.ico">
+    <title>Главная страница Rekada</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/shadowbox.css">
+    <script type="text/javascript" src="/js/shadowbox.js"></script>
+    <script type="text/javascript">
+        Shadowbox.init({
+            language: 'ru',
+            players: ['img']
+        });
+    </script>
+    <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/rekada.js"></script>
 </head>
-
 <body>
-<div id="wrap">
-    <div class="navbar navbar-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="/admin">Rekada</a>
+<div id="wrapper">
 
-                <div class="nav-collapse">
-                    <ul class="nav pull-right">
-                        <li><a href="/">Сайт</a></li>
-                    </ul>
-                </div>
+<?php echo $this->render('_header.phtml') ?>
+<div id="content">
+    <div id="keramo">
+        <div id="podmenu">
+            <div class="hide_block" id="granit">
+                <ul class ="hover_block">
+                    <li><a href="#">РОССИЯ</a><span>|</span></li>
+                    <li><a href="#">КИТАЙ</a><span>|</span></li>
+                    <li><a href="#">ИТАЛИЯ</a><span>|</span></li>
+                    <li><a href="#">ОАЭ</a></li>
+                </ul>
+            </div>
+            <div class="hide_block" id="fasad">
+                <ul class ="hover_block">
+                    <li><a href="#">КЕРАМОГРАНИТ</a><span>|</span></li>
+                    <li><a href="#">ФИБРОЦЕМЕНТ</a><span>|</span></li>
+                    <li><a href="#">ДЛЯ КОТТЕДЖЕЙ</a><span>|</span></li>
+                    <li><a href="#">МЕТАЛЛОКАССЕТЫ</a></li>
+                </ul>
+            </div>
+            <div class="hide_block" id="kamen">
+                <ul class ="hover_block" >
+                    <li><a href="#">МРАМОР</a><span>|</span></li>
+                    <li><a href="#">ГРАНИТ</a><span>|</span></li>
+                    <li><a href="#">АГЛОМЕРАТ</a></li>
+                </ul>
+            </div>
+            <div class="hide_block" id="rezka">
+                <ul class ="hover_block">
+                    <li><a href="#">СТУПЕНИ</a><span>|</span></li>
+                    <li><a href="#">ПОДОКОННИКИ</a><span>|</span></li>
+                    <li><a href="#">СТОЛЕШНИЦЫ</a><span>|</span></li>
+                    <li><a href="#">ПАННО, ДЕКОРЫ, БОРДЮРЫ</a><span>|</span></li>
+                    <li><a href="#">ОТВЕРСТИЯ</a></li>
+                </ul>
             </div>
         </div>
+        <div id="keramo_text">
+            <h1><a href="catalog_keramo.html">КЕРАМОГРАНИТ</a></h1>
+            <p>Оптовые поставки материала из наличия-</p>
+            <p>Подбор вариантов для Вашего объекта-</p>
+            <p>Индивидуальные скидки для подрядчиков-</p>
+            <p id="keramo_nal"><a  href="#">Узнать наличие&#160;&#62;&#62;</a></p>
+        </div>
     </div>
-
-    <div class="container-fluid main">
-        <div class="row-fluid">
-            <div class="span10">
-                <div class="row-fluid">
-                    <?php if (!empty($this->flashMessages)): ?>
-                        <div id="app-messages">
-                            <?php foreach ($this->flashMessages as $message): ?>
-                                <div class="alert"><?php echo $message; ?><a class="close" data-dismiss="alert">×</a></div>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
-                    <div id="app-container">
-                        <?php echo $this->layout()->content; ?>
+    <div id="keramika">
+        <div id="gradient"></div>
+        <div id="choice">
+            <h2><a href="#" >АКЦИИ</a></h2>
+            <h2><a href="#">ХИТЫ</a></h2>
+            <h2><a href="#">НОВИНКИ</a></h2>
+        </div>
+        <div id="plitka">
+            <?php foreach ($this->items as $item): ?>
+                <div class="block"> <img style="height: 190px" src="/files/<?php echo $item['image'] ?>">
+                    <div class="inblock">
+                        <div class="pict"><a rel="shadowbox[Vacation]" href="/files/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
+                        <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
+                        <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
+                        <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
+                        <p class="zakaz"><a href="<?php echo $this->url(array('module' => 'catalog', 'action' => 'view', 'id' => $item['id'])) ?>">ЗАКАЗАТЬ</a></p>
                     </div>
-                    <div id="app-modal"></div>
                 </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <div>
+        <div id="news">
+            <h3 class="news_title"><span>НОВОСТИ</span></h3>
+            <div id="point"></div>
+            <div class="news">
+                <?php foreach ($this->news as $news): ?>
+                    <p>
+                        <?php echo $news['title'] . ' ' . date('d.m.Y', strtotime($news['published_at'])); ?><br>
+                        <a href="<?php echo $this->url(array('module' => 'news', 'controller' => 'index', 'action' => 'view', 'id' => $news['id'])); ?>">подробнее</a>
+                    </p>
+                <?php endforeach; ?>
             </div>
-            <div class="span2" id="app-sidebar">
-                <!--                --><?php //echo $this->navigation()->menu(); ?>
+        </div>
+        <div id="answer">
+            <h3 class="news_title"><span>ПОЧЕМУ ВЫБИРАЮТ НАС?</span></h3>
+            <div id="point_answer"></div>
+            <div class="article">
+                <h4><?php echo $this->texts->get('first')->getTitle(); ?></h4>
+                <p><?php echo $this->texts->get('first')->getContent(); ?></p>
+            </div>
+            <div class="article">
+                <h4><?php echo $this->texts->get('second')->getTitle(); ?></h4>
+                <p><?php echo $this->texts->get('second')->getContent(); ?></p>
+            </div>
+            <div class="article">
+                <h4><?php echo $this->texts->get('third')->getTitle(); ?></h4>
+                <p><?php echo $this->texts->get('third')->getContent(); ?></p>
             </div>
         </div>
     </div>
-    <div id="push"></div>
-</div>
-<footer>
-    <div class="container-fluid">
-        &copy; 2013 <i>Flavia de Luce</i>
+    <div id="partner">
+        <img src="/img/gasprom.png">
+        <img src="/img/Rusgidro.png">
+        <img src="/img/mosenergo.png">
+        <img src="/img/sinterra.png">
+        <img src="/img/gasprom.png">
     </div>
-</footer>
+</div>
+
+    <?php echo $this->render('_footer.phtml') ?>
+</div>
 </body>
 </html>

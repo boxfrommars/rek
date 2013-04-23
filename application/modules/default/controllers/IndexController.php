@@ -11,8 +11,26 @@ class Default_IndexController extends Whale_Controller_Action
 
     public function indexAction()
     {
+        $layout = Zend_Layout::getMvcInstance();
+        $layout->setLayout('main');
+
+        $newsService = new News_Model_Service();
+        $this->view->news = $newsService->fetchAll(array('is_published = ?' => true), array('published_at DESC'), 3);
+
         $productService = new Catalog_Model_ProductService();
-        $this->view->items = $productService->fetchAll();
+        $this->view->items = $productService->fetchAll(array('is_published = ?' => true), array('created_at DESC'), 4);
+
+        $pageTextsService = new Whale_PageText_Service();
+
+        $texts = $pageTextsService->fetchAll(array('"group" = ?' => 'main'));
+        $this->view->texts = new Whale_PageText_Group($texts);
+
+    }
+
+    public function galleryAction()
+    {
+        $layout = Zend_Layout::getMvcInstance();
+        $layout->setLayout('gallery');
     }
 
     public function loginAction()

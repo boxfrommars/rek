@@ -1,0 +1,29 @@
+
+<div id="right_catalog">
+    <div class="nav_catalog">
+        <p style="text-transform: lowercase;"><a href="/">главная</a> <span>/</span> <?php echo $this->category['title'] ?> <span>/</span> каталог продукции</p>
+    </div>
+
+    <?php foreach ($this->products as $product): ?>
+        <div class="product_from_catalog">
+            <p class="left_catalog_point"><a href="/catalog/<?php echo $this->category['page_url'] . '/' . ($product['page_url'] ?: $product['id']) ?>"><?php echo $product['title']; ?></a></p>
+            <div class="cat_product">
+                <img src="/files/<?php echo $product['image']; ?>" alt="marazzi">
+            </div>
+            <p class="price_prod"> <?php echo $product['cost'] ?> <span>руб./м</span></p>
+            <input onclick="location.href = '/catalog/<?php echo $this->category['page_url'] . '/' . $product['page_url'] ?>'" type="button" class="zakaz_but" value="">
+        </div>
+    <?php endforeach; ?>
+
+    <div style="clear:both; height: 1px;" ></div>
+    <div id="list_page">
+<!--        <div class="prev_page">-->
+<!--            <a href="#"><img src="/img/back.png"></a>-->
+<!--        </div>-->
+<!--        <p><span>1</span> <a href="#">2</a> <a href="#">3</a> .... <a href="#">8</a></p>-->
+<!--        <div class="next_page">-->
+<!--            <a href="#"><img src="/img/next.png"></a>-->
+<!--        </div>-->
+    </div>
+
+</div>

@@ -1,22 +1,6 @@
-<h1>Новости проекта</h1>
-<article class="news-article">
-    <section class="clearfix">
-        <div class="news-date-time"><span class="news-date"><?php echo date('d\.m\.Y', strtotime($this->item['published_at'])); ?></span><span class="news-time"><?php echo date('H:i', strtotime($this->item['published_at'])); ?></span></div>
-        <div class="news-content">
-            <div class="news-illustration"><img src="/p/images/news-illustration.jpg"></div>
-            <h2><?php echo $this->item['title'] ?></h2>
+<h3><?php echo $this->item['title'] ?></h3>
+<h4><?php echo date('d.m.Y', strtotime($this->item['published_at'])); ?></h4>
 
-            <div class="news-text">
-                <p><?php echo $this->item['content'] ?></p>
-            </div>
-        </div>
-    </section>
-</article><!-- .news-article -->
-<div class="news-other">
-    <h2>Другие новости по теме</h2>
-    <ul>
-        <?php foreach ($this->news as $news): ?>
-            <li><a href="/news/view/<?php echo $news['id']; ?>"><?php echo $news['title']; ?></a></li>
-        <?php endforeach; ?>
-    </ul>
-</div><!-- .news-other -->
+<div class="news-text">
+    <?php echo $this->item['content'] ?>
+</div>

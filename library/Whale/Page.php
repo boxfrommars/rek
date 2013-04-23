@@ -1,6 +1,6 @@
 <?php
 
-class Whale_Page {
+class Whale_Page implements Whale_Page_Interface {
 
     /**
      * @var string
@@ -28,27 +28,11 @@ class Whale_Page {
     protected $_tags;
 
     /**
-     * @param string $description
-     */
-    public function setDescription($description)
-    {
-        $this->_description = $description;
-    }
-
-    /**
      * @return string
      */
     public function getDescription()
     {
         return $this->_description;
-    }
-
-    /**
-     * @param string $humanId
-     */
-    public function setHumanId($humanId)
-    {
-        $this->_humanId = $humanId;
     }
 
     /**
@@ -60,14 +44,6 @@ class Whale_Page {
     }
 
     /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->_id = $id;
-    }
-
-    /**
      * @return int
      */
     public function getId()
@@ -76,27 +52,11 @@ class Whale_Page {
     }
 
     /**
-     * @param string $tags
-     */
-    public function setTags($tags)
-    {
-        $this->_tags = $tags;
-    }
-
-    /**
      * @return string
      */
-    public function getTags()
+    public function getKeywords()
     {
         return $this->_tags;
-    }
-
-    /**
-     * @param string $title
-     */
-    public function setTitle($title)
-    {
-        $this->_title = $title;
     }
 
     /**

@@ -5,7 +5,7 @@
  */
 class Catalog_Model_Module extends Whale_Module
 {
-    protected $_name = 'news';
+    protected $_name = 'catalog';
     protected $_resources = array('index');
 
     public function getPrivileges()

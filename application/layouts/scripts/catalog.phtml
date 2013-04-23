@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<?php echo $this->render('_head.phtml') ?>
+    <body>
+        <div id="wrapper">
+        <?php echo $this->render('_header.phtml') ?>
+            <div id="content">
+            <?php echo $this->render('_submenu.phtml') ?>
+                <div id="left_catalog">
+                    <div id="price_catalog">
+                        <p class="left_catalog_point">ЦЕНА</p>
+                        
+                        <p id="top_price"><input type="text" id="maxCost" value="600"/>р/м<span>2</span></p>
+
+                        <div class="slider">
+                            
+                        </div>
+                        <p id="bottom_price"><input type="text" id="minCost" value="250"/> р/м<span>2</span></p>
+                        
+                        <hr noshade size="1">
+                    </div>
+                    <div>
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <p class="left_catalog_point">ЦВЕТ</p>
+                        <div class="checkbox_color">
+                            <div >
+                                <span class="niceCheck"><input type="checkbox"></span>
+                                <p>белые</p>
+                            </div>
+                            <div>
+                                <span class="niceCheck"><input type="checkbox"></span>
+                                <p>бежевые</p>
+                            </div>
+                            <div>
+                                <span class="niceCheck"><input type="checkbox"></span>
+                                <p>коричневые</p>
+                            </div>
+                            <div>
+                                <span class="niceCheck"><input type="checkbox"></span>
+                                <p>серые</p>
+                            </div>
+                            <div>
+                                <span class="niceCheck"><input type="checkbox"></span>
+                                <p>черные</p>
+                            </div>
+                            <div>
+                                <span class="niceCheck"><input type="checkbox"></span>
+                                <p>синие</p>
+                            </div>
+                            <div>
+                                <span class="niceCheck"><input type="checkbox"></span>
+                                <p>зеленые</p>
+                            </div>
+                            <div>
+                                <span class="niceCheck"><input type="checkbox"></span>
+                                <p>красные</p>
+                            </div>
+                        </div>
+                        <hr noshade size="1">
+                    </div>
+                    <div>
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <p class="left_catalog_point">РАЗМЕР</p>
+                        <div class="size_block">
+                            <p><span class="niceCheck"><input type="checkbox"></span>20*20</p>
+                            <p><span class="niceCheck"><input type="checkbox"></span>60*20</p>
+                        </div> 
+                        <div class="size_block">
+                            <p><span class="niceCheck"><input type="checkbox"></span>30*30</p>
+                            <p><span class="niceCheck"><input type="checkbox"></span>60*30</p>
+                        </div>  
+                        <div class="size_block">
+                            <p><span class="niceCheck"><input type="checkbox"></span>40*40</p>
+                            <p><span class="niceCheck"><input type="checkbox"></span>60*60</p>
+                        </div>
+                        <div class="size_block">
+                            <p><span class="niceCheck"><input type="checkbox"></span>42*42</p>
+                            <p><span class="niceCheck"><input type="checkbox"></span>80*20</p>
+                        </div>
+                        <div class="size_block">
+                            <p><span class="niceCheck"><input type="checkbox"></span>45*45</p>
+                            <p><span class="niceCheck"><input type="checkbox"></span>80*40</p>
+                        </div>
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <hr noshade size="1">
+                    </div>
+                    <div id="thickness">
+                        <div style="width:100%; height: 7px; float: left; clear: both;"></div>
+                        <p class="left_catalog_point">ТОЛЩИНА</p>
+                        <div id="slider">
+                            <div id="metka">
+                                <span class="metka" style="margin-left: 15px;"></span><span class="metka" style="margin-left: 25px;"></span><span class="metka" style="margin-left: 25px;">
+                                </span><span class="metka" style="margin-left: 25px;"></span><span class="metka" style="margin-left: 25px;"></span><span class="metka" style="margin-left: 33px;"></span>
+                            </div>
+                        </div>  
+                        <p id="thick">8 мм&nbsp; 9 мм&nbsp; 10 мм&nbsp; 11 мм&nbsp; 12 мм <span>20 мм</span></p>
+                        <hr noshade size="1">
+                    </div>
+                    <div>
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <p class="left_catalog_point">ПОВЕРХНОСТЬ</p>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>неполированная</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>полированная</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>с частичной полировкой</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>матовая</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>рельефная</p>
+                        </div>
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <hr noshade size="1">
+                    </div>
+                    <div>
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <p class="left_catalog_point">РИСУНОК</p>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>соль-перец</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>моноколор</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>гранит/мрамор/камень</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>дерево</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>металл</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>ткань/кожа</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>с вкраплениями</p>
+                        </div>
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <hr noshade size="1">
+                    </div>
+                    <div>
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <p class="left_catalog_point">СТРАНА</p>
+                        <div class="size_block">
+                            <p><span class="niceCheck"><input type="checkbox"></span>Россия</p>
+                            <p><span class="niceCheck"><input type="checkbox"></span>Китай</p>
+                        </div> 
+                        <div class="size_block">
+                            <p><span class="niceCheck"><input type="checkbox"></span>Италия</p>
+                            <p><span class="niceCheck"><input type="checkbox"></span>ОАЭ</p>
+                        </div> 
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <hr noshade size="1">
+                    </div>
+                    <div>
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <p class="left_catalog_point">БРЕНД</p>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>Estima</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>Kerama Marazzi</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>ITALON</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>Atlas Concorde</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>Fiorano</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>Sal Sapiento</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>Goldstar</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>Casalgrande Padana</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>Mirage</p>
+                        </div>
+                        <div class="area">
+                            <p><span class="niceCheck"><input type="checkbox"></span>RAK</p>
+                        </div>
+                        <div style="width:100%; height: 7px; float: left;"></div>
+                        <hr noshade size="1">
+                    </div>
+                </div><!--left_catalog-->
+                <?php echo $this->layout()->content; ?>
+            </div><!--content-->
+            <?php echo $this->render('_footer.phtml') ?>
+        </div>
+    </body>
+</html>

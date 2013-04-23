@@ -97,5 +97,14 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'validators' => array(),
             'dimension' => $this->_dimension,
         ));
+        $this->addElement('checkbox', 'is_action', array(
+            'label' => "Акция",
+        ));
+        $this->addElement('checkbox', 'is_new', array(
+            'label' => "Новинка",
+        ));
+        $this->addElement('checkbox', 'is_hit', array(
+            'label' => "Хит",
+        ));
     }
 }

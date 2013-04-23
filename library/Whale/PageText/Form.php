@@ -10,7 +10,7 @@ class Whale_PageText_Form extends Twitter_Bootstrap_Form_Horizontal
         $this->addElement('text', 'mark', array(
             'label' => "Метка",
             'required' => true,
-            'readonly' => true,
+//            'readonly' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
             'dimension' => 6,
@@ -19,7 +19,16 @@ class Whale_PageText_Form extends Twitter_Bootstrap_Form_Horizontal
         $this->addElement('text', 'group', array(
             'label' => "Группа",
             'required' => true,
-            'readonly' => true,
+//            'readonly' => true,
+            'filters' => array('StringTrim'),
+            'validators' => array(),
+            'dimension' => 6,
+        ));
+
+        $this->addElement('text', 'group_title', array(
+            'label' => "Название группы",
+            'required' => true,
+//            'readonly' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
             'dimension' => 6,
