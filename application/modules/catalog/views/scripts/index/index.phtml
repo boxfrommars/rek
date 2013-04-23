@@ -6,7 +6,7 @@
 
     <?php foreach ($this->products as $product): ?>
         <div class="product_from_catalog">
-            <p class="left_catalog_point"><a href="/catalog/<?php echo $this->category['page_url'] . '/' . ($product['page_url'] ?: $product['id']) ?>"><?php echo $product['title']; ?></a></p>
+            <p class="left_catalog_point"><a href="/catalog/<?php echo $product['category_page_url'] . '/' . ($product['page_url'] ?: $product['id']) ?>"><?php echo $product['title']; ?></a></p>
             <div class="cat_product">
                 <img src="/files/<?php echo $product['image']; ?>" alt="marazzi">
             </div>

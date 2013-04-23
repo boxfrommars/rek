@@ -78,7 +78,7 @@
                         <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
                         <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
                         <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
-                        <p class="zakaz"><a href="<?php echo $this->url(array('module' => 'catalog', 'action' => 'view', 'id' => $item['id'])) ?>">ЗАКАЗАТЬ</a></p>
+                        <p class="zakaz"><a href="/catalog/<?php echo $item['category_page_url'] . '/' . ($item['page_url'] ?: $product['id']) ?>">ЗАКАЗАТЬ</a></p>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -102,15 +102,15 @@
             <div id="point_answer"></div>
             <div class="article">
                 <h4><?php echo $this->texts->get('first')->getTitle(); ?></h4>
-                <p><?php echo $this->texts->get('first')->getContent(); ?></p>
+                <?php echo $this->texts->get('first')->getContent(); ?>
             </div>
             <div class="article">
                 <h4><?php echo $this->texts->get('second')->getTitle(); ?></h4>
-                <p><?php echo $this->texts->get('second')->getContent(); ?></p>
+                <?php echo $this->texts->get('second')->getContent(); ?>
             </div>
             <div class="article">
                 <h4><?php echo $this->texts->get('third')->getTitle(); ?></h4>
-                <p><?php echo $this->texts->get('third')->getContent(); ?></p>
+                <?php echo $this->texts->get('third')->getContent(); ?>
             </div>
         </div>
     </div>

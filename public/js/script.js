@@ -36,4 +36,28 @@ $(document).ready(function() {
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd'
     });
+
+    var config = {};
+        config.language = 'ru';
+        config.toolbarGroups = [
+            { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+            { name: 'editing',     groups: [ 'find', 'selection'] },
+            { name: 'links' },
+//            { name: 'insert' },
+            { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
+            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+            { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
+            { name: 'styles' },
+            { name: 'colors' },
+            { name: 'forms' },
+            { name: 'tools' },
+            { name: 'others' }
+        ];
+
+    if ($('#content').length > 0) {
+        CKEDITOR.replace('content', config);
+    }
+    if ($('#description').length > 0) {
+        CKEDITOR.replace('description', config);
+    }
 });
