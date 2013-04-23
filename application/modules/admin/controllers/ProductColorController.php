@@ -24,7 +24,13 @@ class Admin_ProductColorController extends Whale_Controller_Action_Admin_Article
 
     public function editAction()
     {
+        $productId = $this->getParam('id');
         parent::editAction();
+        if ($productId) {
+            $this->view->productId = $productId;
+            $elm = $this->_form->getElement('id_product');
+            $elm->setValue($productId);
+        }
     }
 
     public function addAction()
