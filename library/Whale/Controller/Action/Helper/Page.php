@@ -10,7 +10,6 @@
  */
 class Whale_Controller_Action_Helper_Page extends Zend_Controller_Action_Helper_Abstract
 {
-
     /**
      * @var Zend_Layout
      */
@@ -37,7 +36,7 @@ class Whale_Controller_Action_Helper_Page extends Zend_Controller_Action_Helper_
     }
 
     /**
-     * @param $layout
+     * @param Zend_Layout $layout
      * @param $module
      * @param $controller
      * @param $action
@@ -46,6 +45,8 @@ class Whale_Controller_Action_Helper_Page extends Zend_Controller_Action_Helper_
     {
         if ($module == 'admin') {
             $layout->setLayout('admin');
+        } else if ($module == 'default' && $controller = 'error') {
+            $layout->disableLayout();
         }
     }
 

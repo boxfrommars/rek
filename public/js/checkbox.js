@@ -21,10 +21,10 @@ function changeCheck(el)
      var el = el,
         input = el.find("input").eq(0);
    	 if(!input.attr("checked")) {
-		el.css("background-image","url(img/checkbox.png)");	
+		el.css("background-image","url(/img/checkbox.png)");
 		input.attr("checked", true)
 	} else {
-		el.css("background-image","url(img/empty_checkbox.png)");	
+		el.css("background-image","url(/img/empty_checkbox.png)");
 		input.attr("checked", false)
 	}
      return true;
@@ -38,7 +38,7 @@ function changeCheckStart(el)
 var el = el,
 		input = el.find("input").eq(0);
       if(input.attr("checked")) {
-		el.css("background-image","url(img/checkbox.png)");	
+		el.css("background-image","url(/img/checkbox.png)");
 		}
      return true;
 }
