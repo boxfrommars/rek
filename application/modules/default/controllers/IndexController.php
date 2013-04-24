@@ -27,12 +27,6 @@ class Default_IndexController extends Whale_Controller_Action
 
     }
 
-    public function galleryAction()
-    {
-        $layout = Zend_Layout::getMvcInstance();
-        $layout->setLayout('gallery');
-    }
-
     public function loginAction()
     {
         $form = new Application_Form_Login();

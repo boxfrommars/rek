@@ -710,6 +710,7 @@ h5 {
     background: url('../img/plita_bg.png');
     position: relative;
     margin: 5px 37px 25px 0;
+    overflow: hidden;
 }
 
 .plita_left img, .plita_right img {
@@ -772,6 +773,7 @@ h5 {
     background: url('../img/plita_bg.png');
     position: relative;
     margin: 5px 0 25px 0;
+    overflow: hidden;
 }
 
 
