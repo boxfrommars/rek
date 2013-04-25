@@ -31,8 +31,6 @@ class Whale_Controller_Plugin_ACLInit extends Whale_Controller_Plugin
 
             $moduleManager = Whale_Module_Manager::getInstance();
 
-            Whale_Log::log($moduleManager->getAll());
-
             foreach ($moduleManager->getAll() as $module) {
                 if ($module->isEnabled()) {
                     foreach ($module->getResources() as $resource) $this->_acl->addResource($resource);

@@ -8,7 +8,17 @@ class Admin_Form_Titled extends Admin_Form_Base
     public function init()
     {
         $this->setMethod('post');
+        $this->_initTopElements();
+        $this->_initMiddleElements();
+        $this->_initBottomElements();
+        $this->_initButtons();
+    }
 
+    protected function _initTopElements()
+    {
+    }
+    protected function _initMiddleElements()
+    {
         $this->addElement('text', 'title', array(
             'label' => "Заголовок",
             'required' => true,
@@ -16,6 +26,14 @@ class Admin_Form_Titled extends Admin_Form_Base
             'validators' => array(),
             'dimension' => 6
         ));
+    }
+    protected function _initBottomElements()
+    {
+
+    }
+
+    protected function _initButtons()
+    {
 
         $this->addElement('button', 'submit', array(
             'label' => 'Сохранить',
@@ -37,6 +55,5 @@ class Admin_Form_Titled extends Admin_Form_Base
                 'decorators' => array('Actions')
             )
         );
-
     }
 }

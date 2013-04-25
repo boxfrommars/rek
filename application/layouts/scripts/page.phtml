@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?php
+    /** @var Whale_Page_Interface $page */
+    $page = $this->page;
+    ?>
+    <title><?php echo $page->getTitle() ?></title>
+    <meta name="description" content="<?php echo $page->getDescription() ?>">
+    <meta name="keywords" content="<?php echo $page->getKeywords(); ?>">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/rekada.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    <?php echo $this->render('_header.phtml') ?>
+    <div id="content">
+        <div id="navigation" style="overflow: hidden;">
+            <p style="text-transform: uppercase;"><a href="index.html">ГЛАВНАЯ</a><span>/</span> <?php echo $this->title; ?></p>
+        </div>
+        <div id="gallery">
+            <?php echo $this->layout()->content; ?>
+        </div>
+    </div> <!--content-->
+    <?php echo $this->render('_footer.phtml') ?>
+</div>
+</body>
+</html>
+

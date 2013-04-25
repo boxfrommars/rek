@@ -29,6 +29,9 @@ class Default_IndexController extends Whale_Controller_Action
 
     public function loginAction()
     {
+        $layout = Zend_Layout::getMvcInstance();
+        $layout->setLayout('layout');
+
         $form = new Application_Form_Login();
         $this->view->form = $form;
 

@@ -8,7 +8,7 @@ class Admin_Model_Module extends Whale_Module
     protected $_name = 'admin';
     protected $_resources = array(
         'index', 'system', 'news', 'faq', 'page-text', 'product', 'product-color', 'category',
-        'brand', 'collection', 'country', 'color', 'surface', 'thesaurus', 'gallery',
+        'brand', 'collection', 'country', 'color', 'surface', 'thesaurus', 'gallery', 'page',
     );
 
     public function getPrivileges()
@@ -29,6 +29,7 @@ class Admin_Model_Module extends Whale_Module
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':surface', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':thesaurus', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':gallery', 'action' => null),
+            array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':page', 'action' => null),
         );
     }
 }
