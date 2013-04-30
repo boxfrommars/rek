@@ -14,7 +14,7 @@ CREATE TABLE "page" (
 
   "name" VARCHAR(255) UNIQUE,
   "is_locked" BOOL DEFAULT 'f',
-  "path" LTREE,
+--   "path" LTREE,
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   PRIMARY KEY("id"),
@@ -22,6 +22,6 @@ CREATE TABLE "page" (
 );
 
 CREATE INDEX ON page USING GIST (path);
-INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, path, name) VALUES ('t', 'Главная', '', '', 'Главная', 't', 'Top', 'main');
-INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, path, name) VALUES ('t', 'Галерея', '', 'gallery', 'Галерея', 't', 'Top.Second', 'gallery');
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name) VALUES ('t', 'Главная', '', '', 'Главная', 't', 'Top', 'main');
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name) VALUES ('t', 'Галерея', '', 'gallery', 'Галерея', 't', 'Top.Second', 'gallery');
 
