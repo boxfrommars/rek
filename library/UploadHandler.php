@@ -582,6 +582,7 @@ class UploadHandler
 
     protected function generate_response($content, $print_response = true) {
         if ($print_response) {
+            Whale_Log::log($content);
             $json = json_encode($content);
             $redirect = isset($_REQUEST['redirect']) ?
                 stripslashes($_REQUEST['redirect']) : null;

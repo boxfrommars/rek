@@ -18,6 +18,7 @@ class Gallery_IndexController extends Whale_Controller_Action
 
     public function indexAction()
     {
+        $this->_setPage('gallery');
         $layout = Zend_Layout::getMvcInstance();
         $layout->setLayout('gallery');
         $this->view->items = $this->_service->fetchAll(array('is_published = ?' => true), array('created_at ASC'));

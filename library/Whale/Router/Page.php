@@ -22,8 +22,7 @@ class Whale_Router_Page extends Zend_Controller_Router_Route {
         }
 
         $db = Zend_Db_Table::getDefaultAdapter();
-
-        $result = $db->select()->from('page', array('*'))->where('page_url = ?', $path)->query()->fetch();
+        $result = $db->select()->from('page', array('*'))->where('page_url = ?', $path)->where('NOT is_locked')->query()->fetch();
         return empty($result) ? false : array('page' => $result) + $this->_defaults;
     }
 

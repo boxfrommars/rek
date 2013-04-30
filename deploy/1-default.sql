@@ -29,6 +29,7 @@ INSERT INTO "users" (username, password, email, id_role) VALUES ('admin', MD5('a
 CREATE TABLE "news" (
   "id" BIGSERIAL NOT NULL,
   "title" VARCHAR(255) NOT NULL,
+  "preview" TEXT,
   "content" TEXT,
 
   "is_published" BOOL DEFAULT 'f',

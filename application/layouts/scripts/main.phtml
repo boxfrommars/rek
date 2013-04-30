@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Главная страница Rekada</title>
+    <?php
+    /** @var Whale_Page_Interface $page */
+    $page = $this->page;
+    ?>
+    <title><?php echo $page->getTitle() ?></title>
+    <meta name="description" content="<?php echo $page->getDescription() ?>">
+    <meta name="keywords" content="<?php echo $page->getKeywords(); ?>">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/shadowbox.css">
@@ -91,7 +97,7 @@
             <div class="news">
                 <?php foreach ($this->news as $news): ?>
                     <p>
-                        <?php echo $news['title'] . ' ' . date('d.m.Y', strtotime($news['published_at'])); ?><br>
+                        <b><?php echo $news['title'] . '</b><br />' . $news['preview'] . ' ' . date('d.m.Y', strtotime($news['published_at'])); ?><br>
                         <a href="<?php echo $this->url(array('module' => 'news', 'controller' => 'index', 'action' => 'view', 'id' => $news['id'])); ?>">подробнее</a>
                     </p>
                 <?php endforeach; ?>

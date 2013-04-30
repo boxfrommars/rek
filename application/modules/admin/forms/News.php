@@ -29,6 +29,13 @@ class Admin_Form_News extends Admin_Form_Base
             'label' => "Опубликована",
         ));
 
+        $this->addElement('textarea', 'preview', array(
+            'label' => 'Анонс',
+            'required' => true,
+            'validators' => array(),
+            'dimension' => 6
+        ));
+
         $this->addElement('textarea', 'content', array(
             'label' => 'Текст',
             'required' => true,

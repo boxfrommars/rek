@@ -7,8 +7,8 @@ class Admin_Model_Module extends Whale_Module
 {
     protected $_name = 'admin';
     protected $_resources = array(
-        'index', 'system', 'news', 'faq', 'page-text', 'product', 'product-color', 'category',
-        'brand', 'collection', 'country', 'color', 'surface', 'thesaurus', 'gallery', 'page',
+        'index', 'system', 'news', 'feedback', 'page-text', 'product', 'product-color', 'category',
+        'brand', 'collection', 'country', 'color', 'surface', 'thesaurus', 'gallery', 'page', 'settings',
     );
 
     public function getPrivileges()
@@ -16,7 +16,7 @@ class Admin_Model_Module extends Whale_Module
         return array(
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':index', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':news', 'action' => null),
-            array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':faq', 'action' => null),
+            array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':feedback', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':page-text', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':product', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':product-color', 'action' => null),
@@ -30,6 +30,7 @@ class Admin_Model_Module extends Whale_Module
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':thesaurus', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':gallery', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':page', 'action' => null),
+            array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':settings', 'action' => null),
         );
     }
 }

@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Отделка</title>
+        <?php
+        /** @var Whale_Page_Interface $page */
+        $page = $this->page;
+        ?>
+        <title><?php echo $page->getTitle() ?></title>
+        <meta name="description" content="<?php echo $page->getDescription() ?>">
+        <meta name="keywords" content="<?php echo $page->getKeywords(); ?>">
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="/css/jquery.lightbox-0.5.css" media="screen" />

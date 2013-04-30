@@ -1,0 +1,48 @@
+<?php echo $this->paginator; ?>
+<h2>Настройки</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Параметр</th>
+            <th>Значение</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->items as $item): ?>
+        <?php
+            if ($item['name'] == 'price') {
+                $price = $item;
+                continue;
+            }
+        ?>
+        <tr>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'settings', 'action' => 'edit'), 'admin') ?>"><?php echo $this->escape($item['title']); ?></a></td>
+            <td><?php echo $item['value'] ?></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'settings', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+    <h3>Прайс</h3>
+    <p><a id="price-link" href='/files/<?php echo $price['value'] ?>'><?php echo $price['value'] ?></a></p>
+    <input id="price-upload" name="files" data-url="/admin/system/upload" type="file" name="value" />
+
+<form method="post">
+    <input id="price-value" type="hidden" name="price-value" value="<?php echo $price['value'] ?>" />
+    <button type="submit">Сохранить</button>
+</form>
+<script>
+
+    $('#price-upload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('#price-link').attr('href', '/files/' + file.name);
+                $('#price-value').val(file.name);
+                $('#price-link').text(file.name);
+            });
+        }
+    });
+</script>
+<?php echo $this->paginator; ?>

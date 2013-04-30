@@ -11,6 +11,9 @@ class Default_IndexController extends Whale_Controller_Action
 
     public function indexAction()
     {
+        $_pageName = 'main';
+        $this->_setPage('main');
+
         $layout = Zend_Layout::getMvcInstance();
         $layout->setLayout('main');
 

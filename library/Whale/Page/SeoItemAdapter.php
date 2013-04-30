@@ -21,7 +21,7 @@ class Whale_Page_SeoItemAdapter implements Whale_Page_Interface  {
     }
 
     public function getDescription() {
-        return $this->_item['page_description'] ?: $this->_item['description'];
+        return $this->_item['page_description'] ?: '';
     }
 
     public function getKeywords() {

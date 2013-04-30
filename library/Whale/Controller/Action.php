@@ -28,6 +28,13 @@ class Whale_Controller_Action extends Zend_Controller_Action
         $this->log($this->getRequest()->getParams());
     }
 
+    protected function _setPage($name)
+    {
+        $db = Zend_Db_Table::getDefaultAdapter();
+        $page = $db->select()->from('page', array('*'))->where('name = ?', $name)->query()->fetch();
+        $this->view->page = new Whale_Page_SeoItemAdapter($page);
+    }
+
     /**
      * @return bool|Zend_Log
      */

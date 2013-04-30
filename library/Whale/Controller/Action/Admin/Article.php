@@ -16,6 +16,11 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
     protected $_redirectRouteName = 'admin';
 
     /**
+     * @var bool
+     */
+    protected $_isAddable = true;
+
+    /**
      * @var Zend_Form
      */
     protected $_form;
@@ -54,18 +59,23 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
 
     public function addAction()
     {
-        if ($this->getRequest()->isPost()) {
-            $request = $this->getRequest();
-            if ($this->_form->isValid($request->getPost())) {
-                $values = $this->_form->getValues();
-                unset ($values['csrf_protect']);
-                $id = $this->_model->insert($values);
-                $this->_flashMessenger->addMessage('Запись добавлена');
+        if ($this->_isAddable) {
+            if ($this->getRequest()->isPost()) {
+                $request = $this->getRequest();
+                if ($this->_form->isValid($request->getPost())) {
+                    $values = $this->_form->getValues();
+                    unset ($values['csrf_protect']);
+                    $id = $this->_model->insert($values);
+                    $this->_flashMessenger->addMessage('Запись добавлена');
 
-                return $this->_redirectToIndex(array('id' => $id, 'action' => 'edit'));
+                    return $this->_redirectToIndex(array('id' => $id, 'action' => 'edit'));
+                }
             }
+            $this->view->form = $this->_form;
+        } else {
+            $this->_flashMessenger->addMessage('Вы не можете добавлять сюда элементы');
+            return $this->_redirectToIndex();
         }
-        $this->view->form = $this->_form;
     }
 
     public function editAction()

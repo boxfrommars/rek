@@ -28,6 +28,14 @@ class Whale_Controller_Action_Helper_Page extends Zend_Controller_Action_Helper_
             $categoryService = new Catalog_Model_CategoryService();
             $view->categoryNavigation = $categoryService->fetchAll(array('is_published = ?' => true));
             $view->page = new Whale_Page();
+
+            $settings = new Admin_Model_Settings();
+            $price = $settings->fetchRow(array('name = ?' => 'price'));
+            if (null !== $price && !empty($price->value)) {
+                Whale_Log::log($price->value);
+                $view->price = $price->value;
+            }
+
         }
 
         $this->_switchLayout($layout, $module, $controller, $action);

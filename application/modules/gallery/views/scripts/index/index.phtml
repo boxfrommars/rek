@@ -1,7 +1,7 @@
 <?php foreach ($this->items as $item): ?>
-    <div class="plita_left"><img style="width:200px" src="/files/<?php echo $item['image']; ?>">
+    <div class="plita_left"><img style="width:200px" src="/files/<?php echo $item['image']; ?>" title="<?php echo $item['title']; ?>">
         <div class="inblock">
-            <div class="pict_gallery"><a href="/files/<?php echo $item['image']; ?>" title="РИСУНОК 1" >
+            <div class="pict_gallery"><a href="/files/<?php echo $item['image']; ?>" title="<?php echo $item['title']; ?>" >
                     <img src="/img/search.png" height="20px" width="20px"/>посмотреть</a>
             </div>
         </div>

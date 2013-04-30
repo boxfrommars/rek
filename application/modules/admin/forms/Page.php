@@ -26,22 +26,6 @@ class Admin_Form_Page extends Admin_Form_Titled
     {
         parent::_initMiddleElements();
 
-        $pageService = new Page_Model_Service();
-        $pages = $pageService->fetchAll();
-
-        $pageSelectOptions = array();
-        foreach ($pages as $page) {
-            $pageSelectOptions[$page['id']] = $page['title'];
-        }
-
-        $this->addElement('select', 'id_parent', array(
-            'label' => "Родитель",
-            'required' => true,
-            'validators' => array(),
-            'dimension' => 6,
-            'multiOptions' => $pageSelectOptions,
-        ));
-
         $this->addElement('textarea', 'content', array(
             'label' => 'Контент',
             'required' => false,
