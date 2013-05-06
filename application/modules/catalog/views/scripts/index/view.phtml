@@ -1,7 +1,15 @@
 
 <div id="right_catalog">
     <div class="nav_catalog">
-        <p><a href="/">главная</a> <span>/</span> керамогранит <span>/</span> керама марацци <span>/</span> мираж</p>
+        <p><a href="/">Главная</a>
+            <span>/</span>
+            <a href="/catalog/<?php echo $this->product['category_page_url'] ?>"><?php echo $this->product['category_title'] ?></a>
+            <span>/</span>
+            <a href="/catalog/<?php echo $this->product['category_page_url'] ?>/<?php echo $this->product['brand_page_url'] ?>">
+                <?php echo $this->product['brand_title'] ?>
+            </a>
+            <span>/</span>
+            <?php echo $this->product['title'] ?></p>
     </div>
     <div>
         <p class="name_black" style="text-transform: uppercase"><?php echo $this->product['title'] ?></p>
@@ -10,7 +18,7 @@
             <img style="width:280px;" src="/files/<?php echo $this->product['image'] ?>"/>
         </div>
         <div class="sample_price">
-            <p class="price_catalog"> 540 <span>руб./м</span></p>
+            <p class="price_catalog"> <?php echo $this->product['cost'] ?> <span>руб./м</span></p>
             <p><span>Тип поверхности:</span> <?php echo $this->product['surface_title'] ?></p>
             <p><span>Размер:</span> <?php echo $this->product['width'] ?>*<?php echo $this->product['height'] ?>*<?php echo $this->product['depth'] ?></p>
 <!--            <p><span>Рисунок:</span> дерево</p>-->

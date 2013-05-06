@@ -21,12 +21,25 @@ class Default_IndexController extends Whale_Controller_Action
         $this->view->news = $newsService->fetchAll(array('is_published = ?' => true), array('published_at DESC'), 3);
 
         $productService = new Catalog_Model_ProductService();
-        $this->view->items = $productService->fetchAll(array('is_published = ?' => true), array('created_at DESC'), 4);
+        $this->view->items = $productService->fetchAll(null, array('created_at DESC'), 4);
 
         $pageTextsService = new Whale_PageText_Service();
 
         $texts = $pageTextsService->fetchAll(array('"group" = ?' => 'main'));
         $this->view->texts = new Whale_PageText_Group($texts);
+
+    }
+
+    public function mapAction()
+    {
+        $layout = Zend_Layout::getMvcInstance();
+        $layout->setLayout('page');
+
+
+        $model = new Page_Model_Service();
+        $items = $model->fetchAll(null, array('path ASC'));
+        Whale_Log::log($items->toArray());
+        $this->view->assign('items', $items);
 
     }
 

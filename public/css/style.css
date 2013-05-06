@@ -34,7 +34,7 @@ footer, header, hgroup, menu, nav, section {
 
 @font-face {
     font-family: 'MyriadPro-Bold';
-    src: url('../font/MyriadPro-Bold.eot#'); 
+    src: url('../font/MyriadPro-Bold.eot#');
     src: local('MyriadPro-Bold'),
        url('../font/MyriadPro-Bold.ttf') format('truetype'),
        url('../font/MyriadPro-Bold.woff') format('woff');
@@ -659,6 +659,10 @@ h5 {
     color: #064a7b;
     margin-left: 18px;
 }
+.nav_catalog a {
+     margin-left: 0;
+ }
+
 
 #navigation span, .nav_catalog span {
     font-size: 12px;

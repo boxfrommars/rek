@@ -17,6 +17,7 @@ class Catalog_Model_ProductService extends Whale_Db_TableCached
                 'p.id_parent = b.id',
                 array(
                     'brand_title' => 'title',
+                    'brand_page_url' => 'page_url',
                     'id_brand' => 'id',
                 )
             )->joinLeft(
