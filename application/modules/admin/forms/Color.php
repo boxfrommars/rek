@@ -14,7 +14,7 @@ class Admin_Form_Color extends Whale_Form_Base
                 'required' => true,
                 'filters' => array('StringTrim'),
                 'validators' => array(),
-                'dimension' => 6
+                'dimension' => $this->_dimension,
             ));
 
         $this->addElement('text', 'hex', array(
@@ -22,7 +22,7 @@ class Admin_Form_Color extends Whale_Form_Base
                 'required' => true,
                 'filters' => array('StringTrim'),
                 'validators' => array(),
-                'dimension' => 6
+                'dimension' => $this->_dimension,
             ));
 
         $this->addElement('button', 'submit', array(

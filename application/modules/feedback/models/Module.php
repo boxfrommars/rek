@@ -6,13 +6,13 @@
 class Feedback_Model_Module extends Whale_Module
 {
 
-    protected $_name = 'faq';
+    protected $_name = 'feedback';
     protected $_resources = array('index');
 
     public function getPrivileges()
     {
         return array(
-            array('type' => 'allow', 'role' => 'guest', 'resource' => $this->getName() . ':index', 'action' => null),
+            array('type' => 'allow', 'role' => 'guest', 'resource' => $this->getName() . ':index', 'action' => 'add'),
         );
     }
 

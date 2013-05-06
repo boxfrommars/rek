@@ -1,0 +1,30 @@
+<div id="left_catalog"></div>
+<div id="right_catalog">
+    <div class="nav_catalog">
+        <p><a href="/">Главная</a> <span>/</span> <?php echo $this->page->getTitle() ?> <span></p>
+    </div>
+    <h3 class="news_title"><span><?php echo $this->page->getTitle() ?></span></h3>
+    <table class="table gzhel" id="pages-tree">
+        <tbody>
+        <?php foreach ($this->items as $item): ?>
+            <tr data-tt-id="<?php echo $item['path']; ?>"
+                data-tt-parent-id="<?php if (pathdepth($item['path']) != 2) echo implode('.', array_slice(explode('.', $item['path']), 0, -1)) ?>">
+                <td>
+                    <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page', 'action' => 'edit'), 'admin') ?>">
+                        <?php echo $item['title'] ?>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <link rel="stylesheet" href="/vendor/jquery-treetable-master/stylesheets/jquery.treetable.css">
+    <link rel="stylesheet" href="/vendor/jquery-treetable-master/stylesheets/jquery.treetable.theme.default.css">
+    <script src="/vendor/jquery-treetable-master/javascripts/src/jquery.treetable.js"></script>
+    <script>
+        $(function () {
+            $("#pages-tree").treetable({expandable: false});
+        });
+    </script>
+</div>

@@ -659,7 +659,7 @@ h5 {
     color: #064a7b;
     margin-left: 18px;
 }
-.nav_catalog a {
+.nav_catalog a, #navigation .nav_catalog a {
      margin-left: 0;
  }
 
@@ -823,10 +823,12 @@ h5 {
     float: right;
     width: 800px;
     font-size: 18px;
+    padding-bottom: 20px;
 }
 
-#location span {
+#location strong {
     color: #3c3c3c;
+    font-weight: normal;
     font-family: MyriadPro-Semibold;
 }
 
@@ -838,7 +840,7 @@ h5 {
 }
 
 #bottom_loc {
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
 }
 
 .news_contact p a {
@@ -900,4 +902,19 @@ h5 {
     background-image: url('../img/button_bg.png');
     height: 34px;
     width: 92px;
+}
+
+.gzhel {
+    color: #084a7b;
+    font-size: 20px;
+    font-family: MyriadPro-Regular;
+}
+.control-group {
+    padding-bottom: 20px;
+}
+.help-inline, .alert {
+    color: red;
+}
+#content {
+    font-family: MyriadPro-Regular;
 }

@@ -5,7 +5,6 @@
  */
 class Admin_FeedbackController extends Whale_Controller_Action_Admin_Article
 {
-
     /**
      * @var Feedback_Model_Service
      */
@@ -21,7 +20,7 @@ class Admin_FeedbackController extends Whale_Controller_Action_Admin_Article
     {
         parent::init();
         $this->_model = new Feedback_Model_Service();
-        $this->_form = new Admin_Form_Feedback();
+        $this->_form = new Feedback_Form_Public();
     }
 }
 

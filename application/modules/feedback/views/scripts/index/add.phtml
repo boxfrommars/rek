@@ -1,0 +1,18 @@
+<div id="left_catalog"></div>
+<div id="right_catalog">
+    <div class="nav_catalog">
+        <p><a href="/">Главная</a> <span>/</span> <?php echo $this->page->getTitle(); ?> <span></p>
+    </div>
+    <h3 class="news_title"><span><?php echo $this->page->getTitle(); ?></span></h3>
+    <?php echo $this->page->getContent(); ?>
+    <?php if (!empty($this->flashMessages)): ?>
+        <div id="app-messages">
+            <?php foreach ($this->flashMessages as $message): ?>
+                <div class="alert"><?php echo $message; ?><a class="close" data-dismiss="alert">×</a></div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    <div class="message_param" id="comment">
+        <?php echo $this->form; ?>
+    </div>
+</div>

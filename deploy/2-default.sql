@@ -12,6 +12,7 @@ DROP TABLE "news" CASCADE;
 DROP TABLE "page" CASCADE;
 DROP TABLE "page_text" CASCADE;
 DROP TABLE "settings" CASCADE;
+DROP TABLE "feedback" CASCADE;
 
 CREATE TABLE "role" (
   "id" SERIAL,
@@ -57,7 +58,7 @@ CREATE TABLE "page" (
   "title" VARCHAR(255) NOT NULL,
   "content" TEXT,
 
-  "page_url" VARCHAR(255) UNIQUE,
+  "page_url" VARCHAR(255),
   "page_title" VARCHAR (255),
   "page_description" TEXT,
   "page_keywords" TEXT,
@@ -67,6 +68,7 @@ CREATE TABLE "page" (
 
   "id_parent" BIGINT REFERENCES page ("id"),
   "path" LTREE UNIQUE,
+  "entity" VARCHAR(255),
 
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
@@ -98,6 +100,16 @@ CREATE TABLE "surface" (
 CREATE TABLE "country" (
   "id" SERIAL NOT NULL,
   "title" VARCHAR(255) NOT NULL,
+  PRIMARY KEY("id")
+);
+
+CREATE TABLE "feedback" (
+  "id" SERIAL NOT NULL,
+  "name" VARCHAR(255) NOT NULL,
+  "email" VARCHAR(255) NOT NULL,
+  "phone" VARCHAR(255) NOT NULL,
+  "content" TEXT,
+  "created_at" TIMESTAMP (0) WITHOUT TIME ZONE DEFAULT NOW(),
   PRIMARY KEY("id")
 );
 
@@ -220,14 +232,17 @@ CREATE OR REPLACE FUNCTION trig_update_page_node_path()
 
         ELSIF TG_OP = 'INSERT' THEN
             UPDATE page SET path = get_calculated_page_node_path(NEW.id) WHERE page.id = NEW.id;
-            IF (NEW.page_url IS NULL) THEN
+            IF ((NEW.page_url IS NULL OR NEW.page_url = '') AND NEW.name != 'main') THEN
                 UPDATE page SET page_url = urltranslit(NEW.title) WHERE page.id = NEW.id;
             END IF;
-            IF (NEW.name IS NULL) THEN
+            IF (NEW.name IS NULL OR NEW.name = '') THEN
                 UPDATE page SET "name" = urltranslit(NEW.title) WHERE page.id = NEW.id;
             END IF;
-            IF (NEW.page_title IS NULL) THEN
+            IF (NEW.page_title IS NULL OR NEW.page_title = '') THEN
                 UPDATE page SET "page_title" = NEW.title WHERE page.id = NEW.id;
+            END IF;
+            IF (NEW.entity IS NULL) THEN
+                UPDATE page SET "entity" = TG_TABLE_NAME WHERE page.id = NEW.id;
             END IF;
 
         END IF;
@@ -266,9 +281,12 @@ INSERT INTO country (title) VALUES ('Россия');
 INSERT INTO country (title) VALUES ('Италия');
 
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Главная', '', '', 'Главная', 't', 'main', NULL);
-INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'О компании', '', 'about', 'О компании', 'f', 'about', (SELECT id FROM page WHERE name = 'main'));
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'О компании', '', 'about', 'О компании', 't', 'about', (SELECT id FROM page WHERE name = 'main'));
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Контакты', '<p><strong>Как добраться пешком от метро:</strong>&nbsp;Станция м. Нагатинская (первый вагон из центра).</p><p>От метро двигайтесь вдоль Варшавского шоссе по ходу движения транспорта 7-8 минут средним темпом (или можно проехать одну остановку на любом транспорте и далее идти вперед еще 1-2 минуты). 6-этажное здание бизнес-центра, расположенно вдоль шоссе (вдоль здания стоят высокие ели, на углу есть адресный указатель - &quot;Варшавское шоссе, д. 42&quot;).</p><p>Вход находится по центру фасада со стороны шоссе (круглые вращающиеся двери). Посетителям необходимо спуститься направо, вниз на цокольный этаж к гостевому ресепшн, назвать свою фамилию и сказать, что пришли в компанию &quot;Рекада&quot;. На лифте подняться на 5-й этаж, из лифтового холла повернуть налево, на двери офиса находится вывеска &quot;Рекада-Центр&quot;.</p>', 'contacts', 'Контакты', 't', 'contacts', (SELECT id FROM page WHERE name = 'main'));
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'База знаний', '', 'articles', 'База знаний', 't', 'articles', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Галерея', '', 'gallery', 'Галерея', 't', 'gallery', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Новости', '', 'news', 'Новости', 't', 'news', (SELECT id FROM page WHERE name = 'main'));
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Заявка', '', 'feedback', 'Оставить заявку', 't', 'feedback', (SELECT id FROM page WHERE name = 'main'));
 
 INSERT INTO category (title, is_published, id_parent) VALUES ('Керамогранит', 't', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO category (title, is_published, id_parent) VALUES ('Вентфасады', 't', (SELECT id FROM page WHERE name = 'main'));
@@ -292,4 +310,6 @@ INSERT INTO page_text (mark, "group", "group_title", "position", title, content,
 INSERT INTO page_text (mark, "group", "group_title", "position", title, content, created_at, updated_at) VALUES ('third', 'main', 'Главная', 'Почему выбирают нас / третий блок', 'Заголовок 3', '<p>При необходимости срочного приобретения керамогранита, покупатель сталкивается с ситуацией, когда на складе продавца не всегда имеется необходимое количество материала. Отечественные производители КЕРАТОН, KERAMA MARAZZI, Italon, Grasaro заблаговременно осуществляют доставку  продукции дистрибьюторам в количестве, соответствующем спросу и объемам продаж. Поэтому компания Рекада всегда располагает достаточным количеством керамогранита Эстима и любых коллекций KERAMA MARAZZI, Italon и Grasaro. <br> В случае, когда клиент желает приобрести керамогранит оптом, он может заранее оформить заявку, чтобы мы успели</p>', '2013-04-23 04:22:44', '2013-04-23 04:22:44');
 
 INSERT INTO settings (title, name, value) VALUES ('email', 'email', 'boxfrommars@gmail.com');
+INSERT INTO settings (title, name, value) VALUES ('Телефон', 'phone', '+7 (495) 921-40-44');
+INSERT INTO settings (title, name, value) VALUES ('Адрес', 'address', '115230, Москва, Варшавское шоссе, д. 42');
 INSERT INTO settings (title, name, value) VALUES ('Прайс', 'price', 'price.xls');

@@ -26,6 +26,10 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
      */
     protected $_isDeletable = true;
     /**
+     * @var bool разрешено ли удаление
+     */
+    protected $_isIndexable = true;
+    /**
      * @var Zend_Form
      */
     protected $_form;
@@ -37,30 +41,37 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
 
     public function indexAction()
     {
-        $page = (int)$this->getParam('page');
-        if ($page < 1) {
-            throw new Zend_Controller_Action_Exception("Invalid page {$page}", 404);
+        if ($this->_isIndexable) {
+            $page = (int)$this->getParam('page');
+            if ($page < 1) {
+                throw new Zend_Controller_Action_Exception("Invalid page {$page}", 404);
+            }
+            $this->view->assign('items', $this->_getList($page)
+            );
+            // @TODO cache
+            $count = (int)$this->_model->getAdapter()->fetchOne(
+                $this->_model->select()->from($this->_model, 'COUNT(*)')
+            );
+
+            $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Null($count));
+
+            Zend_View_Helper_PaginationControl::setDefaultViewPartial('paginator.phtml');
+            $paginator->setDefaultScrollingStyle('Elastic');
+            $paginator->setCurrentPageNumber($page);
+            $paginator->setItemCountPerPage($this->_perPage);
+            $paginator->setPageRange(8);
+            $this->view->assign('paginator', $paginator);
         }
-        $this->view->assign('items', $this->_model->fetchAll(
-                null,
-                $this->_order,
-                $this->_perPage,
-                ($this->getParam('page') - 1) * $this->_perPage
-            )
-        );
-        // @TODO cache
-        $count = (int)$this->_model->getAdapter()->fetchOne(
-            $this->_model->select()->from($this->_model, 'COUNT(*)')
-        );
+    }
 
-        $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Null($count));
-
-        Zend_View_Helper_PaginationControl::setDefaultViewPartial('paginator.phtml');
-        $paginator->setDefaultScrollingStyle('Elastic');
-        $paginator->setCurrentPageNumber($page);
-        $paginator->setItemCountPerPage($this->_perPage);
-        $paginator->setPageRange(8);
-        $this->view->assign('paginator', $paginator);
+    protected function _getList($page = null)
+    {
+        return $this->_model->fetchAll(
+            null,
+            $this->_order,
+            $this->_perPage,
+            ($page - 1) * $this->_perPage
+        );
     }
 
     public function addAction()

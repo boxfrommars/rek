@@ -1,5 +1,8 @@
-
-<div id="navigation" style="overflow: hidden;">
-    <p style="text-transform: uppercase;"><a href="/">ГЛАВНАЯ</a><span>/</span> <?php echo $this->title; ?></p>
+<div id="left_catalog"></div>
+<div id="right_catalog">
+    <div class="nav_catalog">
+        <p><a href="/">Главная</a> <span>/</span> <?php echo $this->title ?> <span></p>
+    </div>
+    <h3 class="news_title"><span><?php echo $this->title; ?></span></h3>
+    <?php echo $this->content; ?>
 </div>
-<?php echo $this->content;

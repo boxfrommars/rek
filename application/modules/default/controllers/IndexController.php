@@ -11,7 +11,6 @@ class Default_IndexController extends Whale_Controller_Action
 
     public function indexAction()
     {
-        $_pageName = 'main';
         $this->_setPage('main');
 
         $layout = Zend_Layout::getMvcInstance();
@@ -32,6 +31,7 @@ class Default_IndexController extends Whale_Controller_Action
 
     public function mapAction()
     {
+        $this->_setPage('map');
         $layout = Zend_Layout::getMvcInstance();
         $layout->setLayout('page');
 
@@ -39,6 +39,42 @@ class Default_IndexController extends Whale_Controller_Action
         $model = new Page_Model_Service();
         $items = $model->fetchAll(null, array('path ASC'));
         Whale_Log::log($items->toArray());
+        $this->view->assign('items', $items);
+
+    }
+
+    public function contactsAction()
+    {
+        $this->_setPage('contacts');
+        $layout = Zend_Layout::getMvcInstance();
+        $layout->setLayout('contacts');
+//
+//
+//        $model = new Page_Model_Service();
+//        $items = $model->fetchAll(null, array('path ASC'));
+//        Whale_Log::log($items->toArray());
+//        $this->view->assign('items', $items);
+
+    }
+
+    public function articlesAction()
+    {
+        $this->_setPage('articles');
+        $layout = Zend_Layout::getMvcInstance();
+        $layout->setLayout('page');
+
+        $db = Zend_Db_Table::getDefaultAdapter();
+
+        $page = $db->select()->from(
+            array('p' => 'page'),
+            array('*')
+        )->where('name = ?', 'articles')->query()->fetch();
+
+        $items = $db->select()->from(
+            array('p' => 'page'),
+            array('*')
+        )->where('path <@ ?', $page['path'])->query()->fetchAll();
+
         $this->view->assign('items', $items);
 
     }

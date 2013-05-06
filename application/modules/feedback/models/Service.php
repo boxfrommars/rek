@@ -5,5 +5,5 @@
  */
 class Feedback_Model_Service extends Whale_Db_TableCached
 {
-    protected $_name = 'faq';
+    protected $_name = 'feedback';
 }

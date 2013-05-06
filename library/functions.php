@@ -234,3 +234,17 @@ function x_array_keys_filter($array, $filter) {
 	}
 	return $return;
 }
+
+function subentity($entityName) {
+    $entities = array(
+        'category' => 'brand',
+        'brand' => 'product',
+        'page' => 'page',
+    );
+
+    return empty($entities[$entityName]) ? null : $entities[$entityName];
+}
+
+function pathdepth($path) {
+    return count(explode('.', $path));
+}

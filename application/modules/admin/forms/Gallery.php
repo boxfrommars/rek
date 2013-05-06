@@ -9,6 +9,10 @@ class Admin_Form_Gallery extends Whale_Form_Titled
     {
         parent::_initMiddleElements();
 
+        $this->addElement('checkbox', 'is_published', array(
+            'label' => "Опубликована",
+        ));
+
         $this->addElement('text', 'image', array(
             'label' => "Изображение",
             'required' => false,

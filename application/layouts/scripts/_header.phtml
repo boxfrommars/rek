@@ -3,21 +3,21 @@
         <div id="logo">
             <a href="/"><img src="/img/logo.png"></a>
         </div>
-        <div id="centr"><span>ЦЕНТР КЕРАМОГРАНИТА И ВЕНТФАСАДОВ</span><img src="/img/phone.png"><span><a>(495)</a><strong>921-40-44</strong></span></div>
+        <div id="centr"><span>ЦЕНТР КЕРАМОГРАНИТА И ВЕНТФАСАДОВ</span><img src="/img/phone.png"><span><a><?php echo substr($this->settings['phone'], 3, 5) ?></a><strong><?php echo substr($this->settings['phone'], 9) ?></strong></span></div>
     </div>
     <p id="menu">
         <a href="/about" style="color: #242424; padding-right: 15px;">О КОМПАНИИ</a>
-        <a class="space" href="#">БАЗА ЗНАНИЙ</a>
+        <a class="space" href="/articles">БАЗА ЗНАНИЙ</a>
         <a class="space" href="/gallery">ГАЛЕРЕЯ</a>
-        <a class="space" href="/sources/contacts.html">КОНТАКТЫ</a>
-        <a class="menu_left" href="#">ЗАЯВКА</a>
-        <a class="menu_left" href="/files/<?php echo $this->price ?>">ПРАЙС&nbsp;</a>
+        <a class="space" href="/contacts">КОНТАКТЫ</a>
+        <a class="menu_left" href="/feedback">ЗАЯВКА</a>
+        <a class="menu_left" href="/files/<?php echo $this->settings['price'] ?>">ПРАЙС&nbsp;</a>
     </p>
-    <a href="search.html">
+    <a href="" id="search_field">
         <input type="image" src="/img/search_button.png" value="" id="search_button"/>
     </a>
     <input id="search" type="text" value="&#160;поиск" onfocus="this.value=''" onblur="this.value='поиск'"/>
-    <div id="product">
+    <div id="product" class="product_menu">
         <?php $i = 1 ?>
         <?php foreach ($this->categoryNavigation as $category): ?>
             <div id="toggle_1" class="dop_menu">

@@ -24,7 +24,7 @@ class Whale_Form_Titled extends Whale_Form_Base {
             'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
-            'dimension' => 6
+            'dimension' => $this->_dimension,
         ));
     }
     protected function _initBottomElements()

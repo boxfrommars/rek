@@ -3,8 +3,9 @@
  * @copyright  (c) 2013
  * @author Franky Calypso <franky.calypso@gmail.com>
  */
-class Admin_Form_FaqPublic extends Admin_Form_Base
+class Feedback_Form_Public extends Twitter_Bootstrap_Form_Horizontal
 {
+    protected $_dimension = 6;
     public function init()
     {
         $this->setMethod('post');
@@ -15,7 +16,7 @@ class Admin_Form_FaqPublic extends Admin_Form_Base
     public function initFields()
     {
         $this->addElement('text', 'name', array(
-            'label' => "Имя",
+            'label' => "Имя (обязательно)",
             'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
@@ -24,7 +25,16 @@ class Admin_Form_FaqPublic extends Admin_Form_Base
         ));
 
         $this->addElement('text', 'email', array(
-            'label' => "E-mail",
+            'label' => "E-mail (обязательно)",
+            'required' => true,
+            'filters' => array('StringTrim'),
+            'validators' => array('EmailAddress'),
+            'dimension' => 6,
+            'class' => 'form-text form-card',
+        ));
+
+        $this->addElement('text', 'phone', array(
+            'label' => "Телефон (обязательно)",
             'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
@@ -32,8 +42,8 @@ class Admin_Form_FaqPublic extends Admin_Form_Base
             'class' => 'form-text form-card',
         ));
 
-        $this->addElement('textarea', 'question', array(
-            'label' => 'Вопрос',
+        $this->addElement('textarea', 'content', array(
+            'label' => 'Вопрос/Заявка (обязательно)',
             'required' => true,
             'validators' => array(),
             'dimension' => 6,

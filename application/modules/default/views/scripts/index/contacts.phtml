@@ -1,0 +1,53 @@
+<div id="navigation">
+    <div class="nav_catalog">
+        <p><a href="/">Главная</a> <span>/</span> <?php echo $this->page->getTitle(); ?> <span></p>
+    </div>
+</div>
+<div id="map">
+    <div id="contact_info">
+        <p id="contact_title"><?php echo $this->page->getTitle() ?></p>
+        <div id="contacts_page">
+            <div class="contact_page">
+                <p class="adress_phone">АДРЕС ОФИСА:</p>
+                <p><?php echo $this->settings['address'] ?></p>
+            </div>
+            <div class="contact_page">
+                <p class="adress_phone">ТЕЛЕФОН:</p>
+                <p><?php echo $this->settings['phone'] ?></p>
+            </div>
+        </div>
+    </div>
+</div> <!--map-->
+<div id="news">
+    <h3 id="contact_news_title"><span>НОВОСТИ</span></h3>
+    <div id="contact_point"></div>
+    <div class="news_contact">
+        <p>Акция на полированный керамогранит в ноябре 06.11.2012 <br> <a href="#">подробнее</a></p>
+        <p>Расширение линейки полированного керамогранита 31.10.2012<br> <a href="#">подробнее</a></p>
+        <p> Специальная цена до 1 ноября - белый полированный керамогранит! 15.10.2012 <br> <a href="#">подробнее</a></p>
+    </div>
+</div>
+<div id="location">
+    <?php echo $this->page->getContent(); ?>
+</div>
+<div id="messager">
+    <form method="post" action="/feedback">
+        <div class="message_param">
+            <p>Имя (обязательно)</p>
+            <input name="name" type="text" size="20" required />
+        </div>
+        <div class="message_param">
+            <p>Email (обязательно)</p>
+            <input name="email" type="text" size="20" required />
+        </div>
+        <div class="message_param">
+            <p>Телефон: (обязательно)</p>
+            <input name="phone" type="text" size="20"/>
+        </div>
+        <div id="comment">
+            <p>Ваш вопрос/сообщение (обязательно)</p>
+            <textarea name="content" rows="7"> </textarea>
+        </div>
+        <input type="submit" id="contact_button" value=""/>
+    </form>
+</div>

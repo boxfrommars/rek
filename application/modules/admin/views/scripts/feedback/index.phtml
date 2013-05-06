@@ -3,8 +3,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Опубликован</th>
             <th>Текст</th>
+            <th>E-mail</th>
+            <th>Телефон</th>
+            <th>Имя</th>
             <th></th>
             <th></th>
         </tr>
@@ -12,8 +14,10 @@
     <tbody>
     <?php foreach ($this->items as $item): ?>
         <tr>
-            <td style="width: 100px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
-            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'feedback', 'action' => 'edit'), 'admin') ?>"><?php echo $this->escape($item['question']); ?></a></td>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'feedback', 'action' => 'edit'), 'admin') ?>"><?php echo substr($this->escape($item['content']), 0, 40); ?>...</a></td>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'feedback', 'action' => 'edit'), 'admin') ?>"><?php echo $this->escape($item['email']); ?></a></td>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'feedback', 'action' => 'edit'), 'admin') ?>"><?php echo $this->escape($item['phone']); ?></a></td>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'feedback', 'action' => 'edit'), 'admin') ?>"><?php echo $this->escape($item['name']); ?></a></td>
             <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'feedback', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
             <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'feedback', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
         </tr>

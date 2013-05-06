@@ -5,6 +5,7 @@
  */
 class Admin_ProductController extends Whale_Controller_Action_Admin_Page
 {
+    protected $_redirectOptions = array('action' => 'index', 'controller' => 'category');
     /**
      * @var Catalog_Model_ProductService
      */
@@ -28,5 +29,7 @@ class Admin_ProductController extends Whale_Controller_Action_Admin_Page
         $productColorService = new Catalog_Model_ProductColorService();
         $this->view->productColors = $productColorService->fetchAll(array('id_product = ?' => $this->_getParam('id')));
     }
+
+
 }
 

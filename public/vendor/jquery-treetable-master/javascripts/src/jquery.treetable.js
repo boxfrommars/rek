@@ -132,11 +132,27 @@
         });
       }
 
-      if (settings.expandable === true && settings.initialState === "collapsed") {
-        this.collapse();
-      } else {
+//      if (settings.expandable === true && settings.initialState === "collapsed") {
+//        this.collapse();
+//      } else {
+//        this.expand();
+//      }
+    if (settings.expandable === true) {
+        var state = this.row.context.getAttribute('data-tt-initialState');
+
+        if(state)
+            this.row.context.removeAttribute('data-tt-initialState')
+        else
+            state = settings.initialState
+        console.log(state);
+        if (state === "collapsed") {
+            this.collapse();
+        } else {
+            this.expand();
+        }
+    } else {
         this.expand();
-      }
+    }
 
       this.indenter[0].style.paddingLeft = "" + (this.level() * settings.indent) + "px";
 

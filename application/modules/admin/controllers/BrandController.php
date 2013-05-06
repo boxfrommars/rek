@@ -3,9 +3,9 @@
  * @copyright  (c) 2013
  * @author Franky Calypso <franky.calypso@gmail.com>
  */
-class Admin_BrandController extends Whale_Controller_Action_Admin_Article
+class Admin_BrandController extends Whale_Controller_Action_Admin_Page
 {
-
+    protected $_redirectOptions = array('action' => 'index', 'controller' => 'category');
     /**
      * @var Catalog_Model_BrandService
      */

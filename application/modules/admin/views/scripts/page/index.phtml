@@ -13,30 +13,35 @@
 <tbody>
     <?php foreach ($this->items as $item): ?>
     <tr data-tt-id="<?php echo $item['path']; ?>"
-        data-tt-parent-id="<?php if ($item['path'] !== 'Top') echo implode('.', array_slice(explode('.', $item['path']), 0, -1)) ?>">
+        data-tt-parent-id="<?php if (pathdepth($item['path']) != 1) echo implode('.', array_slice(explode('.', $item['path']), 0, -1)) ?>"
+        data-tt-initialState="<?php if (pathdepth($item['path']) == 1) echo 'expanded' ?>">
         <td>
-            <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page', 'action' => 'edit'), 'admin') ?>">
+            <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'edit'), 'admin') ?>">
                 <?php echo $item['title'] ?>
             </a>
         </td>
         <td>
-            <?php if (!$item['is_locked']): ?>
+            <?php if ($item['entity'] != 'page'): ?>
                 <a title="Перейти к модулю"
-                   href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page', 'action' => 'edit'), 'admin') ?>"
+                   href="<?php echo $this->url(array('controller' => $item['entity']), 'admin') ?>"
                    class="icon-wrench pull-right action edit"></a>
             <?php endif; ?>
         </td>
         <td>
-            <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page', 'action' => 'delete'), 'admin') ?>"
+            <?php if (!$item['is_locked']): ?>
+            <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'delete'), 'admin') ?>"
                class="icon-trash pull-right action delete"></a>
+            <?php endif; ?>
         </td>
         <td>
+            <?php if (subentity($item['entity'])): ?>
             <a title="Добавить подстраницу"
-               href="<?php echo $this->url(array('action' => 'add', 'controller' => 'page', 'idParent' => $item['id'], 'module' => 'admin'), 'default') ?>"
+               href="<?php echo $this->url(array('action' => 'add', 'controller' => subentity($item['entity']), 'idParent' => $item['id'], 'module' => 'admin'), 'default') ?>"
                class="icon-plus pull-right action add"></a>
+            <?php endif; ?>
         </td>
         <td>
-            <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page', 'action' => 'edit'), 'admin') ?>"
+            <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'edit'), 'admin') ?>"
                class="icon-edit pull-right action edit"></a>
         </td>
     </tr>

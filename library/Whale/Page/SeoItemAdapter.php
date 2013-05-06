@@ -9,7 +9,7 @@ class Whale_Page_SeoItemAdapter implements Whale_Page_Interface  {
     }
 
     public function getTitle() {
-        return empty($this->_item['page_title']) ?: $this->_item['title'];
+        return empty($this->_item['page_title']) ? $this->_item['title'] : $this->_item['page_title'];
     }
 
     public function getId() {
@@ -22,6 +22,10 @@ class Whale_Page_SeoItemAdapter implements Whale_Page_Interface  {
 
     public function getDescription() {
         return $this->_item['page_description'] ?: '';
+    }
+
+    public function getContent() {
+        return $this->_item['content'] ?: '';
     }
 
     public function getKeywords() {

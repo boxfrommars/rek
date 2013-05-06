@@ -20,7 +20,7 @@ class Admin_Form_Brand extends Admin_Form_CatalogItem
                 'label' => "Категория",
                 'required' => true,
                 'validators' => array(),
-                'dimension' => 6,
+                'dimension' => $this->_dimension,
                 'multiOptions' => $categorySelectOptions,
             ));
     }

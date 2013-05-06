@@ -49,7 +49,7 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'label' => "Страна производитель",
             'required' => true,
             'validators' => array(),
-            'dimension' => 12,
+            'dimension' => $this->_dimension,
             'multiOptions' => $countrySelectOptions,
         ));
 

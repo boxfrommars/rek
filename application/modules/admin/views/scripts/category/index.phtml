@@ -3,24 +3,51 @@
 <p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'category'), 'admin') ?>" role="button" class="btn btn-success add">
         Добавить категорию
 </a></p>
-<table class="table">
+<table class="table table-hover" id="pages-tree">
     <thead>
-        <tr>
-            <th>Опубликован</th>
-            <th>Заголовок</th>
-            <th></th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>Заголовок</th>
+        <th style="width: 30px;"></th>
+        <th style="width: 30px;"></th>
+        <th style="width: 30px;"></th>
+    </tr>
     </thead>
     <tbody>
     <?php foreach ($this->items as $item): ?>
-        <tr>
-            <td style="width: 100px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
-            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'category', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
-            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'category', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
-            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'category', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+        <tr data-tt-id="<?php echo $item['path']; ?>"
+            data-tt-parent-id="<?php if (pathdepth($item['path']) > 2) echo implode('.', array_slice(explode('.', $item['path']), 0, -1)) ?>"
+            data-tt-initialState="<?php if (pathdepth($item['path']) == 2) echo 'expanded' ?>"
+         >
+            <td>
+                <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'edit'), 'admin') ?>">
+                    <?php echo $item['title'] ?>
+                </a>
+            </td>
+            <td>
+                <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'delete'), 'admin') ?>"
+                   class="icon-trash pull-right action delete"></a>
+            </td>
+            <td>
+                <?php if (subentity($item['entity'])): ?>
+                    <a title="Добавить подстраницу"
+                       href="<?php echo $this->url(array('action' => 'add', 'controller' => subentity($item['entity']), 'idParent' => $item['id'], 'module' => 'admin'), 'default') ?>"
+                       class="icon-plus pull-right action add"></a>
+                <?php endif; ?>
+            </td>
+            <td>
+                <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'edit'), 'admin') ?>"
+                   class="icon-edit pull-right action edit"></a>
+            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
 </table>
-<?php echo $this->paginator; ?>
+
+<link rel="stylesheet" href="/vendor/jquery-treetable-master/stylesheets/jquery.treetable.css">
+<link rel="stylesheet" href="/vendor/jquery-treetable-master/stylesheets/jquery.treetable.theme.default.css">
+<script src="/vendor/jquery-treetable-master/javascripts/src/jquery.treetable.js"></script>
+<script>
+    $(function () {
+        $("#pages-tree").treetable({expandable: true});
+    });
+</script>

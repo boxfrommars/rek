@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <?php echo $this->render('_head.phtml') ?>
 <body>
 <div id="wrapper">
     <?php echo $this->render('_header.phtml') ?>
     <div id="content">
+        <?php echo $this->render('_submenu.phtml') ?>
         <?php echo $this->layout()->content; ?>
-    </div> <!--content-->
+    </div><!--content-->
     <?php echo $this->render('_footer.phtml') ?>
 </div>
 </body>
 </html>
-
