@@ -24,6 +24,14 @@ class Admin_Form_ProductColor extends Admin_Form_CatalogItem
             $colorSelectOptions[$color['id']] = $color['title'];
         }
 
+        $this->addElement('select', 'id_product', array(
+            'label' => "Товар",
+            'required' => true,
+            'validators' => array(),
+            'dimension' => 6,
+            'multiOptions' => $productSelectOptions,
+        ));
+
         parent::_initMiddleElements();
 
         $this->addElement('select', 'id_color', array(
@@ -33,13 +41,12 @@ class Admin_Form_ProductColor extends Admin_Form_CatalogItem
             'dimension' => 6,
             'multiOptions' => $colorSelectOptions,
         ));
+    }
 
-        $this->addElement('select', 'id_product', array(
-            'label' => "Товар",
-            'required' => true,
-            'validators' => array(),
-            'dimension' => 6,
-            'multiOptions' => $productSelectOptions,
+    protected function _initTopElements()
+    {
+        $this->addElement('checkbox', 'is_published', array(
+            'label' => "Опубликована",
         ));
     }
 

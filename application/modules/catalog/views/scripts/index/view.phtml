@@ -19,42 +19,21 @@
         </div>
     </div>
     <div id="catalog_info">
-        <p><span>Керамогранит Мираж</span> - это новинка, которая интересна тем, что искусно имитирует нерукотворные
-            трещины и канавки в камне, подвергшийся обработке.<br> Этот керамогранит под мрамор еще раз
-            доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.</p>
+        <?php echo $this->product['content'] ?>
+<!--        <p><span>Керамогранит Мираж</span> - это новинка, которая интересна тем, что искусно имитирует нерукотворные-->
+<!--            трещины и канавки в камне, подвергшийся обработке.<br> Этот керамогранит под мрамор еще раз-->
+<!--            доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.</p>-->
     </div>
     <div id="available">
         <p class="left_catalog_point">ДОСТУПНЫЕ ЦВЕТА:</p>
-        <div class="block_available">
-            <div class="catalog_available">
-                <img src="/img/catalog_photo1.jpg">
+        <?php foreach ($this->productColors as $color): ?>
+            <div class="block_available">
+                <div class="catalog_available">
+                    <img src="/files/<?php echo $color['image'] ?>">
+                </div>
+                <p><?php echo $this->product['title'] ?></p>
             </div>
-            <p>SG905700N</p>
-        </div>
-        <div class="block_available">
-            <div class="catalog_available">
-                <img src="/img/catalog_photo1.jpg">
-            </div>
-            <p>SG905700N</p>
-        </div>
-        <div class="block_available">
-            <div class="catalog_available">
-                <img src="/img/catalog_photo1.jpg">
-            </div>
-            <p>SG905700N</p>
-        </div>
-        <div class="block_available">
-            <div class="catalog_available">
-                <img src="/img/catalog_photo1.jpg">
-            </div>
-            <p>SG905700N</p>
-        </div>
-        <div class="block_available">
-            <div class="catalog_available">
-                <img src="/img/catalog_photo1.jpg">
-            </div>
-            <p>SG905700N</p>
-        </div>
+        <?php endforeach; ?>
     </div>
 </div>
 <div id="viewed">

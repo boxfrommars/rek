@@ -55,10 +55,20 @@ class Catalog_IndexController extends Whale_Controller_Action
 
         $productService = new Catalog_Model_ProductService();
 
-        $product = $productService->fetch(array('id_parent = ?' => $category['id'], 'p.page_url = ?' => $productName,  'is_published = ?' => true));
-        $product = $product ?: $productService->fetch(array('id_parent = ?' => $category['id'], 'p.id = ?' => $productName,  'is_published = ?' => true));
+        $product = $productService->fetch(array('b.id_parent = ?' => $category['id'], 'p.page_url = ?' => $productName,  'is_published = ?' => true));
+        $product = $product ?: $productService->fetch(array('b.id_parent = ?' => $category['id'], 'p.id = ?' => $productName,  'is_published = ?' => true));
+
+        if (empty($product)) {
+            throw new Zend_Controller_Action_Exception('Такого продукта не существует', 404);
+        }
+
+        $productColorsService = new Catalog_Model_ProductColorService();
+
+        $productColors = $productColorsService->fetchAll(array('id_product = ?' => $product['id']));
+        Whale_Log::log($productColors);
 
         $this->view->page = new Whale_Page_SeoItemAdapter($product);
+        $this->view->productColors = $productColors;
 
         $this->view->product = $product;
     }

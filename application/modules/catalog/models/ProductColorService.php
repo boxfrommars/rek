@@ -14,7 +14,7 @@ class Catalog_Model_ProductColorService extends Whale_Db_TableCached
                 array('*')
             )->joinLeft(
                 array('p' => 'product'),
-                'pc.id_parent = p.id',
+                'pc.id_product = p.id',
                 array(
                     'product_title' => 'title',
                 )

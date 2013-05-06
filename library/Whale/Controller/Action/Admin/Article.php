@@ -74,6 +74,7 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
                     unset ($values['csrf_protect']); // убираем csrf токен
                     $this->_model->insert($values);
                     $this->_flashMessenger->addMessage('Запись добавлена');
+                    $this->_setRedirectByItem($values);
                     $this->_redirectTo();
                 }
             }
@@ -93,6 +94,7 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
             $id = $this->_getParam('id');
             $item = $this->_model->fetchRow(array('id = ?' => $id));
             $this->_updateFormByItem($item);
+            $this->_setRedirectByItem($item);
             if (empty($item)) {
                 $this->_flashMessenger->addMessage('Вы пытаетесь отредактировать несуществующую запись');
                 $this->_redirectTo();

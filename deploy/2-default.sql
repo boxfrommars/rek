@@ -136,7 +136,7 @@ CREATE TABLE "product_color" (
 
   "id_color" INT NOT NULL REFERENCES "color" (id),      -- цвет
   "id_product"  INT NOT NULL REFERENCES "product" (id), -- товар
-  "description" TEXT,                                   -- описание
+  "content" TEXT,                                   -- описание
 
   "is_published" BOOL DEFAULT 'f',
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
@@ -291,4 +291,4 @@ INSERT INTO page_text (mark, "group", "group_title", "position", title, content,
 INSERT INTO page_text (mark, "group", "group_title", "position", title, content, created_at, updated_at) VALUES ('third', 'main', 'Главная', 'Почему выбирают нас / третий блок', 'Заголовок 3', '<p>При необходимости срочного приобретения керамогранита, покупатель сталкивается с ситуацией, когда на складе продавца не всегда имеется необходимое количество материала. Отечественные производители КЕРАТОН, KERAMA MARAZZI, Italon, Grasaro заблаговременно осуществляют доставку  продукции дистрибьюторам в количестве, соответствующем спросу и объемам продаж. Поэтому компания Рекада всегда располагает достаточным количеством керамогранита Эстима и любых коллекций KERAMA MARAZZI, Italon и Grasaro. <br> В случае, когда клиент желает приобрести керамогранит оптом, он может заранее оформить заявку, чтобы мы успели</p>', '2013-04-23 04:22:44', '2013-04-23 04:22:44');
 
 INSERT INTO settings (title, name, value) VALUES ('email', 'email', 'boxfrommars@gmail.com');
-INSERT INTO settings (title, name, value) VALUES ('Прайс', 'price', '');
+INSERT INTO settings (title, name, value) VALUES ('Прайс', 'price', 'price.xls');

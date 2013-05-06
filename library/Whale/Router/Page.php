@@ -31,7 +31,7 @@ ORDER BY url";
 
         $select = $db->select()->from(
             array('p' => 'page'),
-            array('url' => "array_to_string(array_agg(a.page_url ORDER BY a.path), '/')")
+            array('url' => "array_to_string(array_agg(a.page_url ORDER BY a.path), '/')", 'is_locked')
         )->joinInner(
             array('a' => 'page'),
             'a.path @> p.path',
@@ -42,9 +42,9 @@ ORDER BY url";
             'p.page_url'
         );
 
-        $nextSelect = $db->select()->from(array('s' => $select), '*')->where('url = ?', $path);
+        $nextSelect = $db->select()->from(array('s' => $select), '*')->where('url = ?', $path)->where('NOT is_locked');
         $result = $nextSelect->query()->fetch();
-//        Whale_Log::log($result);
+        Whale_Log::log($result);
         return empty($result) ? false : array('page' => $result) + $this->_defaults;
     }
 

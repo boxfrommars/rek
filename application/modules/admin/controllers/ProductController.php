@@ -3,7 +3,7 @@
  * @copyright  (c) 2013
  * @author Franky Calypso <franky.calypso@gmail.com>
  */
-class Admin_ProductController extends Whale_Controller_Action_Admin_Article
+class Admin_ProductController extends Whale_Controller_Action_Admin_Page
 {
     /**
      * @var Catalog_Model_ProductService
