@@ -35,10 +35,24 @@ class Default_IndexController extends Whale_Controller_Action
         $layout = Zend_Layout::getMvcInstance();
         $layout->setLayout('page');
 
+        $db = Zend_Db_Table::getDefaultAdapter();
 
-        $model = new Page_Model_Service();
-        $items = $model->fetchAll(null, array('path ASC'));
-        Whale_Log::log($items->toArray());
+        $select = $db->select()->from(
+            array('p' => 'page'),
+            array('url' => "array_to_string(array_agg(a.page_url ORDER BY a.path), '/')", '*')
+        )->joinInner(
+                array('a' => 'page'),
+                'a.path @> p.path',
+                array()
+            )->group(
+                'p.id',
+                'p.path',
+                'p.page_url'
+            );
+        $nextSelect = $db->select()->from(array('s' => $select), '*')->order(array('path'));
+//        $nextSelect = $db->select()->from(array('s' => $select), '*')->where('is_published')->order(array('path'));
+        $items = $nextSelect->query()->fetchAll();
+        Whale_Log::log($items);
         $this->view->assign('items', $items);
 
     }

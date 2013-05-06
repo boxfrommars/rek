@@ -55,9 +55,11 @@ class Feedback_Form_Public extends Twitter_Bootstrap_Form_Horizontal
     public function initActions()
     {
         $this->addElement('button', 'submit', array(
-            'label' => 'Сохранить',
+            'label' => '',
             'type' => 'submit',
             'class' => 'btn-orange',
+            'id' => 'contact_button',
+            'value' => '',
             'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_SUCCESS,
         ));
 

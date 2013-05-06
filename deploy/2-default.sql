@@ -232,17 +232,19 @@ CREATE OR REPLACE FUNCTION trig_update_page_node_path()
 
         ELSIF TG_OP = 'INSERT' THEN
             UPDATE page SET path = get_calculated_page_node_path(NEW.id) WHERE page.id = NEW.id;
-            IF ((NEW.page_url IS NULL OR NEW.page_url = '') AND NEW.name != 'main') THEN
-                UPDATE page SET page_url = urltranslit(NEW.title) WHERE page.id = NEW.id;
-            END IF;
-            IF (NEW.name IS NULL OR NEW.name = '') THEN
+
+            IF (COALESCE(NEW."name", '') = '') THEN
                 UPDATE page SET "name" = urltranslit(NEW.title) WHERE page.id = NEW.id;
             END IF;
-            IF (NEW.page_title IS NULL OR NEW.page_title = '') THEN
+            IF (COALESCE(NEW."page_title", '') = '') THEN
                 UPDATE page SET "page_title" = NEW.title WHERE page.id = NEW.id;
             END IF;
-            IF (NEW.entity IS NULL) THEN
+            IF (COALESCE(NEW."entity", '') = '') THEN
                 UPDATE page SET "entity" = TG_TABLE_NAME WHERE page.id = NEW.id;
+            END IF;
+
+            IF (COALESCE(NEW."page_title", '') = '') THEN
+                UPDATE page SET page_url = urltranslit(NEW.title) WHERE page.id = NEW.id;
             END IF;
 
         END IF;
@@ -280,13 +282,14 @@ INSERT INTO surface (title) VALUES ('Неполированный');
 INSERT INTO country (title) VALUES ('Россия');
 INSERT INTO country (title) VALUES ('Италия');
 
-INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Главная', '', '', 'Главная', 't', 'main', NULL);
-INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'О компании', '', 'about', 'О компании', 't', 'about', (SELECT id FROM page WHERE name = 'main'));
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Главная', '', '', 'Главная', 'f', 'main', NULL);
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'О компании', '', 'about', 'О компании', 'f', 'about', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Контакты', '<p><strong>Как добраться пешком от метро:</strong>&nbsp;Станция м. Нагатинская (первый вагон из центра).</p><p>От метро двигайтесь вдоль Варшавского шоссе по ходу движения транспорта 7-8 минут средним темпом (или можно проехать одну остановку на любом транспорте и далее идти вперед еще 1-2 минуты). 6-этажное здание бизнес-центра, расположенно вдоль шоссе (вдоль здания стоят высокие ели, на углу есть адресный указатель - &quot;Варшавское шоссе, д. 42&quot;).</p><p>Вход находится по центру фасада со стороны шоссе (круглые вращающиеся двери). Посетителям необходимо спуститься направо, вниз на цокольный этаж к гостевому ресепшн, назвать свою фамилию и сказать, что пришли в компанию &quot;Рекада&quot;. На лифте подняться на 5-й этаж, из лифтового холла повернуть налево, на двери офиса находится вывеска &quot;Рекада-Центр&quot;.</p>', 'contacts', 'Контакты', 't', 'contacts', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'База знаний', '', 'articles', 'База знаний', 't', 'articles', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Галерея', '', 'gallery', 'Галерея', 't', 'gallery', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Новости', '', 'news', 'Новости', 't', 'news', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Заявка', '', 'feedback', 'Оставить заявку', 't', 'feedback', (SELECT id FROM page WHERE name = 'main'));
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Карта сайта', '', 'map', 'Карта сайта', 't', 'map', (SELECT id FROM page WHERE name = 'main'));
 
 INSERT INTO category (title, is_published, id_parent) VALUES ('Керамогранит', 't', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO category (title, is_published, id_parent) VALUES ('Вентфасады', 't', (SELECT id FROM page WHERE name = 'main'));
