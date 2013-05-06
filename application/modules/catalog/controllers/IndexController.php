@@ -11,12 +11,12 @@ class Catalog_IndexController extends Whale_Controller_Action
     {
         parent::init();
         $this->_service = new Catalog_Model_CategoryService();
+        $layout = Zend_Layout::getMvcInstance();
+        $layout->setLayout('catalog');
     }
 
     public function indexAction()
     {
-        $layout = Zend_Layout::getMvcInstance();
-        $layout->setLayout('catalog');
         $categoryName = $this->getParam('category');
         if (empty($categoryName)) {
             throw new Zend_Controller_Action_Exception('Не указана категория', 404);
@@ -38,9 +38,6 @@ class Catalog_IndexController extends Whale_Controller_Action
 
     public function viewAction()
     {
-        $layout = Zend_Layout::getMvcInstance();
-        $layout->setLayout('product');
-
         $categoryName = $this->getParam('category');
         $productName = $this->getParam('product');
         if (empty($categoryName)) {

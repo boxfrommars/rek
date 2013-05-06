@@ -1,11 +1,20 @@
-<?php foreach ($this->items as $item): ?>
-    <div class="plita_left"><img style="width:200px" src="/files/<?php echo $item['image']; ?>" title="<?php echo $item['title']; ?>">
-        <div class="inblock">
-            <div class="pict_gallery"><a href="/files/<?php echo $item['image']; ?>" title="<?php echo $item['title']; ?>" >
-                    <img src="/img/search.png" height="20px" width="20px"/>посмотреть</a>
+
+<div id="navigation">
+    <p><a href="/">ГЛАВНАЯ</a><span>/</span> Галерея</p>
+</div>
+<div id="gallery">
+    <p class="gallery_name">Внутренняя отделка</p>
+    <?php foreach ($this->items as $item): ?>
+        <div class="plita_left"><img style="width:200px" src="/files/<?php echo $item['image']; ?>" title="<?php echo $item['title']; ?>">
+            <div class="inblock">
+                <div class="pict_gallery"><a href="/files/<?php echo $item['image']; ?>" title="<?php echo $item['title']; ?>" >
+                        <img src="/img/search.png" height="20px" width="20px"/>посмотреть</a>
+                </div>
             </div>
         </div>
-    </div>
-<?php endforeach; ?>
-<!--<p class="gallery_link"><a class="open_link" href="gallery.html"><img src="/img/back.png">Отделка</a><span>|</span><a class="next_link" href="#">Фасады<img src="/img/next.png"></a></p>-->
-<script>$("#gallery > div:nth-child(4)").removeClass('plita_left').addClass('plita_right');</script>
+    <?php endforeach; ?>
+    <!--<p class="gallery_link"><a class="open_link" href="gallery.html"><img src="/img/back.png">Отделка</a><span>|</span><a class="next_link" href="#">Фасады<img src="/img/next.png"></a></p>-->
+    <script>$("#gallery > div:nth-child(4)").removeClass('plita_left').addClass('plita_right');</script>
+</div>
+
+
