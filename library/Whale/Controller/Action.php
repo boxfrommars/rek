@@ -45,10 +45,16 @@ class Whale_Controller_Action extends Zend_Controller_Action
         $pageService = new Whale_Node_Service();
         $pages = $pageService->get('Top');
         Whale_Log::log($name);
+        $db = Zend_Db_Table::getDefaultAdapter();
 
-        $page = count($pages) > 0 ? new Whale_Page_SeoItemAdapter(array_pop($pages)) : new Whale_Page_SeoItemAdapter(array());
-//        $db = Zend_Db_Table::getDefaultAdapter();
-//        $page = $db->select()->from('page', array('*'))->where('name = ?', $name)->query()->fetch();
+        $page = $db->select()->from(
+            array('p' => 'page'),
+            array('*')
+        )->where('name = ?', $name)->query()->fetch();
+
+        $page = $page ?: array();
+
+        $page = new Whale_Page_SeoItemAdapter($page);
         $this->view->assign('page', $page);
     }
 }

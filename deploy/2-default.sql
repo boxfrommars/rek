@@ -266,6 +266,7 @@ INSERT INTO country (title) VALUES ('Россия');
 INSERT INTO country (title) VALUES ('Италия');
 
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Главная', '', '', 'Главная', 't', 'main', NULL);
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'О компании', '', 'about', 'О компании', 'f', 'about', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Галерея', '', 'gallery', 'Галерея', 't', 'gallery', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Новости', '', 'news', 'Новости', 't', 'news', (SELECT id FROM page WHERE name = 'main'));
 
