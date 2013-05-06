@@ -35,7 +35,7 @@ class Admin_SettingsController extends Whale_Controller_Action_Admin_Article
             } else {
                 $this->_flashMessenger->addMessage('Файл не выбраны');
             }
-            $this->_redirectToIndex(array('action' => 'index', 'controller' => 'settings'));
+            $this->_redirectTo(array('action' => 'index', 'controller' => 'settings'));
         }
         parent::indexAction();
     }

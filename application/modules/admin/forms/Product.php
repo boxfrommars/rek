@@ -10,21 +10,14 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
     protected function _initMiddleElements()
     {
         $this->_addClassNames('row-fluid');
-        $brandService = new Catalog_Model_BrandService();
         $countryService = new Catalog_Model_CountryService();
         $surfaceService = new Catalog_Model_SurfaceService();
 
-        $brands = $brandService->fetchAll();
         $countries = $countryService->fetchAll();
         $surfaces = $surfaceService->fetchAll();
 
-        $brandSelectOptions = array();
         $countrySelectOptions = array();
         $surfaceSelectOptions = array();
-
-        foreach ($brands as $brand) {
-            $brandSelectOptions[$brand['id']] = $brand['title'];
-        }
 
         foreach ($countries as $country) {
             $countrySelectOptions[$country['id']] = $country['title'];
@@ -33,6 +26,8 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
         foreach ($surfaces as $surface) {
             $surfaceSelectOptions[$surface['id']] = $surface['title'];
         }
+
+        parent::_initMiddleElements();
 
         $this->addElement('text', 'article', array(
             'label' => "Артикул",
@@ -56,14 +51,6 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'validators' => array(),
             'dimension' => 12,
             'multiOptions' => $countrySelectOptions,
-        ));
-
-        $this->addElement('select', 'id_brand', array(
-            'label' => "Бренд",
-            'required' => true,
-            'validators' => array(),
-            'dimension' => $this->_dimension,
-            'multiOptions' => $brandSelectOptions,
         ));
 
         $this->addElement('select', 'id_surface', array(

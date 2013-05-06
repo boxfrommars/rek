@@ -1,7 +1,7 @@
 <?php
 /**
- * @copyright  (c) 2013
- * @author Franky Calypso <franky.calypso@gmail.com>
+ * @copyright (c) 2013
+ * @author    Franky Calypso <franky.calypso@gmail.com>
  */
 class Whale_Controller_Action extends Zend_Controller_Action
 {
@@ -21,41 +21,34 @@ class Whale_Controller_Action extends Zend_Controller_Action
     public function init()
     {
         parent::init();
-        $this->_log = $this->getLog();
         $this->_user = Whale_User_Current::get();
         $this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
-        $this->view->flashMessages = $this->_flashMessenger->getMessages();
-        $this->log($this->getRequest()->getParams());
-    }
-
-    protected function _setPage($name)
-    {
-        $db = Zend_Db_Table::getDefaultAdapter();
-        $page = $db->select()->from('page', array('*'))->where('name = ?', $name)->query()->fetch();
-        $this->view->page = new Whale_Page_SeoItemAdapter($page);
+        /** @var Zend_Controller_Action_Helper_FlashMessenger $flashMessenger */
+        $flashMessenger = $this->_flashMessenger;
+        $this->view->assign('flashMessages', $flashMessenger->getMessages());
+        Whale_Log::log($this->getRequest()->getParams());
     }
 
     /**
-     * @return bool|Zend_Log
+     * @return Zend_Controller_Request_Http
      */
-    public function getLog()
+    public function getRequest()
     {
-        $bootstrap = $this->getInvokeArg('bootstrap');
-        if (!$bootstrap->hasResource('Log')) {
-            return false;
-        }
-        $log = $bootstrap->getResource('Log');
-
-        return $log;
+        return parent::getRequest();
     }
 
-    public function log($message, $priority = Zend_Log::INFO)
+    /**
+     * @param $name
+     */
+    protected function _setPage($name)
     {
-        if (is_scalar($message)) {
-            $this->_log->log($message, $priority);
-        } else {
-            $this->_log->log(print_r($message, true), $priority);
-        }
+        $pageService = new Whale_Node_Service();
+        $pages = $pageService->get('Top');
+        Whale_Log::log($name);
 
+        $page = count($pages) > 0 ? new Whale_Page_SeoItemAdapter(array_pop($pages)) : new Whale_Page_SeoItemAdapter(array());
+//        $db = Zend_Db_Table::getDefaultAdapter();
+//        $page = $db->select()->from('page', array('*'))->where('name = ?', $name)->query()->fetch();
+        $this->view->assign('page', $page);
     }
 }

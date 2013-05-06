@@ -32,9 +32,8 @@ $(document).ready(function() {
     $('body .fancybox').fancybox({
         padding : 0
     });
-
     $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd'
+        dateFormat: 'yy-mm-dd'
     });
 
     var config = {};

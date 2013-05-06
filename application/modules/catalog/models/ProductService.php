@@ -14,14 +14,14 @@ class Catalog_Model_ProductService extends Whale_Db_TableCached
                 array('*')
             )->joinLeft(
                 array('b' => 'brand'),
-                'p.id_brand = b.id',
+                'p.id_parent = b.id',
                 array(
                     'brand_title' => 'title',
                     'id_brand' => 'id',
                 )
             )->joinLeft(
                 array('ct' => 'category'),
-                'b.id_category = ct.id',
+                'b.id_parent = ct.id',
                 array(
                     'category_title' => 'title',
                     'category_page_url' => 'page_url',
@@ -40,7 +40,7 @@ class Catalog_Model_ProductService extends Whale_Db_TableCached
                     'country_title' => 'title',
                 )
             );
-
+        Whale_Log::log($select->query()->fetchAll());
         if (null !== $where) {
             foreach ($where as $key => $value) {
                 if ($key == 'is_published = ?') {

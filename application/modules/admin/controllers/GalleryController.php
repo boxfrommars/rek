@@ -14,7 +14,7 @@ class Admin_GalleryController extends Whale_Controller_Action_Admin_Article
     protected $_model;
 
     /**
-     * @var Admin_Form_Titled
+     * @var Admin_Form_Gallery
      */
     protected $_form;
 

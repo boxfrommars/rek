@@ -12,7 +12,7 @@ class Admin_CategoryController extends Whale_Controller_Action_Admin_Article
     protected $_model;
 
     /**
-     * @var Admin_Form_Category
+     * @var Admin_Form_CatalogItem
      */
     protected $_form;
 
@@ -20,7 +20,7 @@ class Admin_CategoryController extends Whale_Controller_Action_Admin_Article
     {
         parent::init();
         $this->_model = new Catalog_Model_CategoryService();
-        $this->_form = new Admin_Form_Category();
+        $this->_form = new Admin_Form_CatalogItem();
     }
 }
 

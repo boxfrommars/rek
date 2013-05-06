@@ -22,7 +22,29 @@ class Whale_Router_Page extends Zend_Controller_Router_Route {
         }
 
         $db = Zend_Db_Table::getDefaultAdapter();
-        $result = $db->select()->from('page', array('*'))->where('page_url = ?', $path)->where('NOT is_locked')->query()->fetch();
+
+        $sql = "SELECT p.id, array_to_string(array_agg(a.page_url ORDER BY a.path), '/') AS url
+FROM page As p INNER JOIN page AS a
+    ON (a.path @> p.path)
+GROUP BY p.id, p.path, p.page_url
+ORDER BY url";
+
+        $select = $db->select()->from(
+            array('p' => 'page'),
+            array('url' => "array_to_string(array_agg(a.page_url ORDER BY a.path), '/')")
+        )->joinInner(
+            array('a' => 'page'),
+            'a.path @> p.path',
+            array()
+        )->group(
+            'p.id',
+            'p.path',
+            'p.page_url'
+        );
+
+        $nextSelect = $db->select()->from(array('s' => $select), '*')->where('url = ?', $path);
+        $result = $nextSelect->query()->fetch();
+//        Whale_Log::log($result);
         return empty($result) ? false : array('page' => $result) + $this->_defaults;
     }
 

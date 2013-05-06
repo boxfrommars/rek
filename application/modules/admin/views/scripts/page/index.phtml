@@ -1,22 +1,55 @@
 <?php echo $this->paginator; ?>
 <h2>Страницы</h2>
-<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'page'), 'admin') ?>" role="button" class="btn btn-success add">
-        Добавить страницу
-</a></p>
-
-<?php foreach ($this->items as $item): ?>
-<ul class="unstyled">
-    <li>
-        <span class="span6">
+<table class="table" id="pages-tree">
+<thead>
+    <tr>
+        <th>Заголовок</th>
+        <th style="width: 30px;"></th>
+        <th style="width: 30px;"></th>
+        <th style="width: 30px;"></th>
+        <th style="width: 30px;"></th>
+    </tr>
+</thead>
+<tbody>
+    <?php foreach ($this->items as $item): ?>
+    <tr data-tt-id="<?php echo $item['path']; ?>"
+        data-tt-parent-id="<?php if ($item['path'] !== 'Top') echo implode('.', array_slice(explode('.', $item['path']), 0, -1)) ?>">
+        <td>
             <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page', 'action' => 'edit'), 'admin') ?>">
                 <?php echo $item['title'] ?>
             </a>
-        </span>
-        <span class="span1">
-            <?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?>
-        </span>
-        <a title="Добавить подстраницу" href="<?php echo $this->url(array('action' => 'add', 'controller' => 'page'), 'admin') ?>" class="icon-plus"></a>
-    </li>
-</ul>
-<?php endforeach; ?>
+        </td>
+        <td>
+            <?php if (!$item['is_locked']): ?>
+                <a title="Перейти к модулю"
+                   href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page', 'action' => 'edit'), 'admin') ?>"
+                   class="icon-wrench pull-right action edit"></a>
+            <?php endif; ?>
+        </td>
+        <td>
+            <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page', 'action' => 'delete'), 'admin') ?>"
+               class="icon-trash pull-right action delete"></a>
+        </td>
+        <td>
+            <a title="Добавить подстраницу"
+               href="<?php echo $this->url(array('action' => 'add', 'controller' => 'page', 'idParent' => $item['id'], 'module' => 'admin'), 'default') ?>"
+               class="icon-plus pull-right action add"></a>
+        </td>
+        <td>
+            <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'page', 'action' => 'edit'), 'admin') ?>"
+               class="icon-edit pull-right action edit"></a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</tbody>
+</table>
+
+<link rel="stylesheet" href="/vendor/jquery-treetable-master/stylesheets/jquery.treetable.css">
+<link rel="stylesheet" href="/vendor/jquery-treetable-master/stylesheets/jquery.treetable.theme.default.css">
+<script src="/vendor/jquery-treetable-master/javascripts/src/jquery.treetable.js"></script>
+<script>
+    $(function () {
+        $("#pages-tree").treetable({expandable: true});
+    });
+</script>
 <?php echo $this->paginator; ?>

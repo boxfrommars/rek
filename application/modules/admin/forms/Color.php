@@ -3,7 +3,7 @@
  * @copyright  (c) 2013
  * @author Franky Calypso <franky.calypso@gmail.com>
  */
-class Admin_Form_Color extends Admin_Form_Base
+class Admin_Form_Color extends Whale_Form_Base
 {
     public function init()
     {

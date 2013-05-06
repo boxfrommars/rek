@@ -38,7 +38,7 @@ class Whale_Controller_Plugin_PrivilegesChecker extends Zend_Controller_Plugin_A
         Whale_Log::log('role: ' . $user->getRole() . ' / resource: ' . $resource . ' / privelege: ' . $privilege);
 
         $resourceExist = $acl->has($resource);
-        Whale_Log::log('resource ' . $resource . ($resourceExist ? ' exist' : ' not found'), Zend_Log::NOTICE);
+        Whale_Log::log('resource ' . $resource . ($resourceExist ? ' exist' : ' not found'));
 
         if (!$resourceExist) {
             $this->_pageNotFound($request);

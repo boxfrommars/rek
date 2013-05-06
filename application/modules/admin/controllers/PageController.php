@@ -3,8 +3,10 @@
  * @copyright  (c) 2013
  * @author Franky Calypso <franky.calypso@gmail.com>
  */
-class Admin_PageController extends Whale_Controller_Action_Admin_Article
+class Admin_PageController extends Whale_Controller_Action_Admin_Page
 {
+
+    protected $_order = array('path ASC');
 
     /**
      * @var Catalog_Model_CategoryService
@@ -12,7 +14,7 @@ class Admin_PageController extends Whale_Controller_Action_Admin_Article
     protected $_model;
 
     /**
-     * @var Admin_Form_Category
+     * @var Whale_Form_Page
      */
     protected $_form;
 
@@ -20,7 +22,7 @@ class Admin_PageController extends Whale_Controller_Action_Admin_Article
     {
         parent::init();
         $this->_model = new Page_Model_Service();
-        $this->_form = new Admin_Form_Page();
+        $this->_form = new Whale_Form_Page();
     }
 }
 

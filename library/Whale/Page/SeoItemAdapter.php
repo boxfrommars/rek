@@ -9,7 +9,7 @@ class Whale_Page_SeoItemAdapter implements Whale_Page_Interface  {
     }
 
     public function getTitle() {
-        return $this->_item['page_title'] ?: $this->_item['title'];
+        return empty($this->_item['page_title']) ?: $this->_item['title'];
     }
 
     public function getId() {

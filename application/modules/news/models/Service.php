@@ -6,4 +6,5 @@
 class News_Model_Service extends Whale_Db_TableCached
 {
     protected $_name = 'news';
+    protected $_sequence = false;
 }

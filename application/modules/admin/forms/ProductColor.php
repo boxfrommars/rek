@@ -24,6 +24,8 @@ class Admin_Form_ProductColor extends Admin_Form_CatalogItem
             $colorSelectOptions[$color['id']] = $color['title'];
         }
 
+        parent::_initMiddleElements();
+
         $this->addElement('select', 'id_color', array(
             'label' => "Цвет",
             'required' => true,

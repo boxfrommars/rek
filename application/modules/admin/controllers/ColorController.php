@@ -14,7 +14,7 @@ class Admin_ColorController extends Whale_Controller_Action_Admin_Article
     protected $_model;
 
     /**
-     * @var Admin_Form_Titled
+     * @var Admin_Form_Color
      */
     protected $_form;
 

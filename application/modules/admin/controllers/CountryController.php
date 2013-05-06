@@ -14,7 +14,7 @@ class Admin_CountryController extends Whale_Controller_Action_Admin_Article
     protected $_model;
 
     /**
-     * @var Admin_Form_Titled
+     * @var Whale_Form_Titled
      */
     protected $_form;
 
@@ -22,7 +22,7 @@ class Admin_CountryController extends Whale_Controller_Action_Admin_Article
     {
         parent::init();
         $this->_model = new Catalog_Model_CountryService();
-        $this->_form = new Admin_Form_Titled();
+        $this->_form = new Whale_Form_Titled();
     }
 }
 
