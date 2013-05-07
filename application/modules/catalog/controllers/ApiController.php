@@ -52,6 +52,14 @@ class Catalog_ApiController extends Whale_Controller_Action
             $brand = explode(',', $this->getParam('brand'));
             $select->where('b.id IN (?)', $brand);
         }
+
+        if ($this->getParam('mincost')) {
+            $select->where('p.cost >= ', $this->getParam('mincost'));
+        }
+
+        if ($this->getParam('maxcost')) {
+            $select->where('p.cost <= ', $this->getParam('mincost'));
+        }
         Whale_Log::log($select->assemble());
         $this->view->products = $select->query()->fetchAll();
     }
