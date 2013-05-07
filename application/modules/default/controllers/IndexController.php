@@ -84,10 +84,22 @@ class Default_IndexController extends Whale_Controller_Action
             array('*')
         )->where('name = ?', 'articles')->query()->fetch();
 
-        $items = $db->select()->from(
+        $select = $db->select()->from(
             array('p' => 'page'),
-            array('*')
-        )->where('path <@ ?', $page['path'])->query()->fetchAll();
+            array('url' => "array_to_string(array_agg(a.page_url ORDER BY a.path), '/')", '*')
+        )->joinInner(
+                array('a' => 'page'),
+                'a.path @> p.path',
+                array()
+            )->group(
+                'p.id',
+                'p.path',
+                'p.page_url'
+            );
+        $nextSelect = $db->select()->from(array('s' => $select), '*')->order(array('path'));
+
+
+        $items = $nextSelect->where('path <@ ?', $page['path'])->query()->fetchAll();
 
         $this->view->assign('items', $items);
 

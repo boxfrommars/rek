@@ -6,12 +6,13 @@
 class Catalog_Model_Module extends Whale_Module
 {
     protected $_name = 'catalog';
-    protected $_resources = array('index');
+    protected $_resources = array('index', 'api');
 
     public function getPrivileges()
     {
         return array(
             array('type' => 'allow', 'role' => 'guest', 'resource' => $this->getName() . ':index', 'action' => null),
+            array('type' => 'allow', 'role' => 'guest', 'resource' => $this->getName() . ':api', 'action' => null),
         );
     }
 

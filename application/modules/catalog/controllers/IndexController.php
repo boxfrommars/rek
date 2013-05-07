@@ -26,10 +26,23 @@ class Catalog_IndexController extends Whale_Controller_Action
         if (empty($category)) {
             throw new Zend_Controller_Action_Exception('Такой категории не существует', 404);
         }
+        $productService = new Catalog_Model_ProductService();
+        $surfaceService = new Catalog_Model_SurfaceService();
+        $countryService = new Catalog_Model_CountryService();
+        $brandService = new Catalog_Model_BrandService();
+        $colorService = new Catalog_Model_ColorService();
+
+        $this->view->colors = $colorService->fetchAll();
+        $this->view->surfaces = $surfaceService->fetchAll();
+        $this->view->countries = $countryService->fetchAll();
+        $this->view->brands = $brandService->fetchAll();
+        $this->view->sizes = $productService->getAdapter()->select()->from(array('p' => 'product'), array('width', 'height'))->group(array('height', 'width'))->query()->fetchAll();
+        $this->view->costsRange = $productService->getAdapter()->select()->from(array('p' => 'product'), array('max' => 'max(cost)', 'min' => 'min(cost)'))->query()->fetch();
+
+
         $this->view->category = $category;
         $this->view->page = new Whale_Page_SeoItemAdapter($category->toArray());
 
-        $productService = new Catalog_Model_ProductService();
 
         $products = $productService->fetchAll(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true));
 

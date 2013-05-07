@@ -67,14 +67,11 @@
             <p><span>Размер:</span> <?php echo $this->product['width'] ?>*<?php echo $this->product['height'] ?>*<?php echo $this->product['depth'] ?></p>
 <!--            <p><span>Рисунок:</span> дерево</p>-->
 <!--            <p><span>Цвет:</span> серый</p>-->
-            <input type="button" id="catalog_button" value="">
+            <input type="button" id="catalog_button" value="" onclick="location.href = '<?php echo $this->url(array(), 'feedback') ?>'">
         </div>
     </div>
     <div id="catalog_info">
         <?php echo $this->product['content'] ?>
-<!--        <p><span>Керамогранит Мираж</span> - это новинка, которая интересна тем, что искусно имитирует нерукотворные-->
-<!--            трещины и канавки в камне, подвергшийся обработке.<br> Этот керамогранит под мрамор еще раз-->
-<!--            доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.</p>-->
     </div>
     <div id="available">
         <p class="left_catalog_point">ДОСТУПНЫЕ ЦВЕТА:</p>

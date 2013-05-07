@@ -18,10 +18,11 @@ class Page_IndexController extends Whale_Controller_Action
 
     public function viewAction()
     {
+        $page = $this->getParam('page');
+        $this->_setPage($page['name']);
         $layout = Zend_Layout::getMvcInstance();
         $layout->setLayout('page');
         $this->view->assign($this->getParam('page'));
-        $this->view->page = new Whale_Page_SeoItemAdapter($this->getParam('page'));
         Whale_Log::log($this->getAllParams());
     }
 }

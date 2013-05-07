@@ -31,4 +31,8 @@ class Whale_Page_SeoItemAdapter implements Whale_Page_Interface  {
     public function getKeywords() {
         return $this->_item['page_keywords'];
     }
+
+    public function getParents() {
+        return empty($this->_item['parents']) ? array() : $this->_item['parents'];
+    }
 }

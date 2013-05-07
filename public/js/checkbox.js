@@ -20,12 +20,12 @@ function changeCheck(el)
 {
      var el = el,
         input = el.find("input").eq(0);
-   	 if(!input.attr("checked")) {
+   	 if(!input.prop("checked")) {
 		el.css("background-image","url(/img/checkbox.png)");
-		input.attr("checked", true)
+		input.prop("checked", true)
 	} else {
 		el.css("background-image","url(/img/empty_checkbox.png)");
-		input.attr("checked", false)
+		input.prop("checked", false)
 	}
      return true;
 }
@@ -37,7 +37,7 @@ function changeCheckStart(el)
 {
 var el = el,
 		input = el.find("input").eq(0);
-      if(input.attr("checked")) {
+      if(input.prop("checked")) {
 		el.css("background-image","url(/img/checkbox.png)");
 		}
      return true;
@@ -54,20 +54,46 @@ $(function() {
 		});
 	});
 
+var reloadProducts = function(){
+    var data = {};
+    $('.product-filter').each(function(k, v) {
+        if(data.hasOwnProperty($(v).attr('name'))){
+            data[$(v).attr('name')] += ',' + $(v).val();
+        } else {
+            data[$(v).attr('name')] = '' + $(v).val();
+        }
+    });
+    $('.product-filter-checkbox:checked').each(function(k, v) {
+        if(data.hasOwnProperty($(v).attr('name'))){
+            data[$(v).attr('name')] += ',' + $(v).val();
+        } else {
+            data[$(v).attr('name')] = '' + $(v).val();
+        }
+    });
+    $('#product-container').load('/catalog/api', data);
+    console.log(data);
+}
+
+
+
 $(function() {
 		$( ".slider" ).slider({
-			min: 0,
-            max: 800,
+			min: ~~$("input#minCost").attr('data-value'),
+            max: ~~$("input#maxCost").attr('data-value'),
 			range: true,
-            values: [250, 600],
+            values: [$("input#minCost").attr('data-value'), $("input#maxCost").attr('data-value')],
             stop: function(event, ui) {
-            $("input#minCost").val(jQuery(".slider").slider("values",0));
-            $("input#maxCost").val(jQuery(".slider").slider("values",1));
+                $("input#minCost").val($(".slider").slider("values",0));
+                $("input#maxCost").val($(".slider").slider("values",1));
+                reloadProducts();
             },
             slide: function(event, ui){
-            $("input#minCost").val(jQuery(".slider").slider("values",0));
-            $("input#maxCost").val(jQuery(".slider").slider("values",1));
+                $("input#minCost").val($(".slider").slider("values",0));
+                $("input#maxCost").val($(".slider").slider("values",1));
             }
 		});
-	});
+    $('.niceCheck').on('click', function(){
+        reloadProducts();
+    });
+});
 

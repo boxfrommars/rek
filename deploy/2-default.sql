@@ -273,8 +273,13 @@ ON product FOR EACH ROW EXECUTE PROCEDURE trig_update_page_node_path();
 
 -- DATA
 INSERT INTO color (title, hex) VALUES ('белый', '#ffffff');
-INSERT INTO color (title, hex) VALUES ('чёрный', '#000000');
-INSERT INTO color (title, hex) VALUES ('красный', '#ff0000');
+INSERT INTO color (title, hex) VALUES ('оранжевый', '#000000');
+INSERT INTO color (title, hex) VALUES ('коричневый', '#000001');
+INSERT INTO color (title, hex) VALUES ('серый', '#000002');
+INSERT INTO color (title, hex) VALUES ('чёрный', '#000003');
+INSERT INTO color (title, hex) VALUES ('синий', '#000004');
+INSERT INTO color (title, hex) VALUES ('зелёный', '#000005');
+INSERT INTO color (title, hex) VALUES ('красный', '#000006');
 
 INSERT INTO surface (title) VALUES ('Полированный');
 INSERT INTO surface (title) VALUES ('Неполированный');
@@ -282,10 +287,13 @@ INSERT INTO surface (title) VALUES ('Неполированный');
 INSERT INTO country (title) VALUES ('Россия');
 INSERT INTO country (title) VALUES ('Италия');
 
-INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Главная', '', '', 'Главная', 'f', 'main', NULL);
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Главная', '', '', 'Главная', 't', 'main', NULL);
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'О компании', '', 'about', 'О компании', 'f', 'about', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Контакты', '<p><strong>Как добраться пешком от метро:</strong>&nbsp;Станция м. Нагатинская (первый вагон из центра).</p><p>От метро двигайтесь вдоль Варшавского шоссе по ходу движения транспорта 7-8 минут средним темпом (или можно проехать одну остановку на любом транспорте и далее идти вперед еще 1-2 минуты). 6-этажное здание бизнес-центра, расположенно вдоль шоссе (вдоль здания стоят высокие ели, на углу есть адресный указатель - &quot;Варшавское шоссе, д. 42&quot;).</p><p>Вход находится по центру фасада со стороны шоссе (круглые вращающиеся двери). Посетителям необходимо спуститься направо, вниз на цокольный этаж к гостевому ресепшн, назвать свою фамилию и сказать, что пришли в компанию &quot;Рекада&quot;. На лифте подняться на 5-й этаж, из лифтового холла повернуть налево, на двери офиса находится вывеска &quot;Рекада-Центр&quot;.</p>', 'contacts', 'Контакты', 't', 'contacts', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'База знаний', '', 'articles', 'База знаний', 't', 'articles', (SELECT id FROM page WHERE name = 'main'));
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Статья 1', '', 'articles1', 'Статья 1', 'f', 'articles1', (SELECT id FROM page WHERE name = 'articles'));
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Статья 1.1', '', 'articles1_1', 'Статья 1.1', 'f', 'articles1_1', (SELECT id FROM page WHERE name = 'articles1'));
+INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Статья 2', '', 'articles2', 'Статья 2', 'f', 'articles2', (SELECT id FROM page WHERE name = 'articles'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Галерея', '', 'gallery', 'Галерея', 't', 'gallery', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Новости', '', 'news', 'Новости', 't', 'news', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Заявка', '', 'feedback', 'Оставить заявку', 't', 'feedback', (SELECT id FROM page WHERE name = 'main'));

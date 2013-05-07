@@ -1,7 +1,12 @@
 <div id="left_catalog"></div>
 <div id="right_catalog">
     <div class="nav_catalog">
-        <p><a href="/">Главная</a> <span>/</span> <?php echo $this->title ?> <span></p>
+        <p>
+        <?php foreach ($this->page->getParents() as $parent): ?>
+            <a href="<?php echo $parent['url'] ?: '/'; ?>"><?php echo $parent['title']; ?></a> <span>/</span>
+        <?php endforeach; ?>
+            <?php echo $this->title ?>
+        </p>
     </div>
     <h3 class="news_title"><span><?php echo $this->title; ?></span></h3>
     <?php echo $this->content; ?>
