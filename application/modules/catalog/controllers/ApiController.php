@@ -54,11 +54,11 @@ class Catalog_ApiController extends Whale_Controller_Action
         }
 
         if ($this->getParam('mincost')) {
-            $select->where('p.cost >= ', $this->getParam('mincost'));
+            $select->where('p.cost >= ?', $this->getParam('mincost'));
         }
 
         if ($this->getParam('maxcost')) {
-            $select->where('p.cost <= ', $this->getParam('maxcost'));
+            $select->where('p.cost <= ?', $this->getParam('maxcost'));
         }
         Whale_Log::log($select->assemble());
         $this->view->products = $select->query()->fetchAll();
