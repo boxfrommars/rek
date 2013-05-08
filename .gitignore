@@ -2,4 +2,5 @@
 /.idea
 /.zfproject.xml
 /public/files/
+/tmp
 !/public/files/.htaccess
