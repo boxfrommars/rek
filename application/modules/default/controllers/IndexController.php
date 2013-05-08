@@ -112,7 +112,8 @@ class Default_IndexController extends Whale_Controller_Action
     {
         // форма поиска
         $form = new Application_Form_Search();
-        $this->view->searchForm = $form;
+        $this->view->form = $form;
+        $this->_setPage('search');
 
         // если есть post-данные и они валидны
         if ($this->getRequest()->isPost()) {
@@ -123,13 +124,34 @@ class Default_IndexController extends Whale_Controller_Action
                 $searchString = $values['searchstring'];
 
                 // ищем
-                $search = new Application_Model_Search();
-                $hits = $search->search($searchString);
+
+                $searchOptions = Whale_Get::option('search');
+                $searchService = new Default_Model_SearchService($searchOptions['index_path']);
+                $searchService->open();
+                $hits = $searchService->search($searchString);
 
                 // отправляем в вид строку поиска и результат
                 $this->view->searchString = $searchString;
                 $this->view->searchResult = $hits;
+                Whale_Log::log('SEEEEEEEAAAAAAAAAAAARCH');
+                Whale_Log::log($hits);
+
             }
+        }
+    }
+
+    public function csearchAction()
+    {
+        $searchOptions = Whale_Get::option('search');
+        $searchService = new Default_Model_SearchService($searchOptions['index_path']);
+        $searchService->create();
+
+        $pageService = new Page_Model_Service();
+        $pages = $pageService->getBaseSelect()->where('p.is_published')->query()->fetchAll();
+        foreach ($pages as $page) {
+
+            Whale_Log::log(new Default_Model_SearchDocPageAdapter($page));
+            $searchService->addToIndex(new Default_Model_SearchDocPageAdapter($page));
         }
     }
 

@@ -1,35 +1,20 @@
-<h1>Новости проекта</h1>
-<div class="news-list">
+<div id="left_catalog"></div>
+<div id="right_catalog">
+    <div class="nav_catalog">
+        <p><a href="/">Главная</a> <span>/</span> <?php echo $this->page->getTitle(); ?> <span></p>
+    </div>
+    <h3 class="news_title"><span><?php echo $this->page->getTitle(); ?></span></h3>
     <?php foreach ($this->news as $news): ?>
-        <article>
-            <section class="clearfix">
-                <div class="news-tn"><img src="/p/images/tn_news.jpg"></div>
-                <div class="news-content">
-                    <div class="news-date-time"><span class="news-date"><?php echo date('d\.m\.Y', strtotime($news['published_at'])); ?></span><span class="news-time"><?php echo date('H:i', strtotime($news['published_at'])); ?></span></div>
-                    <h2><a href="<?php echo $this->url(array('id' => $news['id'], 'module' => 'news'), 'moduleview'); ?>"><?php echo $news['title']; ?></a></h2>
-                    <div class="news-text">
-                        <?php echo $news['content']; ?>
-                    </div>
-                </div>
-            </section>
-        </article>
+        <div style="padding-bottom: 20px;">
+            <div class="news-date-time" style="font-size: .8em;">
+                <span class="news-date"><?php echo date('d\.m\.Y', strtotime($news['published_at'])); ?></span>
+                <span class="news-time"><?php echo date('H:i', strtotime($news['published_at'])); ?></span>
+            </div>
+            <h3><a href="/news/<?php echo $news['page_url']; ?>"><?php echo $news['title']; ?></a></h3>
+            <div class="news-text">
+                <?php echo $news['content']; ?>
+            </div>
+
+        </div>
     <?php endforeach; ?>
-</div><!-- .news-list -->
-<div class="border-top-orange">
-    <div class="pagination clearfix">
-        <ul>
-            <li class="prev"><a href="#"><span class="arr">&laquo;</span> <span class="text">Назад</span></a></li>
-            <li class="current"><a href="#">1</a></li>
-<!--            <li><a href="#">2</a></li>-->
-<!--            <li><a href="#">3</a></li>-->
-<!--            <li><a href="#">4</a></li>-->
-<!--            <li><a href="#">5</a></li>-->
-<!--            <li><a href="#">6</a></li>-->
-<!--            <li><a href="#">7</a></li>-->
-<!--            <li><a href="#">8</a></li>-->
-<!--            <li><a href="#">9</a></li>-->
-<!--            <li><a href="#">10</a></li>-->
-            <li class="next"><a href="#"><span class="text">Вперед</span> <span class="arr">&raquo;</span></a></li>
-        </ul>
-    </div><!-- .pagination -->
-</div><!-- .border-top-orange -->
+</div>

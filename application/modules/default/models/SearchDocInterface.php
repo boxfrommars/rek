@@ -8,5 +8,11 @@
  */
 
 interface Default_Model_SearchDocInterface {
-    
+    public function getTitle();
+    public function getContent();
+    public function getType();
+    public function getUrl();
+    public function getId();
+    public function getDescription();
+    public function getKeywords();
 }

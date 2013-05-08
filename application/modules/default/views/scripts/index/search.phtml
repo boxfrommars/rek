@@ -1,0 +1,19 @@
+<div id="left_catalog"></div>
+<div id="right_catalog">
+    <div class="nav_catalog">
+        <p><a href="/">Главная</a> <span>/</span> <?php echo $this->page->getTitle(); ?> <span></p>
+    </div>
+    <?php echo $this->page->getContent(); ?>
+    <?php if (null !== $this->searchString): ?>
+        <h3 class="news_title"><span>Результаты поиска по фразе <span><?php print $this->escape($this->searchString); ?></span></span></h3>
+        <?php if (count($this->searchResult) > 0): ?>
+            <ul style="padding-bottom: 20px;">
+                <?php foreach ($this->searchResult as $hit): ?>
+                    <li><a href="<?php echo $hit->url ?>"><?php print $this->escape($hit->title); ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <?php print "соответствий не найдено"; ?>
+        <?php endif; ?>
+    <?php endif; ?>
+</div>

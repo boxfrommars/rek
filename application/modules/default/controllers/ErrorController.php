@@ -15,6 +15,12 @@ class Default_ErrorController extends Zend_Controller_Action
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
+
+                $this->view->page = new Whale_Page_SeoItemAdapter(array(
+                    'title' => 'Ошибка 404. Страница не найдена',
+                    'content' => 'Ошибка 404. Страница не найдена',
+                    'description' => 'Страница ошибки'
+                ));
                 // 404 error -- controller or action not found
                 $this->getResponse()->setHttpResponseCode(404);
                 $priority = Zend_Log::NOTICE;
@@ -23,9 +29,28 @@ class Default_ErrorController extends Zend_Controller_Action
                 break;
             default:
                 // application error
-                $this->getResponse()->setHttpResponseCode(500);
-                $priority = Zend_Log::CRIT;
-                $this->view->message = 'Повторите запрос позже или свяжитесь со службой поддержки';
+                if ($errors->exception->getCode() == 403) {
+                    $this->view->page = new Whale_Page_SeoItemAdapter(array(
+                        'title' => 'Ошибка 403. Запрещено',
+                        'content' => 'Ошибка 403. Запрещено, <a href="/login">войдите</a>, чтобы продолжить',
+                        'description' => 'Страница ошибки'
+                    ));
+                    $this->getResponse()->setHttpResponseCode(403);
+                    $priority = Zend_Log::CRIT;
+                    Whale_Log::log($errors->exception->getCode());
+                    $this->view->message = 'Повторите запрос позже или свяжитесь со службой поддержки';
+
+                } else {
+                    $this->view->page = new Whale_Page_SeoItemAdapter(array(
+                        'title' => 'Ошибка 500. Повторите запрос позже или свяжитесь со службой поддержки',
+                        'content' => 'Ошибка 500. Повторите запрос позже или свяжитесь со службой поддержки',
+                        'description' => 'Страница ошибки'
+                    ));
+                    $this->getResponse()->setHttpResponseCode(500);
+                    $priority = Zend_Log::CRIT;
+                    Whale_Log::log($errors->exception->getCode());
+                    $this->view->message = 'Повторите запрос позже или свяжитесь со службой поддержки';
+                }
                 break;
         }
 
