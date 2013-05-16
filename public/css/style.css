@@ -918,3 +918,6 @@ h5 {
 #content {
     font-family: MyriadPro-Regular;
 }
+#content .carousel-control {
+    font-family: 'Times New Roman';
+}

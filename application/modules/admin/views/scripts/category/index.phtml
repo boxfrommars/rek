@@ -3,7 +3,7 @@
 <p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'category'), 'admin') ?>" role="button" class="btn btn-success add">
         Добавить категорию
 </a></p>
-<table class="table table-hover" id="pages-tree">
+<table class="table table-hover table-striped pages-tree">
     <thead>
     <tr>
         <th>Заголовок</th>
@@ -42,12 +42,3 @@
     <?php endforeach; ?>
     </tbody>
 </table>
-
-<link rel="stylesheet" href="/vendor/jquery-treetable-master/stylesheets/jquery.treetable.css">
-<link rel="stylesheet" href="/vendor/jquery-treetable-master/stylesheets/jquery.treetable.theme.default.css">
-<script src="/vendor/jquery-treetable-master/javascripts/src/jquery.treetable.js"></script>
-<script>
-    $(function () {
-        $("#pages-tree").treetable({expandable: true});
-    });
-</script>

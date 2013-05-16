@@ -16,6 +16,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $front->registerPlugin(new Whale_Controller_Plugin_NavigationInit());
     }
 
+    protected function _initValidatorMessages()
+    {
+        $translator = new Zend_Translate(
+            array(
+                'adapter' => 'array',
+                'content' => APPLICATION_PATH . '/../../Zend/resources/languages',
+                'locale'  => 'ru',
+                'scan' => Zend_Translate::LOCALE_DIRECTORY
+            )
+        );
+        Zend_Validate_Abstract::setDefaultTranslator($translator);
+    }
+
     protected function _initLayoutHelper()
     {
         $this->bootstrap('frontController');

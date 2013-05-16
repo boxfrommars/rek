@@ -11,6 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/shadowbox.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/my.css">
     <script type="text/javascript" src="/js/shadowbox.js"></script>
     <script type="text/javascript">
         Shadowbox.init({
@@ -19,6 +20,7 @@
         });
     </script>
     <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrap/js/my.min.js"></script>
     <script type="text/javascript" src="/js/rekada.js"></script>
 </head>
 <body>
@@ -26,14 +28,45 @@
 
 <?php echo $this->render('_header.phtml') ?>
 <div id="content">
-    <div id="keramo">
-        <?php echo $this->render('_submenu.phtml') ?>
-        <div id="keramo_text">
-            <h1><a href="catalog_keramo.html">КЕРАМОГРАНИТ</a></h1>
-            <p>Оптовые поставки материала из наличия-</p>
-            <p>Подбор вариантов для Вашего объекта-</p>
-            <p>Индивидуальные скидки для подрядчиков-</p>
-            <p id="keramo_nal"><a  href="#">Узнать наличие&#160;&#62;&#62;</a></p>
+    <?php echo $this->render('_submenu.phtml') ?>
+    <div id="keramo" class="tw-bs">
+        <div id="myCarousel" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item">
+                    <img src="img/keramo_bg.jpg" alt="">
+                    <div class="carousel-caption" id="keramo_text">
+                        <h1><a href="/catalog/keramogranit">КЕРАМОГРАНИТ</a></h1>
+                        <p>Оптовые поставки материала из наличия-</p>
+                        <p>Подбор вариантов для Вашего объекта-</p>
+                        <p>Индивидуальные скидки для подрядчиков-</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/keramo_bg.jpg" alt="">
+                    <div class="carousel-caption" id="keramo_text">
+                        <h1><a href="/catalog/keramogranit">КЕРАМОГРАНИТ</a></h1>
+                        <p>Оптовые поставки материала из наличия-</p>
+                        <p>Подбор вариантов для Вашего объекта-</p>
+                        <p>Индивидуальные скидки для подрядчиков-</p>
+                    </div>
+                </div>
+                <div class="item active">
+                    <img src="img/keramo_bg.jpg" alt="">
+                    <div class="carousel-caption" id="keramo_text">
+                        <h1><a href="/catalog/keramogranit">КЕРАМОГРАНИТ</a></h1>
+                        <p>Оптовые поставки материала из наличия-</p>
+                        <p>Подбор вариантов для Вашего объекта-</p>
+                        <p>Индивидуальные скидки для подрядчиков-</p>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
         </div>
     </div>
     <div id="keramika">

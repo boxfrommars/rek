@@ -11,6 +11,8 @@
     <link href="/vendor/datepicker/css/datepicker.css" rel="stylesheet">
     <link href="/vendor/fancyBox/source/jquery.fancybox.css" rel="stylesheet">
     <link href="/vendor/jquery-ui-1.10.2.custom/css/plain-theme/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="/vendor/jquery-treetable-master/stylesheets/jquery.treetable.css">
+    <link rel="stylesheet" href="/vendor/jquery-treetable-master/stylesheets/jquery.treetable.theme.default.css">
     <style>
         /* sticky footer */
         html, body {
@@ -62,6 +64,12 @@
     <script src="/vendor/bootstrap-wysiwyg/bootstrap-wysiwyg.js"></script>
     <script src="/vendor/ckeditor/ckeditor.js"></script>
     <script src="/vendor/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.js"></script>
+    <script src="/vendor/jquery-treetable-master/javascripts/src/jquery.treetable.js"></script>
+    <script>
+        $(function () {
+            $(".pages-tree").treetable({expandable: true});
+        });
+    </script>
 
     <script src="/js/script.js"></script>
 </head>
@@ -111,7 +119,7 @@
 
     <div class="container-fluid main">
         <div class="row-fluid">
-            <div class="span10">
+            <div class="span9">
                 <div class="row-fluid">
                     <?php if (!empty($this->flashMessages)): ?>
                     <div id="app-messages">
@@ -126,8 +134,30 @@
                     <div id="app-modal"></div>
                 </div>
             </div>
-            <div class="span2" id="app-sidebar">
-<!--                --><?php //echo $this->navigation()->menu(); ?>
+            <div class="span3" id="app-sidebar">
+                <h2>Страницы</h2>
+                <table class="table table-hover table-striped pages-tree">
+                    <tbody>
+                    <?php foreach ($this->pageitems as $pageitem): ?>
+                        <tr data-tt-id="<?php echo $pageitem['path']; ?>"
+                            data-tt-parent-id="<?php if (pathdepth($pageitem['path']) != 1) echo implode('.', array_slice(explode('.', $pageitem['path']), 0, -1)) ?>"
+                            data-tt-initialState="<?php if (pathdepth($pageitem['path']) == 1) echo 'expanded' ?>">
+                            <td>
+                                <a href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'edit'), 'admin') ?>">
+                                    <?php echo $pageitem['title'] ?>
+                                </a>
+                            </td>
+                            <td>
+                                <?php if (subentity($pageitem['entity'])): ?>
+                                    <a title="Добавить подстраницу"
+                                       href="<?php echo $this->url(array('action' => 'add', 'controller' => subentity($pageitem['entity']), 'idParent' => $pageitem['id'], 'module' => 'admin'), 'default') ?>"
+                                       class="icon-plus pull-right action add"></a>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

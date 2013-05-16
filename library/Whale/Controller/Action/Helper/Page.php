@@ -56,6 +56,11 @@ class Whale_Controller_Action_Helper_Page extends Zend_Controller_Action_Helper_
     {
         if ($module == 'admin') {
             $layout->setLayout('admin');
+            $pageService = new Page_Model_Service();
+            $pageItems = $pageService->fetchAll(null, array('path ASC'));
+            $layout->getView()->assign('pageitems', $pageItems);
+
+
         } else if ($module == 'default' && $controller = 'error') {
 //            $layout->disableLayout();
             $layout->setLayout('error');
