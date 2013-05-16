@@ -7,6 +7,11 @@ class Catalog_IndexController extends Whale_Controller_Action
      */
     protected $_service;
 
+    /**
+     * @var int кол-во выводимых последних просмотренных
+     */
+    protected $_lastViewedCount = 3;
+
     public function init()
     {
         parent::init();
@@ -51,13 +56,18 @@ class Catalog_IndexController extends Whale_Controller_Action
 
     public function viewAction()
     {
+
+        Zend_Session::start();
+
+
+
         $categoryName = $this->getParam('category');
         $productName = $this->getParam('product');
         if (empty($categoryName)) {
             throw new Zend_Controller_Action_Exception('Не указана категория', 404);
         }
         $category = $this->_service->fetchRow(array('page_url = ?' => $categoryName, 'is_published' => true));
-        Whale_Log::log($category);
+//        Whale_Log::log($category);
         if (empty($category)) {
             throw new Zend_Controller_Action_Exception('Такой категории не существует', 404);
         }
@@ -75,10 +85,33 @@ class Catalog_IndexController extends Whale_Controller_Action
             throw new Zend_Controller_Action_Exception('Такого продукта не существует', 404);
         }
 
+        $lastViewedSessionNamespace = new Zend_Session_Namespace('last_viewed_products');
+
+        if (empty($lastViewedSessionNamespace->items)) {
+            $lastViewedItemIds = array();
+            $lastViewedItems = array();
+        } else {
+            $lastViewedItemIds = $lastViewedSessionNamespace->items;
+            $lastViewedItemIds = array_filter($lastViewedItemIds, function($elm) use ($product) { return $elm != $product['id']; });
+            if (!empty($lastViewedItemIds)) {
+                $lastViewedItems = $productService->fetchAll(array(
+                        'p.id IN (?)' => $lastViewedItemIds,
+                        'is_published = ?' => true)
+                );
+            } else {
+                $lastViewedItems = array();
+            }
+        }
+        $this->view->lastViewed = $lastViewedItems;
+        array_unshift($lastViewedItemIds, $product['id']);
+        $lastViewedItemIds = array_slice($lastViewedItemIds, 0, $this->_lastViewedCount);
+        $lastViewedSessionNamespace->items = $lastViewedItemIds;
+
+
         $productColorsService = new Catalog_Model_ProductColorService();
 
         $productColors = $productColorsService->fetchAll(array('id_product = ?' => $product['id']));
-        Whale_Log::log($productColors);
+//        Whale_Log::log($productColors);
 
         $this->view->page = new Whale_Page_SeoItemAdapter($product);
         $this->view->productColors = $productColors;

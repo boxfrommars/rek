@@ -37,8 +37,8 @@ class Application_Model_Search
 
             // добавляем все документы в индекс
             foreach ($pages as $page){
-                $doc = new Default_Model_SearchDocPageAdapter($page);
-                $this->sIndex->addDocument($doc);
+                $searchDoc = new Default_Model_SearchDocPageAdapter($page);
+                $this->addToIndex($searchDoc);
             }
             $this->sIndex->optimize();
         }
@@ -104,10 +104,11 @@ class Application_Model_Search
     public function createLuceneDoc(Default_Model_SearchDocInterface $searchDoc)
     {
         $doc = new Zend_Search_Lucene_Document();
-        $doc->addField(Zend_Search_Lucene_Field::Text('title', $searchDoc->title, 'utf-8'));
-        $doc->addField(Zend_Search_Lucene_Field::Text('content', $searchDoc->content, 'utf-8'));
-        $doc->addField(Zend_Search_Lucene_Field::UnIndexed('type', $searchDoc->type, 'utf-8'));
-        $doc->addField(Zend_Search_Lucene_Field::keyword('docid', $searchDoc->id));
+        $doc->addField(Zend_Search_Lucene_Field::Text('title', $searchDoc->getTitle(), 'utf-8'));
+        $doc->addField(Zend_Search_Lucene_Field::Text('content', $searchDoc->getContent(), 'utf-8'));
+        $doc->addField(Zend_Search_Lucene_Field::UnIndexed('type', $searchDoc->getType(), 'utf-8'));
+        $doc->addField(Zend_Search_Lucene_Field::keyword('url', $searchDoc->getURL(), 'utf-8'));
+        $doc->addField(Zend_Search_Lucene_Field::keyword('id', $searchDoc->getId(), 'utf-8'));
 
         return $doc;
 

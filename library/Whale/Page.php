@@ -67,6 +67,14 @@ class Whale_Page implements Whale_Page_Interface {
         return $this->_title;
     }
 
+    /**
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->_title;
+    }
+
 
 
 }

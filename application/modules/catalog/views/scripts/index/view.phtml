@@ -92,30 +92,14 @@
         <div class="prev_viewed">
             <img src="/img/catalog_prev.png">
         </div>
-        <div class="block_available">
-            <div class="catalog_available">
-                <img src="/img/catalog_photo1.jpg">
+        <?php foreach ($this->lastViewed as $lastViewed): ?>
+            <div class="block_available">
+                <div class="catalog_available">
+                    <img src="/files/<?php echo $lastViewed['image'] ?>">
+                </div>
+                <p><?php echo $lastViewed['title'] ?></p>
             </div>
-            <p>SG905700N</p>
-        </div>
-        <div class="block_available">
-            <div class="catalog_available">
-                <img src="/img/catalog_photo1.jpg">
-            </div>
-            <p>SG905700N</p>
-        </div>
-        <div class="block_available">
-            <div class="catalog_available">
-                <img src="/img/catalog_photo1.jpg">
-            </div>
-            <p>SG905700N</p>
-        </div>
-        <div class="block_available" style="margin-right: 0 !important">
-            <div class="catalog_available">
-                <img src="/img/catalog_photo1.jpg">
-            </div>
-            <p>SG905700N</p>
-        </div>
+        <?php endforeach; ?>
         <div class="next_viewed">
             <img src="/img/catalog_next.png">
         </div>

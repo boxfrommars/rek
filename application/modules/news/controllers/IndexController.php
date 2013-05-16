@@ -14,21 +14,13 @@ class News_IndexController extends Whale_Controller_Action
     {
         parent::init();
         $this->_model = new News_Model_Service();
-
-        $this->view->serviceName = 'news';
-        $this->view->serviceTitle = 'Новости';
-
-        $this->view->menu = array(
-            array(
-                'title' => 'Новости',
-                'url' => '/news',
-                'active' => true,
-            ),
-        );
+        $layout = Zend_Layout::getMvcInstance();
+        $layout->setLayout('page');
     }
 
     public function indexAction()
     {
+        $this->_setPage('news');
         $this->view->news = $this->_model->fetchAll(array('is_published = ?' => true), array('published_at DESC'));
     }
 
