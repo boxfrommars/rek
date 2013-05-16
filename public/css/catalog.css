@@ -121,7 +121,7 @@
     font-weight: bold;
     float: left;
     width: 50%;
-    font-family: Trebuchet MS;
+    /*font-family: Trebuchet MS;*/
 }
 
 .size_block p span, .area p span {
@@ -134,12 +134,12 @@
     font-size: 12px;
     font-weight: bold;
     vertical-align: middle;
-    font-family: Trebuchet MS;
+    /*font-family: Trebuchet MS;*/
 }
 
 @media all and ( min-width : 0px )	 { 
     .area p { 
-    letter-spacing: -1px;
+    /*letter-spacing: -1px;*/
   } 
 }
 .product_from_catalog {

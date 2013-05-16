@@ -3,21 +3,21 @@
         <p><a href="/">Главная</a> <span>/</span> <?php echo $this->page->getTitle(); ?> <span></p>
     </div>
 </div>
-<div id="map">
-    <div id="contact_info">
-        <p id="contact_title"><?php echo $this->page->getTitle() ?></p>
-        <div id="contacts_page">
-            <div class="contact_page">
-                <p class="adress_phone">АДРЕС ОФИСА:</p>
-                <p><?php echo $this->settings['address'] ?></p>
-            </div>
-            <div class="contact_page">
-                <p class="adress_phone">ТЕЛЕФОН:</p>
-                <p><?php echo $this->settings['phone'] ?></p>
-            </div>
+<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+<div id="map"></div> <!--map-->
+<div id="contact_info">
+    <p id="contact_title"><?php echo $this->page->getTitle() ?></p>
+    <div id="contacts_page">
+        <div class="contact_page">
+            <p class="adress_phone">АДРЕС ОФИСА:</p>
+            <p><?php echo $this->settings['address'] ?></p>
+        </div>
+        <div class="contact_page">
+            <p class="adress_phone">ТЕЛЕФОН:</p>
+            <p><?php echo $this->settings['phone'] ?></p>
         </div>
     </div>
-</div> <!--map-->
+</div>
 <div id="news">
     <h3 id="contact_news_title"><span>НОВОСТИ</span></h3>
     <div id="contact_point"></div>
@@ -27,6 +27,29 @@
         <p> Специальная цена до 1 ноября - белый полированный керамогранит! 15.10.2012 <br> <a href="#">подробнее</a></p>
     </div>
 </div>
+<script>
+    ymaps.ready(init);
+    var myMap;
+
+    function init(){
+        myMap = new ymaps.Map ("map", {
+            center: [55.675306, 37.624741],
+            behaviors: ['scrollZoom', 'drag', 'multiTouch'],
+            zoom: 15
+        });
+        var myPlacemark = new ymaps.Placemark([<?php echo $this->settings['coordinates'] ?>], { // [55.675306, 37.624741]
+            // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
+            balloonContentHeader: "Рекада",
+            balloonContentBody: "<?php echo $this->settings['address'] ?>",
+            balloonContentFooter: "<?php echo $this->settings['phone'] ?>",
+            hintContent: "Рекада"
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+
+        myPlacemark.balloon.open();
+    }
+</script>
 <div id="location">
     <?php echo $this->page->getContent(); ?>
 </div>

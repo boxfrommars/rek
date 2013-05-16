@@ -325,3 +325,4 @@ INSERT INTO settings (title, name, value) VALUES ('email', 'email', 'boxfrommars
 INSERT INTO settings (title, name, value) VALUES ('Телефон', 'phone', '+7 (495) 921-40-44');
 INSERT INTO settings (title, name, value) VALUES ('Адрес', 'address', '115230, Москва, Варшавское шоссе, д. 42');
 INSERT INTO settings (title, name, value) VALUES ('Прайс', 'price', 'price.xls');
+INSERT INTO settings (title, name, value) VALUES ('Координаты', 'coordinates', '55.675306, 37.624741');

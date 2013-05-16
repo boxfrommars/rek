@@ -71,7 +71,6 @@ var reloadProducts = function(){
         }
     });
     $('#product-container').load('/catalog/api', data);
-    console.log(data);
 }
 
 
