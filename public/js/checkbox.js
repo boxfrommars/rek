@@ -54,6 +54,7 @@ $(function() {
 		});
 	});
 
+var prevData = {};
 var reloadProducts = function(){
     var data = {};
     $('.product-filter').each(function(k, v) {
@@ -70,12 +71,22 @@ var reloadProducts = function(){
             data[$(v).attr('name')] = '' + $(v).val();
         }
     });
-    $('#product-container').load('/catalog/api', data);
+    if (prevData != data) {
+        $('#product-container').load('/catalog/api', data);
+        prevData = data;
+    }
+//    var url = '/catalog/api/index/';
+//    for (part in data) {
+//        url += '/' + (part + '/' + data[part]);
+//    }
+//    console.log(url);
+//    location.href = url;
 }
 
 
 
 $(function() {
+    reloadProducts();
 		$( ".slider" ).slider({
 			min: ~~$("input#minCost").attr('data-value'),
             max: ~~$("input#maxCost").attr('data-value'),

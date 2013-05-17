@@ -16,11 +16,17 @@ class Default_IndexController extends Whale_Controller_Action
         $layout = Zend_Layout::getMvcInstance();
         $layout->setLayout('main');
 
+        $sliderService = new Gallery_Model_ServiceMain();
+
+        $this->view->slider = $sliderService->fetchAll(array('is_published = ?' => true));
+
         $newsService = new News_Model_Service();
         $this->view->news = $newsService->fetchAll(array('is_published = ?' => true), array('published_at DESC'), 3);
 
         $productService = new Catalog_Model_ProductService();
-        $this->view->items = $productService->fetchAll(null, array('created_at DESC'), 4);
+        $this->view->itemsAction = $productService->fetchAll(array('is_action' => true, 'is_published = ?' => true), array('created_at DESC'), 4);
+        $this->view->itemsNew = $productService->fetchAll(array('is_new' => true, 'is_published = ?' => true), array('created_at DESC'), 4);
+        $this->view->itemsHit = $productService->fetchAll(array('is_hit' => true, 'is_published = ?' => true), array('created_at DESC'), 4);
 
         $pageTextsService = new Whale_PageText_Service();
 

@@ -1,0 +1,32 @@
+<?php echo $this->paginator; ?>
+<h2>Слайдер</h2>
+<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'gallerymain'), 'admin') ?>" role="button" class="btn btn-success add">Добавить картинку</a></p>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Опубликован</th>
+            <th>Дата публикации</th>
+            <th>Заголовок</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="sortable">
+    <?php foreach ($this->items as $item): ?>
+        <tr>
+            <td style="width: 100px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
+            <td style="width: 135px;"><img src="/files/<?php echo $item['image'] ?>" /></td>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'gallerymain', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'gallerymain', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'gallerymain', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<script>
+    $(function() {
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
+    });
+</script>
+<?php echo $this->paginator; ?>

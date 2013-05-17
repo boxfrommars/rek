@@ -27,7 +27,7 @@ class Catalog_IndexController extends Whale_Controller_Action
             throw new Zend_Controller_Action_Exception('Не указана категория', 404);
         }
         $category = $this->_service->fetchRow(array('page_url = ?' => $categoryName, 'is_published' => true));
-        Whale_Log::log($category);
+
         if (empty($category)) {
             throw new Zend_Controller_Action_Exception('Такой категории не существует', 404);
         }

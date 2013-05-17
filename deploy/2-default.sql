@@ -167,6 +167,19 @@ CREATE TABLE "gallery" (
   PRIMARY KEY("id")
 );
 
+CREATE TABLE "gallerymain" (
+  "id" SERIAL NOT NULL,
+  "is_published" BOOL DEFAULT 'f',
+  "title" VARCHAR(255) NOT NULL,
+  "text" TEXT,
+  "image" VARCHAR (255),
+
+
+  "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
+  "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
+  PRIMARY KEY("id")
+);
+
 CREATE TABLE "settings" (
   "id" SERIAL NOT NULL,
 
@@ -308,10 +321,10 @@ INSERT INTO brand (title, id_parent) VALUES ('Kerama Marazzi', (SELECT id FROM p
 INSERT INTO brand (title, id_parent) VALUES ('Italon', (SELECT id FROM page WHERE name = 'ventfasady'));
 INSERT INTO brand (title, id_parent) VALUES ('Grassaro', (SELECT id FROM page WHERE name = 'keramogranit'));
 
-INSERT INTO product (title, page_description, article, cost, image, content, id_surface, id_country, is_action, is_new, is_hit, width, height, depth, is_published, id_parent) VALUES ('AGA6625K', 'Хороший вентфасад', 'AGA6625K', 540.00, '', 'Вентфасады Estima - это новинка, которая интересна тем, что искусно имитирует нерукотворные трещины и канавки в камне, подвергшийся обработке. Этот вентфасад под мрамор еще раз доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.', 1, 1, true, true, true, 12.0, 12.0, 12.0, true, (SELECT id FROM page WHERE name = 'estima'));
-INSERT INTO product (title, page_description, article, cost, image, content, id_surface, id_country, is_action, is_new, is_hit, width, height, depth, is_published, id_parent) VALUES ('BGA6625K', 'Хороший вентфасад', 'BGA6625K', 740.00, '', 'Вентфасады Estima - это новинка, которая интересна тем, что искусно имитирует нерукотворные трещины и канавки в камне, подвергшийся обработке. Этот вентфасад под мрамор еще раз доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.', 1, 1, true, true, true, 20.0, 12.0, 12.0, true, (SELECT id FROM page WHERE name = 'estima'));
-INSERT INTO product (title, page_description, article, cost, image, content, id_surface, id_country, is_action, is_new, is_hit, width, height, depth, is_published, id_parent) VALUES ('CGA6625K', 'Хороший керамогранит', 'CGA6625K', 340.00, '', 'Керамогранит Grassaro - это новинка, которая интересна тем, что искусно имитирует нерукотворные трещины и канавки в камне, подвергшийся обработке. Этот керамогранит под мрамор еще раз доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.', 1, 1, true, true, true, 12.0, 30, 12.0, true, (SELECT id FROM page WHERE name = 'grassaro'));
-INSERT INTO product (title, page_description, article, cost, image, content, id_surface, id_country, is_action, is_new, is_hit, width, height, depth, is_published, id_parent) VALUES ('DGA6625K', 'Хороший вентфасад', 'DGA6625K', 600.00, '', 'Вентфасады Italon - это новинка, которая интересна тем, что искусно имитирует нерукотворные трещины и канавки в камне, подвергшийся обработке. Этот вентфасад под мрамор еще раз доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.', 1, 1, true, true, true, 12.0, 30, 12.0, true, (SELECT id FROM page WHERE name = 'italon'));
+INSERT INTO product (title, page_description, article, cost, image, content, id_surface, id_country, is_action, is_new, is_hit, width, height, depth, is_published, id_parent) VALUES ('AGA6625K', 'Хороший вентфасад', 'AGA6625K', 540.00, '', 'Вентфасады Estima - это новинка, которая интересна тем, что искусно имитирует нерукотворные трещины и канавки в камне, подвергшийся обработке. Этот вентфасад под мрамор еще раз доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.', 1, 1, false, true, true, 12.0, 12.0, 12.0, true, (SELECT id FROM page WHERE name = 'estima'));
+INSERT INTO product (title, page_description, article, cost, image, content, id_surface, id_country, is_action, is_new, is_hit, width, height, depth, is_published, id_parent) VALUES ('BGA6625K', 'Хороший вентфасад', 'BGA6625K', 740.00, '', 'Вентфасады Estima - это новинка, которая интересна тем, что искусно имитирует нерукотворные трещины и канавки в камне, подвергшийся обработке. Этот вентфасад под мрамор еще раз доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.', 1, 1, true, false, true, 20.0, 12.0, 12.0, true, (SELECT id FROM page WHERE name = 'estima'));
+INSERT INTO product (title, page_description, article, cost, image, content, id_surface, id_country, is_action, is_new, is_hit, width, height, depth, is_published, id_parent) VALUES ('CGA6625K', 'Хороший керамогранит', 'CGA6625K', 340.00, '', 'Керамогранит Grassaro - это новинка, которая интересна тем, что искусно имитирует нерукотворные трещины и канавки в камне, подвергшийся обработке. Этот керамогранит под мрамор еще раз доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.', 1, 1, false, true, true, 12.0, 30, 12.0, true, (SELECT id FROM page WHERE name = 'grassaro'));
+INSERT INTO product (title, page_description, article, cost, image, content, id_surface, id_country, is_action, is_new, is_hit, width, height, depth, is_published, id_parent) VALUES ('DGA6625K', 'Хороший вентфасад', 'DGA6625K', 600.00, '', 'Вентфасады Italon - это новинка, которая интересна тем, что искусно имитирует нерукотворные трещины и канавки в камне, подвергшийся обработке. Этот вентфасад под мрамор еще раз доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.', 1, 1, true, true, false, 12.0, 30, 12.0, true, (SELECT id FROM page WHERE name = 'italon'));
 
 INSERT INTO news (title, preview, content, is_published, published_at, id_parent) VALUES ('Свежая акция!', 'Акция на полированный керамогранит в ноябре', '<p>Акция на полированный керамогранит в ноябре! Feeling offended by Gregor''s delayed response in opening the door, the clerk warns him of the consequences of missing work. He adds that his recent performance has been unsatisfactory. Gregor disagrees and tells him that he will open the door shortly. Nobody on the other side of the door could understand a single word he uttered (Gregor was unaware of the fact that his voice has also transformed) and conclude that he is seriously ill. Finally, Gregor manages to unlock and open the door with his mouth. He apologizes to the office manager for the delay. Horrified by the sight of Gregor''s appearance, the manager bolts out of the apartment, while Gregor''s mother faints. Gregor tries to catch up with him but his father drives him back into the bedroom with a cane and a rolled newspaper. Gregor injures himself squeezing back through the doorway, and his father slams the door shut. Gregor, exhausted, falls asleep.</p>','t', '2012-11-06', (SELECT id FROM page WHERE name = 'news'));
 INSERT INTO news (title, preview, content, is_published, published_at, id_parent) VALUES ('Расширение линейки', 'Расширение линейки полированного керамогранита', 'Расширение линейки полированного керамогранита ','t', '2012-10-31', (SELECT id FROM page WHERE name = 'news'));
@@ -326,3 +339,12 @@ INSERT INTO settings (title, name, value) VALUES ('Телефон', 'phone', '+7
 INSERT INTO settings (title, name, value) VALUES ('Адрес', 'address', '115230, Москва, Варшавское шоссе, д. 42');
 INSERT INTO settings (title, name, value) VALUES ('Прайс', 'price', 'price.xls');
 INSERT INTO settings (title, name, value) VALUES ('Координаты', 'coordinates', '55.675306, 37.624741');
+
+INSERT INTO gallerymain (is_published, title, text, image, created_at, updated_at) VALUES (true, 'Керамогранит', '<p>Оптовые поставки материала из наличия-</p>
+<p>Подбор вариантов для Вашего объекта-</p>
+<p>Индивидуальные скидки для подрядчиков-</p>
+<p id="keramo_nal"><a href="#">Узнать наличие&nbsp;&gt;&gt;</a></p>', 'keramo_bg.jpg', '2013-05-17 06:48:16', '2013-05-17 06:48:16');
+INSERT INTO gallerymain (is_published, title, text, image, created_at, updated_at) VALUES (true, 'Керамогранит', '<p>Оптовые поставки материала из наличия-</p>
+<p>Подбор вариантов для Вашего объекта-</p>
+<p>Индивидуальные скидки для подрядчиков-</p>
+<p id="keramo_nal"><a href="#">Узнать наличие&nbsp;&gt;&gt;</a></p>', 'keramo_bg.jpg', '2013-05-17 07:17:31', '2013-05-17 07:17:31');

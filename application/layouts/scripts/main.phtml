@@ -32,38 +32,20 @@
     <div id="keramo" class="tw-bs">
         <div id="myCarousel" class="carousel slide">
             <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <?php foreach ($this->slider as $key => $slider): ?>
+                    <li data-target="#myCarousel" data-slide-to="<?php echo $key; ?>"></li>
+                <?php endforeach; ?>
             </ol>
             <div class="carousel-inner">
-                <div class="item">
-                    <img src="img/keramo_bg.jpg" alt="">
+                <?php foreach ($this->slider as $key => $slider): ?>
+                <div class="item <?php if ($key == 0) echo 'active'; ?>">
+                    <img src="/files/<?php echo $slider['image']; ?>" alt="">
                     <div class="carousel-caption" id="keramo_text">
-                        <h1><a href="/catalog/keramogranit">КЕРАМОГРАНИТ</a></h1>
-                        <p>Оптовые поставки материала из наличия-</p>
-                        <p>Подбор вариантов для Вашего объекта-</p>
-                        <p>Индивидуальные скидки для подрядчиков-</p>
+                        <h1><?php echo $slider['title']; ?></h1>
+                        <?php echo $slider['text']; ?>
                     </div>
                 </div>
-                <div class="item">
-                    <img src="img/keramo_bg.jpg" alt="">
-                    <div class="carousel-caption" id="keramo_text">
-                        <h1><a href="/catalog/keramogranit">КЕРАМОГРАНИТ</a></h1>
-                        <p>Оптовые поставки материала из наличия-</p>
-                        <p>Подбор вариантов для Вашего объекта-</p>
-                        <p>Индивидуальные скидки для подрядчиков-</p>
-                    </div>
-                </div>
-                <div class="item active">
-                    <img src="img/keramo_bg.jpg" alt="">
-                    <div class="carousel-caption" id="keramo_text">
-                        <h1><a href="/catalog/keramogranit">КЕРАМОГРАНИТ</a></h1>
-                        <p>Оптовые поставки материала из наличия-</p>
-                        <p>Подбор вариантов для Вашего объекта-</p>
-                        <p>Индивидуальные скидки для подрядчиков-</p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
             <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
@@ -72,12 +54,48 @@
     <div id="keramika">
         <div id="gradient"></div>
         <div id="choice">
-            <h2><a href="#">АКЦИИ</a></h2>
-            <h2><a href="#">ХИТЫ</a></h2>
-            <h2><a href="#">НОВИНКИ</a></h2>
+            <h2 class="active"><a href="#" class="data-plitka" data-plitka=".plitka-action">АКЦИИ</a></h2>
+            <h2><a href="#" class="data-plitka" data-plitka=".plitka-hit">ХИТЫ</a></h2>
+            <h2><a href="#" class="data-plitka" data-plitka=".plitka-new">НОВИНКИ</a></h2>
         </div>
-        <div id="plitka">
-            <?php foreach ($this->items as $item): ?>
+        <script>
+            $(document).ready(function(){
+                $('.data-plitka').on('click', function(){
+                    $('.plitka').hide().filter($(this).attr('data-plitka')).fadeIn();
+                    $('#choice h2').removeClass('active');
+                    $(this).parent('h2').addClass('active');
+                    return false;
+                });
+            });
+        </script>
+        <div class="plitka plitka-action">
+            <?php foreach ($this->itemsAction as $item): ?>
+                <div class="block"> <img style="height: 190px" src="/files/<?php echo $item['image'] ?>">
+                    <div class="inblock">
+                        <div class="pict"><a rel="shadowbox[Vacation]" href="/files/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
+                        <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
+                        <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
+                        <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
+                        <p class="zakaz"><a href="/catalog/<?php echo $item['category_page_url'] . '/' . ($item['page_url'] ?: $product['id']) ?>">ЗАКАЗАТЬ</a></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="plitka plitka-hit" style="display: none">
+            <?php foreach ($this->itemsHit as $item): ?>
+                <div class="block"> <img style="height: 190px" src="/files/<?php echo $item['image'] ?>">
+                    <div class="inblock">
+                        <div class="pict"><a rel="shadowbox[Vacation]" href="/files/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
+                        <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
+                        <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
+                        <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
+                        <p class="zakaz"><a href="/catalog/<?php echo $item['category_page_url'] . '/' . ($item['page_url'] ?: $product['id']) ?>">ЗАКАЗАТЬ</a></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="plitka plitka-new" style="display: none">
+            <?php foreach ($this->itemsNew as $item): ?>
                 <div class="block"> <img style="height: 190px" src="/files/<?php echo $item['image'] ?>">
                     <div class="inblock">
                         <div class="pict"><a rel="shadowbox[Vacation]" href="/files/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
