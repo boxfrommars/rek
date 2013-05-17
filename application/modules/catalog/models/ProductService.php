@@ -6,6 +6,7 @@
 class Catalog_Model_ProductService extends Whale_Db_TableCached
 {
     protected $_name = 'product';
+    protected $_sequence = false;
 
     public function getBaseSelect($where = null) {
         $select = $this->getAdapter()->select()
