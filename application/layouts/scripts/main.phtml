@@ -70,9 +70,9 @@
         </script>
         <div class="plitka plitka-action">
             <?php foreach ($this->itemsAction as $item): ?>
-                <div class="block"> <img style="height: 190px" src="/files/<?php echo $item['image'] ?>">
+                <div class="block"> <img style="height: 190px" src="/files/thumbnail/<?php echo $item['image'] ?>">
                     <div class="inblock">
-                        <div class="pict"><a rel="shadowbox[Vacation]" href="/thumbnail/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
+                        <div class="pict"><a rel="shadowbox[Vacation]" href="/files/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
                         <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
                         <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
                         <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
@@ -83,9 +83,9 @@
         </div>
         <div class="plitka plitka-hit" style="display: none">
             <?php foreach ($this->itemsHit as $item): ?>
-                <div class="block"> <img style="height: 190px" src="/files/<?php echo $item['image'] ?>">
+                <div class="block"> <img style="height: 190px" src="/files/thumbnail/<?php echo $item['image'] ?>">
                     <div class="inblock">
-                        <div class="pict"><a rel="shadowbox[Vacation]" href="/thumbnail/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
+                        <div class="pict"><a rel="shadowbox[Vacation]" href="/files/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
                         <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
                         <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
                         <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
@@ -96,7 +96,7 @@
         </div>
         <div class="plitka plitka-new" style="display: none">
             <?php foreach ($this->itemsNew as $item): ?>
-                <div class="block"> <img style="height: 190px" src="/thumbnail/<?php echo $item['image'] ?>">
+                <div class="block"> <img style="height: 190px" src="/files/thumbnail/<?php echo $item['image'] ?>">
                     <div class="inblock">
                         <div class="pict"><a rel="shadowbox[Vacation]" href="/files/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
                         <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
