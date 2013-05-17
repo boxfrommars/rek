@@ -6,6 +6,7 @@
 class Admin_PageController extends Whale_Controller_Action_Admin_Page
 {
 
+    protected $_perPage = null;
     protected $_order = array('path ASC');
 
     /**

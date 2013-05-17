@@ -6,6 +6,8 @@
 class Admin_CategoryController extends Whale_Controller_Action_Admin_Article
 {
 
+    protected $_perPage = null;
+
     /**
      * @var Catalog_Model_CategoryService
      */
