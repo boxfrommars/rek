@@ -1,4 +1,5 @@
 DROP TABLE "gallery" CASCADE;
+DROP TABLE "gallerymain" CASCADE;
 DROP TABLE "product_color" CASCADE;
 DROP TABLE "product" CASCADE;
 DROP TABLE "brand" CASCADE;
@@ -173,8 +174,6 @@ CREATE TABLE "gallerymain" (
   "title" VARCHAR(255) NOT NULL,
   "text" TEXT,
   "image" VARCHAR (255),
-
-
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   PRIMARY KEY("id")
