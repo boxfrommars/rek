@@ -933,3 +933,6 @@ h5 {
 #content .carousel-control {
     font-family: 'Times New Roman';
 }
+.news_title a {
+    color: #084a7b;
+}
