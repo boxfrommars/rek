@@ -36,10 +36,10 @@ class Whale_Router_Page extends Zend_Controller_Router_Route {
             'p.page_url'
         );
 
-        Whale_Log::log($select->query()->fetchAll());
+//        Whale_Log::log($select->query()->fetchAll());
         $nextSelect = $db->select()->from(array('s' => $select), '*')->where('url = ?', '/' . $path)->where('NOT is_locked');
         $result = $nextSelect->query()->fetch();
-        Whale_Log::log($result);
+//        Whale_Log::log($result);
         return empty($result) ? false : array('page' => $result) + $this->_defaults;
     }
 

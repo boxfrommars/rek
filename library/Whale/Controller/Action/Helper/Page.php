@@ -29,16 +29,6 @@ class Whale_Controller_Action_Helper_Page extends Zend_Controller_Action_Helper_
             $view->categoryNavigation = $categoryService->fetchAll(array('is_published = ?' => true));
             $view->page = new Whale_Page();
 
-            $settings = array();
-            $settingsService = new Admin_Model_Settings();
-            $settingsData = $settingsService->fetchAll()->toArray();
-            foreach ($settingsData as $settingsRow) {
-                $settings[$settingsRow['name']] = $settingsRow['value'];
-            }
-            $view->settings = $settings;
-
-            Whale_Log::log($settings);
-
         }
 
         $this->_switchLayout($layout, $module, $controller, $action);

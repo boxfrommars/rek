@@ -105,7 +105,8 @@ class Default_IndexController extends Whale_Controller_Action
         $nextSelect = $db->select()->from(array('s' => $select), '*')->order(array('path'));
 
 
-        $items = $nextSelect->where('path <@ ?', $page['path'])->query()->fetchAll();
+        $items = $nextSelect->where('path <@ ?', $page['path'])->where('name <> ?', 'articles')->query()->fetchAll();
+        Whale_Log::log($items);
 
         $this->view->assign('items', $items);
 

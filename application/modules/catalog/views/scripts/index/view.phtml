@@ -85,6 +85,7 @@
         <?php endforeach; ?>
     </div>
 </div>
+<?php if (!empty($this->lastViewed)): ?>
 <div id="viewed">
     <div id="viewed_text"><p>НЕДАВНО ВЫ СМОТРЕЛИ:</p></div>
     <hr noshade size="1">
@@ -105,3 +106,26 @@
         </div>
     </div><!--viewed_list-->
 </div> <!--viewed-->
+<?php endif; ?>
+<?php if (!empty($this->recommended)): ?>
+<div id="viewed">
+    <div id="viewed_text"><p>АКЦИЯ:</p></div>
+    <hr noshade size="1">
+    <div id="viewed_list">
+        <div class="prev_viewed">
+            <img src="/img/catalog_prev.png">
+        </div>
+        <?php foreach ($this->recommended as $recommendedItem): ?>
+            <div class="block_available">
+                <div class="catalog_available">
+                    <img src="/files/<?php echo $recommendedItem['image'] ?>">
+                </div>
+                <p><?php echo $recommendedItem['title'] ?></p>
+            </div>
+        <?php endforeach; ?>
+        <div class="next_viewed">
+            <img src="/img/catalog_next.png">
+        </div>
+    </div><!--viewed_list-->
+</div> <!--viewed-->
+<?php endif; ?>

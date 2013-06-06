@@ -84,6 +84,7 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
                     $values = $this->_form->getValues();
                     unset ($values['csrf_protect']); // убираем csrf токен
                     $this->_model->insert($values);
+                    $this->_afterAdd($values);
                     $this->_flashMessenger->addMessage('Запись добавлена');
                     $this->_setRedirectByItem($values);
                     $this->_redirectTo();
@@ -94,8 +95,6 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
             $this->_flashMessenger->addMessage('Вы не можете добавлять сюда элементы');
             $this->_redirectTo();
         }
-
-
     }
 
     public function editAction()
@@ -184,6 +183,11 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
      * @param $request
      */
     protected function _updateFormByRequest($request)
+    {
+
+    }
+
+    protected function _afterAdd($values)
     {
 
     }

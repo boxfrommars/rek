@@ -16,8 +16,7 @@ class Feedback_Form_Public extends Twitter_Bootstrap_Form_Horizontal
     public function initFields()
     {
         $this->addElement('text', 'name', array(
-            'label' => "Имя (обязательно)",
-            'required' => true,
+            'label' => "Имя",
             'filters' => array('StringTrim'),
             'validators' => array(),
             'dimension' => 6,
@@ -25,17 +24,17 @@ class Feedback_Form_Public extends Twitter_Bootstrap_Form_Horizontal
         ));
 
         $this->addElement('text', 'email', array(
-            'label' => "E-mail (обязательно)",
+            'label' => "E-mail<sup>*</sup>",
             'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array('EmailAddress'),
             'dimension' => 6,
             'class' => 'form-text form-card',
         ));
+        $this->getElement('email')->getDecorator('Label')->setOption('escape',false);
 
         $this->addElement('text', 'phone', array(
-            'label' => "Телефон (обязательно)",
-            'required' => true,
+            'label' => "Телефон",
             'filters' => array('StringTrim'),
             'validators' => array(),
             'dimension' => 6,
@@ -43,8 +42,7 @@ class Feedback_Form_Public extends Twitter_Bootstrap_Form_Horizontal
         ));
 
         $this->addElement('textarea', 'content', array(
-            'label' => 'Вопрос/Заявка (обязательно)',
-            'required' => true,
+            'label' => 'Вопрос/Заявка',
             'validators' => array(),
             'dimension' => 6,
             'class' => 'form-text form-card',
