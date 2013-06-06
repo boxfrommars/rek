@@ -144,8 +144,14 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
                 $this->_redirectTo();
             }
 
-            $this->_model->delete(array('id = ?' => $id));
-            $this->_flashMessenger->addMessage('Запись удалена');
+            $this->_beforeDelete($id);
+            try {
+                $this->_model->delete(array('id = ?' => $id));
+                $this->_afterDelete($id);
+                $this->_flashMessenger->addMessage('Запись удалена');
+            } catch (Exception $e) {
+                $this->_flashMessenger->addMessage($e->getMessage());
+            }
             $this->_redirectTo();
         } else {
             $this->_flashMessenger->addMessage('Вы не можете удалять элементы');
@@ -188,6 +194,16 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
     }
 
     protected function _afterAdd($values)
+    {
+
+    }
+
+    protected function _beforeDelete($id)
+    {
+
+    }
+
+    protected function _afterDelete($id)
     {
 
     }

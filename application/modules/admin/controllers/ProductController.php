@@ -30,6 +30,12 @@ class Admin_ProductController extends Whale_Controller_Action_Admin_Page
         $this->view->productColors = $productColorService->fetchAll(array('id_product = ?' => $this->_getParam('id')));
     }
 
+    protected function _beforeDelete($id)
+    {
+        $productColorService = new Catalog_Model_ProductColorService();
+        $productColorService->delete(array('id_product = ?' => $id));
+    }
+
 
 }
 
