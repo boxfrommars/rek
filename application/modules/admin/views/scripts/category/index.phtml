@@ -15,7 +15,7 @@
     <tbody>
     <?php foreach ($this->items as $item): ?>
         <tr data-tt-id="<?php echo $item['path']; ?>"
-            data-tt-parent-id="<?php if (pathdepth($item['path']) > 2) echo implode('.', array_slice(explode('.', $item['path']), 0, -1)) ?>"
+            data-tt-parent-id="<?php if (pathdepth($item['path']) >= 2) echo implode('.', array_slice(explode('.', $item['path']), 0, -1)) ?>"
             data-tt-initialState="<?php if (pathdepth($item['path']) == 2) echo 'expanded' ?>"
          >
             <td>
