@@ -280,7 +280,7 @@ class UploadHandler
         if (!$img_width || !$img_height) {
             return false;
         }
-        $scale = min(
+        $scale = max(
             $options['max_width'] / $img_width,
             $options['max_height'] / $img_height
         );
@@ -290,8 +290,47 @@ class UploadHandler
             }
             return true;
         }
-        $new_width = $img_width * $scale;
-        $new_height = $img_height * $scale;
+
+        $new_width = min($img_width * $scale, $options['max_width']);
+        $new_height = min($img_height * $scale, $options['max_height']);
+
+
+//        if ($new_width / $new_height > $img_width / $img_height) {
+//            $s_width = $scale * $img_height;
+//            $s_height = $img_height;
+//        } else {
+//            $s_height = $scale * $img_height;
+//            $s_width = $img_width;
+//        }
+
+        $img_center_x = $img_width/2;
+        $img_center_y = $img_height/2;
+
+        if ($img_width > $img_height) {
+            $img_width = $img_height;
+        } else {
+            $img_height = $img_width;
+        }
+        $ratio = $new_width / $img_width;
+
+
+//        $new_width = $img_width * $scale;
+//        $new_height = $img_height * $scale;
+
+//        $new_width = $options['max_width'];
+//        $new_height = $options['max_height'];
+//
+//        $ratio_orig = $img_width/$img_height;
+//        if ($new_width/$new_height > $ratio_orig) {
+//            $new_width = $new_height*$ratio_orig;
+//        } else {
+//            $new_height = $new_width/$ratio_orig;
+//        }
+
+
+
+
+
         $new_img = @imagecreatetruecolor($new_width, $new_height);
         switch (strtolower(substr(strrchr($file_name, '.'), 1))) {
             case 'jpg':
@@ -322,11 +361,15 @@ class UploadHandler
         $success = $src_img && @imagecopyresampled(
             $new_img,
             $src_img,
-            0, 0, 0, 0,
+            0, 0,
+//            0, 0,
+            intval($img_center_x - $img_width/2), intval($img_center_y - $img_height/2),
             $new_width,
             $new_height,
             $img_width,
             $img_height
+//            $img_width,
+//            $img_height
         ) && $write_image($new_img, $new_file_path, $image_quality);
         // Free up memory (imagedestroy does not delete files):
         @imagedestroy($src_img);
