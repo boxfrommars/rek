@@ -284,15 +284,15 @@ class UploadHandler
             $options['max_width'] / $img_width,
             $options['max_height'] / $img_height
         );
-        if ($scale >= 1) {
-            if ($file_path !== $new_file_path) {
-                return copy($file_path, $new_file_path);
-            }
-            return true;
-        }
+//        if ($scale > 1) {
+//            if ($file_path !== $new_file_path) {
+//                return copy($file_path, $new_file_path);
+//            }
+//            return true;
+//        }
 
-        $new_width = min($img_width * $scale, $options['max_width']);
-        $new_height = min($img_height * $scale, $options['max_height']);
+        $new_width = $options['max_width'];
+        $new_height = $options['max_height'];
 
 
 //        if ($new_width / $new_height > $img_width / $img_height) {
