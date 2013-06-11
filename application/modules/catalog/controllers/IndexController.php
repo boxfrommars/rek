@@ -43,6 +43,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->view->brands = $brandService->fetchAll();
         $this->view->sizes = $productService->getAdapter()->select()->from(array('p' => 'product'), array('width', 'height'))->group(array('height', 'width'))->query()->fetchAll();
         $this->view->costsRange = $productService->getAdapter()->select()->from(array('p' => 'product'), array('max' => 'max(cost)', 'min' => 'min(cost)'))->query()->fetch();
+        $this->view->depthRange = $productService->getAdapter()->select()->from(array('p' => 'product'), array('max' => 'max(depth)', 'min' => 'min(depth)'))->query()->fetch();
 
 
         $this->view->category = $category;

@@ -1,5 +1,5 @@
 <div id="left_catalog">
-    <div id="price_catalog">
+    <div id="price_catalog" class="bottom-bordered">
         <p class="left_catalog_point">ЦЕНА</p>
         <p id="top_price">
             <input class="product-filter" type="text"
@@ -16,10 +16,8 @@
                    data-value="<?php echo ($this->costsRange['min'] - 100) >= 0 ? ($this->costsRange['min'] - 100) : 0 ?>"
                    value="<?php echo ($this->costsRange['min'] - 100) >= 0 ? ($this->costsRange['min'] - 100) : 0 ?>"
                 />р/м<span>2</span></p>
-
-        <hr noshade size="1">
     </div>
-    <div>
+    <div class="bottom-bordered">
         <div style="width:100%; height: 7px; float: left;"></div>
         <p class="left_catalog_point">ЦВЕТ</p>
         <div class="checkbox_color">
@@ -30,9 +28,8 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <hr noshade size="1">
     </div>
-    <div>
+    <div class="bottom-bordered">
         <input type="hidden" name="category" class="product-filter" value="<?php echo $this->category['id'] ?>" />
         <div style="width:100%; height: 7px; float: left;"></div>
         <p class="left_catalog_point">РАЗМЕР</p>
@@ -41,11 +38,24 @@
                 <p><span class="niceCheck"><input class="product-filter-checkbox" name="size" value="<?php echo $size['width'] ?>-<?php echo $size['height'] ?>" type="checkbox"></span><?php echo $size['width'] ?>*<?php echo $size['height'] ?></p>
             </div>
         <?php endforeach; ?>
-        <div style="width:100%; height: 7px; float: left;"></div>
-        <hr noshade size="1">
     </div>
-    <div>
-        <div style="width:100%; height: 7px; float: left;"></div>
+    <div id="thickness" class="bottom-bordered">
+        <p class="left_catalog_point">ТОЛЩИНА</p>
+        <div id="slider"></div>
+        <p id="thick"><span><?php echo ((int) $this->depthRange['min']) ?></span> мм</p>
+    </div>
+    <script>
+        $( "#slider" ).slider({
+            min: <?php echo ($this->depthRange['min'] - 1) ?>,
+            max: <?php echo ($this->depthRange['max'] + 1) ?>,
+            step: 1,
+            value: <?php echo ($this->depthRange['min']) ?>,
+            slide: function( event, ui ) {
+                $( "#thick span").text(ui.value);
+            }
+        });
+    </script>
+    <div class="bottom-bordered">
         <p class="left_catalog_point">ПОВЕРХНОСТЬ</p>
 
         <?php foreach ($this->surfaces as $surface): ?>
@@ -53,30 +63,22 @@
                 <p><span class="niceCheck"><input class="product-filter-checkbox" name="surface" type="checkbox" value="<?php echo $surface['id'] ?>"></span><?php echo $surface['title'] ?></p>
             </div>
         <?php endforeach; ?>
-        <div style="width:100%; height: 7px; float: left;"></div>
-        <hr noshade size="1">
     </div>
-    <div>
-        <div style="width:100%; height: 7px; float: left;"></div>
+    <div class="bottom-bordered">
         <p class="left_catalog_point">СТРАНА</p>
         <?php foreach ($this->countries as $country): ?>
             <div class="size_block">
                 <p><span class="niceCheck"><input class="product-filter-checkbox" type="checkbox" name="country" value="<?php echo $country['id'] ?>"></span><?php echo $country['title'] ?></p>
             </div>
         <?php endforeach; ?>
-        <div style="width:100%; height: 7px; float: left;"></div>
-        <hr noshade size="1">
     </div>
-    <div>
-        <div style="width:100%; height: 7px; float: left;"></div>
+    <div class="bottom-bordered">
         <p class="left_catalog_point">БРЕНД</p>
         <?php foreach ($this->brands as $brand): ?>
             <div class="area">
                 <p><span class="niceCheck"><input class="product-filter-checkbox" name="brand" type="checkbox" value="<?php echo $brand['id'] ?>"></span><?php echo $brand['title'] ?></p>
             </div>
         <?php endforeach; ?>
-        <div style="width:100%; height: 7px; float: left;"></div>
-        <hr noshade size="1">
     </div>
 </div><!--left_catalog-->
 <div id="right_catalog">

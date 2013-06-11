@@ -24,44 +24,44 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
-@font-face {
-    font-family: 'MyriadPro-Cond';
-    src: url('../font/MyriadPro-Cond.eot#'); 
-    src: local('MyriadPro-Cond'),
-       url('../font/MyriadPro-Cond.woff') format('woff'),
-       url('../font/MyriadPro-Cond.ttf') format('truetype');
+@font-face { /*+*/
+    font-family: 'MyriadProCond';
+    src: url('/font/MyriadPro-Cond4.eot#iefix') format('embedded-opentype');
+    src: local('Myriad Pro Condensed'),
+       url('/font/MyriadPro-Cond.woff') format('woff'),
+       url('/font/MyriadPro-Cond.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'MyriadPro-Bold';
-    src: url('../font/MyriadPro-Bold.eot#');
-    src: local('MyriadPro-Bold'),
-       url('../font/MyriadPro-Bold.ttf') format('truetype'),
-       url('../font/MyriadPro-Bold.woff') format('woff');
+    font-family: 'MyriadProBold';
+    src: url('/font/MyriadPro-Cond4.eot#iefix') format('embedded-opentype');
+    src: local('Myriad Pro Bold'),
+       url('/font/MyriadPro-Bold.ttf') format('truetype'),
+       url('/font/MyriadPro-Bold.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'MyriadPro-Regular';
-    src: url('../font/MyriadPro-Regular.eot#'); 
-    src: local('MyriadPro-Regular'),
-       url('../font/MyriadPro-Regular.ttf') format('truetype'),
-       url('../font/MyriadPro-Regular.woff') format('woff');
+    font-family: 'MyriadProRegular';
+    src: url('/font/MyriadPro-Cond4.eot#iefix') format('embedded-opentype');
+    src: local('Myriad Pro Regular'),
+       url('/font/MyriadPro-Regular.ttf') format('truetype'),
+       url('/font/MyriadPro-Regular.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'MyriadPro-Semibold';
-    src: url('../font/MyriadPro-Semibold.eot#'); 
-    src: local('MyriadPro-Semibold'),
-       url('../font/MyriadPro-Semibold.ttf') format('truetype'),
-       url('../font/MyriadPro-Semibold.woff') format('woff');
+    font-family: 'MyriadProSemibold';
+    src: url('/font/MyriadPro-Cond4.eot#iefix') format('embedded-opentype');
+    src: local('Myriad Pro Semibold'),
+       url('/font/MyriadPro-Semibold.ttf') format('truetype'),
+       url('/font/MyriadPro-Semibold.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'MyriadPro-BoldCond';
-    src: url('../font/MyriadPro-BoldCond.eot#'); 
+    font-family: 'MyriadProBoldCond';
+    src: url('/font/MyriadPro-Cond4.eot#iefix') format('embedded-opentype');
     src: local('MyriadPro-BoldCond'),
-       url('../font/MyriadPro-BoldCond.ttf') format('truetype'),
-       url('../font/MyriadPro-BoldCond.woff') format('woff');
+       url('/font/MyriadPro-BoldCond.ttf') format('truetype'),
+       url('/font/MyriadPro-BoldCond.woff') format('woff');
 }
 ol, ul {
 	list-style: none;
@@ -123,7 +123,7 @@ table {
 
 #centr span {
     font-size: 38px;
-    font-family: MyriadPro-Cond;
+    font-family: MyriadProCond;
     font-style: italic;
     color: white;
     float: left;
@@ -149,7 +149,7 @@ table {
     margin: 50px 0 0 300px;
     padding-left: 15px;
     font-size: 15px;
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
 }
 
 #menu a {
@@ -160,6 +160,9 @@ table {
     margin-left: 58px;
     color: #242424;
     margin-right: 15px;
+}
+.space:first-child {
+    margin-left: 0;
 }
 /*для ie8*/
 .space  {
@@ -180,7 +183,7 @@ table {
     line-height: 38px;
     padding: 12px 10px 8px 10px;
     color: #eaecee;
-    font-family: MyriadPro-Semibold;
+    font-family: MyriadProSemibold;
     behavior: url('PIE.htc');
     position: relative;
 }
@@ -215,14 +218,14 @@ table {
     text-decoration: none;
     font-size: 18px;
     display: inline;
-    font-family: MyriadPro-Semibold;
+    font-family: MyriadProSemibold;
 }
 
 .hover_block {
     padding: 5px 22px 0 18px;
     background: url('../img/opacity.png');
     font-size: 15px;
-    font-family: MyriadPro-Semibold;
+    font-family: MyriadProSemibold;
     vertical-align: middle;
     white-space: nowrap;
 }
@@ -311,7 +314,7 @@ h1 a {
     color: white;
     text-decoration: none;
     border-bottom: 2px solid white;
-    font-family: MyriadPro-BoldCond;
+    font-family:MyriadProBoldCond;
 }
 
 #keramo_text {
@@ -321,12 +324,12 @@ h1 a {
     left: auto;
     background: none;
     margin: 54px 47px 59px 0;
-    font-family: MyriadPro-Bold;
+    font-family: MyriadProBold;
 }
 #keramo_text h1, #keramo_text h1 a {
     color: white;
     text-decoration: none;
-    font-family: MyriadPro-BoldCond;
+    font-family: MyriadProBoldCond;
     font-size: 60px;
     line-height: 60px;
     font-weight: normal;
@@ -338,7 +341,7 @@ h1 a {
     color: white;
     font-size: 18px;
     text-align: right;
-    font-family: MyriadPro-Bold;
+    font-family: MyriadProBold;
 }
 
 #keramo_nal a {
@@ -367,7 +370,7 @@ h1 a {
 h2 {
     width: 156px;
     height: 48px;
-    font-family: MyriadPro-Cond;
+    font-family: MyriadProCond;
     font-weight: normal;
 }
 
@@ -437,7 +440,7 @@ h2:hover, h2.active {
 .pict {
     float: right;
     font-size: 12px;
-    font-family: MyriadPro-Semibold;
+    font-family: MyriadProSemibold;
     margin: 0 7px 0 90px;
 }
 
@@ -452,7 +455,7 @@ h2:hover, h2.active {
 
 .cost {
     font-size: 23px;
-    font-family: MyriadPro-Cond;
+    font-family: MyriadProCond;
 }
 
 .cost span {
@@ -466,12 +469,12 @@ h2:hover, h2.active {
 
 .model {
     font-size: 18px;
-    font-family: MyriadPro-Bold;
+    font-family: MyriadProBold;
 }
 
 .zakaz {
     font-size: 30px;
-    font-family: MyriadPro-Bold;
+    font-family: MyriadProBold;
     font-weight: normal;
 }
 
@@ -485,7 +488,7 @@ h2:hover, h2.active {
     color: #5a5a5a;
     font-size: 16px;
     margin-bottom: 12px;
-    font-family: MyriadPro-Cond;
+    font-family: MyriadProCond;
 }
 
 #news p a {
@@ -497,7 +500,7 @@ h2:hover, h2.active {
 .news_title {
     color: #084a7b;
     font-size: 24px;
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
 }
 
 #point {
@@ -535,7 +538,7 @@ h2:hover, h2.active {
     font-size: 12.47px;
     color: #616161;
     float: left;
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
 }
 
 .article p {
@@ -578,13 +581,13 @@ h4 {
     float: left;
     color: #084a7b;
     font-size: 20px;
-    font-family: MyriadPro-Cond;
+    font-family: MyriadProCond;
 }
 
 h5 {
     font-size: 30px;
     padding: 20px 0 10px 0;
-    font-family: MyriadPro-Cond;
+    font-family: MyriadProCond;
 }
 
 .contact a {
@@ -610,7 +613,7 @@ h5 {
     float: left;
     color: #084a7b;
     font-size: 20px;
-    font-family: MyriadPro-Cond;
+    font-family: MyriadProCond;
 }
 
 #footer {
@@ -628,7 +631,7 @@ h5 {
     width: 100%;
     background-color: #084a7b;
     font-size: 14px;
-    font-family: MyriadPro-Cond;
+    font-family: MyriadProCond;
 }
 
 #foot_right {
@@ -662,7 +665,7 @@ h5 {
     line-height: 40px;
     float: left;
     font-size: 9.31px;
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
     margin-left: 300px;
     color: #2d2d2d;
 }
@@ -687,13 +690,13 @@ h5 {
 
 .gallery_name {
     color: #074b7c;
-    font-family: MyriadPro-Semibold;
+    font-family: MyriadProSemibold;
     font-size: 24px;
 }
 
 .gallery_link {
     font-size: 18px;
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
     text-align: right;
     clear: both;
 }
@@ -743,7 +746,7 @@ h5 {
 .pict_gallery {
     float: right;
     font-size: 14px;
-    font-family: MyriadPro-Semibold;
+    font-family: MyriadProSemibold;
     margin: 0 8px 0 90px;
 }
 
@@ -758,7 +761,7 @@ h5 {
 
 .cost_gallery {
     font-size: 26px;
-    font-family: MyriadPro-Cond;
+    font-family: MyriadProCond;
 }
 
 .cost_gallery span {
@@ -772,12 +775,12 @@ h5 {
 
 .model_gallery {
     font-size: 20px;
-    font-family: MyriadPro-Bold;
+    font-family: MyriadProBold;
 }
 
 .zakaz_gallery {
     font-size: 34px;
-    font-family: MyriadPro-Bold;
+    font-family: MyriadProBold;
     font-weight: normal;
     padding-top: 20px;
 }
@@ -816,13 +819,13 @@ h5 {
     color: white;
     margin: 10px 0 0 30px;
     font-size: 14px;
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
 }
 
 #contact_title {
     color: white;
     margin: 0 0 0 30px;
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
     font-size: 18px;
 }
 
@@ -841,14 +844,14 @@ h5 {
 #location strong {
     color: #3c3c3c;
     font-weight: normal;
-    font-family: MyriadPro-Semibold;
+    font-family: MyriadProSemibold;
 }
 
 #location p {
     padding-top: 20px;
     padding-right: 70px;
     padding-left: 25px;
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
 }
 
 #bottom_loc {
@@ -862,7 +865,7 @@ h5 {
 #contact_news_title {
     color: #084a7b;
     font-size: 18px;
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
 }
 
 #contact_point {
@@ -888,7 +891,7 @@ h5 {
     padding-left: 5px;
     color: #242424;
     font-size: 14px;
-    font-family: MyriadPro-Semibold;
+    font-family: MyriadProSemibold;
 }
 
 .message_param input {
@@ -919,7 +922,7 @@ h5 {
 .gzhel {
     color: #084a7b;
     font-size: 20px;
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
 }
 .control-group {
     padding-bottom: 20px;
@@ -928,11 +931,18 @@ h5 {
     color: red;
 }
 #content {
-    font-family: MyriadPro-Regular;
+    font-family: MyriadProRegular;
 }
 #content .carousel-control {
     font-family: 'Times New Roman';
 }
 .news_title a {
     color: #084a7b;
+}
+.bottom-bordered {
+    padding: 7px 0 12px;
+    border-bottom: 1px solid #ccc;
+    content: "";
+    display: table;
+    clear: both;
 }

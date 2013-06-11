@@ -44,16 +44,6 @@ var el = el,
 }
 
 
-$(function() {
-		$( "#slider" ).slider({
-			min: 1,
-            max: 20,
-            step: 1,
-			range: 'min',
-            value: 3
-		});
-	});
-
 var prevData = {};
 var reloadProducts = function(){
     var data = {};
