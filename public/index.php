@@ -1,7 +1,5 @@
 <?php
 
-print_r(PDO::getAvailableDrivers());
-?>
 $startTime = microtime(true);
 // Define path to application directory
 defined('APPLICATION_PATH')
