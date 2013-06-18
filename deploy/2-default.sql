@@ -15,6 +15,10 @@ DROP TABLE "page_text" CASCADE;
 DROP TABLE "settings" CASCADE;
 DROP TABLE "feedback" CASCADE;
 
+DROP FUNCTION urltranslit(text) CASCADE;
+DROP FUNCTION get_calculated_page_node_path(param_page_id BIGINT) CASCADE;
+DROP FUNCTION trig_update_page_node_path() CASCADE;
+
 -- some comment
 
 CREATE TABLE "role" (
