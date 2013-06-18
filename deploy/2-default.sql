@@ -15,6 +15,8 @@ DROP TABLE "page_text" CASCADE;
 DROP TABLE "settings" CASCADE;
 DROP TABLE "feedback" CASCADE;
 
+-- some comment
+
 CREATE TABLE "role" (
   "id" SERIAL,
   "name" VARCHAR (255),
