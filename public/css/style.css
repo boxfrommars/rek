@@ -189,8 +189,7 @@ table {
 }
 
 #product {
-    background-image: url('../img/product_bg.png');
-    background-repeat: repeat-x;
+    background: #2b3d4d url('../img/product_bg.png') repeat-x;
     width: 800px;
     height: 40px;
     float: right;
@@ -287,7 +286,7 @@ table {
 }
 
 #search {
-    background: url('../img/search_background.png');
+    background: #d5d8dd url('../img/search_background.png');
     border-bottom-right-radius: 3px;
     behavior: url('PIE.htc');
     color: white;
