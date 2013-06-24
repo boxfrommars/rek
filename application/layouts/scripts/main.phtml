@@ -60,6 +60,13 @@
         </div>
         <script>
             $(document).ready(function(){
+                    $('.carousel').carousel({
+                        interval: 3000
+                    });
+
+                    $('.carousel').carousel('cycle');
+
+
                 $('.data-plitka').on('click', function(){
                     $('.plitka').hide().filter($(this).attr('data-plitka')).fadeIn();
                     $('#choice h2').removeClass('active');
