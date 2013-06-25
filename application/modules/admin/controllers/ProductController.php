@@ -38,6 +38,7 @@ class Admin_ProductController extends Whale_Controller_Action_Admin_Page
 
     protected function _setRedirectByItem($item, $id = null)
     {
+        $id = $item['id'] ?: $id;
         if ($id) {
             $this->_redirectOptions = array('controller' => 'product', 'action' => 'edit', 'id' => $id);
             $this->_redirectRouteName = 'admin';
