@@ -56,8 +56,6 @@ class Whale_Controller_Action extends Zend_Controller_Action
      */
     protected function _setPage($name)
     {
-        $pageService = new Whale_Node_Service();
-        $pages = $pageService->get('Top');
         Whale_Log::log($name);
         $db = Zend_Db_Table::getDefaultAdapter();
 

@@ -2,30 +2,11 @@
     <p class="back_to_resault">&lt;&lt; <a href="#" onclick="history.back(); return false;">назад&nbsp;&nbsp;к&nbsp;&nbsp;результатам</a></p>
     <hr noshade size="1">
     <p class="left_catalog_point">КОЛЛЕКЦИИ</p>
-    <div id="collection">
-        <p>Ажур</p>
-        <p>Арена</p>
-        <p>Атлант</p>
-        <p>Арно</p>
-        <p>Браво</p>
-        <p>Гавань</p>
-        <p>Глория</p>
-        <p>Гренобль</p>
-        <p>Дайсен</p>
-        <p>Дефанс</p>
-    </div>
-    <div id="collection">
-        <p>Дублин</p>
-        <p>Каре</p>
-        <p>Каскад</p>
-        <p>Кедр/Сонет</p>
-        <p>Кембридж</p>
-        <p>Креп/Гарда</p>
-        <p>Лагуна</p>
-        <p>Нарита</p>
-        <p>Магия</p>
-        <p>Марсель</p>
-    </div>
+    <?php foreach ($this->brands as $brand): ?>
+        <div class="area">
+            <p><a href="<?php echo $brand['url'] ?>" class="area-link"><?php echo $brand['title'] ?></a></p>
+        </div>
+    <?php endforeach; ?>
     <div id="dekor">
         <hr noshade size="1">
         <p class="left_catalog_point">ДЕКОР</p>

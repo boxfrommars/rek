@@ -337,10 +337,10 @@ INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locke
 INSERT INTO category (title, is_published, id_parent) VALUES ('Керамогранит', 't', (SELECT id FROM page WHERE name = 'main'));
 INSERT INTO category (title, is_published, id_parent) VALUES ('Вентфасады', 't', (SELECT id FROM page WHERE name = 'main'));
 
-INSERT INTO brand (title, id_parent) VALUES ('Estima', (SELECT id FROM page WHERE name = 'ventfasady'));
-INSERT INTO brand (title, id_parent) VALUES ('Kerama Marazzi', (SELECT id FROM page WHERE name = 'keramogranit'));
-INSERT INTO brand (title, id_parent) VALUES ('Italon', (SELECT id FROM page WHERE name = 'ventfasady'));
-INSERT INTO brand (title, id_parent) VALUES ('Grassaro', (SELECT id FROM page WHERE name = 'keramogranit'));
+INSERT INTO brand (title, is_published, id_parent) VALUES ('Estima', 't', (SELECT id FROM page WHERE name = 'ventfasady'));
+INSERT INTO brand (title, is_published, id_parent) VALUES ('Kerama Marazzi', 't', (SELECT id FROM page WHERE name = 'keramogranit'));
+INSERT INTO brand (title, is_published, id_parent) VALUES ('Italon', 't', (SELECT id FROM page WHERE name = 'ventfasady'));
+INSERT INTO brand (title, is_published, id_parent) VALUES ('Grassaro', 't', (SELECT id FROM page WHERE name = 'keramogranit'));
 
 INSERT INTO product (title, page_description, article, cost, image, content, id_surface, id_country, is_action, is_new, is_hit, width, height, depth, is_published, id_parent) VALUES ('AGA6625K', 'Хороший вентфасад', 'AGA6625K', 540.00, '', 'Вентфасады Estima - это новинка, которая интересна тем, что искусно имитирует нерукотворные трещины и канавки в камне, подвергшийся обработке. Этот вентфасад под мрамор еще раз доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.', 1, 1, false, true, true, 12.0, 12.0, 12.0, true, (SELECT id FROM page WHERE name = 'estima'));
 INSERT INTO product (title, page_description, article, cost, image, content, id_surface, id_country, is_action, is_new, is_hit, width, height, depth, is_published, id_parent) VALUES ('BGA6625K', 'Хороший вентфасад', 'BGA6625K', 740.00, '', 'Вентфасады Estima - это новинка, которая интересна тем, что искусно имитирует нерукотворные трещины и канавки в камне, подвергшийся обработке. Этот вентфасад под мрамор еще раз доказывает, что природа может бесконечно давать нам повод восторгаться ее красотой.', 1, 1, true, false, true, 20.0, 12.0, 12.0, true, (SELECT id FROM page WHERE name = 'estima'));

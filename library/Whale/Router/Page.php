@@ -21,25 +21,11 @@ class Whale_Router_Page extends Zend_Controller_Router_Route {
             $path = trim($path, $this->_urlDelimiter);
         }
 
-        $db = Zend_Db_Table::getDefaultAdapter();
+        $pageService = new Page_Model_Service();
+        $select = $pageService->getBaseSelect();
 
-        $select = $db->select()->from(
-            array('p' => 'page'),
-            array('url' => "array_to_string(array_agg(a.page_url ORDER BY a.path), '/')", '*')
-        )->joinInner(
-            array('a' => 'page'),
-            'a.path @> p.path',
-            array()
-        )->group(
-            'p.id',
-            'p.path',
-            'p.page_url'
-        );
-
-//        Whale_Log::log($select->query()->fetchAll());
-        $nextSelect = $db->select()->from(array('s' => $select), '*')->where('url = ?', '/' . $path)->where('NOT is_locked');
+        $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('url = ?', '/' . $path)->where('NOT is_locked')->where('is_published');
         $result = $nextSelect->query()->fetch();
-//        Whale_Log::log($result);
         return empty($result) ? false : array('page' => $result) + $this->_defaults;
     }
 

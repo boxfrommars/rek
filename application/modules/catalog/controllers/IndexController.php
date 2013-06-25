@@ -40,7 +40,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->view->colors = $colorService->fetchAll();
         $this->view->surfaces = $surfaceService->fetchAll();
         $this->view->countries = $countryService->fetchAll();
-        $this->view->brands = $brandService->fetchAll();
+        $this->view->brands = $brandService->fetchAll(null, 'order');
         $this->view->sizes = $productService->getAdapter()->select()->from(array('p' => 'product'), array('width', 'height'))->group(array('height', 'width'))->query()->fetchAll();
         $this->view->costsRange = $productService->getAdapter()->select()->from(array('p' => 'product'), array('max' => 'max(cost)', 'min' => 'min(cost)'))->query()->fetch();
         $this->view->depthRange = $productService->getAdapter()->select()->from(array('p' => 'product'), array('max' => 'max(depth)', 'min' => 'min(depth)'))->query()->fetch();
@@ -111,6 +111,14 @@ class Catalog_IndexController extends Whale_Controller_Action
                 );
             }
         }
+
+        $pageService = new Page_Model_Service();
+        $select = $pageService->getBaseSelect();
+        $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('entity = ?', 'brand')->where('is_published');
+        $this->view->brands = $nextSelect->query()->fetchAll();
+
+
+
         $this->view->lastViewed = $lastViewedItems;
         $this->view->recommended = $recommendedItems;
         array_unshift($lastViewedItemIds, $product['id']);

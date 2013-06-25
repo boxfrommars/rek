@@ -28,7 +28,6 @@ class Whale_Controller_Action_Helper_Page extends Zend_Controller_Action_Helper_
             $categoryService = new Catalog_Model_CategoryService();
             $view->categoryNavigation = $categoryService->fetchAll(array('is_published = ?' => true), 'order');
             $view->page = new Whale_Page();
-
         }
 
         $this->_switchLayout($layout, $module, $controller, $action);
