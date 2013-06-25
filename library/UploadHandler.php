@@ -307,9 +307,9 @@ class UploadHandler
         $img_center_y = $img_height/2;
 
         if ($img_width > $img_height) {
-            $img_height = $img_width;
-        } else {
             $img_width = $img_height;
+        } else {
+            $img_height = $img_width;
         }
         $ratio = $new_width / $img_width;
 
