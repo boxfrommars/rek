@@ -371,11 +371,11 @@
 }
 
 #catalog_info {
-    float: left;
     color: #3c3c3c;
     font-size: 20px;
     font-family: MyriadProRegular;
     margin: 30px 0;
+
 }
 
 #catalog_info span {
