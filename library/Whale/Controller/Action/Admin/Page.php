@@ -18,7 +18,6 @@ class Whale_Controller_Action_Admin_Page extends Whale_Controller_Action_Admin_A
     protected function _updateFormByRequest($request)
     {
         $idParent = $request->getParam('idParent');
-        Whale_Log::log($idParent);
         if ($idParent) {
             $this->_updateFormByIdParent($idParent);
         }

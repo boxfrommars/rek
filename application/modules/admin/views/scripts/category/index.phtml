@@ -1,6 +1,6 @@
 <?php echo $this->paginator; ?>
 <h2>Категории</h2>
-<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'category'), 'admin') ?>" role="button" class="btn btn-success add">
+<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'category', 'idParent' => 1, 'module' => 'admin'), 'default') ?>" role="button" class="btn btn-success add">
         Добавить категорию
 </a></p>
 <table class="table table-hover table-striped pages-tree">
