@@ -12,12 +12,15 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
         $this->_addClassNames('row-fluid');
         $countryService = new Catalog_Model_CountryService();
         $surfaceService = new Catalog_Model_SurfaceService();
+        $patternService = new Catalog_Model_PatternService();
 
         $countries = $countryService->fetchAll();
         $surfaces = $surfaceService->fetchAll();
+        $patterns = $patternService->fetchAll();
 
         $countrySelectOptions = array();
         $surfaceSelectOptions = array();
+        $patternSelectOptions = array();
 
         foreach ($countries as $country) {
             $countrySelectOptions[$country['id']] = $country['title'];
@@ -25,6 +28,10 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
 
         foreach ($surfaces as $surface) {
             $surfaceSelectOptions[$surface['id']] = $surface['title'];
+        }
+
+        foreach ($patterns as $pattern) {
+            $patternSelectOptions[$pattern['id']] = $pattern['title'];
         }
 
         parent::_initMiddleElements();
@@ -59,6 +66,14 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'validators' => array(),
             'dimension' => $this->_dimension,
             'multiOptions' => $surfaceSelectOptions,
+        ));
+
+        $this->addElement('select', 'id_pattern', array(
+            'label' => "Рисунок",
+            'required' => true,
+            'validators' => array(),
+            'dimension' => $this->_dimension,
+            'multiOptions' => $patternSelectOptions,
         ));
 
         $this->addElement('text', 'width', array(
