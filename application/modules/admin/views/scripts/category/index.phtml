@@ -6,6 +6,7 @@
 <table class="table table-hover table-striped pages-tree">
     <thead>
     <tr>
+        <th>#</th>
         <th>Заголовок</th>
         <th style="width: 30px;"></th>
         <th style="width: 30px;"></th>
@@ -18,6 +19,9 @@
             data-tt-parent-id="<?php if (pathdepth($item['path']) >= 2) echo implode('.', array_slice(explode('.', $item['path']), 0, -1)) ?>"
             data-tt-initialState="<?php if (pathdepth($item['path']) == 2) echo 'expanded' ?>"
          >
+            <td style="width: 12px;">
+                <?php echo $item['order'] ?>
+            </td>
             <td>
                 <a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'edit'), 'admin') ?>">
                     <?php echo $item['title'] ?>

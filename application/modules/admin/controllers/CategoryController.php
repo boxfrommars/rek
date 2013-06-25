@@ -9,6 +9,8 @@ class Admin_CategoryController extends Whale_Controller_Action_Admin_Page
     protected $_redirectOptions = array('action' => 'index', 'controller' => 'category');
     protected $_redirectRouteName = 'admin';
 
+    protected $_order = array('order ASC');
+
     protected $_perPage = null;
 
     /**
