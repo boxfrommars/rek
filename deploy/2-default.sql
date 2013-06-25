@@ -157,6 +157,9 @@ CREATE TABLE "product_color" (
   "id_product"  INT NOT NULL REFERENCES "product" (id), -- товар
   "content" TEXT,                                   -- описание
 
+  "id_surface" INT NOT NULL REFERENCES "surface" (id), -- тип поверхности
+  "cost" DECIMAL(10,2),            -- стоимость
+
   "is_published" BOOL DEFAULT 'f',
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
