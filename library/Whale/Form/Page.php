@@ -22,6 +22,13 @@ class Whale_Form_Page extends Whale_Form_Titled
         $this->addElement('checkbox', 'is_published', array(
             'label' => "Опубликована",
         ));
+
+        $this->addElement('text', 'order', array(
+            'label' => "Порядковый номер",
+            'required' => false,
+            'validators' => array('Int'),
+            'dimension' => $this->_dimension,
+        ));
     }
 
     protected function _initMiddleElements()

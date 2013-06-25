@@ -5,6 +5,7 @@ DROP TABLE "product" CASCADE;
 DROP TABLE "brand" CASCADE;
 DROP TABLE "category" CASCADE;
 DROP TABLE "country" CASCADE;
+DROP TABLE "pattern" CASCADE;
 DROP TABLE "color" CASCADE;
 DROP TABLE "surface" CASCADE;
 DROP TABLE "users" CASCADE;
@@ -69,6 +70,7 @@ CREATE TABLE "page" (
   "page_title" VARCHAR (255),
   "page_description" TEXT,
   "page_keywords" TEXT,
+  "order" INT DEFAULT 0,
 
   "name" VARCHAR(255) UNIQUE,
   "is_locked" BOOL DEFAULT 'f',
@@ -99,6 +101,13 @@ CREATE TABLE "color" (
 );
 
 CREATE TABLE "surface" (
+  "id" SERIAL NOT NULL,
+  "title" VARCHAR(255) NOT NULL,
+  PRIMARY KEY("id")
+);
+
+-- рисунок
+CREATE TABLE "pattern" (
   "id" SERIAL NOT NULL,
   "title" VARCHAR(255) NOT NULL,
   PRIMARY KEY("id")
@@ -136,6 +145,7 @@ CREATE TABLE "product" (
   "image" VARCHAR (255),
 
   "id_surface" INT NOT NULL REFERENCES "surface" (id), -- тип поверхности
+  "id_pattern" INT REFERENCES "pattern" (id), -- рисунок
   "id_country" INT NOT NULL REFERENCES "country" (id), -- страна
 
   "is_action" BOOL DEFAULT 'f',
@@ -307,6 +317,9 @@ INSERT INTO surface (title) VALUES ('Неполированный');
 
 INSERT INTO country (title) VALUES ('Россия');
 INSERT INTO country (title) VALUES ('Италия');
+
+INSERT INTO "pattern" (title) VALUES ('кривая Коха');
+INSERT INTO "pattern" (title) VALUES ('треугольник Серпинского');
 
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'Главная', '', '', 'Главная', 't', 'main', NULL);
 INSERT INTO "page" (is_published, title, content, page_url, page_title, is_locked, name, id_parent) VALUES ('t', 'О компании', '', 'about', 'О компании', 'f', 'about', (SELECT id FROM page WHERE name = 'main'));

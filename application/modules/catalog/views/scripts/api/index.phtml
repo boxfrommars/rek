@@ -2,7 +2,7 @@
     <div class="product_from_catalog">
         <p class="left_catalog_point"><a href="/catalog/<?php echo $product['category_page_url'] . '/' . ($product['page_url'] ?: $product['id']) ?>"><?php echo $product['title']; ?></a></p>
         <div class="cat_product">
-            <a href="/catalog/<?php echo $product['category_page_url'] . '/' . ($product['page_url'] ?: $product['id']) ?>"><img src="/files/<?php echo $product['image']; ?>" alt="marazzi"></a>
+            <a href="/catalog/<?php echo $product['category_page_url'] . '/' . ($product['page_url'] ?: $product['id']) ?>"><img src="/files/thumbnail/<?php echo $product['image']; ?>" alt="<?php echo $product['title']; ?>"></a>
         </div>
         <p class="price_prod"> <?php echo $product['cost'] ?> <span>руб./м</span></p>
         <input onclick="location.href = '<?php echo $this->url(array(), 'feedback') ?>'" type="button" class="zakaz_but" value="">

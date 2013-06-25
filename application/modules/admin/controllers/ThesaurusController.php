@@ -13,6 +13,7 @@ class Admin_ThesaurusController extends Whale_Controller_Action
         $colorService = new Catalog_Model_ColorService();
         $surfaceService = new Catalog_Model_SurfaceService();
         $countryService = new Catalog_Model_CountryService();
+        $patternService = new Catalog_Model_PatternService();
 
         $this->view->thesaurus = array(
             'colors' => array(
@@ -29,6 +30,11 @@ class Admin_ThesaurusController extends Whale_Controller_Action
                 'items' => $countryService->fetchAll(),
                 'title' => 'Страна',
                 'controller' => 'country',
+            ),
+            'patterns' => array(
+                'items' => $patternService->fetchAll(),
+                'title' => 'Рисунок',
+                'controller' => 'pattern',
             ),
         );
     }
