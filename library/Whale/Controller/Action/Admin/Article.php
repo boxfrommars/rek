@@ -83,10 +83,10 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
                 if ($this->_form->isValid($request->getPost())) {
                     $values = $this->_form->getValues();
                     unset ($values['csrf_protect']); // убираем csrf токен
-                    $this->_model->insert($values);
+                    $id = $this->_model->insert($values);
                     $this->_afterAdd($values);
                     $this->_flashMessenger->addMessage('Запись добавлена');
-                    $this->_setRedirectByItem($values);
+                    $this->_setRedirectByItem($values, $id);
                     $this->_redirectTo();
                 }
             }
@@ -173,7 +173,7 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
         $redirector->gotoRoute($routeOptions, $routeName);
     }
 
-    protected function _setRedirectByItem($item)
+    protected function _setRedirectByItem($item, $id = null)
     {
     }
 

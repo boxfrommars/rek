@@ -5,7 +5,6 @@
  */
 class Admin_ProductController extends Whale_Controller_Action_Admin_Page
 {
-    protected $_redirectOptions = array('action' => 'index', 'controller' => 'category');
     /**
      * @var Catalog_Model_ProductService
      */
@@ -36,6 +35,14 @@ class Admin_ProductController extends Whale_Controller_Action_Admin_Page
         $productColorService->delete(array('id_product = ?' => $id));
     }
 
+
+    protected function _setRedirectByItem($item, $id = null)
+    {
+        if ($id) {
+            $this->_redirectOptions = array('controller' => 'product', 'action' => 'edit', 'id' => $id);
+            $this->_redirectRouteName = 'admin';
+        }
+    }
 
 }
 

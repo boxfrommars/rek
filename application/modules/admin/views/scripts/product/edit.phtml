@@ -4,6 +4,14 @@
     <div class="span7">
         <h2>Редактирование товара</h2>
         <?php print $this->form; ?>
+        <script>
+            $('#copy').on('click', function(){
+                $form = $(this).parents('form');
+                $form.attr('action', '<?php echo $this->url(array('action' => 'add', 'controller' => 'product', 'idParent' => $this->item['id_parent'], 'module' => 'admin'), 'default') ?>');
+//                console.log($form);
+//                $form.submit();
+            });
+        </script>
     </div>
     <div class="span5">
         <h2>Цвета товара</h2>

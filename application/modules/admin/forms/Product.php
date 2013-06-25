@@ -109,4 +109,35 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
             'label' => "Хит",
         ));
     }
+
+    protected function _initButtons()
+    {
+
+        $this->addElement('button', 'submit', array(
+            'label' => 'Сохранить',
+            'type' => 'submit',
+            'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_SUCCESS,
+        ));
+
+        $this->addElement('button', 'reset', array(
+            'label' => 'Отмена',
+            'type' => 'reset',
+            'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_INFO,
+        ));
+
+        $this->addElement('button', 'copy', array(
+            'label' => 'Копировать',
+            'type' => 'submit',
+            'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_PRIMARY,
+        ));
+
+        $this->addDisplayGroup(
+            array('submit', 'copy', 'reset'),
+            'actions',
+            array(
+                'disableLoadDefaultDecorators' => true,
+                'decorators' => array('Actions')
+            )
+        );
+    }
 }
