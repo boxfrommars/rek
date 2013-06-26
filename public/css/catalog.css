@@ -10,7 +10,7 @@
 #price_catalog {
     width: 175px;
     float: left;
-    font-family: MyriadProRegular;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .niceCheck {
@@ -61,7 +61,8 @@
 
 .checkbox_color p {
     font-size: 10px;
-    font-family: MyriadProSemibold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     color: #3c3c3c;
     line-height: 10px;
     position: relative;
@@ -80,7 +81,7 @@
 }
 
 #thick {
-    font-family: MyriadProRegular;
+    font-family: 'Open Sans', sans-serif;
     font-size: 10px;
     padding-top: 4px;
     padding-left: 5px;
@@ -143,8 +144,8 @@
     margin-right: 35px;
     margin-top: 32px;
     width: 231px;
-    font-family: MyriadProSemibold;
-    font-weight: 200;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
 }
 
 .product_from_catalog p {
@@ -167,7 +168,8 @@
 .price_prod {
     font-size: 30px;
     color: #084a7b;
-    font-family: MyriadProSemibold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
 }
 
 .price_prod>span {
@@ -192,7 +194,8 @@
 #list_page p {
     font-size: 30px;
     color: #084a7b;
-    font-family: MyriadProSemibold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     float: left;
 }
 
@@ -231,7 +234,8 @@
 }
 .back_to_resault, .back_to_resault a {
     color: #084a7b;
-    font-family: MyriadProSemibold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     font-size: 16px;
     line-height: 20px;
 }
@@ -244,7 +248,8 @@
 .left_catalog_point {
     line-height: 35px;
     font-size: 18px;
-    font-family: MyriadProSemibold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     color: #084a7b;
 }
 
@@ -307,19 +312,21 @@
 .nav_catalog {
     line-height: 40px;
     font-size: 12px;
-    font-family: MyriadProRegular;
+    font-family: 'Open Sans', sans-serif;
     clear: both;
 }   
 
 .name_black {
     font-size: 24px;
-    font-family: MyriadProSemibold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     line-height: 25px;
 }
 
 .name_blue {
     font-size: 24px;
-    font-family: MyriadProSemibold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     color: #084a7b;
     line-height: 26px;
 }
@@ -342,7 +349,8 @@
 
 .sample_price p {
     font-size: 18px;
-    font-family: MyriadProSemibold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
 }
 
 .sample_price span {
@@ -357,7 +365,8 @@
     margin-top: 60px;
     color: white;
     font-size: 34px;
-    font-family: MyriadProBold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
 }
 
 .price_catalog {
@@ -366,15 +375,15 @@
 }
 
 .price_catalog>span {
-    font-size: 32px;
+    font-size: 28px;
     vertical-align: super;
 }
 
 #catalog_info {
     clear: both;
     color: #3c3c3c;
-    font-size: 20px;
-    font-family: MyriadProRegular;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
     margin: 30px 0;
 
 }
@@ -440,8 +449,9 @@
 
 #viewed_text p {
     color: white;
-    font-size: 24px;
-    font-family: MyriadProSemibold;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     padding: 7px 0 0 7px;
 }
 

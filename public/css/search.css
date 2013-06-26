@@ -24,7 +24,8 @@
 #search_result_field {
     margin: 25px 0 25px 20px;
     float: left;
-    font-family: MyriadPro-Semibold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     font-size: 15px;
     color: #3c3c3c;
 }
@@ -60,7 +61,8 @@
     behavior: url('PIE.htc');
     color: white;
     font-size: 15px;
-    font-family: MyriadPro-Semibold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
     margin-right: 3px;
     text-decoration: none;
     opacity: .6;

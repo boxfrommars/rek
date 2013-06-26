@@ -24,7 +24,7 @@ class Catalog_ApiController extends Whale_Controller_Action
 
         if ($this->getParam('color')) {
             $colorSelect = $productService->getAdapter()->select()->from(array('pcl' => 'product_color'), 'id_product')->where('id IN (?)', explode(',', $this->getParam('color')))->group(array('id_product'))->query()->fetchAll(Zend_Db::FETCH_COLUMN);
-            Whale_Log::log($colorSelect);
+
             if (!empty($colorSelect)) {
                 $select->where('p.id IN (?)', $colorSelect);
             } else {
