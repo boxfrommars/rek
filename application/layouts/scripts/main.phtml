@@ -42,7 +42,7 @@
                 <div class="item <?php if ($key == 0) echo 'active'; ?>">
                     <img src="/files/<?php echo $slider['image']; ?>" alt="">
                     <div class="carousel-caption" id="keramo_text">
-                        <h1><?php echo $slider['title']; ?></h1>
+                        <b><?php echo $slider['title']; ?></b>
                         <?php echo $slider['text']; ?>
                     </div>
                 </div>
@@ -54,11 +54,11 @@
     </div>
     <div id="keramika">
         <div id="gradient"></div>
-        <div id="choice">
-            <h2 class="active"><a href="#" class="data-plitka" data-plitka=".plitka-action">АКЦИИ</a></h2>
-            <h2><a href="#" class="data-plitka" data-plitka=".plitka-hit">ХИТЫ</a></h2>
-            <h2><a href="#" class="data-plitka" data-plitka=".plitka-new">НОВИНКИ</a></h2>
-        </div>
+        <ul id="choice">
+            <li class="active"><a href="#" class="data-plitka" data-plitka=".plitka-action">АКЦИИ</a></li>
+            <li><a href="#" class="data-plitka" data-plitka=".plitka-hit">ХИТЫ</a></li>
+            <li><a href="#" class="data-plitka" data-plitka=".plitka-new">НОВИНКИ</a></li>
+        </ul>
         <script>
             $(document).ready(function(){
                     $('.carousel').carousel({
@@ -70,8 +70,8 @@
 
                 $('.data-plitka').on('click', function(){
                     $('.plitka').hide().filter($(this).attr('data-plitka')).fadeIn();
-                    $('#choice h2').removeClass('active');
-                    $(this).parent('h2').addClass('active');
+                    $('#choice li').removeClass('active');
+                    $(this).parent('li').addClass('active');
                     return false;
                 });
             });
@@ -116,9 +116,9 @@
             <?php endforeach; ?>
         </div>
     </div>
-    <div>
+    <div class="groupfix">
         <div id="news">
-            <h3 class="news_title"><a href="/news/"><span>НОВОСТИ</span></a></h3>
+            <span class="news_title"><a href="/news/">НОВОСТИ</a></span>
             <div id="point"></div>
             <div class="news">
                 <?php foreach ($this->news as $news): ?>
@@ -130,18 +130,18 @@
             </div>
         </div>
         <div id="answer">
-            <h3 class="news_title"><span>ПОЧЕМУ ВЫБИРАЮТ НАС?</span></h3>
+            <span class="news_title">ПОЧЕМУ ВЫБИРАЮТ НАС?</span>
             <div id="point_answer"></div>
             <div class="article">
-                <h4><?php echo $this->texts->get('first')->getTitle(); ?></h4>
+                <span class="h4"><?php echo $this->texts->get('first')->getTitle(); ?></span>
                 <?php echo $this->texts->get('first')->getContent(); ?>
             </div>
             <div class="article">
-                <h4><?php echo $this->texts->get('second')->getTitle(); ?></h4>
+                <span class="h4"><?php echo $this->texts->get('second')->getTitle(); ?></span>
                 <?php echo $this->texts->get('second')->getContent(); ?>
             </div>
             <div class="article">
-                <h4><?php echo $this->texts->get('third')->getTitle(); ?></h4>
+                <span class="h4"><?php echo $this->texts->get('third')->getTitle(); ?></span>
                 <?php echo $this->texts->get('third')->getContent(); ?>
             </div>
         </div>

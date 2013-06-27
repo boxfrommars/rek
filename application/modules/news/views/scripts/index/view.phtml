@@ -1,5 +1,5 @@
-<h3><?php echo $this->item['title'] ?></h3>
-<h4><?php echo date('d.m.Y', strtotime($this->item['published_at'])); ?></h4>
+<h1><?php echo $this->item['title'] ?></h1>
+<span class="h4"><?php echo date('d.m.Y', strtotime($this->item['published_at'])); ?></span>
 
 <div class="news-text">
     <?php echo $this->item['content'] ?>

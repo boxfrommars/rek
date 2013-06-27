@@ -265,6 +265,14 @@ table {
 }
 
 h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #084A7B;
+    font-size: 24px;
+    margin: 15px 0 20px;
+}
+
+#keramo h1 {
     font-size: 60px;
     text-align: right;
     padding-bottom: 75px;
@@ -272,7 +280,7 @@ h1 {
     line-height: 60px;
 }
 
-h1 a {
+#keramo h1 a {
     color: white;
     text-decoration: none;
     border-bottom: 2px solid white;
@@ -290,13 +298,15 @@ h1 a {
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
 }
-#keramo_text h1, #keramo_text h1 a {
+#keramo_text b, #keramo_text b a {
     color: white;
     text-decoration: none;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 700;
     font-size: 60px;
     line-height: 60px;
+    text-align: right;
+    display: block;
     text-transform: uppercase;
 }
 
@@ -349,6 +359,25 @@ h2 a {
 h2:hover, h2.active {
     background: url('../img/choose.png') no-repeat;
 }
+
+#choice li {
+    width: 156px;
+    height: 48px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: normal;
+}
+
+#choice li a {
+    color: #084a7b;
+    text-decoration: none;
+    font-size: 38px;
+    padding-left: 5px;
+}
+
+#choice li:hover, #choice li.active {
+    background: url('../img/choose.png') no-repeat;
+}
+
 
 /*h2:hover a {
     opacity: .5;
@@ -467,6 +496,7 @@ h2:hover, h2.active {
 .news_title {
     color: #084a7b;
     font-size: 24px;
+    font-weight: 600;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -474,11 +504,11 @@ h2:hover, h2.active {
     width: 115px;
     height:8px;
     background: url('../img/point.png') repeat-x;
-    margin-bottom: 40px; 
+    margin-bottom: 10px;
 }
 
 .news {
-    height: 260px;
+    /*height: 260px;*/
     width: 190px;
 }
 
@@ -487,7 +517,7 @@ h2:hover, h2.active {
     margin: 55px 0 0 0;
 }
 
-#answer h3 {
+#answer .news_title {
     margin-left: 25px;
 }
 
@@ -501,7 +531,7 @@ h2:hover, h2.active {
 .article {
     margin-left: 25px;
     width: 240px;
-    height: 300px;
+    /*height: 300px;*/
     font-size: 12.47px;
     color: #616161;
     float: left;
@@ -512,10 +542,23 @@ h2:hover, h2.active {
     height: 260px;
 }
 
+.groupfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 h4 {
     color: #32505f; 
     font-size: 24px;
     padding: 3px 0 2px 0;
+}
+
+span.h4 {
+    color: #32505f;
+    font-size: 24px;
+    padding: 3px 0 2px 0;
+    font-weight: 800;
 }
 
 #partner {
@@ -555,6 +598,13 @@ h5 {
     font-size: 24px;
     padding: 20px 0 10px 0;
     font-family: 'Open Sans Condensed', sans-serif;
+}
+
+span.h5 {
+    font-size: 24px;
+    padding: 20px 0 10px 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
 }
 
 .contact a {
