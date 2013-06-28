@@ -19,17 +19,26 @@
     </div>
 
     <?php if (!empty($this->colors)): ?>
+<!--    <div class="bottom-bordered">-->
+<!--        <div style="width:100%; height: 7px; float: left;"></div>-->
+<!--        <p class="left_catalog_point">ЦВЕТ</p>-->
+<!--        <div class="checkbox_color">-->
+<!--            --><?php //foreach ($this->colors as $color): ?>
+<!--                <div>-->
+<!--                    <span class="niceCheck"><input type="checkbox" class="product-filter-checkbox" name="color" value="--><?php //echo $color['id'] ?><!--"></span>-->
+<!--                    <p>--><?php //echo $color['title'] ?><!--</p>-->
+<!--                </div>-->
+<!--            --><?php //endforeach; ?>
+<!--        </div>-->
+<!--    </div>-->
     <div class="bottom-bordered">
-        <div style="width:100%; height: 7px; float: left;"></div>
         <p class="left_catalog_point">ЦВЕТ</p>
-        <div class="checkbox_color">
-            <?php foreach ($this->colors as $color): ?>
-                <div>
-                    <span class="niceCheck"><input type="checkbox" class="product-filter-checkbox" name="color" value="<?php echo $color['id'] ?>"></span>
-                    <p><?php echo $color['title'] ?></p>
-                </div>
-            <?php endforeach; ?>
-        </div>
+
+        <?php foreach ($this->colors as $color): ?>
+            <div class="area">
+                <p><span class="niceCheck"><input class="product-filter-checkbox" name="pattern" type="checkbox" value="<?php echo $color['id'] ?>"></span><?php echo $color['title'] ?></p>
+            </div>
+        <?php endforeach; ?>
     </div>
     <?php endif; ?>
 
