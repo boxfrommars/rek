@@ -4,4 +4,4 @@
 /public/files/
 /tmp
 !/public/files/.htaccess
-/application/config/application.ini
+/application/configs/application.ini
