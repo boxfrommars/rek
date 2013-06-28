@@ -22,11 +22,31 @@ class Whale_Router_Page extends Zend_Controller_Router_Route {
         }
 
         $pageService = new Page_Model_Service();
-        $select = $pageService->getBaseSelect();
+        $page = $pageService->getPage(array(
+            array('key' => 'url = ?', 'value' => '/' . $path),
+            'NOT is_locked',
+        ));
 
-        $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('url = ?', '/' . $path)->where('NOT is_locked')->where('is_published');
-        $result = $nextSelect->query()->fetch();
-        return empty($result) ? false : array('page' => $result) + $this->_defaults;
+
+        $route = empty($page) ? false : array('page' => $page) + $this->_defaults;
+
+        if (null !== $page) {
+            switch ($page['entity']) {
+                case 'category':
+                    $route = array('module' => 'catalog', 'controller' => 'index', 'action' => 'index',
+                        'category' => $page['page_url']) + $route;
+                    break;
+                case 'brand':
+                    $route = array('module' => 'catalog', 'controller' => 'index', 'action' => 'brand',
+                        'brand' => $page['page_url'], 'category' => $page['parents'][1]['page_url']) + $route;
+                    break;
+                case 'product':
+                    $route = array('module' => 'catalog', 'controller' => 'index', 'action' => 'view',
+                        'product' => $page['page_url'], 'brand' => $page['parents'][2]['page_url'], 'category' => $page['parents'][1]['page_url']) + $route;
+                    break;
+            }
+        }
+        return $route;
     }
 
     public function assemble($data = array(), $reset = false, $encode = false)

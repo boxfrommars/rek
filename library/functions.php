@@ -248,3 +248,14 @@ function subentity($entityName) {
 function pathdepth($path) {
     return count(explode('.', $path));
 }
+
+// адище, хуле
+function getBreadcrumbs($page) {
+    $breadcrumbs = array();
+    foreach ($page['parents'] as $parent) {
+        $url = $parent['url'] ?: '/';
+        $breadcrumbs[] = '<a href="' . $url . '">' . $parent['title'] . '</a>';
+    }
+    $breadcrumbs[] = "<span>{$page['title']}</span>";
+    return $breadcrumbs;
+}

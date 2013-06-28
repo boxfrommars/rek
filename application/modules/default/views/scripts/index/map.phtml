@@ -10,7 +10,7 @@
             <tr data-tt-id="<?php echo $item['path']; ?>"
                 data-tt-parent-id="<?php if ($item['path'] !== 'Top') echo implode('.', array_slice(explode('.', $item['path']), 0, -1)) ?>">
                 <td>
-                    <a href="<?php if (in_array($item['entity'], array('product', 'brand', 'category'))) { echo '/catalog' . $item['url']; } else echo $item['url'] ?>">
+                    <a href="<?php echo $item['url'] ?>">
                         <?php echo $item['title'] ?>
                     </a>
                 </td>

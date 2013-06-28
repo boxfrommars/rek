@@ -76,7 +76,6 @@ var reloadProducts = function(){
 
 
 $(function() {
-    reloadProducts();
 		$( ".slider" ).slider({
 			min: ~~$("input#minCost").attr('data-value'),
             max: ~~$("input#maxCost").attr('data-value'),

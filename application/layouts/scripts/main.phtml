@@ -84,7 +84,7 @@
                         <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
                         <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
                         <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
-                        <p class="zakaz"><a href="/catalog/<?php echo $item['category_page_url'] . '/' . ($item['page_url'] ?: $product['id']) ?>">ЗАКАЗАТЬ</a></p>
+                        <p class="zakaz"><a href="/<?php echo $item['category_page_url'] . '/' . $item['brand_page_url'] . '/' . $item['page_url'] ?>">ЗАКАЗАТЬ</a></p>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -97,7 +97,7 @@
                         <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
                         <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
                         <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
-                        <p class="zakaz"><a href="/catalog/<?php echo $item['category_page_url'] . '/' . ($item['page_url'] ?: $product['id']) ?>">ЗАКАЗАТЬ</a></p>
+                        <p class="zakaz"><a href="<?php echo $item['category_page_url'] . '/' . $item['brand_page_url'] . '/' . $item['page_url'] ?>">ЗАКАЗАТЬ</a></p>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -110,7 +110,7 @@
                         <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
                         <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
                         <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
-                        <p class="zakaz"><a href="/catalog/<?php echo $item['category_page_url'] . '/' . ($item['page_url'] ?: $product['id']) ?>">ЗАКАЗАТЬ</a></p>
+                        <p class="zakaz"><a href="<?php echo $item['category_page_url'] . '/' . $item['brand_page_url'] . '/' . $item['page_url'] ?>">ЗАКАЗАТЬ</a></p>
                     </div>
                 </div>
             <?php endforeach; ?>

@@ -21,7 +21,7 @@
         <?php $i = 1 ?>
         <?php foreach ($this->categoryNavigation as $category): ?>
             <div id="toggle_1" class="dop_menu">
-                <a class="prod" style="text-transform: uppercase;" href ="/catalog/<?php echo $category['page_url']; ?>"><?php echo $category['title']; ?></a>
+                <a class="prod" style="text-transform: uppercase;" href ="/<?php echo $category['page_url']; ?>"><?php echo $category['title']; ?></a>
             </div>
             <?php $i++ ?>
         <?php endforeach; ?>

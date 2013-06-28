@@ -89,7 +89,6 @@ class Whale_Form_Page extends Whale_Form_Titled
             $options[$page['id']] = $page['title'];
         }
 
-        Whale_Log::log($pages);
         return $options;
     }
 }

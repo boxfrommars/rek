@@ -21,7 +21,7 @@ class Whale_Page_SeoItemAdapter implements Whale_Page_Interface  {
     }
 
     public function getDescription() {
-        return $this->_item['page_description'] ?: '';
+        return !empty($this->_item['page_description']) ? $this->_item['page_description'] : '';
     }
 
     public function getContent() {
@@ -29,10 +29,14 @@ class Whale_Page_SeoItemAdapter implements Whale_Page_Interface  {
     }
 
     public function getKeywords() {
-        return $this->_item['page_keywords'];
+        return !empty($this->_item['page_keywords']) ? $this->_item['page_keywords'] : '';
     }
 
     public function getParents() {
         return empty($this->_item['parents']) ? array() : $this->_item['parents'];
+    }
+
+    public function getRaw() {
+        return $this->_item;
     }
 }

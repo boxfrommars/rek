@@ -1,0 +1,27 @@
+<div id="left_catalog">
+</div><!--left_catalog-->
+<div id="right_catalog">
+    <div class="nav_catalog">
+        <p><?php echo implode(' <span>/</span> ', getBreadcrumbs($this->page->getRaw())); ?></p>
+    </div>
+    <h1><?php echo $this->page->getTitle(); ?></h1>
+    <div>
+        <?php echo $this->page->getContent(); ?>
+    </div>
+    <div id="product-container" class="groupfix">
+        <?php foreach ($this->products as $product): ?>
+            <?php echo $this->partial('item.phtml', array('product' => $product)); ?>
+        <?php endforeach; ?>
+    </div>
+    <div style="clear:both; height: 1px;" ></div>
+    <div id="list_page">
+<!--        <div class="prev_page">-->
+<!--            <a href="#"><img src="/img/back.png"></a>-->
+<!--        </div>-->
+<!--        <p><span>1</span> <a href="#">2</a> <a href="#">3</a> .... <a href="#">8</a></p>-->
+<!--        <div class="next_page">-->
+<!--            <a href="#"><img src="/img/next.png"></a>-->
+<!--        </div>-->
+    </div>
+
+</div>

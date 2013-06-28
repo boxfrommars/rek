@@ -35,15 +35,9 @@ class Catalog_IndexController extends Whale_Controller_Action
         $surfaceService = new Catalog_Model_SurfaceService();
         $countryService = new Catalog_Model_CountryService();
         $brandService = new Catalog_Model_BrandService();
+        $patternService = new Catalog_Model_PatternService();
         $colorService = new Catalog_Model_ColorService();
-
-        $this->view->colors = $colorService->fetchAll();
-        $this->view->surfaces = $surfaceService->fetchAll();
-        $this->view->countries = $countryService->fetchAll();
-        $this->view->brands = $brandService->fetchAll(null, 'order');
-        $this->view->sizes = $productService->getAdapter()->select()->from(array('p' => 'product'), array('width', 'height'))->group(array('height', 'width'))->query()->fetchAll();
-        $this->view->costsRange = $productService->getAdapter()->select()->from(array('p' => 'product'), array('max' => 'max(cost)', 'min' => 'min(cost)'))->query()->fetch();
-        $this->view->depthRange = $productService->getAdapter()->select()->from(array('p' => 'product'), array('max' => 'max(depth)', 'min' => 'min(depth)'))->query()->fetch();
+        $productColorService = new Catalog_Model_ProductColorService();
 
 
         $this->view->category = $category;
@@ -52,12 +46,70 @@ class Catalog_IndexController extends Whale_Controller_Action
 
         $products = $productService->fetchAll(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true));
 
+        $productIds = array();
+        $colorIds = array();
+        $surfaceIds = array();
+        $countryIds = array();
+        $brandIds = array();
+        $patternIds = array();
+        $sizes = array();
+        $minDepth = null;
+        $maxDepth = null;
+        $minCost = null;
+        $maxCost = null;
+
+        foreach ($products as $product) {
+            if (!in_array($product['id_surface'], $surfaceIds) && $product['id_surface']) $surfaceIds[] = $product['id_surface'];
+            if (!in_array($product['id_country'], $countryIds) && $product['id_country']) $countryIds[] = $product['id_country'];
+            if (!in_array($product['id_brand'], $brandIds) && $product['id_brand']) $brandIds[] = $product['id_brand'];
+            if (!in_array($product['id_pattern'], $patternIds) && $product['id_pattern']) $patternIds[] = $product['id_pattern'];
+            if (!in_array($product['id'], $productIds)) $productIds[] = $product['id'];
+
+            $addSize = true;
+            foreach ($sizes as $size) {
+                if ($size['width'] == $product['width'] && $size['height'] == $product['height']) $addSize = false;
+            }
+            if ($addSize) $sizes[] = array('width' => $product['width'], 'height' => $product['height']);
+
+            if ($product['cost'] > $maxCost || $maxCost === null) $maxCost = $product['cost'];
+            if ($product['cost'] < $minCost || $minCost === null) $minCost = $product['cost'];
+
+            if ($product['depth'] > $maxDepth || $maxDepth === null) $maxDepth = $product['depth'];
+            if ($product['depth'] < $minDepth || $minDepth === null) $minDepth = $product['depth'];
+        }
+
+        $productColors = $productColorService->fetchAll(array('id_product IN (?)' => $productIds));
+        foreach ($productColors as $productColor) {
+            if (!in_array($productColor['id_color'], $colorIds)) $colorIds[] = $productColor['id_color'];
+        }
+
+        Whale_Log::log($colorIds);
+        Whale_Log::log($patternIds);
+        Whale_Log::log($surfaceIds);
+
+        $this->view->surfaces = empty($surfaceIds) ? array() : $surfaceService->fetchAll(array('id IN (?)' => $surfaceIds));
+        $this->view->countries = empty($countryIds) ? array() : $countryService->fetchAll(array('id IN (?)' => $countryIds));
+        $this->view->brands = empty($brandIds) ? array() : $brandService->fetchAll(array('id IN (?)' => $brandIds), 'order');
+        $this->view->patterns = empty($patternIds) ? array() : $patternService->fetchAll(array('id IN (?)' => $patternIds));
+        $this->view->colors = empty($colorIds) ? array() : $colorService->fetchAll(array('id IN (?)' => $colorIds));
+        $this->view->sizes = $sizes;
+        $this->view->costsRange = array('max' => $maxCost, 'min' => $minCost);
+        $this->view->depthRange = array('max' => $maxDepth, 'min' => $minDepth);
+
+        $this->view->products = $products;
+    }
+
+    public function brandAction()
+    {
+        $productService = new Catalog_Model_ProductService();
+        $page = $this->_getParam('page');
+        $this->_setPage('');
+        $products = $productService->fetchAll(array('b.id = ?' => $page['id'], 'is_published = ?' => true));
         $this->view->products = $products;
     }
 
     public function viewAction()
     {
-
         Zend_Session::start();
         $categoryName = $this->getParam('category');
         $productName = $this->getParam('product');

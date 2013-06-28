@@ -57,35 +57,13 @@ class Whale_Controller_Action extends Zend_Controller_Action
     protected function _setPage($name)
     {
         Whale_Log::log($name);
-        $db = Zend_Db_Table::getDefaultAdapter();
+//
+//        $pageService = new Page_Model_Service();
+//        $page = $pageService->getPage(array(
+//            array('key' => 'name = ?', 'value' => $name,),
+//        ));
 
-        $page = $db->select()->from(
-            array('p' => 'page'),
-            array('*')
-        )->where('name = ?', $name)->query()->fetch();
-
-        $page = $page ?: array();
-
-        if (!empty($page)) {
-            $select = $db->select()->from(
-                array('p' => 'page'),
-                array('url' => "array_to_string(array_agg(a.page_url ORDER BY a.path), '/')", '*')
-            )->joinInner(
-                    array('a' => 'page'),
-                    'a.path @> p.path',
-                    array()
-                )->group(
-                    'p.id',
-                    'p.path',
-                    'p.page_url'
-                );
-            $nextSelect = $db->select()->from(array('s' => $select), '*')->where('path @> ?', $page['path'])->order(array('path'));
-            $page['parents'] = array_slice($nextSelect->query()->fetchAll(), 0, -1);
-        }
-
-        Whale_Log::log('--------------');
-        Whale_Log::log($page);
-        $page = new Whale_Page_SeoItemAdapter($page);
+        $page = new Whale_Page_SeoItemAdapter($this->_getParam('page'));
         $this->view->assign('page', $page);
     }
 }

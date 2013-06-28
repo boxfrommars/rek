@@ -51,6 +51,10 @@ class Catalog_ApiController extends Whale_Controller_Action
             $surface = explode(',', $this->getParam('surface'));
             $select->where('id_surface IN (?)', $surface);
         }
+        if ($this->getParam('pattern')) {
+            $surface = explode(',', $this->getParam('pattern'));
+            $select->where('id_pattern IN (?)', $surface);
+        }
 
         if ($this->getParam('country')) {
             $country = explode(',', $this->getParam('country'));

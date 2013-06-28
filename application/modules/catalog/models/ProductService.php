@@ -42,7 +42,6 @@ class Catalog_Model_ProductService extends Whale_Db_TableCached
                     'country_title' => 'title',
                 )
             );
-        Whale_Log::log($select->query()->fetchAll());
         if (null !== $where) {
             foreach ($where as $key => $value) {
                 if ($key == 'is_published = ?') {

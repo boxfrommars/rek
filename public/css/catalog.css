@@ -34,8 +34,12 @@
     text-align: right;
 }
 
-#top_price input, #bottom_price input {
-    width: 19px;
+#top_price input {
+    width: 30px;
+}
+
+#bottom_price input {
+    width: 20px;
 }
 
 #top_price span, #bottom_price span {
@@ -415,7 +419,7 @@
 
 .block_available {
     width: 174px;
-    margin-right: 19px;
+    margin-right: 14px;
     float: left;
     font-family: 'Trebuchet MS';
 }

@@ -33,4 +33,25 @@ class Whale_Db_Table extends Zend_Db_Table
         return $this->_schema;
     }
 
+    /**
+     * @param Zend_Db_Select $select
+     * @param array $where
+     * @return Zend_Db_Select
+     */
+    public function setSelectWhere($select, $where) {
+
+
+        foreach ($where as $whereItem) {
+            if (isset($whereItem['key']) && isset($whereItem['value'])) {
+                $select->where($whereItem['key'], $whereItem['value']);
+            } elseif (isset($whereItem['key'])) {
+                $select->where($whereItem['key']);
+            } else {
+                $select->where($whereItem);
+            }
+        }
+
+        return $select;
+    }
+
 }
