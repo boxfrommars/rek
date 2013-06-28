@@ -9,7 +9,7 @@ class Catalog_Model_BrandService extends Whale_Db_TableCached
     protected $_sequence = false;
 
     public function fetchAll($where = null, $order = null, $limit = null, $offset = null) {
-        return $this->getAdapter()->select()
+        $select =  $this->getAdapter()->select()
             ->from(
                 array('b' => $this->getName()),
                 array('*')
@@ -19,6 +19,9 @@ class Catalog_Model_BrandService extends Whale_Db_TableCached
                 array(
                     'category_title' => 'title'
                 )
-            )->query()->fetchAll();
+            );
+        if (null !== $order) $select->order($order);
+
+        return $select->query()->fetchAll();
     }
 }

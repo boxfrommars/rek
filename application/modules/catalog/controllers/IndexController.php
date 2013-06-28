@@ -44,7 +44,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->view->page = new Whale_Page_SeoItemAdapter($category->toArray());
 
 
-        $products = $productService->fetchAll(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true));
+        $products = $productService->fetchAll(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true), 'title ASC');
 
         $productIds = array();
         $colorIds = array();
@@ -83,11 +83,11 @@ class Catalog_IndexController extends Whale_Controller_Action
             if (!in_array($productColor['id_color'], $colorIds)) $colorIds[] = $productColor['id_color'];
         }
 
-        $this->view->surfaces = empty($surfaceIds) ? array() : $surfaceService->fetchAll(array('id IN (?)' => $surfaceIds));
-        $this->view->countries = empty($countryIds) ? array() : $countryService->fetchAll(array('id IN (?)' => $countryIds));
-        $this->view->brands = empty($brandIds) ? array() : $brandService->fetchAll(array('id IN (?)' => $brandIds), 'order');
-        $this->view->patterns = empty($patternIds) ? array() : $patternService->fetchAll(array('id IN (?)' => $patternIds));
-        $this->view->colors = empty($colorIds) ? array() : $colorService->fetchAll(array('id IN (?)' => $colorIds));
+        $this->view->surfaces = empty($surfaceIds) ? array() : $surfaceService->fetchAll(array('id IN (?)' => $surfaceIds), 'title ASC');
+        $this->view->countries = empty($countryIds) ? array() : $countryService->fetchAll(array('id IN (?)' => $countryIds), 'title ASC');
+        $this->view->brands = empty($brandIds) ? array() : $brandService->fetchAll(array('id IN (?)' => $brandIds), 'order ASC');
+        $this->view->patterns = empty($patternIds) ? array() : $patternService->fetchAll(array('id IN (?)' => $patternIds), 'title ASC');
+        $this->view->colors = empty($colorIds) ? array() : $colorService->fetchAll(array('id IN (?)' => $colorIds), 'title ASC');
         $this->view->sizes = $sizes;
         $this->view->costsRange = array('max' => $maxCost, 'min' => $minCost);
         $this->view->depthRange = array('max' => $maxDepth, 'min' => $minDepth);
