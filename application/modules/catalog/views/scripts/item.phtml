@@ -1,5 +1,5 @@
 <div class="product_from_catalog">
-    <p class="left_catalog_point"><a href="/<?php echo $this->product['category_page_url'] . '/' . ($this->product['page_url'] ?: $this->product['id']) ?>"><?php echo $this->product['title']; ?></a></p>
+    <p class="left_catalog_point"><a href="/<?php echo $this->product['category_page_url'] . '/' . $this->product['brand_page_url'] . '/' . $this->product['page_url'] ?>"><?php echo $this->product['title']; ?></a></p>
     <div class="cat_product">
         <a href="/<?php echo $this->product['category_page_url'] . '/' . $this->product['brand_page_url'] . '/' . $this->product['page_url'] ?>"><img src="/files/thumbnail/<?php echo $this->product['image']; ?>" alt="<?php echo $this->product['title']; ?>"></a>
     </div>

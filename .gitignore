@@ -5,3 +5,4 @@
 /tmp
 !/public/files/.htaccess
 /application/configs/application.ini
+/application/configs/local.ini

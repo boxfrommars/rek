@@ -78,7 +78,7 @@ class Catalog_IndexController extends Whale_Controller_Action
             if ($product['depth'] < $minDepth || $minDepth === null) $minDepth = $product['depth'];
         }
 
-        $productColors = $productColorService->fetchAll(array('id_product IN (?)' => $productIds));
+        $productColors = empty($productIds) ? array() : $productColorService->fetchAll(array('id_product IN (?)' => $productIds));
         foreach ($productColors as $productColor) {
             if (!in_array($productColor['id_color'], $colorIds)) $colorIds[] = $productColor['id_color'];
         }

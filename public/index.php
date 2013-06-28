@@ -20,11 +20,14 @@ set_include_path(implode(PATH_SEPARATOR, array(
 require_once 'Zend/Application.php';
 require_once 'functions.php';
 
-// Create application, bootstrap, and run
 $application = new Zend_Application(
     APPLICATION_ENV,
-    APPLICATION_PATH . '/configs/application.ini'
+    array(
+        'config' => array(APPLICATION_PATH . '/configs/application.ini', APPLICATION_PATH . '/configs/local.ini'),
+    )
 );
+
+
 Whale_Log::setStartTime($startTime);
 
 $application->bootstrap()

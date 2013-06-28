@@ -1,0 +1,18 @@
+[production]
+resources.multidb.default.adapter = Pdo_Pgsql
+resources.multidb.default.host = 127.0.0.1
+resources.multidb.default.port = 5432
+resources.multidb.default.username = someuser
+resources.multidb.default.password = somepassword
+resources.multidb.default.dbname = somedb
+resources.multidb.default.isDefaultTableAdapter = true
+[staging : production]
+[testing : production]
+[development : production]
+resources.multidb.default.adapter = Pdo_Pgsql
+resources.multidb.default.host = 127.0.0.1
+resources.multidb.default.port = 5432
+resources.multidb.default.username = flavia
+resources.multidb.default.password = flavia
+resources.multidb.default.dbname = flavia
+resources.multidb.default.isDefaultTableAdapter = true
