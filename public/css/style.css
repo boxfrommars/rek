@@ -451,8 +451,9 @@ h2:hover, h2.active {
 }
 
 .cost {
-    font-size: 23px;
+    font-size: 20px;
     font-family: 'Open Sans Condensed', sans-serif;
+    line-height: 1.2;
 }
 
 .cost span {
@@ -468,10 +469,11 @@ h2:hover, h2.active {
     font-size: 18px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
+    line-height: 1.2;
 }
 
 .zakaz {
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
 }
