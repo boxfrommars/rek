@@ -57,12 +57,7 @@
     <div id="available">
         <p class="left_catalog_point">ДОСТУПНЫЕ ЦВЕТА:</p>
         <?php foreach ($this->productColors as $color): ?>
-            <div class="block_available">
-                <div class="catalog_available">
-                    <img src="/files/<?php echo $color['image'] ?>">
-                </div>
-                <p><?php echo $color['title'] ?></p>
-            </div>
+            <?php echo $this->partial('secondaryItem.phtml', array('item' => $color)); ?>
         <?php endforeach; ?>
     </div>
 </div>
@@ -75,12 +70,7 @@
             <img src="/img/catalog_prev.png">
         </div>
         <?php foreach ($this->lastViewed as $lastViewed): ?>
-            <div class="block_available">
-                <div class="catalog_available">
-                    <img src="/files/<?php echo $lastViewed['image'] ?>">
-                </div>
-                <p><?php echo $lastViewed['title'] ?></p>
-            </div>
+            <?php echo $this->partial('secondaryItem.phtml', array('item' => $lastViewed)); ?>
         <?php endforeach; ?>
         <div class="next_viewed">
             <img src="/img/catalog_next.png">
@@ -97,12 +87,7 @@
             <img src="/img/catalog_prev.png">
         </div>
         <?php foreach ($this->recommended as $recommendedItem): ?>
-            <div class="block_available">
-                <div class="catalog_available">
-                    <img src="/files/<?php echo $recommendedItem['image'] ?>">
-                </div>
-                <p><?php echo $recommendedItem['title'] ?></p>
-            </div>
+            <?php echo $this->partial('secondaryItem.phtml', array('item' => $recommendedItem)); ?>
         <?php endforeach; ?>
         <div class="next_viewed">
             <img src="/img/catalog_next.png">
