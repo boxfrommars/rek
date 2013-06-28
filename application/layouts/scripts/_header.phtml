@@ -19,11 +19,22 @@
     <form action="/search" method="post"><input id="search" type="text" name="searchstring" value="&#160;поиск" onfocus="this.value=''" onblur="this.value='поиск'"/></form>
     <div id="product" class="product_menu">
         <?php $i = 1 ?>
+        <ul>
         <?php foreach ($this->categoryNavigation as $category): ?>
-            <div id="toggle_1" class="dop_menu">
+            <li id="toggle_1" class="dop_menu">
                 <a class="prod" style="text-transform: uppercase;" href ="/<?php echo $category['page_url']; ?>"><?php echo $category['title']; ?></a>
-            </div>
+                <?php
+                    $brandModel = new Catalog_Model_BrandService();
+                    $brands = $brandModel->fetchAll(array(array('key' => 'b.id_parent = ?', 'value' => $category['id'])));
+                ?>
+                <ul>
+                    <?php foreach ($brands as $brand): ?>
+                        <li><a href="/<?php echo $category['page_url'] . '/' . $brand['page_url'] ?>"><?php echo $brand['title'] ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
             <?php $i++ ?>
         <?php endforeach; ?>
+        </ul>
     </div>
 </div>
