@@ -57,13 +57,15 @@ class Whale_Controller_Action extends Zend_Controller_Action
     protected function _setPage($name)
     {
         Whale_Log::log($name);
-//
-//        $pageService = new Page_Model_Service();
-//        $page = $pageService->getPage(array(
-//            array('key' => 'name = ?', 'value' => $name,),
-//        ));
+        $page = $this->_getParam('page');
+        if (empty($page)) {
 
-        $page = new Whale_Page_SeoItemAdapter($this->_getParam('page'));
-        $this->view->assign('page', $page);
+            $pageService = new Page_Model_Service();
+            $page = $pageService->getPage(array(
+                array('key' => 'name = ?', 'value' => $name,),
+            ));
+        }
+
+        $this->view->assign('page', new Whale_Page_SeoItemAdapter($page));
     }
 }
