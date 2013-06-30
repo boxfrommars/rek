@@ -109,9 +109,9 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li><a href="/admin/product">Товары</a></li>
+<!--                                <li><a href="/admin/product">Товары</a></li>-->
                                 <li><a href="/admin/category">Категории</a></li>
-                                <li><a href="/admin/brand">Бренды</a></li>
+<!--                                <li><a href="/admin/brand">Бренды</a></li>-->
                                 <li><a href="/admin/thesaurus">Справочники</a></li>
                             </ul>
                         </li>
@@ -137,11 +137,17 @@
                             data-tt-parent-id="<?php if (pathdepth($pageitem['path']) != 1) echo implode('.', array_slice(explode('.', $pageitem['path']), 0, -1)) ?>"
                             data-tt-initialState="<?php if (pathdepth($pageitem['path']) == 1) echo 'expanded' ?>">
                             <td>
-                                <a href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'edit'), 'admin') ?>">
+                                <a href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'view'), 'admin') ?>">
                                     <?php echo $pageitem['title'] ?>
                                 </a>
                             </td>
-                            <td>
+                            <td style="width:10px">
+                                <a
+                                    href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'edit'), 'admin') ?>"
+                                    class="icon-edit pull-right action edit">
+                                </a>
+                            </td>
+                            <td style="width:10px">
                                 <?php if (subentity($pageitem['entity'])): ?>
                                     <a title="Добавить подстраницу"
                                        href="<?php echo $this->url(array('action' => 'add', 'controller' => subentity($pageitem['entity']), 'idParent' => $pageitem['id'], 'module' => 'admin'), 'default') ?>"

@@ -74,6 +74,14 @@ class Whale_Controller_Action_Admin_Article extends Whale_Controller_Action
         );
     }
 
+    protected function viewAction()
+    {
+        $id = $this->_getParam('id');
+        $item = $this->_model->fetchRow(array('id = ?' => $id));
+        $this->_helper->viewRenderer('default/admin-view', null, true);
+        $this->view->item = $item;
+    }
+
     public function addAction()
     {
         if ($this->_isAddable) {

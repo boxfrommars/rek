@@ -75,7 +75,7 @@ CREATE TABLE "page" (
   "name" VARCHAR(255) UNIQUE,
   "is_locked" BOOL DEFAULT 'f',
 
-  "id_parent" BIGINT REFERENCES page ("id"),
+  "id_parent" BIGINT REFERENCES page ("id")  ON DELETE CASCADE,
   "path" LTREE UNIQUE,
   "entity" VARCHAR(255),
 
@@ -89,6 +89,7 @@ CREATE INDEX ON page USING GIST (path);
 CREATE TABLE "news" (
   "preview" TEXT,
   "published_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
+  "id_parent" BIGINT REFERENCES page ("id")  ON DELETE CASCADE,
   PRIMARY KEY("id")
 ) INHERITS (page);
 
@@ -131,11 +132,13 @@ CREATE TABLE "feedback" (
 
 CREATE TABLE "category" (
   "image" VARCHAR (255),
+  "id_parent" BIGINT REFERENCES page ("id")  ON DELETE CASCADE,
   PRIMARY KEY("id")
 ) INHERITS ("page");
 
 CREATE TABLE "brand" (
   "image" VARCHAR (255),
+  "id_parent" BIGINT REFERENCES category ("id")  ON DELETE CASCADE,
   PRIMARY KEY("id")
 ) INHERITS ("page");
 
@@ -144,9 +147,9 @@ CREATE TABLE "product" (
   "cost" DECIMAL(10,2),            -- стоимость
   "image" VARCHAR (255),
 
-  "id_surface" INT NOT NULL REFERENCES "surface" (id), -- тип поверхности
-  "id_pattern" INT REFERENCES "pattern" (id), -- рисунок
-  "id_country" INT NOT NULL REFERENCES "country" (id), -- страна
+  "id_surface" INT NOT NULL REFERENCES "surface" (id)  ON DELETE CASCADE, -- тип поверхности
+  "id_pattern" INT REFERENCES "pattern" (id)  ON DELETE CASCADE, -- рисунок
+  "id_country" INT NOT NULL REFERENCES "country" (id)  ON DELETE CASCADE, -- страна
 
   "is_action" BOOL DEFAULT 'f',
   "is_new" BOOL DEFAULT 'f',
@@ -155,6 +158,7 @@ CREATE TABLE "product" (
   "width" DECIMAL(10,1),           -- размер
   "height" DECIMAL(10,1),          -- высоты
   "depth" DECIMAL(10,1),           -- толщина
+  "id_parent" BIGINT REFERENCES brand ("id")  ON DELETE CASCADE,
   PRIMARY KEY ("id")
 ) INHERITS ("page");
 
@@ -163,11 +167,11 @@ CREATE TABLE "product_color" (
   "title" VARCHAR(255) NOT NULL,                        -- название на русском
   "image" VARCHAR (255),                                -- изображение
 
-  "id_color" INT NOT NULL REFERENCES "color" (id),      -- цвет
-  "id_product"  INT NOT NULL REFERENCES "product" (id), -- товар
+  "id_color" INT NOT NULL REFERENCES "color" (id)  ON DELETE CASCADE,      -- цвет
+  "id_product"  INT NOT NULL REFERENCES "product" (id)  ON DELETE CASCADE, -- товар
   "content" TEXT,                                   -- описание
 
-  "id_surface" INT NOT NULL REFERENCES "surface" (id), -- тип поверхности
+  "id_surface" INT NOT NULL REFERENCES "surface" (id)  ON DELETE CASCADE, -- тип поверхности
   "cost" DECIMAL(10,2),            -- стоимость
 
   "is_published" BOOL DEFAULT 'f',
