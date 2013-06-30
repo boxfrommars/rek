@@ -40,10 +40,10 @@
         <p class="name_black" style="text-transform: uppercase"><?php echo $this->product['title'] ?></p>
         <p class="name_blue" style="text-transform: uppercase"><?php echo $this->product['brand_title'] ?></p>
         <div class="catalog_sample">
-            <img style="width:280px;" src="/files/thumbnail/<?php echo $this->product['image'] ?>"/>
+            <img style="width:280px;" class="product-image" src="/files/thumbnail/<?php echo $this->product['image'] ?>"/>
         </div>
         <div class="sample_price">
-            <p class="price_catalog"> <?php echo $this->product['cost'] ?> <span>руб./м</span></p>
+            <p class="price_catalog product-cost"> <?php echo $this->product['cost'] ?> <span>руб./м</span></p>
             <p><span>Тип поверхности:</span> <?php echo $this->product['surface_title'] ?></p>
             <p><span>Размер:</span> <?php echo $this->product['width'] ?>*<?php echo $this->product['height'] ?>*<?php echo $this->product['depth'] ?></p>
 <!--            <p><span>Рисунок:</span> дерево</p>-->
@@ -57,9 +57,28 @@
     <div id="available">
         <p class="left_catalog_point">ДОСТУПНЫЕ ЦВЕТА:</p>
         <?php foreach ($this->productColors as $color): ?>
-            <?php echo $this->partial('secondaryItem.phtml', array('item' => $color)); ?>
+            <div class="block_available">
+                <div class="catalog_available">
+                    <a href="#" class="product-color"
+                       data-pc-image="<?php echo $color['image'] ?>"
+                       data-pc-cost="<?php echo $color['cost'] ?>"
+                    >
+                        <img src="/files/thumbnail/<?php echo $color['image'] ?>">
+                    </a>
+                </div>
+                <p><a href="#"><?php echo $color['title'] ?></a></p>
+            </div>
         <?php endforeach; ?>
     </div>
+    <script>
+        $('.product-color').on('click', function(){
+            var cost = $(this).attr('data-pc-cost');
+            var image = $(this).attr('data-pc-image');
+            $('.product-cost').html(cost + '<span>руб./м</span>');
+            $('.product-image').attr('src', '/files/thumbnail/' + image);
+            return false;
+        });
+    </script>
 </div>
 <?php if (!empty($this->lastViewed)): ?>
 <div id="viewed">
