@@ -266,28 +266,36 @@ a {
     position: relative;
 }
 
-h1 {
+
+h1, h2, h3, h4, h5 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     color: #084A7B;
+    margin: 1em 0;
+}
+
+#right_catalog {
+    padding-bottom: 20px;
+}
+
+h1 {
     font-size: 24px;
-    margin: 15px 0 20px;
 }
 
-#keramo h1 {
-    font-size: 60px;
-    text-align: right;
-    padding-bottom: 75px;
-    font-weight: normal;
-    line-height: 60px;
+h2 {
+    font-size: 20px;
 }
 
-#keramo h1 a {
-    color: white;
-    text-decoration: none;
-    border-bottom: 2px solid white;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 700;
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
 }
 
 #keramo_text {
@@ -342,24 +350,6 @@ h1 {
 #keramika {
     width: 100%;
     float: left;
-}
-
-h2 {
-    width: 156px;
-    height: 48px;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: normal;
-}
-
-h2 a {
-    color: #084a7b;
-    text-decoration: none;
-    font-size: 38px;
-    padding-left: 5px;
-}
-
-h2:hover, h2.active {
-    background: url('../img/choose.png') no-repeat;
 }
 
 #choice li {
@@ -589,12 +579,6 @@ h2:hover, h2.active {
     clear: both;
 }
 
-h4 {
-    color: #32505f; 
-    font-size: 24px;
-    padding: 3px 0 2px 0;
-}
-
 span.h4 {
     color: #32505f;
     font-size: 24px;
@@ -632,12 +616,6 @@ span.h4 {
     float: left;
     color: #084a7b;
     font-size: 18px;
-    font-family: 'Open Sans Condensed', sans-serif;
-}
-
-h5 {
-    font-size: 24px;
-    padding: 20px 0 10px 0;
     font-family: 'Open Sans Condensed', sans-serif;
 }
 
