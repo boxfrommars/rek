@@ -32,7 +32,7 @@ class Feedback_IndexController extends Whale_Controller_Action_Admin_Article
     protected function _afterAdd($values)
     {
         Whale_Log::log($values);
-
+        Whale_Log::log($this->_settings);
         $mail = new Zend_Mail('UTF-8');
         $mail->setBodyText(implode("\n\n", $values));
         $mail->setFrom($this->_settings['email'], 'Админ');
