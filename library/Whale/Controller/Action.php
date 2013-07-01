@@ -10,7 +10,7 @@ class Whale_Controller_Action extends Zend_Controller_Action
      */
     protected $_user;
 
-    protected $_settings;
+    protected $settings;
     /**
      * @var Zend_Log
      */
@@ -23,8 +23,6 @@ class Whale_Controller_Action extends Zend_Controller_Action
     public function init()
     {
         parent::init();
-
-
         $settings = array();
         $settingsService = new Admin_Model_Settings();
         $settingsData = $settingsService->fetchAll()->toArray();
