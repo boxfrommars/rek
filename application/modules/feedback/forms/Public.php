@@ -38,6 +38,8 @@ class Feedback_Form_Public extends Twitter_Bootstrap_Form_Horizontal
             'filters' => array('StringTrim'),
             'validators' => array(),
             'dimension' => 6,
+            'placeholder' => '+7 (945) 222-2222',
+            'description' => 'например: +7 (945) 222-2222',
             'class' => 'form-text form-card',
         ));
 
