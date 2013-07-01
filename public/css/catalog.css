@@ -344,7 +344,7 @@
     font-weight: 600;
 }
 
-.sample_price span {
+.sample_price span.param-label {
     color: #084a7b;
 }
 
@@ -365,7 +365,7 @@
     color: #084a7b;
 }
 
-.price_catalog>span {
+.price_catalog>span.product-cost-measure {
     font-size: 28px;
     vertical-align: super;
 }

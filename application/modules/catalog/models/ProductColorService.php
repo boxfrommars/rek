@@ -30,6 +30,12 @@ class Catalog_Model_ProductColorService extends Whale_Db_TableCached
                 array(
                     'category_title' => 'title',
                 )
+            )->joinLeft(
+                array('pcs' => 'surface'),
+                'pc.id_surface = pcs.id',
+                array(
+                    'color_surface' => 'pcs.title',
+                )
             );
 
         if (is_array($where)) {
