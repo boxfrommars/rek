@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="/catalog/api/colors" media="screen">
 <div id="left_catalog">
     <div id="price_catalog" class="bottom-bordered">
         <p class="left_catalog_point">ЦЕНА</p>
@@ -34,7 +35,8 @@
 
         <?php foreach ($this->colors as $color): ?>
             <div class="area">
-                <p><span class="niceCheck"><input class="product-filter-checkbox" name="pattern" type="checkbox" value="<?php echo $color['id'] ?>"></span><?php echo $color['title'] ?></p>
+                <p><span class="niceCheck"><input class="product-filter-checkbox" name="pattern" type="checkbox" value="<?php echo $color['id'] ?>"></span><span class="gr color-<?php echo substr($color['hex'], -6) ?>"></span><br />
+                <?php echo $color['title'] ?></p>
             </div>
         <?php endforeach; ?>
     </div>

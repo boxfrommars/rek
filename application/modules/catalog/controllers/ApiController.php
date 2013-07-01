@@ -8,6 +8,17 @@ class Catalog_ApiController extends Whale_Controller_Action
 
     }
 
+    public function colorsAction(){
+        $this->_helper->layout()->disableLayout();
+
+        $this->getResponse()
+            ->setHeader('Content-type', 'text/css');
+
+        $colorService = new Catalog_Model_ColorService();
+        $this->view->colors = $colorService->fetchAll();
+
+    }
+
     public function indexAction()
     {
         if ($this->getRequest()->isXmlHttpRequest()) {

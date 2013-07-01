@@ -1,0 +1,13 @@
+<?php foreach ($this->colors as $color): ?>
+    <?php $hex = substr($color['hex'], -6); ?>
+    .color-<?php echo $hex ?> {
+    background: #ffffff;
+    background: -moz-linear-gradient(left, #ffffff 0%, #<?php echo $hex ?> 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffffff), color-stop(100%,#<?php echo $hex ?>));
+    background: -webkit-linear-gradient(left, #ffffff 0%,#<?php echo $hex ?> 100%);
+    background: -o-linear-gradient(left, #ffffff 0%,#<?php echo $hex ?> 100%);
+    background: -ms-linear-gradient(left, #ffffff 0%,#<?php echo $hex ?> 100%);
+    background: linear-gradient(to right, #ffffff 0%,#<?php echo $hex ?> 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#<?php echo $hex ?>',GradientType=1 );
+    }
+<?php endforeach;
