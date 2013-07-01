@@ -39,6 +39,7 @@ class Feedback_IndexController extends Whale_Controller_Action_Admin_Article
 
         $mail->addTo($this->_settings['email']);
         $mail->setSubject('Новая заявка на сайте Рекада');
+        Whale_Log::log($mail->getParts());
         $mail->send();
     }
 }
