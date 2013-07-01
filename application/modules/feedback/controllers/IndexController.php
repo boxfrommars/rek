@@ -31,6 +31,9 @@ class Feedback_IndexController extends Whale_Controller_Action_Admin_Article
     }
     protected function _afterAdd($values)
     {
+        $session = new Zend_Session_Namespace('lastCatalogPage');
+        $values[] = 'последняя просморенная страница каталога: ' . $session->url;
+
         $mail = new Zend_Mail('UTF-8');
         $mail->setBodyText(implode("\n\n", $values));
         $mail->setFrom($this->settings['email'], 'Admin');
@@ -38,6 +41,7 @@ class Feedback_IndexController extends Whale_Controller_Action_Admin_Article
         $mail->addTo($this->settings['email'], 'Admin');
         $mail->setSubject('Новая заявка на сайте Рекада');
         $mail->send();
+        $this->view->thanks = true;
     }
 }
 

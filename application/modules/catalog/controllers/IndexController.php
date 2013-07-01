@@ -18,6 +18,9 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->_service = new Catalog_Model_CategoryService();
         $layout = Zend_Layout::getMvcInstance();
         $layout->setLayout('catalog');
+        $url = Zend_Controller_Front::getInstance()->getRequest()->getRequestUri();
+        $session = new Zend_Session_Namespace('lastCatalogPage');
+        $session->url = $url;
     }
 
     public function indexAction()
