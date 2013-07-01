@@ -76,21 +76,40 @@ var reloadProducts = function(){
 
 
 $(function() {
-		$( ".slider" ).slider({
-			min: ~~$("input#minCost").attr('data-value'),
-            max: ~~$("input#maxCost").attr('data-value'),
-			range: true,
-            values: [$("input#minCost").attr('data-value'), $("input#maxCost").attr('data-value')],
-            stop: function(event, ui) {
-                $("input#minCost").val($(".slider").slider("values",0));
-                $("input#maxCost").val($(".slider").slider("values",1));
-                reloadProducts();
-            },
-            slide: function(event, ui){
-                $("input#minCost").val($(".slider").slider("values",0));
-                $("input#maxCost").val($(".slider").slider("values",1));
-            }
-		});
+    var $costSlider = $( ".slider-cost" );
+    var $depthSlider = $( ".slider-depth" );
+
+    $costSlider.slider({
+        min: ~~$("input#minCost").attr('data-value'),
+        max: ~~$("input#maxCost").attr('data-value'),
+        range: true,
+        values: [~~$("input#minCost").attr('data-value'), ~~$("input#maxCost").attr('data-value')],
+        stop: function(event, ui) {
+            $("input#minCost").val($costSlider.slider("values",0));
+            $("input#maxCost").val($costSlider.slider("values",1));
+            reloadProducts();
+        },
+        slide: function(event, ui){
+            $("input#minCost").val($costSlider.slider("values",0));
+            $("input#maxCost").val($costSlider.slider("values",1));
+        }
+    });
+    $depthSlider.slider({
+        min: ~~$("input#minDepth").attr('data-value'),
+        max: ~~$("input#maxDepth").attr('data-value'),
+        range: true,
+        values: [~~$("input#minDepth").attr('data-value'), ~~$("input#maxDepth").attr('data-value')],
+        stop: function(event, ui) {
+            $("input#minDepth").val($depthSlider.slider("values",0));
+            $("input#maxDepth").val($depthSlider.slider("values",1));
+            reloadProducts();
+        },
+        slide: function(event, ui){
+            $("input#minDepth").val($depthSlider.slider("values",0));
+            $("input#maxDepth").val($depthSlider.slider("values",1));
+        }
+    });
+
     $('.niceCheck').on('click', function(){
         reloadProducts();
     });

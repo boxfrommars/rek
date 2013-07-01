@@ -47,10 +47,12 @@ class Catalog_ApiController extends Whale_Controller_Action
             $sizeWhere = implode(' OR ', $sizeWhere);
             $select->where($sizeWhere);
         }
+
         if ($this->getParam('surface')) {
             $surface = explode(',', $this->getParam('surface'));
             $select->where('id_surface IN (?)', $surface);
         }
+
         if ($this->getParam('pattern')) {
             $surface = explode(',', $this->getParam('pattern'));
             $select->where('id_pattern IN (?)', $surface);
@@ -72,6 +74,14 @@ class Catalog_ApiController extends Whale_Controller_Action
 
         if ($this->getParam('maxcost')) {
             $select->where('p.cost <= ?', $this->getParam('maxcost'));
+        }
+
+        if ($this->getParam('mindepth')) {
+            $select->where('p.depth >= ?', $this->getParam('mindepth'));
+        }
+
+        if ($this->getParam('maxdepth')) {
+            $select->where('p.depth <= ?', $this->getParam('maxdepth'));
         }
         Whale_Log::log($select->assemble());
         $this->view->products = $select->query()->fetchAll();

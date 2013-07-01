@@ -1,21 +1,19 @@
 <div id="left_catalog">
     <div id="price_catalog" class="bottom-bordered">
         <p class="left_catalog_point">ЦЕНА</p>
-        <p id="top_price">
-            <input class="product-filter" type="text"
-                   id="maxCost"
-                   name="maxcost"
+        <p class="slider-input-wrap slider-input-right">
+            <input class="product-filter" type="text" id="maxCost" name="maxcost"
                    data-value="<?php echo ($this->costsRange['max'] + 100) ?>"
                    value="<?php echo ($this->costsRange['max'] + 100) ?>"
-                />р/м<span>2</span></p>
-        <div class="slider"></div>
-        <p id="bottom_price">
-            <input class="product-filter" type="text"
-                   id="minCost"
-                   name="mincost"
+                />р/м<span>2</span>
+        </p>
+        <div class="slider-cost"></div>
+        <p class="slider-input-wrap slider-input-left">
+            <input class="product-filter" type="text" id="minCost" name="mincost"
                    data-value="<?php echo ($this->costsRange['min'] - 100) >= 0 ? ($this->costsRange['min'] - 100) : 0 ?>"
                    value="<?php echo ($this->costsRange['min'] - 100) >= 0 ? ($this->costsRange['min'] - 100) : 0 ?>"
-                />р/м<span>2</span></p>
+                />р/м<span>2</span>
+        </p>
     </div>
 
     <?php if (!empty($this->colors)): ?>
@@ -58,22 +56,20 @@
 
     <div id="thickness" class="bottom-bordered">
         <p class="left_catalog_point">ТОЛЩИНА</p>
-        <div id="slider"></div>
-        <p id="thick"><span><?php echo ((int) $this->depthRange['min']) ?></span> мм</p>
+        <p class="slider-input-wrap slider-input-right">
+            <input class="product-filter" type="text" id="maxDepth" name="maxdepth"
+                   data-value="<?php echo ((int) $this->depthRange['max']) ?>"
+                   value="<?php echo ((int) $this->depthRange['max']) ?>"
+                />мм
+        </p>
+        <div class="slider-depth"></div>
+        <p class="slider-input-wrap slider-input-left">
+            <input class="product-filter" type="text" id="minDepth" name="mindepth"
+                   data-value="<?php echo (int) $this->depthRange['min'] ?>"
+                   value="<?php echo (int) $this->depthRange['min'] ?>"
+                />мм
+        </p>
     </div>
-
-    <script>
-        $( "#slider" ).slider({
-            min: <?php echo ($this->depthRange['min']) ?>,
-            max: <?php echo ($this->depthRange['max']) ?>,
-            step: 1,
-            value: <?php echo ($this->depthRange['min']) ?>,
-            slide: function( event, ui ) {
-                $( "#thick span").text(ui.value);
-            }
-        });
-    </script>
-
 
     <?php if (!empty($this->surfaces)): ?>
     <div class="bottom-bordered">
