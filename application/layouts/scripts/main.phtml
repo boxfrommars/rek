@@ -39,11 +39,13 @@
             <div class="carousel-inner">
                 <?php foreach ($this->slider as $key => $slider): ?>
                 <div class="item <?php if ($key == 0) echo 'active'; ?>">
-                    <img src="/files/<?php echo $slider['image']; ?>" alt="">
-                    <div class="carousel-caption" id="keramo_text">
-                        <b><?php echo $slider['title']; ?></b>
-                        <?php echo $slider['text']; ?>
-                    </div>
+                    <a href="<?php echo $slider['url']; ?>">
+                        <img src="/files/<?php echo $slider['image']; ?>" alt="">
+                        <div class="carousel-caption" id="keramo_text">
+                            <b><?php echo $slider['title']; ?></b>
+                            <?php echo $slider['text']; ?>
+                        </div>
+                    </a>
                 </div>
                 <?php endforeach; ?>
             </div>

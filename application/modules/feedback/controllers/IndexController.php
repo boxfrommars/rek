@@ -31,15 +31,12 @@ class Feedback_IndexController extends Whale_Controller_Action_Admin_Article
     }
     protected function _afterAdd($values)
     {
-        Whale_Log::log($values);
-        Whale_Log::log($this->settings);
         $mail = new Zend_Mail('UTF-8');
         $mail->setBodyText(implode("\n\n", $values));
         $mail->setFrom($this->settings['email'], 'Admin');
 
         $mail->addTo($this->settings['email'], 'Admin');
         $mail->setSubject('Новая заявка на сайте Рекада');
-        Whale_Log::log($mail->getParts());
         $mail->send();
     }
 }

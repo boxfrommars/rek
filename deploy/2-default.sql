@@ -196,6 +196,7 @@ CREATE TABLE "gallerymain" (
   "is_published" BOOL DEFAULT 'f',
   "title" VARCHAR(255) NOT NULL,
   "text" TEXT,
+  "url" VARCHAR (255),
   "image" VARCHAR (255),
   "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
   "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
@@ -367,11 +368,11 @@ INSERT INTO settings (title, name, value) VALUES ('Адрес', 'address', '1152
 INSERT INTO settings (title, name, value) VALUES ('Прайс', 'price', 'price.xls');
 INSERT INTO settings (title, name, value) VALUES ('Координаты', 'coordinates', '55.675306, 37.624741');
 
-INSERT INTO gallerymain (is_published, title, text, image, created_at, updated_at) VALUES (true, 'Керамогранит', '<p>Оптовые поставки материала из наличия-</p>
+INSERT INTO gallerymain (is_published, title, text, image, url, created_at, updated_at) VALUES (true, 'Керамогранит', '<p>Оптовые поставки материала из наличия-</p>
 <p>Подбор вариантов для Вашего объекта-</p>
 <p>Индивидуальные скидки для подрядчиков-</p>
-<p id="keramo_nal"><a href="#">Узнать наличие&nbsp;&gt;&gt;</a></p>', 'keramo_bg.jpg', '2013-05-17 06:48:16', '2013-05-17 06:48:16');
-INSERT INTO gallerymain (is_published, title, text, image, created_at, updated_at) VALUES (true, 'Керамогранит', '<p>Оптовые поставки материала из наличия-</p>
+<p id="keramo_nal"><a href="#">Узнать наличие&nbsp;&gt;&gt;</a></p>', 'keramo_bg.jpg', '/keramogranit', '2013-05-17 06:48:16', '2013-05-17 06:48:16');
+INSERT INTO gallerymain (is_published, title, text, image, url, created_at, updated_at) VALUES (true, 'Керамогранит', '<p>Оптовые поставки материала из наличия-</p>
 <p>Подбор вариантов для Вашего объекта-</p>
 <p>Индивидуальные скидки для подрядчиков-</p>
-<p id="keramo_nal"><a href="#">Узнать наличие&nbsp;&gt;&gt;</a></p>', 'keramo_bg.jpg', '2013-05-17 07:17:31', '2013-05-17 07:17:31');
+<p id="keramo_nal"><a href="#">Узнать наличие&nbsp;&gt;&gt;</a></p>', 'keramo_bg.jpg', '/keramogranit', '2013-05-17 07:17:31', '2013-05-17 07:17:31');

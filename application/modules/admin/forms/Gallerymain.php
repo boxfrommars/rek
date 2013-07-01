@@ -21,6 +21,14 @@ class Admin_Form_Gallerymain extends Whale_Form_Titled
             'label' => "Опубликована",
         ));
 
+        $this->addElement('text', 'url', array(
+            'label' => "Ссылка",
+            'required' => false,
+            'filters' => array('StringTrim'),
+            'validators' => array(),
+            'dimension' => $this->_dimension,
+        ));
+
         $this->addElement('text', 'image', array(
             'label' => "Изображение",
             'required' => false,

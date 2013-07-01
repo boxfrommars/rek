@@ -32,7 +32,6 @@ class Whale_Controller_Action extends Zend_Controller_Action
         $this->view->settings = $settings;
         $this->settings = $settings;
 
-
         $this->_user = Whale_User_Current::get();
         $this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
         /** @var Zend_Controller_Action_Helper_FlashMessenger $flashMessenger */
