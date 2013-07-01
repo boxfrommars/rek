@@ -273,7 +273,9 @@ h1, h2, h3, h4, h5 {
     color: #084A7B;
     margin: 1em 0;
 }
-
+.product-container {
+    padding-bottom: 20px;
+}
 #right_catalog {
     padding-bottom: 20px;
 }
