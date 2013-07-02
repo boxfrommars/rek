@@ -13,6 +13,10 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.niceCheckWrap {
+    cursor: pointer;
+}
+
 .niceCheck {
     width: 17px;
     height: 17px;
