@@ -35,7 +35,7 @@
 
         <?php foreach ($this->colors as $color): ?>
             <div class="area">
-                <p><span class="niceCheck"><input class="product-filter-checkbox" name="pattern" type="checkbox" value="<?php echo $color['id'] ?>"></span><span class="gr color-<?php echo substr($color['hex'], -6) ?>"></span><br />
+                <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="pattern" type="checkbox" value="<?php echo $color['id'] ?>"></span><span class="gr color-<?php echo substr($color['hex'], -6) ?>"></span><br />
                 <?php echo $color['title'] ?></p>
             </div>
         <?php endforeach; ?>
@@ -50,7 +50,7 @@
         <p class="left_catalog_point">РАЗМЕР</p>
         <?php foreach ($this->sizes as $size): ?>
             <div class="size_block">
-                <p><span class="niceCheck"><input class="product-filter-checkbox" name="size" value="<?php echo $size['width'] ?>-<?php echo $size['height'] ?>" type="checkbox"></span><?php echo $size['width'] ?>*<?php echo $size['height'] ?></p>
+                <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="size" value="<?php echo $size['width'] ?>-<?php echo $size['height'] ?>" type="checkbox"></span><?php echo $size['width'] ?>*<?php echo $size['height'] ?></p>
             </div>
         <?php endforeach; ?>
     </div>
@@ -79,7 +79,7 @@
 
         <?php foreach ($this->surfaces as $surface): ?>
             <div class="area">
-                <p><span class="niceCheck"><input class="product-filter-checkbox" name="surface" type="checkbox" value="<?php echo $surface['id'] ?>"></span><?php echo $surface['title'] ?></p>
+                <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="surface" type="checkbox" value="<?php echo $surface['id'] ?>"></span><?php echo $surface['title'] ?></p>
             </div>
         <?php endforeach; ?>
     </div>
@@ -91,7 +91,7 @@
 
         <?php foreach ($this->patterns as $pattern): ?>
             <div class="area">
-                <p><span class="niceCheck"><input class="product-filter-checkbox" name="pattern" type="checkbox" value="<?php echo $pattern['id'] ?>"></span><?php echo $pattern['title'] ?></p>
+                <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="pattern" type="checkbox" value="<?php echo $pattern['id'] ?>"></span><?php echo $pattern['title'] ?></p>
             </div>
         <?php endforeach; ?>
     </div>
@@ -103,7 +103,7 @@
         <p class="left_catalog_point">СТРАНА</p>
         <?php foreach ($this->countries as $country): ?>
             <div class="size_block">
-                <p><span class="niceCheck"><input class="product-filter-checkbox" type="checkbox" name="country" value="<?php echo $country['id'] ?>"></span><?php echo $country['title'] ?></p>
+                <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" type="checkbox" name="country" value="<?php echo $country['id'] ?>"></span><?php echo $country['title'] ?></p>
             </div>
         <?php endforeach; ?>
     </div>
@@ -114,7 +114,7 @@
         <p class="left_catalog_point">БРЕНД</p>
         <?php foreach ($this->brands as $brand): ?>
             <div class="area">
-                <p><span class="niceCheck"><input class="product-filter-checkbox" name="brand" type="checkbox" value="<?php echo $brand['id'] ?>"></span><?php echo $brand['title'] ?></p>
+                <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="brand" type="checkbox" value="<?php echo $brand['id'] ?>"></span><?php echo $brand['title'] ?></p>
             </div>
         <?php endforeach; ?>
     </div>

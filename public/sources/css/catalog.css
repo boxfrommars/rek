@@ -13,7 +13,9 @@
     float: left;
     font-family: MyriadPro-Regular;
 }
-
+.niceCheckWrap {
+    cursor: pointer;
+}
 .niceCheck {
     width: 17px;
     height: 17px;

@@ -1,8 +1,8 @@
 $(document).ready(function(){
-    $(".niceCheck").mousedown(
+    $(".niceCheck").parent('p').mousedown(
     /* при клике на чекбоксе меняем его вид и значение */
     function() {
-         changeCheck($(this));
+         changeCheck($(this).find('.niceCheck'));
     });
     $(".niceCheck").each(
     /* при загрузке страницы нужно проверить какое значение имеет чекбокс и в соответствии с ним выставить вид */
