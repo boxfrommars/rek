@@ -41,7 +41,6 @@ class Catalog_ApiController extends Whale_Controller_Action
             } else {
                 $select->where('p.id = 0');
             }
-
         }
         if ($this->getParam('category')) {
             $select->where('ct.id = ?', $this->getParam('category'));

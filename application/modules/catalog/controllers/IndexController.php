@@ -85,8 +85,6 @@ class Catalog_IndexController extends Whale_Controller_Action
         foreach ($productColors as $productColor) {
             if (!in_array($productColor['id_color'], $colorIds)) $colorIds[] = $productColor['id_color'];
         }
-        Whale_Log::log('brands');
-        Whale_Log::log($brandIds);
         $this->view->surfaces = empty($surfaceIds) ? array() : $surfaceService->fetchAll(array('id IN (?)' => $surfaceIds), 'title ASC');
         $this->view->countries = empty($countryIds) ? array() : $countryService->fetchAll(array('id IN (?)' => $countryIds), 'title ASC');
         $this->view->brands = empty($brandIds) ? array() : $brandService->fetchAll(array(array('key' => 'b.id IN (?)', 'value' => $brandIds)), 'order ASC');
