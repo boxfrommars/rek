@@ -35,7 +35,7 @@
 
         <?php foreach ($this->colors as $color): ?>
             <div class="area">
-                <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="pattern" type="checkbox" value="<?php echo $color['id'] ?>"></span><span class="gr color-<?php echo substr($color['hex'], -6) ?>"></span><br />
+                <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="color" type="checkbox" value="<?php echo $color['id'] ?>"></span><span class="gr color-<?php echo substr($color['hex'], -6) ?>"></span><br />
                 <?php echo $color['title'] ?></p>
             </div>
         <?php endforeach; ?>
