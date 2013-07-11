@@ -50,69 +50,69 @@ a {
 
 #header {
     width: 1100px;
-    height: 170px;
+    height: 180px;
     background-color: white;
     clear: both;
 }
 
 #head {
-    background-color: #084a7b;
-    height: 42px;
-    color: white;
+    background-color: #d5d8dd ;
+    border-top: 5px solid #003399;
+border-bottom: 1px solid #003399;
+    height: 50px;
+    color: #003399;
 }
 
 #logo {
-    background-color: #084a7b;
-    width: 171px;
-    height: 111px;
-    margin-left: 94px;
-    border-bottom: 1px solid white;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+    background-color: transparent;
+    width: 230px;
+    height: 141px;
     border-radius: 0 0 10px 10px;
     float: left;
+    margin: 0 0 0 26px;
     behavior: url('PIE.htc');
     position: relative;
 }
 
 #logo img {
-    padding: 9px 2px 3px 4px;
+    padding: 0 0 0 0;
 }
 
 #centr {
-    margin: 0 0 0 48px;
+    margin: 0 0 0 30px;
     float: left;
 }
 
 #centr span {
-    font-size: 30px;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-style: italic;
-    color: white;
+    font-size: 24px;
+    font-family: 'Open Sans light', sans-serif;
+    font-weight: 300;
+    padding: 16px 0 0 0 ;
+    color: #003399;
     float: left;
 }
 
 #centr img {
-    padding: 0 10px 0 48px;
+    padding: 8px 8px 0 50px;
     float: left;
 }
 
 #centr a {
-    font-size: 16px;
-    padding-right: 5px;
-}
+    font-size: 20px;
+    padding: 0 6px 0 0;
+    color: #003399;
+   }
 
 #centr strong {
-    font-size: 32px;
-    font-style: normal;
-}
+    font-size: 24px;
+  }
 
 #menu {
-    color: #242424;
-    margin: 50px 0 0 300px;
-    padding-left: 15px;
-    font-size: 15px;
-    font-family: 'Open Sans', sans-serif;
+    color: #5a5a5a;
+    padding: 3px 30px;
+    font-size: 12px;
+    font-family: 'Open Sans Light', sans-serif;
+    float: left;
 }
 
 #menu a {
@@ -120,12 +120,12 @@ a {
 }
 
 .space {
-    margin-left: 46px;
-    color: #242424;
-    margin-right: 15px;
+    margin-left: 10px;
+    margin-right: 20px;
 }
 .space:first-child {
     margin-left: 0;
+    
 }
 /*для ie8*/
 .space  {
@@ -140,11 +140,11 @@ a {
 
 .menu_left {
     font-size: 18px;
-    background-color: #084a7b;
-    margin-right: 6px;
-    border-radius: 10px 10px 0 0;
+    background-color: #003399;
+    margin-left: 145px;
+    border-radius:  0 0 10px 10px;
     line-height: 38px;
-    padding: 12px 10px 8px 10px;
+    padding: 10px;
     color: #eaecee;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
@@ -154,16 +154,18 @@ a {
 
 #product {
     background: #2b3d4d url('../img/product_bg.png') repeat;
-    width: 800px;
+    width: 1100px;
     height: 40px;
-    float: right;
+margin-top: 140px;
+clear: both;
+    
 }
 
 .dop_menu {
     padding: 0 15px;
     position: relative;
     height: 100%;
-    float: left;
+    float: none;
     text-align: center;
 }
 
@@ -171,7 +173,7 @@ a {
     width: 30%;
     position: relative;
     height: 100%;
-    float: left;
+    float: none;
     text-align: center;
 }
 
@@ -242,35 +244,34 @@ a {
 
 #keramo {
     width: 1100px;
-    height: 402px;
+    height: 300px;
     clear: both;
+    margin-top: -14px;
 }
 
 #search_button {
-    float: left;
-    margin: 13px 0 0 95px;
+float: right;
+        margin: 70px  0 0 0;
 }
 
 #search {
-    background: #d5d8dd url('../img/search_background.png');
-    border-bottom-right-radius: 3px;
+    background: #ccc url('../img/search_background.png');
+    border-radius: 3px;
     behavior: url('PIE.htc');
     color: white;
     font-size: 16px;
-    font-style: italic;
-    border: none;
-    float: left;
-    width: 143px;
+    width: 232px;
     height: 26px;
-    margin-top: 13px;
+    margin: 70px 0 0 0;
+    float: right;
     position: relative;
 }
 
 
 h1, h2, h3, h4, h5 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    color: #084A7B;
+    font-family: 'Open Sans Light', sans-serif;
+font-weight: 300;
+    color: #003399;
     margin: 1em 0;
 }
 .product-container {
@@ -285,11 +286,11 @@ h1 {
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 h4 {
@@ -302,20 +303,20 @@ h5 {
 
 #keramo_text {
     width: 450px;
-    height: 260px;
-    right: 0;
+    height: 160px;
+    right: 20px;
     left: auto;
     background: none;
-    margin: 54px 47px 59px 0;
+    margin: 24px 47px 59px 0;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 800;
+    font-weight: normal;
 }
 #keramo_text b, #keramo_text b a {
     color: white;
     text-decoration: none;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 60px;
+    font-family: 'Open Sans Light', sans-serif;
+    font-weight: normal;
+    font-size: 30px;
     line-height: 60px;
     text-align: right;
     display: block;
@@ -328,7 +329,7 @@ h5 {
     font-size: 18px;
     text-align: right;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 800;
+    
 }
 
 #keramo_nal a {
@@ -340,7 +341,7 @@ h5 {
 
 #keramo_nal {
     text-align: right;
-    padding-top: 30px;
+    padding-top: 15px;
 }
 
 #gradient {
@@ -357,14 +358,14 @@ h5 {
 #choice li {
     width: 156px;
     height: 48px;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Open Sans Light', sans-serif;
     font-weight: normal;
 }
 
 #choice li a {
-    color: #084a7b;
+    color: #003399;
     text-decoration: none;
-    font-size: 38px;
+    font-size: 30px;
     padding-left: 5px;
 }
 
@@ -379,7 +380,7 @@ h5 {
 */
 
 #choice {
-    padding: 8px 0 0 80px;
+    padding: 8px 0 0 30px;
     float: left;
 }
 
@@ -388,13 +389,13 @@ h5 {
     height: 192px;
     width: 820px;
     display: inline;
-    margin-top: -24px;
+    margin-top: -14px;
 }
 
-#product {padding: 0; margin: 0; border: 0;}
+#product {padding: 0; border: 0;}
 #product ul, #cssmenu li {list-style: none; margin: 0; padding: 0;}
 #product ul {position: relative; z-index: 597; }
-#product ul li { float: left; min-height: 1px; vertical-align: middle;}
+#product ul li { float: left; min-height: 16px; vertical-align: middle;}
 #product ul li.hover,
 #product ul li:hover {position: relative; z-index: 599; cursor: default;}
 #product ul ul {
@@ -412,14 +413,14 @@ h5 {
 #product ul ul {margin-top: 0; }
 #product ul ul li {
     font-weight: normal;
-    background: #000;
+    background: #d5d8dd ;
     opacity: .8;
     padding: 5px 15px;
 }
 #product ul ul a {
     display: block;
     text-align: left;
-    color: #ccc;
+    color: #242424;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     text-decoration: none;
@@ -481,7 +482,7 @@ h5 {
 
 .cost {
     font-size: 20px;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Open Sans Light', sans-serif;
     line-height: 1.2;
 }
 
@@ -508,26 +509,29 @@ h5 {
 }
 
 #news, #contact_news {
-    margin: 55px 0 0 80px;
+    margin: 55px 34px 0 30px;
     width: 190px;
     float: left;
 }
 
 #news p, #contact_news p {
-    color: #5a5a5a;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 14px;
+    font-family: 'Open Sans', sans-serif;
+}
+#news p b, #contact_news p b {
+    color: #666;
     font-size: 16px;
-    margin-bottom: 12px;
-    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 #news p a {
-    color: #5a5a5a;
-    font-size: 14px;
+        font-size: 12px;
 }
 
 
 .news_title {
-    color: #084a7b;
+    color: #003399;
     font-size: 24px;
     font-weight: 600;
     font-family: 'Open Sans', sans-serif;
@@ -547,7 +551,7 @@ h5 {
 
 #answer {
     float: left;
-    margin: 55px 0 0 0;
+    margin: 55px 0 0 10px;
 }
 
 #answer .news_title {
@@ -559,21 +563,19 @@ h5 {
      width: 290px;
      height:8px;
      margin-left: 25px;
+margin-bottom: 10px;
 }
 
 .article {
-    margin-left: 25px;
-    width: 240px;
+    margin-left: 20px;
+    width: 255px;
     /*height: 300px;*/
-    font-size: 12.47px;
-    color: #616161;
+    font-size: 13px;
+    color: #666;
     float: left;
     font-family: 'Open Sans', sans-serif;
 }
 
-.article p {
-    height: 260px;
-}
 
 .groupfix:after {
     content: "";
@@ -582,10 +584,11 @@ h5 {
 }
 
 span.h4 {
-    color: #32505f;
-    font-size: 24px;
-    padding: 3px 0 2px 0;
-    font-weight: 800;
+    color: #064A7B;
+    font-size: 20px;
+    padding: 0 0 2px 0;
+   font-family: 'Open Sans Light', sans-serif;
+    font-weight: 300;
 }
 
 #partner {
@@ -602,11 +605,13 @@ span.h4 {
     background: url('../img/line_x.png') repeat-x;
     width: 100%;
     height: 7px;
-    padding-bottom: 8px;
+   margin-top: 18px;
+    padding-bottom: 18px;
 }
 
 #info {
-    margin-left: 90px;
+    margin-left: 40px;
+padding-top: 40px;
 }
 
 #info p {
@@ -614,27 +619,23 @@ span.h4 {
 }
 
 .contact {
-    width: 200px;
+    width: 250px;
     float: left;
-    color: #084a7b;
-    font-size: 18px;
-    font-family: 'Open Sans Condensed', sans-serif;
+    color: #003399;
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 span.h5 {
-    font-size: 24px;
+    font-size: 20px;
     padding: 20px 0 10px 0;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 700;
+    font-family: 'Open Sans Light', sans-serif;
+    font-weight: normal;
 }
 
-.contact a {
-    text-decoration: none;
-    color: #084a7b;
-}
 
 .contact p span {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -647,33 +648,37 @@ span.h5 {
 }
 
 .info_sclad {
-    width: 250px;
+    width: 265px;
+    padding: 0 0 0 15px;
     float: left;
-    color: #084a7b;
-    font-size: 18px;
-    font-family: 'Open Sans Condensed', sans-serif;
+    color: #003399;
+    font-size: 13px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #footer {
     clear: both;
+background-color: #d5d8dd ;
 }
 
 #footer_footer {
-    background-color: white;
-    height: 70px;
+    background-color: #d5d8dd ;
+    height: 60px;
+    padding-top: 20px;
     clear: both;
 }
 
 #foot {
     height: 48px;
     width: 100%;
-    background-color: #084a7b;
+    background-color: #d5d8dd ;
+    border-top: 1px solid #003399;
     font-size: 14px;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Open Sans Light', sans-serif;
 }
 
 #foot_right {
-    color: white;
+    color: #064A7B;
     font-size: 14px;
     float: right;
     margin-right: 112px;
@@ -681,13 +686,13 @@ span.h5 {
 }
 
 #foot_left {
-    padding-left: 90px;
+    padding-left: 40px;
     float: left;
     line-height: 48px;
 }
 
 #foot_left a {
-    color: white;
+    color: #064A7B;
     text-decoration: none;
     font-size: 14px;
     padding-right: 17px;
@@ -801,7 +806,7 @@ span.h5 {
 
 .cost_gallery {
     font-size: 26px;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Open Sans Light', sans-serif;
 }
 
 .cost_gallery span {
@@ -904,7 +909,7 @@ span.h5 {
 }
 
 #contact_news_title {
-    color: #084a7b;
+    color: #003399;
     font-size: 18px;
     font-family: 'Open Sans', sans-serif;
 }
@@ -962,7 +967,7 @@ span.h5 {
 }
 
 .gzhel {
-    color: #084a7b;
+    color: #003399;
     font-size: 20px;
     font-family: 'Open Sans', sans-serif;
 }
@@ -979,11 +984,11 @@ span.h5 {
     font-family: 'Times New Roman';
 }
 .news_title a {
-    color: #084a7b;
+    color: #003399;
 }
 .bottom-bordered {
     padding: 7px 0 12px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #d5d8dd ;
     content: "";
     display: table;
     clear: both;

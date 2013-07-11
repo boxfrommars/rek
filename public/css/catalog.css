@@ -188,7 +188,7 @@
 
 #list_page p {
     font-size: 30px;
-    color: #084a7b;
+    color: #003399;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     float: left;
@@ -224,11 +224,12 @@
 #left_catalog {
     padding: 37px 0 20px 0;
     float: left;
-    width: 175px;
-    margin-left: 94px; 
+    width: 220px;
+    margin-left: 26px; 
+    
 }
 .back_to_resault, .back_to_resault a {
-    color: #084a7b;
+    color: #003399;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     font-size: 16px;
@@ -245,12 +246,12 @@
     font-size: 18px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
-    color: #084a7b;
+    color: #003399;
 }
 
 .left_catalog_point a {
     text-decoration: none;
-    color: #084a7b;
+    color: #003399;
 }
 
 #collection {
@@ -300,7 +301,7 @@
 
 #right_catalog {
     float: left;
-    margin: 0 0 0 33px;
+    margin: 0 0 0 55px;
     width: 798px;
 }
 
@@ -308,6 +309,7 @@
     line-height: 40px;
     font-size: 12px;
     font-family: 'Open Sans', sans-serif;
+    margin-top: 10px;
     clear: both;
 }   
 
@@ -322,7 +324,7 @@
     font-size: 24px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
-    color: #084a7b;
+    color: #003399;
     line-height: 26px;
 }
 
@@ -476,7 +478,7 @@
 }
 
 .gr {
-    width: 100px;
+    width: 140px;
     height: 18px;
     border: 1px solid #aaa;
     border-radius: 4px;

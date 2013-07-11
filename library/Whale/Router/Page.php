@@ -27,30 +27,22 @@ class Whale_Router_Page extends Zend_Controller_Router_Route {
             'NOT is_locked',
         ));
 
-
         $route = empty($page) ? false : array('page' => $page) + $this->_defaults;
 
         if (null !== $page) {
-            switch ($page['entity']) {
-                case 'category':
-                    $route = array('module' => 'catalog', 'controller' => 'index', 'action' => 'index',
-                        'category' => $page['page_url']) + $route;
-                    break;
-                case 'brand':
-                    $route = array('module' => 'catalog', 'controller' => 'index', 'action' => 'brand',
-                        'brand' => $page['page_url'], 'category' => $page['parents'][1]['page_url']) + $route;
-                    break;
-                case 'product':
-                    $route = array('module' => 'catalog', 'controller' => 'index', 'action' => 'view',
-                        'product' => $page['page_url'], 'brand' => $page['parents'][2]['page_url'], 'category' => $page['parents'][1]['page_url']) + $route;
-                    break;
-            }
+            $route = $this->getPageRoute($page, $route);
         }
+
         return $route;
     }
 
     public function assemble($data = array(), $reset = false, $encode = false)
     {
         return $data['page_url'];
+    }
+
+    public function getPageRoute($page, $route)
+    {
+        return $route;
     }
 }

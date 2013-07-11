@@ -29,6 +29,7 @@
 
 <?php echo $this->render('_header.phtml') ?>
 <div id="content">
+<div id="gradient"></div>
     <div id="keramo" class="tw-bs">
         <div id="myCarousel" class="carousel slide">
             <ol class="carousel-indicators">
@@ -124,7 +125,7 @@
             <div class="news">
                 <?php foreach ($this->news as $news): ?>
                     <p>
-                        <b><?php echo $news['title'] . '</b><br />' . $news['preview'] . ' ' . date('d.m.Y', strtotime($news['published_at'])); ?><br>
+                        <b><?php echo $news['title'] . '</b><br />' . $news['preview'] . '<br />' . date('d.m.Y', strtotime($news['published_at'])); ?><br>
                         <a href="<?php echo $this->url(array('module' => 'news', 'controller' => 'index', 'action' => 'view', 'id' => $news['id'])); ?>">подробнее</a>
                     </p>
                 <?php endforeach; ?>
@@ -134,26 +135,25 @@
             <span class="news_title">ПОЧЕМУ ВЫБИРАЮТ НАС?</span>
             <div id="point_answer"></div>
             <div class="article">
-                <span class="h4"><?php echo $this->texts->get('first')->getTitle(); ?></span>
+               <!-- <span class="h4"><?php echo $this->texts->get('first')->getTitle(); ?></span>-->
                 <?php echo $this->texts->get('first')->getContent(); ?>
             </div>
             <div class="article">
-                <span class="h4"><?php echo $this->texts->get('second')->getTitle(); ?></span>
+                <!--<span class="h4"><?php echo $this->texts->get('second')->getTitle(); ?></span>-->
                 <?php echo $this->texts->get('second')->getContent(); ?>
             </div>
             <div class="article">
-                <span class="h4"><?php echo $this->texts->get('third')->getTitle(); ?></span>
+               <!-- <span class="h4"><?php echo $this->texts->get('third')->getTitle(); ?></span>-->
                 <?php echo $this->texts->get('third')->getContent(); ?>
             </div>
         </div>
     </div>
-    <div id="partner">
-        <img src="/img/gasprom.png">
-        <img src="/img/Rusgidro.png">
-        <img src="/img/mosenergo.png">
-        <img src="/img/sinterra.png">
-        <img src="/img/gasprom.png">
-    </div>
+     <div id="partner">
+        <img src="/img/3morya.jpg">
+        <img src="/img/mospromstroj.jpeg">
+        <img src="/img/freper.jpg">
+        <img src="/img/kosm.jpg">
+            </div>
 </div>
 
     <?php echo $this->render('_footer.phtml') ?>
