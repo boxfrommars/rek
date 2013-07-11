@@ -50,6 +50,9 @@
         .admin-image {
             padding-right: 15px;
         }
+        .btn.action {
+            padding: 1px 8px;
+        }
     </style>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -144,18 +147,27 @@
                                     <?php echo $pageitem['title'] ?>
                                 </a>
                             </td>
-                            <td style="width:10px">
-                                <a
-                                    href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'edit'), 'admin') ?>"
-                                    class="icon-edit pull-right action edit">
-                                </a>
-                            </td>
-                            <td style="width:10px">
-                                <?php if (subentity($pageitem['entity'])): ?>
-                                    <a title="Добавить подстраницу"
-                                       href="<?php echo $this->url(array('action' => 'add', 'controller' => subentity($pageitem['entity']), 'idParent' => $pageitem['id'], 'module' => 'admin'), 'default') ?>"
-                                       class="icon-plus pull-right action add"></a>
-                                <?php endif; ?>
+                            <td>
+                                <div class="dropdown">
+                                    <a class="btn dropdown-toggle pull-right action edit" data-toggle="dropdown" href="#">
+                                        <i class="icon-edit"></i>
+                                        <i class="caret"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <li><a href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'edit'), 'admin') ?>">Редактировать</a></li>
+                                        <li><a tabindex="-1" href="<?php echo $this->url(array('action' => 'add', 'controller' => subentity($pageitem['entity']), 'idParent' => $pageitem['id'], 'module' => 'admin'), 'default') ?>">Добавить страницу</a></li>
+<!--                                        <li><a tabindex="-1" href="#">Копировать</a></li>-->
+                                        <li class="divider"></li>
+                                        <li class="dropdown-submenu">
+                                            <a href="#">Добавить...</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Сортировку</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a tabindex="-1" href="#">Удалить</a></li>
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>

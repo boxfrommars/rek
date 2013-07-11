@@ -24,7 +24,7 @@
         <?php $i = 1 ?>
         <ul>
         <?php foreach ($this->categoryNavigation as $category): ?>
-            <li id="toggle_1" class="dop_menu">
+            <li class="dop_menu">
                 <a class="prod" href ="/<?php echo $category['page_url']; ?>"><?php echo $category['title']; ?></a>
                 <?php
                     $brandModel = new Catalog_Model_BrandService();
