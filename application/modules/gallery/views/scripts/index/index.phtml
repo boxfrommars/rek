@@ -1,8 +1,5 @@
-
 <div id="navigation">
-    <div class="nav_catalog">
-        <p><a href="/">Главная</a> <span>/</span> <?php echo $this->page->getTitle() ?> <span></p>
-    </div>
+    <?php echo $this->partial('nav.phtml', 'default', array('page' => $this->page)); ?>
 </div>
 <div id="gallery">
     <p class="gallery_name">Внутренняя отделка</p>

@@ -1,8 +1,6 @@
 <div id="left_catalog"></div>
 <div id="right_catalog">
-    <div class="nav_catalog">
-        <p><a href="/">Главная</a> <span>/</span> <?php echo $this->page->getTitle(); ?> <span></p>
-    </div>
+    <?php echo $this->partial('nav.phtml', 'default', array('page' => $this->page)); ?>
     <?php echo $this->page->getContent(); ?>
     <?php if (null !== $this->searchString): ?>
         <h3 class="news_title"><span>Результаты поиска по фразе <span><?php print $this->escape($this->searchString); ?></span></span></h3>
