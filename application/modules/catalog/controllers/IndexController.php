@@ -131,7 +131,7 @@ class Catalog_IndexController extends Whale_Controller_Action
 
         foreach ($params as $param) {
             if (!empty($param->value)) {
-                $where[$param->name . ' = ?'] = $param->value;
+                $where['p.' . $param->name . ' = ?'] = $param->value;
                 $checked[$param->name] = $param->value;
             }
         }
