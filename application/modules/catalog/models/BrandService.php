@@ -26,8 +26,6 @@ class Catalog_Model_BrandService extends Whale_Db_TableCached
 
 
         if (null !== $order) $select->order($order);
-        Whale_Log::log($where);
-        Whale_Log::log($select->assemble());
         return $select->query()->fetchAll();
     }
 }
