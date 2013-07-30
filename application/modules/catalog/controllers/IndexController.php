@@ -34,6 +34,20 @@ class Catalog_IndexController extends Whale_Controller_Action
         if (empty($category)) {
             throw new Zend_Controller_Action_Exception('Такой категории не существует', 404);
         }
+
+        $this->view->category = $category;
+        $this->view->page = new Whale_Page_SeoItemAdapter($category->toArray());
+
+        $this->_setSearchbar(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true));
+
+        $productService = new Catalog_Model_ProductService();
+        $products = $productService->fetchAll(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true), 'title ASC');
+
+        $this->view->products = $products;
+    }
+
+    protected function _setSearchbar($where){
+
         $productService = new Catalog_Model_ProductService();
         $surfaceService = new Catalog_Model_SurfaceService();
         $countryService = new Catalog_Model_CountryService();
@@ -42,12 +56,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $colorService = new Catalog_Model_ColorService();
         $productColorService = new Catalog_Model_ProductColorService();
 
-
-        $this->view->category = $category;
-        $this->view->page = new Whale_Page_SeoItemAdapter($category->toArray());
-
-
-        $products = $productService->fetchAll(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true), 'title ASC');
+        $products = $productService->fetchAll($where, 'title ASC');
 
         $productIds = array();
         $colorIds = array();
@@ -93,8 +102,6 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->view->sizes = $sizes;
         $this->view->costsRange = array('max' => $maxCost, 'min' => $minCost);
         $this->view->depthRange = array('max' => $maxDepth, 'min' => $minDepth);
-
-        $this->view->products = $products;
     }
 
     public function brandAction()
@@ -105,6 +112,8 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->view->brand = $this->view->page->getRaw();
         $products = $productService->fetchAll(array('b.id = ?' => $page['id'], 'is_published = ?' => true));
         $this->view->products = $products;
+
+        $this->_setSearchbar(array('b.id = ?' => $page['id'], 'is_published = ?' => true));
     }
 
     public function viewAction()
