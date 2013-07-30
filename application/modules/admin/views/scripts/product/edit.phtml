@@ -8,8 +8,6 @@
             $('#copy').on('click', function(){
                 $form = $(this).parents('form');
                 $form.attr('action', '<?php echo $this->url(array('action' => 'add', 'controller' => 'product', 'idParent' => $this->item['id_parent'], 'module' => 'admin'), 'default') ?>');
-//                console.log($form);
-//                $form.submit();
             });
         </script>
     </div>
@@ -58,6 +56,30 @@
                     <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-decor', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
                     <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-decor', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
                     <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-decor', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <h2>Интерьеры товара</h2>
+        <p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'product-inter', 'id' => $this->item['id']), 'admin') ?>" role="button" class="btn btn-success add">
+                Добавить
+            </a></p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Опубл.</th>
+                <th>Заголовок</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->productInters as $item): ?>
+                <tr>
+                    <td style="width: 50px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
+                    <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-inter', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
+                    <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-inter', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
+                    <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-inter', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
