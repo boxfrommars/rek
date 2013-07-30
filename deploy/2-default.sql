@@ -147,9 +147,9 @@ CREATE TABLE "product" (
   "cost" DECIMAL(10,2),            -- стоимость
   "image" VARCHAR (255),
 
-  "id_surface" INT NOT NULL REFERENCES "surface" (id)  ON DELETE CASCADE, -- тип поверхности
+  "id_surface" INT REFERENCES "surface" (id)  ON DELETE CASCADE, -- тип поверхности
   "id_pattern" INT REFERENCES "pattern" (id)  ON DELETE CASCADE, -- рисунок
-  "id_country" INT NOT NULL REFERENCES "country" (id)  ON DELETE CASCADE, -- страна
+  "id_country" INT REFERENCES "country" (id)  ON DELETE CASCADE, -- страна
 
   "is_action" BOOL DEFAULT 'f',
   "is_new" BOOL DEFAULT 'f',

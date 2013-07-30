@@ -18,9 +18,9 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
         $surfaces = $surfaceService->fetchAll();
         $patterns = $patternService->fetchAll();
 
-        $countrySelectOptions = array();
-        $surfaceSelectOptions = array();
-        $patternSelectOptions = array();
+        $countrySelectOptions = array(null => 'Без страны');
+        $surfaceSelectOptions = array(null => 'Без поверхности');
+        $patternSelectOptions = array(null => 'Без рисунка');
 
         foreach ($countries as $country) {
             $countrySelectOptions[$country['id']] = $country['title'];
@@ -54,31 +54,29 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
 
         $this->addElement('select', 'id_country', array(
             'label' => "Страна производитель",
-            'required' => true,
-            'validators' => array(),
+            'filters' => array('Null'),
             'dimension' => $this->_dimension,
             'multiOptions' => $countrySelectOptions,
         ));
 
         $this->addElement('select', 'id_surface', array(
             'label' => "Поверхность",
-            'required' => true,
             'validators' => array(),
+            'filters' => array('Null'),
             'dimension' => $this->_dimension,
             'multiOptions' => $surfaceSelectOptions,
         ));
 
         $this->addElement('select', 'id_pattern', array(
             'label' => "Рисунок",
-            'required' => true,
             'validators' => array(),
+            'filters' => array('Null'),
             'dimension' => $this->_dimension,
             'multiOptions' => $patternSelectOptions,
         ));
 
         $this->addElement('text', 'width', array(
             'label' => "Ширина",
-            'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
             'dimension' => $this->_dimension,
@@ -86,7 +84,6 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
 
         $this->addElement('text', 'height', array(
             'label' => "Высота",
-            'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
             'dimension' => $this->_dimension,
@@ -94,7 +91,6 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
 
         $this->addElement('text', 'depth', array(
             'label' => "Толщина",
-            'required' => true,
             'filters' => array('StringTrim'),
             'validators' => array(),
             'dimension' => $this->_dimension,
