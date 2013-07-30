@@ -26,6 +26,7 @@ class Whale_Form_Page extends Whale_Form_Titled
         $this->addElement('text', 'order', array(
             'label' => "Порядковый номер",
             'required' => false,
+            'filters' => array('Null'),
             'validators' => array('Int'),
             'dimension' => $this->_dimension,
         ));

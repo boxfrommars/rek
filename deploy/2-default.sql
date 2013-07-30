@@ -180,6 +180,22 @@ CREATE TABLE "product_color" (
   PRIMARY KEY("id")
 );
 
+CREATE TABLE "product_decor" (
+  "id" SERIAL NOT NULL,
+  "title" VARCHAR(255) NOT NULL,                        -- название на русском
+  "image" VARCHAR (255),                                -- изображение
+
+  "id_product"  INT NOT NULL REFERENCES "product" (id)  ON DELETE CASCADE, -- товар
+  "content" TEXT,                                   -- описание
+
+  "cost" DECIMAL(10,2),            -- стоимость
+
+  "is_published" BOOL DEFAULT 'f',
+  "created_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
+  "updated_at" TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NOW(),
+  PRIMARY KEY("id")
+);
+
 CREATE TABLE "gallery" (
   "id" SERIAL NOT NULL,
   "is_published" BOOL DEFAULT 'f',

@@ -1,0 +1,26 @@
+<?php echo $this->paginator; ?>
+<h2>Виды товара</h2>
+<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'product-decor'), 'admin') ?>" role="button" class="btn btn-success add">
+        Добавить декор товара
+</a></p>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Опубликован</th>
+            <th>Заголовок</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->items as $item): ?>
+        <tr>
+            <td style="width: 100px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-decor', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-decor', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'product-decor', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php echo $this->paginator; ?>

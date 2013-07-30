@@ -77,21 +77,21 @@ class Admin_Form_Product extends Admin_Form_CatalogItem
 
         $this->addElement('text', 'width', array(
             'label' => "Ширина",
-            'filters' => array('StringTrim'),
+            'filters' => array('StringTrim', 'Null'),
             'validators' => array(),
             'dimension' => $this->_dimension,
         ));
 
         $this->addElement('text', 'height', array(
             'label' => "Высота",
-            'filters' => array('StringTrim'),
+            'filters' => array('StringTrim', 'Null'),
             'validators' => array(),
             'dimension' => $this->_dimension,
         ));
 
         $this->addElement('text', 'depth', array(
             'label' => "Толщина",
-            'filters' => array('StringTrim'),
+            'filters' => array('StringTrim', 'Null'),
             'validators' => array(),
             'dimension' => $this->_dimension,
         ));

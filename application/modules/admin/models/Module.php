@@ -7,7 +7,7 @@ class Admin_Model_Module extends Whale_Module
 {
     protected $_name = 'admin';
     protected $_resources = array(
-        'index', 'system', 'news', 'feedback', 'page-text', 'product', 'product-color', 'category',
+        'index', 'system', 'news', 'feedback', 'page-text', 'product', 'product-color', 'product-decor', 'category',
         'brand', 'collection', 'country', 'color', 'surface', 'pattern', 'thesaurus', 'gallery', 'gallerymain', 'page', 'settings',
     );
 
@@ -20,6 +20,7 @@ class Admin_Model_Module extends Whale_Module
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':page-text', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':product', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':product-color', 'action' => null),
+            array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':product-decor', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':category', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':brand', 'action' => null),
             array('type' => 'allow', 'role' => 'admin', 'resource' => $this->getName() . ':collection', 'action' => null),
