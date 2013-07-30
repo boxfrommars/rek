@@ -174,7 +174,7 @@ class Catalog_IndexController extends Whale_Controller_Action
 
         $pageService = new Page_Model_Service();
         $select = $pageService->getBaseSelect();
-        $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('entity = ?', 'brand')->where('is_published');
+        $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('entity = ?', 'brand')->where('id_parent = ?', $category['id'])->where('is_published');
         $this->view->brands = $nextSelect->query()->fetchAll();
 
 
