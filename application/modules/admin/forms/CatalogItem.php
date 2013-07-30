@@ -14,7 +14,7 @@ class Admin_Form_CatalogItem extends Whale_Form_Page
             'required' => false,
             'filters' => array('StringTrim'),
             'validators' => array(),
-            'class' => 'hidden image-upload',
+            'class' => 'image-upload',
             'dimension' => $this->_dimension,
             ));
     }
