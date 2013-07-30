@@ -28,7 +28,7 @@
                 <a class="prod" href ="/<?php echo $category['page_url']; ?>"><?php echo $category['title']; ?></a>
                 <?php
                     $brandModel = new Catalog_Model_BrandService();
-                    $brands = $brandModel->fetchAll(array(array('key' => 'b.id_parent = ?', 'value' => $category['id'])));
+                    $brands = $brandModel->fetchAll(array(array('key' => 'b.id_parent = ?', 'value' => $category['id'])), array('order'));
                 ?>
                 <ul>
                     <?php foreach ($brands as $brand): ?>
