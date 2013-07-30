@@ -63,6 +63,41 @@ class Default_IndexController extends Whale_Controller_Action
 
     }
 
+    public function sitemapAction()
+    {
+        $db = Zend_Db_Table::getDefaultAdapter();
+
+        $select = $db->select()->from(
+            array('p' => 'page'),
+            array('url' => "array_to_string(array_agg(a.page_url ORDER BY a.path), '/')", '*')
+        )->joinInner(
+                array('a' => 'page'),
+                'a.path @> p.path',
+                array()
+            )->group(
+                'p.id',
+                'p.path',
+                'p.page_url'
+            );
+        $nextSelect = $db->select()->from(array('s' => $select), '*')->order(array('path'));
+        $items = $nextSelect->query()->fetchAll();
+
+        $output = '<?xml version=\'1.0\'?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+        foreach ($items as $item) {
+            $output .= "<url><loc>http://kapitanov.fvds.ru{$item['url']}</loc><lastmod>{$item['updated_at']}</lastmod><changefreq>daily</changefreq><priority>0.50</priority></url>";
+        }
+        $output .= '</urlset>';
+
+    // Both layout and view renderer should be disabled
+        Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer')->setNoRender(true);
+        Zend_Layout::getMvcInstance()->disableLayout();
+
+        // Set up headers and body
+        $this->_response->setHeader('Content-Type', 'application/xml; charset=utf-8')
+            ->setBody($output);
+    }
+
     public function contactsAction()
     {
         $this->_setPage('contacts');
