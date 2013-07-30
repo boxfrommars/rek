@@ -1,0 +1,32 @@
+<?php echo $this->paginator; ?>
+<h2>Рекомендации</h2>
+<p><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'rek'), 'admin') ?>" role="button" class="btn btn-success add">
+        Добавить рекомендацию
+</a></p>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Опубликован</th>
+            <th>Заголовок</th>
+            <th>Категория</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->items as $item): ?>
+        <tr>
+            <td style="width: 12px;">
+                <?php echo $item['order'] ?>
+            </td>
+            <td style="width: 100px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
+            <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'rek', 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
+            <td><?php echo $item['category_title']; ?></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'rek', 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
+            <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => 'rek', 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php echo $this->paginator; ?>

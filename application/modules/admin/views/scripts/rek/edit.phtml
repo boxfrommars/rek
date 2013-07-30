@@ -1,0 +1,15 @@
+<a href="<?php echo $this->url(array('action' => 'index', 'id' => null, 'controller' => 'rek'), 'admin'); ?>"><i class="icon-arrow-left"></i> вернуться к списку</a> или
+<a href="<?php echo $this->url(array('action' => 'index', 'id' => null, 'controller' => 'category'), 'admin'); ?>"><i class="icon-arrow-left"></i> вернуться к дереву</a>
+<h2>Редактирование рекомендаций</h2>
+<div id="params-rek-form">
+    <?php print $this->paramsForm; ?>
+</div>
+<div id="rek-form">
+    <?php print $this->form; ?>
+</div>
+<script>
+    $('#rek-form').find('form').on('submit', function(){
+        $('#rek-form #params').val(JSON.stringify($('#params-rek-form').find('form').serializeArray()));
+    });
+
+</script>

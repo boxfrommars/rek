@@ -180,6 +180,11 @@ CREATE TABLE "product_color" (
   PRIMARY KEY("id")
 );
 
+CREATE TABLE "rek" (
+  "params" TEXT,
+  PRIMARY KEY ("id")
+) INHERITS ("page");
+
 CREATE TABLE "product_decor" (
   "id" SERIAL NOT NULL,
   "title" VARCHAR(255) NOT NULL,                        -- название на русском
@@ -337,6 +342,9 @@ ON brand FOR EACH ROW EXECUTE PROCEDURE trig_update_page_node_path();
 
 CREATE TRIGGER trig_update_product_node_path AFTER INSERT OR UPDATE OF id, id_parent
 ON product FOR EACH ROW EXECUTE PROCEDURE trig_update_page_node_path();
+
+CREATE TRIGGER trig_update_rek_node_path AFTER INSERT OR UPDATE OF id, id_parent
+ON rek FOR EACH ROW EXECUTE PROCEDURE trig_update_page_node_path();
 
 
 -- DATA

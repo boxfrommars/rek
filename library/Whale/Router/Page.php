@@ -38,11 +38,15 @@ class Whale_Router_Page extends Zend_Controller_Router_Route {
                     break;
                 case 'brand':
                     $route = array('module' => 'catalog', 'controller' => 'index', 'action' => 'brand',
-                        'brand' => $page['page_url'], 'category' => $page['parents'][1]['page_url']) + $route;
+                            'brand' => $page['page_url'], 'category' => $page['parents'][1]['page_url']) + $route;
+                    break;
+                case 'rek':
+                    $route = array('module' => 'catalog', 'controller' => 'index', 'action' => 'rek',
+                            'rek' => $page['page_url'], 'category' => $page['parents'][1]['page_url']) + $route;
                     break;
                 case 'product':
                     $route = array('module' => 'catalog', 'controller' => 'index', 'action' => 'view',
-                        'product' => $page['page_url'], 'brand' => $page['parents'][2]['page_url'], 'category' => $page['parents'][1]['page_url']) + $route;
+                            'product' => $page['page_url'], 'brand' => $page['parents'][2]['page_url'], 'category' => $page['parents'][1]['page_url']) + $route;
                     break;
             }
         }
