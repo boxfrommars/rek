@@ -1,9 +1,10 @@
 $(document).ready(function(){
-    $(".niceCheck").parent('p').mousedown(
-    /* при клике на чекбоксе меняем его вид и значение */
-    function() {
-         changeCheck($(this).find('.niceCheck'));
+    $(".niceCheck").parent('p').click(function(e) { /* при клике на чекбоксе меняем его вид и значение */
+        changeCheck($(this).find('.niceCheck'));
     });
+//    $(".niceCheck .product-filter-checkbox").click(function(e){
+//        changeCheck($(this));
+//    });
     $(".niceCheck").each(
     /* при загрузке страницы нужно проверить какое значение имеет чекбокс и в соответствии с ним выставить вид */
     function() {
@@ -18,6 +19,7 @@ function changeCheck(el)
 	input - чекбокс
 */
 {
+    console.log('hello!!!!');
      var el = el,
         input = el.find("input").eq(0);
    	 if(!input.prop("checked")) {
@@ -110,7 +112,7 @@ $(function() {
         }
     });
 
-    $('.niceCheck').on('click', function(){
+    $('.niceCheck').parent('p').on('click', function(){
         reloadProducts();
     });
 });

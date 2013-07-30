@@ -18,25 +18,18 @@
     </div>
 
     <?php if (!empty($this->colors)): ?>
-<!--    <div class="bottom-bordered">-->
-<!--        <div style="width:100%; height: 7px; float: left;"></div>-->
-<!--        <p class="left_catalog_point">ЦВЕТ</p>-->
-<!--        <div class="checkbox_color">-->
-<!--            --><?php //foreach ($this->colors as $color): ?>
-<!--                <div>-->
-<!--                    <span class="niceCheck"><input type="checkbox" class="product-filter-checkbox" name="color" value="--><?php //echo $color['id'] ?><!--"></span>-->
-<!--                    <p>--><?php //echo $color['title'] ?><!--</p>-->
-<!--                </div>-->
-<!--            --><?php //endforeach; ?>
-<!--        </div>-->
-<!--    </div>-->
     <div class="bottom-bordered">
         <p class="left_catalog_point">ЦВЕТ</p>
 
         <?php foreach ($this->colors as $color): ?>
             <div class="area">
-                <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="color" type="checkbox" value="<?php echo $color['id'] ?>"></span><span class="gr color-<?php echo substr($color['hex'], -6) ?>"></span><br />
-                <?php echo $color['title'] ?></p>
+                <p class="niceCheckWrap">
+                    <span class="niceCheck">
+                            <input class="product-filter-checkbox" name="color" type="checkbox" value="<?php echo $color['id'] ?>">
+                    </span>
+                    <span class="gr color-<?php echo substr($color['hex'], -6) ?>"></span><br />
+                    <?php echo $color['title'] ?>
+                </p>
             </div>
         <?php endforeach; ?>
     </div>
