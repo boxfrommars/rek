@@ -102,6 +102,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $productService = new Catalog_Model_ProductService();
         $page = $this->_getParam('page');
         $this->_setPage('');
+        $this->view->brand = $this->view->page->getRaw();
         $products = $productService->fetchAll(array('b.id = ?' => $page['id'], 'is_published = ?' => true));
         $this->view->products = $products;
     }

@@ -4,7 +4,7 @@
     <div class="nav_catalog">
         <p><?php echo implode(' <span>/</span> ', getBreadcrumbs($this->page->getRaw())); ?></p>
     </div>
-    <h1><?php echo $this->page->getTitle(); ?></h1>
+    <h1><?php echo $this->brand['title']; ?></h1>
     <div id="product-container" class="groupfix">
         <?php foreach ($this->products as $product): ?>
             <?php echo $this->partial('item.phtml', array('product' => $product)); ?>
