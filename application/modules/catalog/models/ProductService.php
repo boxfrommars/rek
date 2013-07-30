@@ -67,4 +67,19 @@ class Catalog_Model_ProductService extends Whale_Db_TableCached
         }
         return $select->query()->fetchAll();
     }
+
+    public function fetchAllColored($where = null, $order = null, $limit = null, $offset = null) {
+        $select = $this->getBaseSelect($where);
+
+        $select->joinLeft(
+            array('clr' => 'product_color'),
+            'clr.id_product = p.id',
+            array('color_image' => 'image')
+        );
+
+        if (null !== $limit) {
+            $select->limit($limit);
+        }
+        return $select->query()->fetchAll();
+    }
 }

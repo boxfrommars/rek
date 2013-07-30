@@ -41,7 +41,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->_setSearchbar(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true));
 
         $productService = new Catalog_Model_ProductService();
-        $products = $productService->fetchAll(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true), 'title ASC');
+        $products = $productService->fetchAllColored(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true), 'title ASC');
 
         $this->view->products = $products;
         $this->view->checked = array();
@@ -57,7 +57,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $colorService = new Catalog_Model_ColorService();
         $productColorService = new Catalog_Model_ProductColorService();
 
-        $products = $productService->fetchAll($where, 'title ASC');
+        $products = $productService->fetchAllColored($where, 'title ASC');
 
         $productIds = array();
         $colorIds = array();
@@ -137,7 +137,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         }
 
         $productService = new Catalog_Model_ProductService();
-        $products = $productService->fetchAll($where);
+        $products = $productService->fetchAllColored($where);
         $this->view->products = $products;
         Whale_Log::log($products);
 
@@ -158,7 +158,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->view->brand = $this->view->page->getRaw();
 
 
-        $products = $productService->fetchAll(array('b.id = ?' => $page['id'], 'is_published = ?' => true));
+        $products = $productService->fetchAllColored(array('b.id = ?' => $page['id'], 'is_published = ?' => true));
         $this->view->products = $products;
 
         $this->view->checked = array('id_brand' => $page['id']);

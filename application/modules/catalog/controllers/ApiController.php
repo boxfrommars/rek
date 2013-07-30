@@ -32,7 +32,11 @@ class Catalog_ApiController extends Whale_Controller_Action
         $productService = new Catalog_Model_ProductService();
 
         $select = $productService->getBaseSelect(array('is_published = ?' => true));
-
+        $select->joinLeft(
+            array('clr' => 'product_color'),
+            'clr.id_product = p.id',
+            array('color_image' => 'image')
+        );
         if ($this->getParam('color')) {
             $colorSelect = $productService->getAdapter()->select()->from(array('pcl' => 'product_color'), 'id_product')->where('id_color IN (?)', explode(',', $this->getParam('color')))->group(array('id_product'))->query()->fetchAll(Zend_Db::FETCH_COLUMN);
             Whale_Log::log($colorSelect);
