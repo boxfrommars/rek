@@ -44,6 +44,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $products = $productService->fetchAll(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true), 'title ASC');
 
         $this->view->products = $products;
+        $this->view->checked = array();
     }
 
     protected function _setSearchbar($where){
@@ -104,16 +105,64 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->view->depthRange = array('max' => $maxDepth, 'min' => $minDepth);
     }
 
+    public function rekAction()
+    {
+        $this->_setPage('');
+        $page = $this->_getParam('page');
+        $rekService = new Catalog_Model_RekService();
+
+
+
+        $rek = $rekService->fetchRow(array('id = ?' => $page['id'], 'is_published' => true));
+
+        if (null === $rek) {
+            throw new Zend_Controller_Action_Exception('Не найдено', 404);
+        }
+
+        $rek = $rek->toArray();
+
+        $this->view->rek = $rek;
+
+        $params = json_decode($rek['params']);
+
+        $where = array('b.id_parent = ?' => $page['id_parent'], 'is_published = ?' => true);
+        $checked = array();
+
+
+        foreach ($params as $param) {
+            if (!empty($param->value)) {
+                $where[$param->name . ' = ?'] = $param->value;
+                $checked[$param->name] = $param->value;
+            }
+        }
+
+        $productService = new Catalog_Model_ProductService();
+        $products = $productService->fetchAll($where);
+        $this->view->products = $products;
+        Whale_Log::log($products);
+
+        Whale_Log::log($where);
+        Whale_Log::log($checked);
+
+        $this->view->checked = $checked;
+
+        Whale_Log::log($params);
+        $this->_setSearchbar(array('b.id_parent = ?' => $page['id_parent'], 'is_published = ?' => true));
+    }
+
     public function brandAction()
     {
         $productService = new Catalog_Model_ProductService();
         $page = $this->_getParam('page');
         $this->_setPage('');
         $this->view->brand = $this->view->page->getRaw();
+
+
         $products = $productService->fetchAll(array('b.id = ?' => $page['id'], 'is_published = ?' => true));
         $this->view->products = $products;
 
-        $this->_setSearchbar(array('b.id = ?' => $page['id'], 'is_published = ?' => true));
+        $this->view->checked = array('id_brand' => $page['id']);
+        $this->_setSearchbar(array('b.id_parent = ?' => $page['id_parent'], 'is_published = ?' => true));
     }
 
     public function viewAction()

@@ -25,7 +25,7 @@
                 <div class="area">
                     <p class="niceCheckWrap">
                     <span class="niceCheck">
-                            <input class="product-filter-checkbox" name="color" type="checkbox" value="<?php echo $color['id'] ?>">
+                            <input class="product-filter-checkbox" name="color" type="checkbox" <?php echo (!empty($this->checked['id_color']) && ($color['id'] == $this->checked['id_color']) ? 'checked="checked"' : '') ?> value="<?php echo $color['id'] ?>">
                     </span>
                         <span class="gr color-<?php echo substr($color['hex'], -6) ?>"></span><br />
                         <?php echo $color['title'] ?>
@@ -71,7 +71,7 @@
 
             <?php foreach ($this->surfaces as $surface): ?>
                 <div class="area">
-                    <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="surface" type="checkbox" value="<?php echo $surface['id'] ?>"></span><?php echo $surface['title'] ?></p>
+                    <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="surface" <?php echo (!empty($this->checked['id_surface']) && ($surface['id'] == $this->checked['id_surface']) ? 'checked="checked"' : '') ?> type="checkbox" value="<?php echo $surface['id'] ?>"></span><?php echo $surface['title'] ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -83,7 +83,7 @@
 
             <?php foreach ($this->patterns as $pattern): ?>
                 <div class="area">
-                    <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="pattern" type="checkbox" value="<?php echo $pattern['id'] ?>"></span><?php echo $pattern['title'] ?></p>
+                    <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="pattern" type="checkbox" <?php echo (!empty($this->checked['id_pattern']) && ($pattern['id'] == $this->checked['id_surface']) ? 'checked="checked"' : '') ?> value="<?php echo $pattern['id'] ?>"></span><?php echo $pattern['title'] ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -106,7 +106,7 @@
             <p class="left_catalog_point">БРЕНД</p>
             <?php foreach ($this->brands as $brand): ?>
                 <div class="area">
-                    <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="brand" type="checkbox" value="<?php echo $brand['id'] ?>"></span><?php echo $brand['title'] ?></p>
+                    <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="brand" <?php echo (!empty($this->checked['id_brand']) && ($brand['id'] == $this->checked['id_brand']) ? 'checked="checked"' : '') ?> type="checkbox" value="<?php echo $brand['id'] ?>"></span><?php echo $brand['title'] ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
