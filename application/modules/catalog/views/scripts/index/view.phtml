@@ -51,6 +51,7 @@
             <input type="button" id="catalog_button" value="" onclick="location.href = '<?php echo $this->url(array(), 'feedback') ?>'">
         </div>
     </div>
+    <?php if (!empty($this->productColors)): ?>
     <div id="available">
         <p class="left_catalog_point">ДОСТУПНЫЕ ЦВЕТА:</p>
         <?php foreach ($this->productColors as $color): ?>
@@ -68,11 +69,42 @@
             </div>
         <?php endforeach; ?>
     </div>
+    <?php endif; ?>
     <div id="catalog_info">
         <?php echo $this->product['content'] ?>
     </div>
+    <?php if (!empty($this->productInters)): ?>
+    <div class="groupfix pr-gallery">
+        <p class="left_catalog_point">Интерьеры:</p>
+        <?php foreach ($this->productInters as $color): ?>
+            <div class="block_available">
+                <div class="catalog_available">
+                    <a href="/files/<?php echo $color['image'] ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
+                        <img src="/files/thumbnail/<?php echo $color['image'] ?>">
+                    </a>
+                </div>
+                <p><?php echo $color['title'] ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+    <?php if (!empty($this->productDecors)): ?>
+    <div class="groupfix pr-gallery">
+        <p class="left_catalog_point">Декоры:</p>
+        <?php foreach ($this->productDecors as $color): ?>
+            <div class="block_available">
+                <div class="catalog_available">
+                    <a href="/files/<?php echo $color['image'] ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
+                        <img src="/files/thumbnail/<?php echo $color['image'] ?>">
+                    </a>
+                </div>
+                <p><?php echo $color['title'] ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
     <script>
-        $('.product-color').on('click', function(){
+        $('#available .product-color').on('click', function(){
             var cost = $(this).attr('data-pc-cost');
             var image = $(this).attr('data-pc-image');
             var surface = $(this).attr('data-pc-surface');

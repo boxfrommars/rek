@@ -186,11 +186,14 @@ class Catalog_IndexController extends Whale_Controller_Action
         $lastViewedSessionNamespace->items = $lastViewedItemIds;
 
         $productColorsService = new Catalog_Model_ProductColorService();
+        $productIntersService = new Catalog_Model_ProductInterService();
+        $productDecorsService = new Catalog_Model_ProductDecorService();
 
-        $productColors = $productColorsService->fetchAll(array('id_product = ?' => $product['id']));
+        $this->view->productColors = $productColorsService->fetchAll(array('id_product = ?' => $product['id']));
+        $this->view->productDecors = $productDecorsService->fetchAll(array('id_product = ?' => $product['id']));
+        $this->view->productInters = $productIntersService->fetchAll(array('id_product = ?' => $product['id']));
 
         $this->view->page = new Whale_Page_SeoItemAdapter($product);
-        $this->view->productColors = $productColors;
 
         $this->view->product = $product;
     }
