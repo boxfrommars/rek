@@ -17,12 +17,15 @@
     </div>
 </div>
 <div id="news">
-    <h3 id="contact_news_title"><span>НОВОСТИ</span></h3>
-    <div id="contact_point"></div>
-    <div class="news_contact">
-        <p>Акция на полированный керамогранит в ноябре 06.11.2012 <br> <a href="#">подробнее</a></p>
-        <p>Расширение линейки полированного керамогранита 31.10.2012<br> <a href="#">подробнее</a></p>
-        <p> Специальная цена до 1 ноября - белый полированный керамогранит! 15.10.2012 <br> <a href="#">подробнее</a></p>
+    <span class="news_title"><a href="/news/">НОВОСТИ</a></span>
+    <div id="point"></div>
+    <div class="news">
+        <?php foreach ($this->news as $news): ?>
+            <p>
+                <b><?php echo $news['title'] . '</b><br />' . $news['preview'] . '<br />' . date('d.m.Y', strtotime($news['published_at'])); ?><br>
+                    <a href="<?php echo $this->url(array('module' => 'news', 'controller' => 'index', 'action' => 'view', 'id' => $news['id'])); ?>">подробнее</a>
+            </p>
+        <?php endforeach; ?>
     </div>
 </div>
 <script>

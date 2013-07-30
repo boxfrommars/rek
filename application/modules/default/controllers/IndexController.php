@@ -68,6 +68,9 @@ class Default_IndexController extends Whale_Controller_Action
         $this->_setPage('contacts');
         $layout = Zend_Layout::getMvcInstance();
         $layout->setLayout('contacts');
+
+        $newsService = new News_Model_Service();
+        $this->view->news = $newsService->fetchAll(array('is_published = ?' => true), array('published_at DESC'), 3);
 //
 //
 //        $model = new Page_Model_Service();
