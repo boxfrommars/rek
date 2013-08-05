@@ -1021,3 +1021,26 @@ span.h5 {
 .area-link {
     color: #000000;
 }
+.tw-bs .carousel-fade .carousel-inner .item {
+    opacity: 0;
+    -webkit-transition: opacity 3s;
+    -moz-transition: opacity 3s;
+    -o-transition: opacity 3s;
+    transition: opacity 3s;
+}
+.tw-bs .carousel-fade .carousel-inner .active {
+    opacity: 1;
+}
+.tw-bs .carousel-fade .carousel-inner .active.left,
+.tw-bs .carousel-fade .carousel-inner .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+.tw-bs .carousel-fade .carousel-inner .next.left,
+.tw-bs .carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+}
+.tw-bs .carousel-fade .carousel-control {
+    z-index: 2;
+}

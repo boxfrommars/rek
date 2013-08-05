@@ -27,7 +27,7 @@
 
             <?php $cur = false; if ( (!empty($rPage['page_url']) && ($rPage['page_url'] === $category['page_url'])) ||
                 (!empty($rPage['parents'][1]) && '/' . $category['page_url'] == $rPage['parents'][1]['url'])) {
-                $cur = true; 
+                $cur = true;
             } ?>
             <li class="dop_menu <?php echo $cur ? 'active' : ''; ?>">
                 <a class="prod" href ="/<?php echo $category['page_url']; ?>"><?php echo $category['title']; ?></a>

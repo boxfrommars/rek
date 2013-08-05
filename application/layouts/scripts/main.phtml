@@ -10,9 +10,9 @@
     <meta name="keywords" content="<?php echo $page->getKeywords(); ?>">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700|Open+Sans+Condensed:300,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/shadowbox.css">
     <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script type="text/javascript" src="/js/shadowbox.js"></script>
     <script type="text/javascript">
         Shadowbox.init({
@@ -31,7 +31,7 @@
 <div id="content">
 <div id="gradient"></div>
     <div id="keramo" class="tw-bs">
-        <div id="myCarousel" class="carousel slide">
+        <div id="myCarousel" class="carousel slide carousel-fade">
             <ol class="carousel-indicators">
                 <?php foreach ($this->slider as $key => $slider): ?>
                     <li data-target="#myCarousel" data-slide-to="<?php echo $key; ?>"></li>
@@ -64,7 +64,7 @@
         <script>
             $(document).ready(function(){
                     $('.carousel').carousel({
-                        interval: 3000
+                        interval: 5000
                     });
 
                     $('.carousel').carousel('cycle');
