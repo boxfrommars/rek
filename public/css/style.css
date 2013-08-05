@@ -408,16 +408,16 @@ h5 {
 
 #product {padding: 0; border: 0;}
 #product ul, #cssmenu li {list-style: none; margin: 0; padding: 0;}
-#product ul {position: relative; z-index: 1; }
+#product ul {position: relative; z-index: 501; }
 #product ul li { float: left; min-height: 16px; vertical-align: middle;}
 #product ul li.hover,
-#product ul li:hover {position: relative; z-index: 3; cursor: default;}
+#product ul li:hover {position: relative; z-index: 503; cursor: default;}
 #product ul ul {
     visibility: hidden;
     position: absolute;
     top: 100%;
     left: 0;
-    z-index: 2;
+    z-index: 502;
     width: 100%;
 }
 #product ul ul li {float: none;}
