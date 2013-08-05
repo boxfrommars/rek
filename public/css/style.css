@@ -1044,3 +1044,6 @@ span.h5 {
 .tw-bs .carousel-fade .carousel-control {
     z-index: 2;
 }
+.sidebar-block li {
+    margin-bottom: .5em;
+}
