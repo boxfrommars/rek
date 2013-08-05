@@ -144,7 +144,6 @@ class Default_IndexController extends Whale_Controller_Action
 
 
         $items = $nextSelect->where('path <@ ?', $page['path'])->where('name <> ?', 'articles')->query()->fetchAll();
-        Whale_Log::log($items);
 
         $this->view->assign('items', $items);
 

@@ -23,7 +23,7 @@
         <?php foreach ($this->news as $news): ?>
             <p>
                 <b><?php echo $news['title'] . '</b><br />' . $news['preview'] . '<br />' . date('d.m.Y', strtotime($news['published_at'])); ?><br>
-                    <a href="<?php echo $this->url(array('module' => 'news', 'controller' => 'index', 'action' => 'view', 'id' => $news['id'])); ?>">подробнее</a>
+                    <a href="/news/<?php echo $news['page_url']; ?>">подробнее</a>
             </p>
         <?php endforeach; ?>
     </div>
