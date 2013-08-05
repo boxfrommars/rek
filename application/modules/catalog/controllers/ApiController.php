@@ -35,16 +35,18 @@ class Catalog_ApiController extends Whale_Controller_Action
         $select->joinLeft(
             array('clr' => 'product_color'),
             'clr.id_product = p.id',
-            array('color_image' => 'image')
+            array('color_image' => 'image', 'color_cost' => 'cost')
         );
         if ($this->getParam('color')) {
-            $colorSelect = $productService->getAdapter()->select()->from(array('pcl' => 'product_color'), 'id_product')->where('id_color IN (?)', explode(',', $this->getParam('color')))->group(array('id_product'))->query()->fetchAll(Zend_Db::FETCH_COLUMN);
-            Whale_Log::log($colorSelect);
-            if (!empty($colorSelect)) {
-                $select->where('p.id IN (?)', $colorSelect);
-            } else {
-                $select->where('p.id = 0');
-            }
+//            $colorSelect = $productService->getAdapter()->select()->from(array('pcl' => 'product_color'), 'id_product')->where('id_color IN (?)', explode(',', $this->getParam('color')))->group(array('id_product'))->query()->fetchAll(Zend_Db::FETCH_COLUMN);
+ //           Whale_Log::log($colorSelect);
+ //           if (!empty($colorSelect)) {
+ //               $select->where('p.id IN (?)', $colorSelect);
+ //           } else {
+ //               $select->where('p.id = 0');
+		//           }
+		//
+	    $select->where('clr.id_color IN (?)', explode(',', $this->getParam('color')));	         
         }
         if ($this->getParam('category')) {
             $select->where('ct.id = ?', $this->getParam('category'));
@@ -64,7 +66,7 @@ class Catalog_ApiController extends Whale_Controller_Action
 
         if ($this->getParam('surface')) {
             $surface = explode(',', $this->getParam('surface'));
-            $select->where('id_surface IN (?)', $surface);
+            $select->where('p.id_surface IN (?)', $surface);
         }
 
         if ($this->getParam('pattern')) {

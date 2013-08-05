@@ -291,6 +291,9 @@ h1, h2, h3, h4, h5 {
 #right_catalog {
     padding-bottom: 20px;
 }
+#right_catalog p {
+    margin-bottom: 1em;
+}
 
 h1 {
     font-size: 24px;
