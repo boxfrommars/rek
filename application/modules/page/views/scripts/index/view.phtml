@@ -1,4 +1,15 @@
-<div id="left_catalog"></div>
+<div id="left_catalog">
+    <?php if (!empty($this->pagesMenuItems)): ?>
+    <div class="sidebar-block">
+        <span class="news_title"><a href="/news/">СТРАНИЦЫ</a><div id="point"></div></span>
+        <ul>
+            <?php foreach ($this->pagesMenuItems as $item): ?>
+                <li><a href="<?php echo $item['url']; ?>"><?php echo $item['title'] ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <?php endif; ?>
+</div>
 <div id="right_catalog">
     <div class="nav_catalog">
         <p>
