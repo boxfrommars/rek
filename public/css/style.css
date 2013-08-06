@@ -181,7 +181,7 @@ a {
 #product ul ul {margin-top: 0; }
 #product ul ul li {
     font-weight: normal;
-    background: #d5d8dd ;
+    background: #cccccc;
     opacity: .8;
     padding: 5px 15px;
 }
@@ -193,21 +193,22 @@ a {
     font-weight: 600;
     text-decoration: none;
 }
-#product ul ul a:hover {
-    color: #242424;
-}
 
 #product ul .active ul li {
     font-weight: normal;
-    background: #bbb ;
+    background: #bbb;
     opacity: 1;
     padding: 5px 15px;
 }
 
 #product ul li:hover ul li {
     font-weight: normal;
-    background: #bbb ;
+    background: #aaa ;
     opacity: 1;
+}
+
+#product ul li:hover ul a {
+    color: #242424;
 }
 
 
