@@ -68,9 +68,14 @@
                     duration: 3000,
                     timeoutDuration: 5000,
                     onBefore: function(data) {
+
+                        $('#c-c-carousel').css('opacity', 0.5);
                         $('.c-slider-image-text').fadeOut(1500);
                         $('.' + data.items.visible[1].className + '-text').fadeIn(1500);
                     }
+                },
+                onCreate: function(){
+                    $('#c-carousel').css('opacity', 1);
                 },
                 prev: '#c-prev',
                 next: '#c-next',

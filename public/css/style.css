@@ -188,13 +188,13 @@ a {
 #product ul ul a {
     display: block;
     text-align: left;
-    color: #242424;
+    color: #fff;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     text-decoration: none;
 }
 #product ul ul a:hover {
-    color: #fff;
+    color: #242424;
 }
 
 #product ul .active ul li {
@@ -370,28 +370,6 @@ h5 {
     font-size: 14px;
 }
 
-#c-text b, #c-text b a {
-    color: white;
-    text-decoration: none;
-    font-family: 'Open Sans Light', sans-serif;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 60px;
-    text-align: right;
-    display: block;
-    text-transform: uppercase;
-}
-
-
-#c-text {
-    background: none;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: normal;
-    color: white;
-    font-size: 18px;
-    font-family: 'Open Sans', sans-serif;
-}
-
 #keramo_nal a {
     color: white;
     font-size: 18px;
@@ -446,15 +424,15 @@ h5 {
     width: 50%;
     top: 0;
     position: absolute;
-    background-color: #000;
-    opacity: .7;
+    background-color: #fff;
+    opacity: .5;
 }
 #c-carousel {
-    background-color: #000;
-    opacity: .7;
+    background-color: #fff;
+    opacity: .5;
 }
 #c-prev:hover, #c-next:hover {
-    background-color: #000;
+    opacity: 0;
 }
 #c-prev {
     left: -550px;
@@ -490,6 +468,24 @@ h5 {
     position: absolute;
     left: 50%;
     bottom: 25px;
+    background: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    color: white;
+    font-size: 18px;
+}
+
+
+#c-text b, #c-text b a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Open Sans Light', sans-serif;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 60px;
+    text-align: right;
+    display: block;
+    text-transform: uppercase;
 }
 
 .c-slider-image-text {
