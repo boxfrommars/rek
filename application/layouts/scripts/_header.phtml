@@ -1,27 +1,28 @@
 <div id="header">
     <div id="head">
-        
-<div id="logo">
-            <a href="/"><img src="/img/logo.png"></a>
-        </div>
-         <div id="centr"><span>ЦЕНТР КЕРАМОГРАНИТА И ВЕНТФАСАДОВ</span><img src="/img/phone.png"><span><a><?php echo substr($this->settings['phone'], 3, 5) ?></a><strong><?php echo substr($this->settings['phone'], 9) ?></strong></span></div>
 
+        <div id="centr">
+            <div id="logo"><a href="/"><img src="/img/logo.png"></a></div>
+            <span>ЦЕНТР КЕРАМОГРАНИТА И ВЕНТФАСАДОВ</span>
+            <img class="phone-img" src="/img/phone.png" />
+            <?php echo substr($this->settings['phone'], 3, 5) ?> <strong><?php echo substr($this->settings['phone'], 9) ?></strong>
+        </div>
     </div>
-<p id="menu">
-        <a href="/about" class="space">О КОМПАНИИ</a>
-        <a class="space" href="/articles">РЕКОМЕНДАЦИИ</a>
-        <a class="space" href="/gallery">ГАЛЕРЕЯ</a>
-        <a class="space" href="/contacts">КОНТАКТЫ</a>
-        <a class="menu_left" href="/feedback">ОСТАВИТЬ ЗАЯВКУ</a>
-     <!--     <a class="menu_left" href="/files/<?php echo $this->settings['price'] ?>">ПРАЙС&nbsp;</a>-->
-    </p>
+    <ul id="menu">
+        <li><a href="/about">О КОМПАНИИ</a></li>
+        <li><a href="/articles">РЕКОМЕНДАЦИИ</a></li>
+        <li><a href="/gallery">ГАЛЕРЕЯ</a></li>
+        <li><a href="/contacts">КОНТАКТЫ</a></li>
+        <li class="menu_left"><a href="/feedback">ОСТАВИТЬ ЗАЯВКУ</a></li>
+<!--            <li><a class="menu_left" href="/files/--><?php //echo $this->settings['price'] ?><!--">ПРАЙС&nbsp;</a></li>-->
+    </ul>
 <!--    <form action="/search" method="post"><input id="search" type="text" name="searchstring" value="&#160;поиск" onfocus="this.value=''" onblur="this.value='поиск'"/></form>-->
 <!--  <a href="" id="search_field">-->
 <!--        <input type="image" src="/img/search_button.png" value="" id="search_button"/>-->
 <!--    </a>-->
     <div id="product" class="product_menu">
         <?php $i = 1 ?>
-        <ul>
+        <ul class="main-menu">
             <?php $rPage = $this->page->getRaw(); ?>
         <?php foreach ($this->categoryNavigation as $category): ?>
 
@@ -45,4 +46,5 @@
         <?php endforeach; ?>
         </ul>
     </div>
+    <div id="gradient"></div>
 </div>

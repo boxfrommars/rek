@@ -13,6 +13,60 @@
     <link rel="stylesheet" type="text/css" href="/css/shadowbox.css">
     <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/my.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <style type="text/css">
+        #c-wrapper {
+            background-color: #fff;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        #c-carousel img {
+            display: block;
+            float: left;
+        }
+        #c-prev, #c-next {
+            display: block;
+            height: 300px;
+            width: 50%;
+            top: 0;
+            position: absolute;
+        }
+        #c-prev:hover, #c-next:hover {
+            background-color: #000;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        #c-prev {
+            left: -550px;
+        }
+        #c-next {
+            right: -550px;
+        }
+        #c-pager {
+            margin-left: -530px;
+            position: absolute;
+            left: 50%;
+            bottom: 10px;
+        }
+        #c-pager a {
+            border: 2px solid #fff;
+            border-radius: 10px;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px 0 0;
+        }
+        #c-pager a:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        #c-pager a span {
+            display: none;
+        }
+        #c-pager a.selected {
+            background-color: #fff;
+        }
+    </style>
     <script type="text/javascript" src="/js/shadowbox.js"></script>
     <script type="text/javascript">
         Shadowbox.init({
@@ -23,39 +77,57 @@
     <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/vendor/bootstrap/js/my.min.js"></script>
     <script type="text/javascript" src="/js/rekada.js"></script>
+    <script src="/vendor/carouFredSel-6.2.1/jquery.carouFredSel-6.2.1.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="wrapper">
 
 <?php echo $this->render('_header.phtml') ?>
-<div id="content">
-<div id="gradient"></div>
-    <div id="keramo" class="tw-bs">
-        <div id="myCarousel" class="carousel slide carousel-fade">
-            <ol class="carousel-indicators">
-                <?php foreach ($this->slider as $key => $slider): ?>
-                    <li data-target="#myCarousel" data-slide-to="<?php echo $key; ?>"></li>
-                <?php endforeach; ?>
-            </ol>
-            <div class="carousel-inner">
-                <?php foreach ($this->slider as $key => $slider): ?>
-                <div class="item <?php if ($key == 0) echo 'active'; ?>">
-                    <a href="<?php echo $slider['url']; ?>">
-                        <img src="/files/<?php echo $slider['image']; ?>" alt="">
-                        <div class="carousel-caption" id="keramo_text">
-                            <b><?php echo $slider['title']; ?></b>
-                            <?php echo $slider['text']; ?>
-                        </div>
-                    </a>
-                </div>
-                <?php endforeach; ?>
-            </div>
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+
+    <div id="c-wrapper">
+        <div id="c-carousel">
+            <?php foreach ($this->slider as $key => $slider): ?>
+                <img src="/files/<?php echo $slider['image']; ?>" alt="" style="height: 300px;width: 1100px;" />
+            <?php endforeach; ?>
+<!---->
+<!--            <img src="img/building1.jpg" alt="building1" width="990" height="450" />-->
+<!--            <img src="img/building2.jpg" alt="building2" width="990" height="450" />-->
+<!--            <img src="img/building3.jpg" alt="building3" width="990" height="450" />-->
+<!--            <img src="img/building4.jpg" alt="building4" width="990" height="450" />-->
+<!--            <img src="img/building5.jpg" alt="building5" width="990" height="450" />-->
+<!--            <img src="img/building6.jpg" alt="building6" width="990" height="450" />-->
         </div>
+        <a href="#" id="c-prev" title="Show previous"> </a>
+        <a href="#" id="c-next" title="Show next"> </a>
+        <div id="c-pager"></div>
     </div>
+    <div id="gradient"></div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#c-carousel').carouFredSel({
+                width: '100%',
+                items: {
+                    visible: 3,
+                    start: -1
+                },
+                scroll: {
+                    fx: 'crossfade',
+                    items: 1,
+                    duration: 3000,
+                    timeoutDuration: 5000
+                },
+                prev: '#c-prev',
+                next: '#c-next',
+                pagination: {
+                    container: '#c-pager',
+                    deviation: 1
+                }
+            });
+        });
+    </script>
+<div id="content">
     <div id="keramika">
-        <div id="gradient"></div>
         <ul id="choice">
             <li class="active"><a href="#" class="data-plitka" data-plitka=".plitka-action">АКЦИИ</a></li>
             <li><a href="#" class="data-plitka" data-plitka=".plitka-hit">ХИТЫ</a></li>
@@ -63,11 +135,6 @@
         </ul>
         <script>
             $(document).ready(function(){
-                    $('.carousel').carousel({
-                        interval: 5000
-                    });
-
-                    $('.carousel').carousel('cycle');
 
 
                 $('.data-plitka').on('click', function(){
