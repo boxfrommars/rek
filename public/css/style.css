@@ -206,9 +206,14 @@ a {
 }
 
 
-#gradient {
+.gradient-w {
     height: 52px;
     margin-bottom: -30px;
+    background: url('../img/shadow.png') 50% repeat-x;
+}
+.gradient {
+    height: 52px;
+    margin-bottom: 0;
     background: url('../img/shadow.png') 50% repeat-x;
 }
 
