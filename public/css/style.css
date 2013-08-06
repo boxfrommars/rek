@@ -364,17 +364,7 @@ h5 {
     font-size: 14px;
 }
 
-#keramo_text {
-    width: 450px;
-    height: 160px;
-    right: 20px;
-    left: auto;
-    background: none;
-    margin: 24px 47px 59px 0;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: normal;
-}
-#keramo_text b, #keramo_text b a {
+#c-text b, #c-text b a {
     color: white;
     text-decoration: none;
     font-family: 'Open Sans Light', sans-serif;
@@ -387,12 +377,13 @@ h5 {
 }
 
 
-#keramo_text p {
+#c-text {
+    background: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
     color: white;
     font-size: 18px;
-    text-align: right;
     font-family: 'Open Sans', sans-serif;
-
 }
 
 #keramo_nal a {
@@ -430,6 +421,75 @@ h5 {
     background: url('../img/choose.png') no-repeat;
 }
 
+#c-wrapper {
+    background-color: #fff;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+#c-carousel img {
+    display: block;
+    float: left;
+}
+#c-prev, #c-next {
+    display: block;
+    height: 300px;
+    width: 50%;
+    top: 0;
+    position: absolute;
+    background-color: #000;
+    opacity: .7;
+}
+#c-carousel {
+    background-color: #000;
+    opacity: .7;
+}
+#c-prev:hover, #c-next:hover {
+    background-color: #000;
+}
+#c-prev {
+    left: -550px;
+}
+#c-next {
+    right: -550px;
+}
+#c-pager {
+    margin-left: -530px;
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+}
+#c-pager a {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px 0 0;
+}
+#c-pager a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#c-pager a span {
+    display: none;
+}
+#c-pager a.selected {
+    background-color: #fff;
+}
+
+#c-text {
+    position: absolute;
+    left: 50%;
+    bottom: 25px;
+}
+
+.c-slider-image-text {
+    display: none;
+    height: 250px;
+    width: 500px;
+    text-align:right;
+}
 
 /*h2:hover a {
     opacity: .5;
