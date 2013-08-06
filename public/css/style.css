@@ -152,13 +152,12 @@ a {
 #product {
     background: #2b3d4d url('../img/product_bg.png') repeat;
     height: 40px;
-    margin-top: 80px;
     clear: both;
+    width: 1100px;
+    margin: 80px auto 0;
 
 }
 #product ul.main-menu {
-    width: 1100px;
-    margin: 0 auto;
 }
 
 #product {padding: 0; border: 0;}
@@ -208,8 +207,9 @@ a {
 
 .gradient-w {
     height: 52px;
-    margin-bottom: -30px;
     background: url('../img/shadow.png') 50% repeat-x;
+    width: 1100px;
+    margin: 0 auto -30px;
 }
 .gradient {
     height: 52px;
