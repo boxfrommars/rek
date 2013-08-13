@@ -1495,6 +1495,7 @@
 						$cfs.css({ 'opacity': 0 });
 						scrl.anims.push([$cf2, { 'opacity': 0 }]);
 						scrl.anims.push([$cfs, { 'opacity': 1 }, _onafter]);
+                        console.log($cf2, $cfs, $tt0);
 						_a_wrapper();
 						_s_paddingold();
 						_s_paddingcur();

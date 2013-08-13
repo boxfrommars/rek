@@ -415,30 +415,30 @@ h5 {
     overflow: hidden;
     position: relative;
 }
-#c-carousel img {
+#t-carousel img {
     display: block;
     float: left;
 }
-#c-prev, #c-next {
+.c-prev, .c-next {
     display: block;
     height: 300px;
     width: 50%;
     top: 0;
     position: absolute;
     background-color: #fff;
-    opacity: .5;
+    /*opacity: 0.5;*/
 }
 #c-carousel {
     background-color: #fff;
-    opacity: .5;
+    /*opacity: .5;*/
 }
-#c-prev:hover, #c-next:hover {
-    opacity: 0;
+.c-prev:hover, .c-next:hover {
+    /*opacity: 0;*/
 }
-#c-prev {
+.c-prev {
     left: -550px;
 }
-#c-next {
+.c-next {
     right: -550px;
 }
 #c-pager {
