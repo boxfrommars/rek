@@ -74,7 +74,7 @@ class Catalog_Model_ProductService extends Whale_Db_TableCached
         $select->joinLeft(
             array('clr' => 'product_color'),
             'clr.id_product = p.id',
-            array('color_image' => 'image', 'color_cost' => 'cost')
+            array('color_image' => 'image', 'color_image_preview' => 'image_preview', 'color_cost' => 'cost')
         );
 
         if (null !== $limit) {

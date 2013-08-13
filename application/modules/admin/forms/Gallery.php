@@ -18,7 +18,16 @@ class Admin_Form_Gallery extends Whale_Form_Titled
             'required' => false,
             'filters' => array('StringTrim'),
             'validators' => array(),
-            'class' => 'hidden image-upload',
+            'class' => 'image-upload',
+            'dimension' => $this->_dimension,
+        ));
+
+        $this->addElement('text', 'image_preview', array(
+            'label' => "Превью",
+            'required' => false,
+            'filters' => array('StringTrim'),
+            'validators' => array(),
+            'class' => 'image-upload',
             'dimension' => $this->_dimension,
         ));
     }

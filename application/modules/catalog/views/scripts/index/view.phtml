@@ -40,7 +40,7 @@
         <p class="name_black" style="text-transform: uppercase"><?php echo $this->product['title'] ?></p>
         <p class="name_blue" style="text-transform: uppercase"><?php echo $this->product['brand_title'] ?></p>
         <div class="catalog_sample">
-            <img style="width:280px;" class="product-image" src="/files/thumbnail/<?php echo $this->product['image'] ?>"/>
+            <img style="width:280px;" class="product-image" src="/files/<?php echo $this->product['image'] ?>"/>
         </div>
         <div class="sample_price">
             <p class="price_catalog"> <span class="product-cost"><?php echo $this->product['cost'] ?></span> <span class="product-cost-measure">руб./м</span></p>
@@ -58,7 +58,7 @@
             <div class="block_available">
                 <div class="catalog_available">
                     <a href="#" class="product-color" data-pc-image="<?php echo $color['image'] ?>" data-pc-cost="<?php echo $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
-                        <img src="/files/thumbnail/<?php echo $color['image'] ?>">
+                        <img src="/files/<?php echo $color['image_preview'] ?>">
                     </a>
                 </div>
                 <p>
@@ -80,7 +80,7 @@
             <div class="block_available">
                 <div class="catalog_available">
                     <a href="/files/<?php echo $color['image'] ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
-                        <img src="/files/thumbnail/<?php echo $color['image'] ?>">
+                        <img src="/files/<?php echo $color['image_preview'] ?>">
                     </a>
                 </div>
                 <p><?php echo $color['title'] ?></p>
@@ -95,7 +95,7 @@
             <div class="block_available">
                 <div class="catalog_available">
                     <a href="/files/<?php echo $color['image'] ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
-                        <img src="/files/thumbnail/<?php echo $color['image'] ?>">
+                        <img src="/files/<?php echo $color['image_preview'] ?>">
                     </a>
                 </div>
                 <p><?php echo $color['title'] ?></p>
@@ -110,7 +110,7 @@
             var surface = $(this).attr('data-pc-surface');
             $('.product-cost').html(cost);
             $('.product-surface').html(surface);
-            $('.product-image').attr('src', '/files/thumbnail/' + image);
+            $('.product-image').attr('src', '/files/' + image);
             return false;
         });
     </script>

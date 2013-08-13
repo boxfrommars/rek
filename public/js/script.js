@@ -1,17 +1,18 @@
 $(document).ready(function() {
     $('.image-upload').each(function() {
         var insertImage = function(name, $insertBeforeElm, isNew) {
-            $('<a/>')
+            var $insertedImage = $('<a/>')
                 .addClass('fancybox admin-image ' + (isNew ? 'new-admin-image' : ''))
                 .attr('href', '/files/' + name)
                 .append(
-                    $('<img/>').attr('src', '/files/thumbnail/' + name)
+                    $('<img/>').attr('src', '/files/' + name)
                 ).insertBefore($insertBeforeElm);
+            return $insertedImage;
         }
         var $input = $(this);
-
+        var $currImage = null;
         if ($(this).val().length > 0) {
-            insertImage($(this).val(), $input, false);
+            $currImage = insertImage($(this).val(), $input, false);
         }
 
         var $fileInput = $('<input/>').attr('type', 'file').attr('name', 'files[]').attr('data-url', "/admin/system/upload");
@@ -20,7 +21,8 @@ $(document).ready(function() {
         $fileInput.fileupload({
             dataType: 'json',
             done: function (e, data) {
-                $('.new-admin-image').remove();
+                if ($currImage) $currImage.remove();
+//                $('.new-admin-image').remove();
                 $.each(data.result.files, function (index, file) {
                     insertImage(file.name, $input, true);
                     $input.val(file.name);

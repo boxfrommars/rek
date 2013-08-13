@@ -100,11 +100,11 @@ class UploadHandler
                     'jpeg_quality' => 80
                 ),
                 */
-                'thumbnail' => array(
-                    'max_width' => 300,
-                    'max_height' => 300,
-                    'jpeg_quality' => 95,
-                )
+//                'thumbnail' => array(
+//                    'max_width' => 300,
+//                    'max_height' => 300,
+//                    'jpeg_quality' => 95,
+//                )
             )
         );
         if ($options) {

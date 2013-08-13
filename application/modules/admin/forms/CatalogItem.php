@@ -16,6 +16,15 @@ class Admin_Form_CatalogItem extends Whale_Form_Page
             'validators' => array(),
             'class' => 'image-upload',
             'dimension' => $this->_dimension,
-            ));
+        ));
+
+        $this->addElement('text', 'image_preview', array(
+            'label' => "Превью",
+            'required' => false,
+            'filters' => array('StringTrim'),
+            'validators' => array(),
+            'class' => 'image-upload',
+            'dimension' => $this->_dimension,
+        ));
     }
 }
