@@ -248,7 +248,7 @@ a {
     line-height: 40px;
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    /*font-size: 18px;*/
     display: inline;
     font-family: 'Open Sans light', sans-serif;
 
