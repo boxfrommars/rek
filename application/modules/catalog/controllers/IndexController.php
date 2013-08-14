@@ -73,6 +73,10 @@ class Catalog_IndexController extends Whale_Controller_Action
 
         foreach ($products as $product) {
             if (!in_array($product['id_surface'], $surfaceIds) && $product['id_surface']) $surfaceIds[] = $product['id_surface'];
+            if (!in_array($product['id_surface'], $surfaceIds) && $product['id_surface']) $surfaceIds[] = $product['id_surface'];
+            if (!in_array($product['color_id_surface'], $surfaceIds) && $product['color_id_surface']) $surfaceIds[] = $product['color_id_surface'];
+
+
             if (!in_array($product['id_country'], $countryIds) && $product['id_country']) $countryIds[] = $product['id_country'];
             if (!in_array($product['id_brand'], $brandIds) && $product['id_brand']) $brandIds[] = $product['id_brand'];
             if (!in_array($product['id_pattern'], $patternIds) && $product['id_pattern']) $patternIds[] = $product['id_pattern'];
@@ -86,6 +90,11 @@ class Catalog_IndexController extends Whale_Controller_Action
 
             if ($product['cost'] > $maxCost || $maxCost === null) $maxCost = $product['cost'];
             if ($product['cost'] < $minCost || $minCost === null) $minCost = $product['cost'];
+
+            if (!empty($product['color_cost'])) {
+                if ($product['color_cost'] > $maxCost || $maxCost === null) $maxCost = $product['color_cost'];
+                if ($product['color_cost'] < $minCost || $minCost === null) $minCost = $product['color_cost'];
+            }
 
             if ($product['depth'] > $maxDepth || $maxDepth === null) $maxDepth = $product['depth'];
             if ($product['depth'] < $minDepth || $minDepth === null) $minDepth = $product['depth'];
@@ -111,8 +120,6 @@ class Catalog_IndexController extends Whale_Controller_Action
         $page = $this->_getParam('page');
         $rekService = new Catalog_Model_RekService();
 
-
-
         $rek = $rekService->fetchRow(array('id = ?' => $page['id'], 'is_published' => true));
 
         if (null === $rek) {
@@ -128,25 +135,31 @@ class Catalog_IndexController extends Whale_Controller_Action
         $where = array('b.id_parent = ?' => $page['id_parent'], 'is_published = ?' => true);
         $checked = array();
 
-
         foreach ($params as $param) {
             if (!empty($param->value)) {
-                $where['p.' . $param->name . ' = ?'] = $param->value;
+                switch ($param->name) {
+                    case 'cost':
+                        $costRange = explode(',', $param->value);
+                        $where['clr.cost >= ? OR (clr.cost IS NULL AND p.cost >= ?)'] = (int) $costRange[0];
+                        $where['clr.cost <= ? OR (clr.cost IS NULL AND p.cost <= ?)'] = (int) $costRange[1];
+                        break;
+                    case 'id_surface':
+                        $where['(clr.id_surface IN (?) OR (clr.id_surface IS NULL AND p.id_surface IN (?)))'] = $param->value;
+                        break;
+                    default:
+                        $where['p.' . $param->name . ' = ?'] = $param->value;
+                        break;
+                }
                 $checked[$param->name] = $param->value;
             }
         }
 
         $productService = new Catalog_Model_ProductService();
         $products = $productService->fetchAllColored($where);
+
         $this->view->products = $products;
-        Whale_Log::log($products);
-
-        Whale_Log::log($where);
-        Whale_Log::log($checked);
-
         $this->view->checked = $checked;
 
-        Whale_Log::log($params);
         $this->_setSearchbar(array('b.id_parent = ?' => $page['id_parent'], 'is_published = ?' => true));
     }
 

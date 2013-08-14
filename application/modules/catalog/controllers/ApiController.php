@@ -35,18 +35,10 @@ class Catalog_ApiController extends Whale_Controller_Action
         $select->joinLeft(
             array('clr' => 'product_color'),
             'clr.id_product = p.id',
-            array('color_image' => 'image', 'color_cost' => 'cost')
+            array('color_image' => 'image', 'color_image_preview' => 'image_preview', 'color_cost' => 'cost', 'color_id_surface' => 'id_surface')
         );
         if ($this->getParam('color')) {
-//            $colorSelect = $productService->getAdapter()->select()->from(array('pcl' => 'product_color'), 'id_product')->where('id_color IN (?)', explode(',', $this->getParam('color')))->group(array('id_product'))->query()->fetchAll(Zend_Db::FETCH_COLUMN);
- //           Whale_Log::log($colorSelect);
- //           if (!empty($colorSelect)) {
- //               $select->where('p.id IN (?)', $colorSelect);
- //           } else {
- //               $select->where('p.id = 0');
-		//           }
-		//
-	    $select->where('clr.id_color IN (?)', explode(',', $this->getParam('color')));	         
+	        $select->where('clr.id_color IN (?)', explode(',', $this->getParam('color')));
         }
         if ($this->getParam('category')) {
             $select->where('ct.id = ?', $this->getParam('category'));
@@ -66,7 +58,7 @@ class Catalog_ApiController extends Whale_Controller_Action
 
         if ($this->getParam('surface')) {
             $surface = explode(',', $this->getParam('surface'));
-            $select->where('p.id_surface IN (?)', $surface);
+            $select->where('(p.id_surface IN (?) OR clr.id_surface IN (?))', $surface);
         }
 
         if ($this->getParam('pattern')) {
@@ -85,11 +77,11 @@ class Catalog_ApiController extends Whale_Controller_Action
         }
 
         if ($this->getParam('mincost')) {
-            $select->where('p.cost >= ?', $this->getParam('mincost'));
+            $select->where('clr.cost >= ? OR (clr.cost IS NULL AND p.cost >= ?)', $this->getParam('mincost'));
         }
 
         if ($this->getParam('maxcost')) {
-            $select->where('p.cost <= ?', $this->getParam('maxcost'));
+            $select->where('clr.cost <= ? OR (clr.cost IS NULL AND p.cost <= ?)', $this->getParam('maxcost'));
         }
 
         if ($this->getParam('mindepth')) {
