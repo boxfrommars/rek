@@ -48,8 +48,19 @@ class Catalog_ApiController extends Whale_Controller_Action
             $sizes = explode(',', $this->getParam('size'));
             foreach ($sizes as $size) {
                 $dimensions = explode('-', $size);
+                $size = array();
+                if (!empty($dimensions[0])) {
+                    $size[] = 'p.width = ' . $db->quoteInto('?',$dimensions[0]);
+                } else {
+                    $size[] = 'p.width IS NULL';
+                }
+                if (!empty($dimensions[1])) {
+                    $size[] = 'p.height = ' . $db->quoteInto('?',$dimensions[1]);
+                } else {
+                    $size[] = 'p.height IS NULL';
+                }
 
-                $sizeWhere[] = '(p.width = ' . $db->quoteInto('?',$dimensions[0]) . ' AND p.height = ' . $db->quoteInto('?',$dimensions[1]) . ')';
+                $sizeWhere[] = '(' . implode(' AND ', $size) . ')';
             }
 
             $sizeWhere = implode(' OR ', $sizeWhere);
