@@ -182,12 +182,12 @@
 
 #list_page {
     float: right;
-    height: 33px;
-    margin: 40px 30px 35px 0;
+    /*height: 33px;*/
+    /*margin: 40px 30px 35px 0;*/
 }
 
 #list_page p {
-    font-size: 30px;
+    font-size: 20px;
     color: #003399;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
@@ -202,6 +202,8 @@
 
 #list_page span {
     font-weight: 600;
+    color: red;
+    padding: 0 3px;
 }
 .prev_page {
     float: left;

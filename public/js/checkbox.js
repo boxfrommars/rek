@@ -2,24 +2,20 @@ $(document).ready(function(){
     $(".niceCheck").parent('p').click(function(e) { /* при клике на чекбоксе меняем его вид и значение */
         changeCheck($(this).find('.niceCheck'));
     });
-//    $(".niceCheck .product-filter-checkbox").click(function(e){
-//        changeCheck($(this));
-//    });
-    $(".niceCheck").each(
+
     /* при загрузке страницы нужно проверить какое значение имеет чекбокс и в соответствии с ним выставить вид */
-    function() {
+    $(".niceCheck").each(function() {
          changeCheckStart($(this));
     });
+    paginate();
 });
 
-function changeCheck(el)
-/* 
-	функция смены вида и значения чекбокса
-	el - span контейнер для обычного чекбокса
-	input - чекбокс
-*/
-{
-    console.log('hello!!!!');
+/*
+ функция смены вида и значения чекбокса
+ el - span контейнер для обычного чекбокса
+ input - чекбокс
+ */
+function changeCheck(el) {
      var el = el,
         input = el.find("input").eq(0);
    	 if(!input.prop("checked")) {
@@ -32,30 +28,69 @@ function changeCheck(el)
      return true;
 }
 
-function changeCheckStart(el)
-/* 
-	если установлен атрибут checked, меняем вид чекбокса
-*/
-{
-var el = el,
-		input = el.find("input").eq(0);
-      if(input.prop("checked")) {
-		el.css("background-image","url(/img/checkbox.png)");
-		}
-     return true;
+/*
+ если установлен атрибут checked, меняем вид чекбокса
+ */
+function changeCheckStart(el) {
+    var el = el,
+        input = el.find("input").eq(0);
+
+    if(input.prop("checked")) {
+        el.css("background-image","url(/img/checkbox.png)");
+    }
+
+    return true;
 }
+
+var perPage = 30;
+var countPages = 0;
+
+var paginate = function() {
+    var $allProducts = $('#product-container .product_from_catalog');
+    var count = $allProducts.length;
+    $allProducts.not($allProducts.slice(0, perPage)).hide();
+    countPages = Math.ceil(count/perPage);
+    refreshPaginator(1);
+    console.log('total: ' + count, 'perPage: ' + perPage, 'pages: ' + countPages);
+}
+
+var refreshPaginator = function(curPage) {
+    $('.product-pagination').html('');
+    var $allLink = (~~curPage == 0) ? $('<span></span>').text('все') : $('<a></a>').addClass('pagination-link-all').attr('href', '#').text('все');
+    $('.product-pagination').append($allLink);
+    for (var i = 1; i <= countPages; i++) {
+        if (i === ~~curPage) {
+            $('.product-pagination').append($('<span></span>').text(i));
+        } else {
+            $('.product-pagination').append($('<a></a>').addClass('pagination-link').attr('href', '#').text(i));
+        }
+    }
+}
+
+var showProductPage = function(pageNum) {
+    pageNum = ~~ pageNum;
+    var $allProducts = $('#product-container .product_from_catalog');
+    var $productsToShow = (pageNum > 0) ? $allProducts.slice((pageNum - 1) * perPage, pageNum * perPage) : $allProducts;
+    $allProducts.hide();
+    refreshPaginator(pageNum);
+    $productsToShow.fadeIn();
+
+}
+
 
 
 var prevData = {};
 var reloadProducts = function(){
     var data = {};
     $('.product-filter').each(function(k, v) {
+
         if(data.hasOwnProperty($(v).attr('name'))){
             data[$(v).attr('name')] += ',' + $(v).val();
         } else {
             data[$(v).attr('name')] = '' + $(v).val();
         }
     });
+
     $('.product-filter-checkbox:checked').each(function(k, v) {
         if(data.hasOwnProperty($(v).attr('name'))){
             data[$(v).attr('name')] += ',' + $(v).val();
@@ -63,21 +98,25 @@ var reloadProducts = function(){
             data[$(v).attr('name')] = '' + $(v).val();
         }
     });
+
     if (prevData != data) {
-        $('#product-container').load('/catalog/api', data);
+        $('#product-container').load('/catalog/api', data, function(){
+            paginate();
+        });
         prevData = data;
     }
-//    var url = '/catalog/api/index/';
-//    for (part in data) {
-//        url += '/' + (part + '/' + data[part]);
-//    }
-//    console.log(url);
-//    location.href = url;
 }
 
-
-
 $(function() {
+
+    $('.product-pagination').on('click', '.pagination-link', function(){
+        showProductPage($(this).text());
+        return false;
+    });
+    $('.product-pagination').on('click', '.pagination-link-all', function(){
+        showProductPage();
+        return false;
+    });
     var $costSlider = $( ".slider-cost" );
     var $depthSlider = $( ".slider-depth" );
 

@@ -68,19 +68,8 @@
                     duration: 3000,
                     timeoutDuration: 5000,
                     onBefore: function(data) {
-
-//                        $('.' + data.items.visible[0].className + '-text').fadeOut(1500);
                         $('.' + data.items.visible[1].className + '-text').fadeIn(1500);
-                    },
-                    onAfter: function(data){
-//                        $('.c-next').css('opacity', '0').fadeTo(1000, 0.5);
-//                        $('.c-prev').css('opacity', '0').fadeTo(1000, 0.5);
-                        console.log('on after');
-                    },
-                    onEnd: function(){}
-                },
-                onCreate: function(){
-//                    $('#c-carousel').css('opacity', 1);
+                    }
                 },
                 prev: '.c-prev',
                 next: '.c-next',
@@ -100,8 +89,6 @@
         </ul>
         <script>
             $(document).ready(function(){
-
-
                 $('.data-plitka').on('click', function(){
                     $('.plitka').hide().filter($(this).attr('data-plitka')).fadeIn();
                     $('#choice li').removeClass('active');

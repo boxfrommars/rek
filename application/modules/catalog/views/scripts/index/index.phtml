@@ -8,16 +8,11 @@
             <?php echo $this->partial('item.phtml', array('product' => $product)); ?>
         <?php endforeach; ?>
     </div>
-    <?php echo $this->page->getContent(); ?>
-    <div style="clear:both; height: 1px;" ></div>
+    <div class="groupfix"></div>
     <div id="list_page">
-<!--        <div class="prev_page">-->
-<!--            <a href="#"><img src="/img/back.png"></a>-->
-<!--        </div>-->
-<!--        <p><span>1</span> <a href="#">2</a> <a href="#">3</a> .... <a href="#">8</a></p>-->
-<!--        <div class="next_page">-->
-<!--            <a href="#"><img src="/img/next.png"></a>-->
-<!--        </div>-->
+        <p class="product-pagination"><a href="#"><</a> <span>1</span> <a href="#">2</a> <a href="#">3</a> .... <a href="#">8</a> <a href="#">></a></p>
     </div>
+    <div class="groupfix"></div>
+    <?php echo $this->page->getContent(); ?>
 
 </div>
