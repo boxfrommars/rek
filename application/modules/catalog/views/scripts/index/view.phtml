@@ -43,7 +43,7 @@
             <img style="width:280px;" class="product-image" src="/files/<?php echo $this->product['image'] ?>"/>
         </div>
         <div class="sample_price">
-            <p class="price_catalog"> <span class="product-cost"><?php echo $this->product['cost'] ?></span> <span class="product-cost-measure">руб./м</span></p>
+            <p class="price_catalog"> <span class="product-cost"><?php echo (int) $this->product['cost'] ?></span> <span class="product-cost-measure">руб./м</span></p>
             <p><span class="param-label">Тип поверхности:</span> <span class="product-surface"><?php echo $this->product['surface_title'] ?></span></p>
             <p><span class="param-label">Размер:</span> <?php echo $this->product['width'] ?>*<?php echo $this->product['height'] ?>*<?php echo $this->product['depth'] ?></p>
 <!--            <p><span>Рисунок:</span> дерево</p>-->
@@ -57,12 +57,12 @@
         <?php foreach ($this->productColors as $color): ?>
             <div class="block_available">
                 <div class="catalog_available">
-                    <a href="#" class="product-color" data-pc-image="<?php echo $color['image'] ?>" data-pc-cost="<?php echo $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
+                    <a href="#" class="product-color" data-pc-image="<?php echo $color['image'] ?>" data-pc-cost="<?php echo (int) $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
                         <img src="/files/<?php echo $color['image_preview'] ?>">
                     </a>
                 </div>
                 <p>
-                    <a href="#" class="product-color" data-pc-image="<?php echo $color['image'] ?>" data-pc-cost="<?php echo $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
+                    <a href="#" class="product-color" data-pc-image="<?php echo $color['image'] ?>" data-pc-cost="<?php echo (int) $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
                         <?php echo $color['title'] ?>
                     </a>
                 </p>

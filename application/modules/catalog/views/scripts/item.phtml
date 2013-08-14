@@ -3,6 +3,6 @@
     <div class="cat_product">
         <a href="/<?php echo $this->product['category_page_url'] . '/' . $this->product['brand_page_url'] . '/' . $this->product['page_url'] ?>"><img src="/files/<?php echo !empty($this->product['color_image_preview']) ? $this->product['color_image_preview'] : $this->product['image_preview']; ?>" alt="<?php echo $this->product['title']; ?>"></a>
     </div>
-    <p class="price_prod"> <?php echo !empty($this->product['color_cost']) ? $this->product['color_cost'] : $this->product['cost'] ?> <span>руб./м</span></p>
+    <p class="price_prod"> <?php echo !empty($this->product['color_cost']) ? (int) $this->product['color_cost'] : (int) $this->product['cost'] ?> <span>руб./м</span></p>
     <input onclick="location.href = '<?php echo $this->url(array(), 'feedback') ?>'" type="button" class="zakaz_but" value="">
 </div>

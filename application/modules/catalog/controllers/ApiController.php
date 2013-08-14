@@ -85,11 +85,11 @@ class Catalog_ApiController extends Whale_Controller_Action
         }
 
         if ($this->getParam('mindepth')) {
-            $select->where('p.depth >= ?', $this->getParam('mindepth'));
+            $select->where('(p.depth >= ? OR p.depth IS NULL)', $this->getParam('mindepth'));
         }
 
         if ($this->getParam('maxdepth')) {
-            $select->where('p.depth <= ?', $this->getParam('maxdepth'));
+            $select->where('(p.depth <= ? OR p.depth IS NULL)', $this->getParam('maxdepth'));
         }
         Whale_Log::log($select->assemble());
         $this->view->products = $select->query()->fetchAll();
