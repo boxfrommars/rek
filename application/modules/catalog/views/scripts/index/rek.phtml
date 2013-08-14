@@ -10,6 +10,11 @@
             <?php echo $this->partial('item.phtml', array('product' => $product)); ?>
         <?php endforeach; ?>
     </div>
+    <div class="groupfix"></div>
+    <div id="list_page">
+        <p class="product-pagination"></p>
+    </div>
+    <div class="groupfix"></div>
 
     <div>
         <?php echo $this->page->getContent(); ?>
