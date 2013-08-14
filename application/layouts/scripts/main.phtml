@@ -34,7 +34,7 @@
 <?php echo $this->render('_header.phtml') ?>
 
     <div id="c-wrapper">
-        <div id="t-carousel">
+        <div class="t-carousel">
             <?php foreach ($this->slider as $key => $slider): ?>
                 <img class="c-slider-image-<?php echo $slider['id']; ?>" src="/files/<?php echo $slider['image']; ?>" alt="" style="height: 300px;width: 1100px;" />
             <?php endforeach; ?>
@@ -56,7 +56,7 @@
 
     <script type="text/javascript">
         $(function() {
-            $('#t-carousel').carouFredSel({
+            $('.t-carousel').carouFredSel({
                 width: '100%',
                 items: {
                     visible: 3,
@@ -67,11 +67,14 @@
                     items: 1,
                     duration: 3000,
                     timeoutDuration: 5000,
-                    onBefore: function(data) {},
+                    onBefore: function(data) {
+
+//                        $('.' + data.items.visible[0].className + '-text').fadeOut(1500);
+                        $('.' + data.items.visible[1].className + '-text').fadeIn(1500);
+                    },
                     onAfter: function(data){
-                        $('.' + data.items.visible[1].className + '-text').fadeIn(1000);
-                        $('.c-next').css('opacity', '0').fadeTo(1000, 0.5);
-                        $('.c-prev').css('opacity', '0').fadeTo(1000, 0.5);
+//                        $('.c-next').css('opacity', '0').fadeTo(1000, 0.5);
+//                        $('.c-prev').css('opacity', '0').fadeTo(1000, 0.5);
                         console.log('on after');
                     },
                     onEnd: function(){}

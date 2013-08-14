@@ -415,7 +415,7 @@ h5 {
     overflow: hidden;
     position: relative;
 }
-#t-carousel img {
+.t-carousel img {
     display: block;
     float: left;
 }
@@ -426,11 +426,11 @@ h5 {
     top: 0;
     position: absolute;
     background-color: #fff;
-    /*opacity: 0.5;*/
+    opacity: 0.5;
+    z-index: 5;
 }
-#c-carousel {
+.t-carousel {
     background-color: #fff;
-    /*opacity: .5;*/
 }
 .c-prev:hover, .c-next:hover {
     /*opacity: 0;*/
@@ -474,6 +474,7 @@ h5 {
     font-weight: normal;
     color: white;
     font-size: 18px;
+    z-index: 5;
 }
 
 
