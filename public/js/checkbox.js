@@ -42,7 +42,7 @@ function changeCheckStart(el) {
     return true;
 }
 
-var perPage = 3;
+var perPage = 30;
 var countPages = 0;
 
 var paginate = function() {
