@@ -293,14 +293,14 @@
 }
 
 .catalog_sample {
-    background: url('../img/catalog_bg.png') no-repeat;
+    
     margin: 12px 40px 0 0;
     float: left;
 }
 
 .catalog_sample img {
-    width: 279px;
-    height: 279px;
+    width: 379px;
+    height: 379px;
     padding: 5px 7px 8px 7px;
 }
 
@@ -331,7 +331,7 @@
 }
 
 .price_catalog {
-    font-size: 54px !important;
+    font-size: 34px !important;
     color: #084a7b;
 }
 
