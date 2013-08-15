@@ -5,7 +5,6 @@ class Catalog_ApiController extends Whale_Controller_Action
     public function init()
     {
         parent::init();
-
     }
 
     public function colorsAction(){

@@ -1,18 +1,2 @@
 <?php echo $this->render('search.phtml'); ?>
-<div id="right_catalog">
-    <div class="nav_catalog">
-        <p><a href="/">Главная</a> <span>/</span> <?php echo $this->category['title'] ?> <span></p>
-    </div>
-    <div id="product-container" class="groupfix">
-        <?php foreach ($this->products as $product): ?>
-            <?php echo $this->partial('item.phtml', array('product' => $product)); ?>
-        <?php endforeach; ?>
-    </div>
-    <div class="groupfix"></div>
-    <div id="list_page">
-        <p class="product-pagination"></p>
-    </div>
-    <div class="groupfix"></div>
-    <?php echo $this->page->getContent(); ?>
-
-</div>
+<?php echo $this->partial('itemList.phtml', array('products' => $this->products, 'page' => $this->page, 'title' => $this->category['title'])); ?>

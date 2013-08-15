@@ -25,6 +25,7 @@ class Catalog_IndexController extends Whale_Controller_Action
 
     public function indexAction()
     {
+        $this->_setPage('');
         $categoryName = $this->getParam('category');
         if (empty($categoryName)) {
             throw new Zend_Controller_Action_Exception('Не указана категория', 404);
@@ -36,7 +37,6 @@ class Catalog_IndexController extends Whale_Controller_Action
         }
 
         $this->view->category = $category;
-        $this->view->page = new Whale_Page_SeoItemAdapter($category->toArray());
 
         $this->_setSearchbar(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true));
 

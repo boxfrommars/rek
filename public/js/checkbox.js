@@ -57,13 +57,15 @@ var paginate = function() {
 var refreshPaginator = function(curPage) {
     $('.product-pagination').html('');
     var $allLink = (~~curPage == 0) ? $('<span></span>').text('все') : $('<a></a>').addClass('pagination-link-all').attr('href', '#').text('все');
-    $('.product-pagination').append($allLink);
+    $('.product-pagination').append($('<li></li>').append($allLink));
+    var $link;
     for (var i = 1; i <= countPages; i++) {
         if (i === ~~curPage) {
-            $('.product-pagination').append($('<span></span>').text(i));
+            $link = $('<span></span>').text(i);
         } else {
-            $('.product-pagination').append($('<a></a>').addClass('pagination-link').attr('href', '#').text(i));
+            $link = $('<a></a>').addClass('pagination-link').attr('href', '#').text(i);
         }
+        $('.product-pagination').append($('<li></li>').append($link));
     }
 }
 

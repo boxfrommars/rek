@@ -37,18 +37,20 @@
             <?php echo $this->product['title'] ?></p>
     </div>
     <div>
-        <p class="name_black" style="text-transform: uppercase"><?php echo $this->product['title'] ?></p>
-        <p class="name_blue" style="text-transform: uppercase"><?php echo $this->product['brand_title'] ?></p>
+         <p class="name_blue" style="text-transform: uppercase"><?php echo $this->product['brand_title'] ?></p>
+         <p class="name_black" style="text-transform: uppercase"><?php echo $this->product['title'] ?></p>
+       
         <div class="catalog_sample">
-            <img style="width:280px;" class="product-image" src="/files/<?php echo $this->product['image'] ?>"/>
+            <img style="width:380px;" class="product-image" src="/files/<?php echo $this->product['image'] ?>"/>
         </div>
         <div class="sample_price">
-            <p class="price_catalog"> <span class="product-cost"><?php echo (int) $this->product['cost'] ?></span> <span class="product-cost-measure">руб./м</span></p>
+            
             <p><span class="param-label">Тип поверхности:</span> <span class="product-surface"><?php echo $this->product['surface_title'] ?></span></p>
             <p><span class="param-label">Размер:</span> <?php echo $this->product['width'] ?>*<?php echo $this->product['height'] ?>*<?php echo $this->product['depth'] ?></p>
 <!--            <p><span>Рисунок:</span> дерево</p>-->
 <!--            <p><span>Цвет:</span> серый</p>-->
             <input type="button" id="catalog_button" value="" onclick="location.href = '<?php echo $this->url(array(), 'feedback') ?>'">
+          <p class="price_catalog"> <span class="product-cost"><?php echo (int) $this->product['cost'] ?></span> <span class="product-cost-measure">руб./м</span></p>
         </div>
     </div>
     <?php if (!empty($this->productColors)): ?>
@@ -73,21 +75,7 @@
     <div id="catalog_info">
         <?php echo $this->product['content'] ?>
     </div>
-    <?php if (!empty($this->productInters)): ?>
-    <div class="groupfix pr-gallery">
-        <p class="left_catalog_point">Интерьеры:</p>
-        <?php foreach ($this->productInters as $color): ?>
-            <div class="block_available">
-                <div class="catalog_available">
-                    <a href="/files/<?php echo $color['image'] ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
-                        <img src="/files/<?php echo $color['image_preview'] ?>">
-                    </a>
-                </div>
-                <p><?php echo $color['title'] ?></p>
-            </div>
-        <?php endforeach; ?>
-    </div>
-    <?php endif; ?>
+   
     <?php if (!empty($this->productDecors)): ?>
     <div class="groupfix pr-gallery">
         <p class="left_catalog_point">Декоры:</p>
@@ -103,7 +91,22 @@
         <?php endforeach; ?>
     </div>
     <?php endif; ?>
-    <script>
+     <?php if (!empty($this->productInters)): ?>
+    <div class="groupfix pr-gallery">
+        <p class="left_catalog_point">Интерьеры:</p>
+        <?php foreach ($this->productInters as $color): ?>
+            <div class="block_available">
+                <div class="catalog_available">
+                    <a href="/files/<?php echo $color['image'] ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
+                        <img src="/files/<?php echo $color['image_preview'] ?>">
+                    </a>
+                </div>
+                <p><?php echo $color['title'] ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+<script>
         $('#available .product-color').on('click', function(){
             var cost = $(this).attr('data-pc-cost');
             var image = $(this).attr('data-pc-image');

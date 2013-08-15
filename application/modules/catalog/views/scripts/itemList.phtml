@@ -1,0 +1,19 @@
+<div id="right_catalog">
+    <div class="nav_catalog">
+        <p><?php echo implode(' <span>/</span> ', getBreadcrumbs($this->page->getRaw())); ?></p>
+    </div>
+    <h1><?php echo $this->title; ?></h1>
+    <div id="product-container" class="groupfix">
+        <?php foreach ($this->products as $product): ?>
+            <?php echo $this->partial('item.phtml', array('product' => $product)); ?>
+        <?php endforeach; ?>
+    </div>
+    <div class="tw-bs">
+        <div class="pagination">
+            <ul class="product-pagination"></ul>
+        </div>
+    </div>
+    <div>
+        <?php echo $this->page->getContent(); ?>
+    </div>
+</div>
