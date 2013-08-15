@@ -94,7 +94,7 @@ a {
     width: 1100px;
     margin: 0 auto;
     line-height: 50px;
-    font-family: 'Open Sans light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #centr span {
@@ -122,7 +122,7 @@ a {
 #menu {
     color: #5a5a5a;
     font-size: 12px;
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     width: 1100px;
     margin: 10px auto 0;
 }
@@ -250,7 +250,7 @@ a {
     text-decoration: none;
     /*font-size: 18px;*/
     display: inline;
-    font-family: 'Open Sans light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 
 }
 
@@ -336,7 +336,7 @@ a {
 
 
 h1, h2, h3, h4, h5 {
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     color: #003399;
     margin: 1em 0;
@@ -391,7 +391,7 @@ h5 {
 #choice li {
     width: 156px;
     height: 48px;
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     margin-bottom: 10px;
 }
@@ -481,7 +481,7 @@ h5 {
 #c-text b, #c-text b a {
     color: white;
     text-decoration: none;
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     font-size: 30px;
     line-height: 60px;
@@ -568,7 +568,7 @@ h5 {
 
 .cost {
     font-size: 20px;
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     line-height: 1.2;
 }
 
@@ -673,7 +673,7 @@ span.h4 {
     color: #064A7B;
     font-size: 20px;
     padding: 0 0 2px 0;
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
 
@@ -717,7 +717,7 @@ span.h4 {
 span.h5 {
     font-size: 20px;
     padding: 20px 0 10px 0;
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
 }
 
@@ -764,7 +764,7 @@ span.h5 {
     background-color: #d5d8dd ;
     border-top: 1px solid #003399;
     font-size: 14px;
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #foot_right {
@@ -898,7 +898,7 @@ span.h5 {
 
 .cost_gallery {
     font-size: 26px;
-    font-family: 'Open Sans Light', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .cost_gallery span {
