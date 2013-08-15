@@ -27,8 +27,8 @@ class Admin_Form_ProductDecor extends Admin_Form_CatalogItem
 
         $this->addElement('text', 'cost', array(
             'label' => "Цена",
-            'required' => true,
-            'filters' => array('StringTrim'),
+            'required' => false,
+            'filters' => array('StringTrim', 'Null'),
             'validators' => array(),
             'dimension' => $this->_dimension,
         ));
