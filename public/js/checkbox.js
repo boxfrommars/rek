@@ -42,7 +42,7 @@ function changeCheckStart(el) {
     return true;
 }
 
-var perPage = 30;
+var perPage = 3;
 var countPages = 0;
 
 var paginate = function() {
@@ -51,12 +51,12 @@ var paginate = function() {
     $allProducts.not($allProducts.slice(0, perPage)).hide();
     countPages = Math.ceil(count/perPage);
     refreshPaginator(1);
-    console.log('total: ' + count, 'perPage: ' + perPage, 'pages: ' + countPages);
 }
 
 var refreshPaginator = function(curPage) {
-    if (countPages <= 1) return;
+    console.log(countPages);
     $('.product-pagination').html('');
+    if (countPages <= 1) return;
 
     var $allLink = (~~curPage == 0) ? $('<span></span>').text('все') : $('<a></a>').addClass('pagination-link-all').attr('href', '#').text('все');
     $('.product-pagination').append($('<li></li>').append($allLink));
