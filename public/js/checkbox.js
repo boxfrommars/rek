@@ -42,7 +42,7 @@ function changeCheckStart(el) {
     return true;
 }
 
-var perPage = 30;
+var perPage = 3;
 var countPages = 0;
 
 var paginate = function() {
@@ -55,18 +55,26 @@ var paginate = function() {
 }
 
 var refreshPaginator = function(curPage) {
+    if (countPages == 1) return;
     $('.product-pagination').html('');
+
     var $allLink = (~~curPage == 0) ? $('<span></span>').text('все') : $('<a></a>').addClass('pagination-link-all').attr('href', '#').text('все');
     $('.product-pagination').append($('<li></li>').append($allLink));
+
+    var $prevLink = (~~curPage > 1) ? $('<a></a>').addClass('pagination-link').attr('href', '#').attr('data-show-page', curPage - 1).text('<') : $('<span></span>').text('<');
+    $('.product-pagination').append($('<li></li>').append($prevLink));
     var $link;
     for (var i = 1; i <= countPages; i++) {
         if (i === ~~curPage) {
             $link = $('<span></span>').text(i);
         } else {
-            $link = $('<a></a>').addClass('pagination-link').attr('href', '#').text(i);
+            $link = $('<a></a>').addClass('pagination-link').attr('href', '#').attr('data-show-page', i).text(i);
         }
         $('.product-pagination').append($('<li></li>').append($link));
     }
+    var $nextLink = (~~curPage < countPages) ? $('<a></a>').addClass('pagination-link').attr('href', '#').attr('data-show-page', curPage + 1).text('>') : $('<span></span>').text('>');
+    $('.product-pagination').append($('<li></li>').append($nextLink));
+
 }
 
 var showProductPage = function(pageNum) {
@@ -112,7 +120,7 @@ var reloadProducts = function(){
 $(function() {
 
     $('.product-pagination').on('click', '.pagination-link', function(){
-        showProductPage($(this).text());
+        showProductPage($(this).attr('data-show-page'));
         return false;
     });
     $('.product-pagination').on('click', '.pagination-link-all', function(){
