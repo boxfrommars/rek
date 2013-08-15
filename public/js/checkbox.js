@@ -55,7 +55,7 @@ var paginate = function() {
 }
 
 var refreshPaginator = function(curPage) {
-    if (countPages == 1) return;
+    if (countPages <= 1) return;
     $('.product-pagination').html('');
 
     var $allLink = (~~curPage == 0) ? $('<span></span>').text('все') : $('<a></a>').addClass('pagination-link-all').attr('href', '#').text('все');
