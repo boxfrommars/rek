@@ -39,7 +39,9 @@
     <div>
          <p class="name_blue" style="text-transform: uppercase"><?php echo $this->product['brand_title'] ?></p>
          <p class="name_black" style="text-transform: uppercase"><?php echo $this->product['title'] ?></p>
-       
+          <div id="catalog_info">
+        <?php echo $this->product['content'] ?>
+    </div>
         <div class="catalog_sample">
             <img style="width:380px;" class="product-image" src="/files/<?php echo $this->product['image'] ?>"/>
         </div>
@@ -72,9 +74,7 @@
         <?php endforeach; ?>
     </div>
     <?php endif; ?>
-    <div id="catalog_info">
-        <?php echo $this->product['content'] ?>
-    </div>
+ 
    
     <?php if (!empty($this->productDecors)): ?>
     <div class="groupfix pr-gallery">

@@ -154,8 +154,7 @@
 .cat_product {
     width: 231px;
     height: 232px;
-    background: url('../img/catprod_bg.png') no-repeat;
-}
+   }
 
 .cat_product img {
     width: 217px;
@@ -211,6 +210,7 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     color: #003399;
+    clear: both;
 }
 
 .left_catalog_point a {
@@ -363,22 +363,21 @@
 }
 
 .catalog_available {
-    background: url('../img/dostypno_bg.png') no-repeat;
-    width: 174px;
-    height: 175px;
+    width: 134px;
+    height: 135px;
 }
 
 .catalog_available img {
-    width: 162px;
-    height: 162px;
+    width: 132px;
+    height: 132px;
     padding: 5px 6px 8px 6px;
 }
 
 .block_available {
-    width: 174px;
+    width: 134px;
     margin-right: 14px;
     float: left;
-    font-family: 'Trebuchet MS';
+    font-family: 'Open Sans', sans-serif;
 }
 
 .block_available p {
