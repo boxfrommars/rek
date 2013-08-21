@@ -20,7 +20,7 @@
 <!--  <a href="" id="search_field">-->
 <!--        <input type="image" src="/img/search_button.png" value="" id="search_button"/>-->
 <!--    </a>-->
-    <div id="product" class="product_menu">
+    <div id="product" class="product_menu groupfix">
         <?php $i = 1 ?>
         <ul class="main-menu">
             <?php $rPage = $this->page->getRaw(); ?>
@@ -46,5 +46,20 @@
         <?php endforeach; ?>
         </ul>
     </div>
+    <script>
+        $('#product').on('mouseenter', function() {
+            var maxHeight = 0;
+            $('#product ul ul').each(function() {
+                var height = 0;
+                $(this).find('li').each(function(){
+                    height += $(this).outerHeight();
+                });
+                maxHeight = maxHeight >= height ? maxHeight : height;
+            });
+            $('#product ul ul').css('height', maxHeight + 'px');
+            console.log(maxHeight);
+        });
+
+    </script>
     <div class="gradient-w"></div>
 </div>
