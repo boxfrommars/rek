@@ -13,6 +13,7 @@
     <thead>
     <tr>
         <th>Опубликован</th>
+        <th>№</th>
         <th>Заголовок</th>
         <th></th>
         <th></th>
@@ -22,6 +23,7 @@
     <?php foreach ($this->subItems as $item): ?>
         <tr>
             <td style="width: 100px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
+            <td style="width:50px;"><?php echo $item['order'] ?></td>
             <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
             <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
             <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>

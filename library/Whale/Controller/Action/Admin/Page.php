@@ -30,7 +30,7 @@ class Whale_Controller_Action_Admin_Page extends Whale_Controller_Action_Admin_A
         $item = $this->_model->fetchRow(array('id = ?' => $id));
         if (empty($item)) throw new Zend_Controller_Action_Exception('Нет такого', 404);
         $pageService = new Page_Model_Service();
-        $subItems = $pageService->fetchAll(array('id_parent = ?' => $id));
+        $subItems = $pageService->fetchAll(array('id_parent = ?' => $id), 'order');
         $this->view->item = $item;
         $this->view->subItems = $subItems;
     }
