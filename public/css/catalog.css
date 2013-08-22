@@ -151,6 +151,10 @@
     margin-bottom: 0;
 }
 
+#right_catalog .product_from_catalog p {
+    line-height: 1.2em;
+}
+
 .cat_product {
     width: 231px;
     height: 232px;
@@ -207,15 +211,19 @@
 .left_catalog_point {
     line-height: 35px;
     font-size: 18px;
+    height: 42px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     color: #003399;
     clear: both;
+    position: relative;
 }
 
 .left_catalog_point a {
     text-decoration: none;
     color: #003399;
+    position: absolute;
+    bottom: 0;
 }
 
 #collection {
