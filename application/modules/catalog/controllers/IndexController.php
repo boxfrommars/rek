@@ -134,7 +134,7 @@ class Catalog_IndexController extends Whale_Controller_Action
 
         $where = array('b.id_parent = ?' => $page['id_parent'], 'is_published = ?' => true);
         $checked = array();
-
+        Whale_Log::log($params);
         foreach ($params as $param) {
             if (!empty($param->value)) {
                 switch ($param->name) {

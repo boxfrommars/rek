@@ -14,12 +14,18 @@ class Admin_ThesaurusController extends Whale_Controller_Action
         $surfaceService = new Catalog_Model_SurfaceService();
         $countryService = new Catalog_Model_CountryService();
         $patternService = new Catalog_Model_PatternService();
+        $collectionService = new Catalog_Model_CollectionService();
 
         $this->view->thesaurus = array(
             'colors' => array(
                 'items' => $colorService->fetchAll(),
                 'title' => 'Цвет',
                 'controller' => 'color',
+            ),
+            'collections' => array(
+                'items' => $collectionService->fetchAll(),
+                'title' => 'Коллекция',
+                'controller' => 'collection',
             ),
             'surfaces' => array(
                 'items' => $surfaceService->fetchAll(),

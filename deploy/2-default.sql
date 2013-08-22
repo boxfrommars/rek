@@ -106,6 +106,11 @@ CREATE TABLE "surface" (
   "title" VARCHAR(255) NOT NULL,
   PRIMARY KEY("id")
 );
+CREATE TABLE "collection" (
+  "id" SERIAL NOT NULL,
+  "title" VARCHAR(255) NOT NULL,
+  PRIMARY KEY("id")
+);
 
 -- рисунок
 CREATE TABLE "pattern" (
@@ -150,6 +155,7 @@ CREATE TABLE "product" (
   "id_surface" INT REFERENCES "surface" (id)  ON DELETE CASCADE, -- тип поверхности
   "id_pattern" INT REFERENCES "pattern" (id)  ON DELETE CASCADE, -- рисунок
   "id_country" INT REFERENCES "country" (id)  ON DELETE CASCADE, -- страна
+  "id_collection" INT REFERENCES "collection" (id)  ON DELETE CASCADE, -- коллекция
 
   "is_action" BOOL DEFAULT 'f',
   "is_new" BOOL DEFAULT 'f',

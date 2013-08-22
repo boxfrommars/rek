@@ -147,7 +147,7 @@
 <!--                                    --><?php //echo $pageitem['title'] ?>
 <!--                                </a>-->
                                 <a href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'edit'), 'admin') ?>">
-                                    <?php echo $pageitem['title'] ?>
+                                    <?php echo mb_strlen($pageitem['title'], 'utf8') > 26 ? trim(mb_substr($pageitem['title'], 0, 26, 'utf8')) . '…' : $pageitem['title'] ?>
                                 </a>
                             </td>
                             <td>

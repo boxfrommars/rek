@@ -10,14 +10,17 @@ class Admin_Form_RekParam extends Whale_Form_Base {
         $countryService = new Catalog_Model_CountryService();
         $surfaceService = new Catalog_Model_SurfaceService();
         $patternService = new Catalog_Model_PatternService();
+        $collectionService = new Catalog_Model_CollectionService();
 
         $countries = $countryService->fetchAll();
         $surfaces = $surfaceService->fetchAll();
         $patterns = $patternService->fetchAll();
+        $collections = $collectionService->fetchAll();
 
         $countrySelectOptions = array(null => 'Не учитывать');
         $surfaceSelectOptions = array(null => 'Не учитывать');
         $patternSelectOptions = array(null => 'Не учитывать');
+        $collectionSelectOptions = array(null => 'Не учитывать');
 
         foreach ($countries as $country) {
             $countrySelectOptions[$country['id']] = $country['title'];
@@ -29,6 +32,10 @@ class Admin_Form_RekParam extends Whale_Form_Base {
 
         foreach ($patterns as $pattern) {
             $patternSelectOptions[$pattern['id']] = $pattern['title'];
+        }
+
+        foreach ($collections as $collection) {
+            $collectionSelectOptions[$collection['id']] = $collection['title'];
         }
 
         $this->addElement('text', 'cost', array(
@@ -60,6 +67,14 @@ class Admin_Form_RekParam extends Whale_Form_Base {
             'filters' => array('Null'),
             'dimension' => $this->_dimension,
             'multiOptions' => $patternSelectOptions,
+        ));
+
+        $this->addElement('select', 'id_collection', array(
+            'label' => "Коллекция",
+            'validators' => array(),
+            'filters' => array('Null'),
+            'dimension' => $this->_dimension,
+            'multiOptions' => $collectionSelectOptions,
         ));
 
         $this->addElement('text', 'width', array(

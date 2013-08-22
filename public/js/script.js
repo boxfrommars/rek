@@ -1,3 +1,20 @@
+var populateForm = function ($form, jsonData) {
+    $.each(jsonData, function(key, value){
+        var $ctrl = $('[name='+value.name+']', $form);
+
+        switch($ctrl.attr("type"))
+        {
+            case "radio" : case "checkbox":
+            $ctrl.each(function(){
+                if($(this).attr('value') == value.value) {  $(this).attr("checked",value.value); } });
+            break;
+            default :
+                $ctrl.val(value.value);
+            break;
+        }
+    });
+}
+
 $(document).ready(function() {
     $('.image-upload').each(function() {
         var insertImage = function(name, $insertBeforeElm, isNew) {

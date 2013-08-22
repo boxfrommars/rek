@@ -1,9 +1,11 @@
 <a href="<?php echo $this->url(array('action' => 'index', 'id' => null, 'controller' => 'rek'), 'admin'); ?>"><i class="icon-arrow-left"></i> вернуться к списку</a> или
 <a href="<?php echo $this->url(array('action' => 'index', 'id' => null, 'controller' => 'category'), 'admin'); ?>"><i class="icon-arrow-left"></i> вернуться к дереву</a>
 <h2>Редактирование рекомендаций</h2>
+<h4>Параметры фильтрации</h4>
 <div id="params-rek-form">
     <?php print $this->paramsForm; ?>
 </div>
+<h4>Параметры страницы</h4>
 <div id="rek-form">
     <?php print $this->form; ?>
 </div>
@@ -12,4 +14,6 @@
         $('#rek-form #params').val(JSON.stringify($('#params-rek-form').find('form').serializeArray()));
     });
 
+    var params = $('#rek-form #params').val();
+    populateForm($('#params-rek-form').find('form'), $.parseJSON(params));
 </script>
