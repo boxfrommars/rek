@@ -17,6 +17,7 @@
         <th>Заголовок</th>
         <th></th>
         <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +26,41 @@
             <td style="width: 100px;"><?php if ($item['is_published']): ?><i class="icon-ok"></i><?php endif; ?></td>
             <td style="width:50px;"><?php echo $item['order'] ?></td>
             <td><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'edit'), 'admin') ?>"><?php echo $item['title'] ?></a></td>
+            <td style="width: 80px; text-align: right;">
+                <?php
+                    $label = 'другое';
+                    switch ($item['entity']) {
+                        case 'page':
+                            $value = 'страница';
+                            $type = 'default';
+                            break;
+                        case 'brand':
+                            $value = 'бренд';
+                            $type = 'success';
+                            break;
+                        case 'category':
+                            $value = 'категория';
+                            $type = 'success';
+                            break;
+                        case 'news':
+                            $value = 'новость';
+                            $type = 'info';
+                            break;
+                        case 'product':
+                            $value = 'продукт';
+                            $type = 'success';
+                            break;
+                        case 'rek':
+                            $value = 'рекомендация';
+                            $type = 'warning';
+                            break;
+                        default:
+                            $value = 'другое';
+                            $type = 'important';
+                    }
+                echo '<span class="badge badge-' . $type . '">' . $value . '</span>';
+                ?>
+            </td>
             <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'delete'), 'admin') ?>" class="icon-trash pull-right action delete"></a></td>
             <td style="width: 40px;"><a href="<?php echo $this->url(array('id' => $item['id'], 'controller' => $item['entity'], 'action' => 'edit'), 'admin') ?>" class="icon-edit pull-right action edit"></a></td>
         </tr>
