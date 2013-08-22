@@ -106,6 +106,7 @@ CREATE TABLE "surface" (
   "title" VARCHAR(255) NOT NULL,
   PRIMARY KEY("id")
 );
+
 CREATE TABLE "collection" (
   "id" SERIAL NOT NULL,
   "title" VARCHAR(255) NOT NULL,

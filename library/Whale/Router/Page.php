@@ -27,7 +27,6 @@ class Whale_Router_Page extends Zend_Controller_Router_Route {
             'NOT is_locked',
         ));
 
-
         $route = empty($page) ? false : array('page' => $page) + $this->_defaults;
 
         if (null !== $page) {

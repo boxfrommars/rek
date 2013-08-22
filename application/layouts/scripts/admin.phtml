@@ -154,15 +154,15 @@
                                         <i class="caret"></i>
                                     </a>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <li><a href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'edit'), 'admin') ?>">Редактировать</a></li>
                                         <li><a href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'view'), 'admin') ?>">Подстраницы</a></li>
-                                        <li><a tabindex="-1" href="<?php echo $this->url(array('action' => 'add', 'controller' => subentity($pageitem['entity']), 'idParent' => $pageitem['id'], 'module' => 'admin'), 'default') ?>">Добавить страницу</a></li>
 <!--                                        <li><a tabindex="-1" href="#">Копировать</a></li>-->
                                         <li class="divider"></li>
+                                        <li><a href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'edit'), 'admin') ?>">Редактировать</a></li>
                                         <li class="dropdown-submenu">
                                             <a href="#">Добавить...</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'rek', 'idParent' => $pageitem['id'], 'module' => 'admin'), 'default') ?>">Сортировку</a></li>
+                                                <li><a tabindex="-1" href="<?php echo $this->url(array('action' => 'add', 'controller' => subentity($pageitem['entity']), 'idParent' => $pageitem['id'], 'module' => 'admin'), 'default') ?>">Подстраницу</a></li>
+                                                <li><a href="<?php echo $this->url(array('action' => 'add', 'controller' => 'rek', 'idParent' => $pageitem['id'], 'module' => 'admin'), 'default') ?>">Рекомендацию</a></li>
                                             </ul>
                                         </li>
                                         <li class="divider"></li>

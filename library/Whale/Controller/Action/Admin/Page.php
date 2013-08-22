@@ -21,6 +21,7 @@ class Whale_Controller_Action_Admin_Page extends Whale_Controller_Action_Admin_A
         if ($idParent) {
             $this->_updateFormByIdParent($idParent);
         }
+        $this->view->idParent = $idParent;
     }
 
     protected function viewAction()
@@ -30,7 +31,7 @@ class Whale_Controller_Action_Admin_Page extends Whale_Controller_Action_Admin_A
         $item = $this->_model->fetchRow(array('id = ?' => $id));
         if (empty($item)) throw new Zend_Controller_Action_Exception('Нет такого', 404);
         $pageService = new Page_Model_Service();
-        $subItems = $pageService->fetchAll(array('id_parent = ?' => $id), 'order');
+        $subItems = $pageService->fetchAll(array('id_parent = ?' => $id), array('entity', 'order'));
         $this->view->item = $item;
         $this->view->subItems = $subItems;
     }
@@ -50,6 +51,11 @@ class Whale_Controller_Action_Admin_Page extends Whale_Controller_Action_Admin_A
         /** @var Zend_Form_Element_Multiselect $elm */
         $elm = $this->_form->getElement('id_parent');
         $elm->setMultiOptions($options);
+    }
+
+    protected function _setRedirectByItem($item, $id = null)
+    {
+        $this->_redirectOptions = array('controller' => 'page', 'action' => 'view', 'id' => $item['id_parent']);
     }
 }
 
