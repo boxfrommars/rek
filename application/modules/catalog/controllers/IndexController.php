@@ -239,6 +239,9 @@ class Catalog_IndexController extends Whale_Controller_Action
                 'p.id_parent = ?' => $product['id_parent'],
             ), null, 5
         );
+
+
+        $collectionPages = array();
         $prodCollections = array();
         foreach ($brandProducts as $prod) {
             if (!empty($prod['id_collection']) && !in_array($prod['id_collection'], $prodCollections)) $prodCollections[] = $prod['id_collection'];
@@ -259,12 +262,12 @@ class Catalog_IndexController extends Whale_Controller_Action
 
 
         $pageService = new Page_Model_Service();
-
-        $select = $pageService->getBaseSelect();
-        $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('id IN(?)', $collectionIds)->where('is_published');
-        $this->view->collections = $nextSelect->query()->fetchAll();
-        Whale_Log::log($this->view->collections);
-
+        if (!empty($collectionIds)) {
+            $select = $pageService->getBaseSelect();
+            $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('id IN(?)', $collectionIds)->where('is_published');
+            $collectionPages = $nextSelect->query()->fetchAll();
+        }
+        $this->view->collections = $collectionPages;
 
 
         $select = $pageService->getBaseSelect();
