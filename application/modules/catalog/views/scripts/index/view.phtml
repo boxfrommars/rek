@@ -1,12 +1,14 @@
 <div id="left_catalog">
     <p class="back_to_resault">&lt;&lt; <a href="#" onclick="history.back(); return false;">назад&nbsp;&nbsp;к&nbsp;&nbsp;результатам</a></p>
     <hr noshade size="1">
-    <p class="left_catalog_point">КОЛЛЕКЦИИ</p>
-    <?php foreach ($this->brands as $brand): ?>
-        <div class="area">
-            <p><a href="<?php echo $brand['url'] ?>" class="area-link"><?php echo $brand['title'] ?></a></p>
-        </div>
-    <?php endforeach; ?>
+    <?php if (!empty($this->collections)): ?>
+        <p class="left_catalog_point">КОЛЛЕКЦИИ</p>
+        <?php foreach ($this->collections as $collection): ?>
+            <div class="area">
+                <p><a href="<?php echo $collection['url'] ?>" class="area-link"><?php echo $collection['title'] ?></a></p>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
 <!--    <div id="dekor">-->
 <!--        <hr noshade size="1">-->
 <!--        <p class="left_catalog_point">ДЕКОР</p>-->

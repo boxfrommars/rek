@@ -140,8 +140,8 @@ class Catalog_IndexController extends Whale_Controller_Action
                 switch ($param->name) {
                     case 'cost':
                         $costRange = explode(',', $param->value);
-                        $where['clr.cost >= ? OR (clr.cost IS NULL AND p.cost >= ?)'] = (int) $costRange[0];
-                        $where['clr.cost <= ? OR (clr.cost IS NULL AND p.cost <= ?)'] = (int) $costRange[1];
+                        if (!empty($costRange[0])) $where['clr.cost >= ? OR (clr.cost IS NULL AND p.cost >= ?)'] = (int) $costRange[0];
+                        if (!empty($costRange[1])) $where['clr.cost <= ? OR (clr.cost IS NULL AND p.cost <= ?)'] = (int) $costRange[1];
                         break;
                     case 'id_surface':
                         $where['(clr.id_surface IN (?) OR (clr.id_surface IS NULL AND p.id_surface IN (?)))'] = $param->value;
@@ -234,7 +234,39 @@ class Catalog_IndexController extends Whale_Controller_Action
             }
         }
 
+
+        $brandProducts = $productService->fetchAll(array(
+                'p.id_parent = ?' => $product['id_parent'],
+            ), null, 5
+        );
+        $prodCollections = array();
+        foreach ($brandProducts as $prod) {
+            if (!empty($prod['id_collection']) && !in_array($prod['id_collection'], $prodCollections)) $prodCollections[] = $prod['id_collection'];
+        }
+        $rekService = new Catalog_Model_RekService();
+
+        $collections = $rekService->getByParam(array(
+            array(
+                'name' => 'id_collection',
+                'value' => $prodCollections
+            ),
+        ));
+
+        $collectionIds = array();
+        foreach ($collections as $collection) {
+            $collectionIds[] = $collection['id'];
+        }
+
+
         $pageService = new Page_Model_Service();
+
+        $select = $pageService->getBaseSelect();
+        $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('id IN(?)', $collectionIds)->where('is_published');
+        $this->view->collections = $nextSelect->query()->fetchAll();
+        Whale_Log::log($this->view->collections);
+
+
+
         $select = $pageService->getBaseSelect();
         $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('entity = ?', 'brand')->where('id_parent = ?', $category['id'])->where('is_published');
         $this->view->brands = $nextSelect->query()->fetchAll();
