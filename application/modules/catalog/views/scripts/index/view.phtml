@@ -48,7 +48,19 @@
         <div class="sample_price">
             
             <p><span class="param-label">Тип поверхности:</span> <span class="product-surface"><?php echo $this->product['surface_title'] ?></span></p>
-            <p><span class="param-label">Размер:</span> <?php echo $this->product['width'] ?>*<?php echo $this->product['height'] ?>*<?php echo $this->product['depth'] ?></p>
+            <?php
+            $dimensions = '';
+            if ($this->product['width'] && $this->product['height']) {
+                $dimensions .= "{$this->product['width']}*{$this->product['height']}";
+            }
+            if ($this->product['depth']) {
+                $dimensions .= empty($dimensions) ? '' : '*';
+                $dimensions .= $this->product['depth'];
+            }
+            ?>
+            <?php if (!empty($dimensions)): ?>
+            <p><span class="param-label">Размер:</span> <?php echo $dimensions; ?></p>
+            <?php endif; ?>
 <!--            <p><span>Рисунок:</span> дерево</p>-->
 <!--            <p><span>Цвет:</span> серый</p>-->
             <input type="button" id="catalog_button" value="" onclick="location.href = '<?php echo $this->url(array(), 'feedback') ?>'">

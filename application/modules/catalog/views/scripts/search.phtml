@@ -42,7 +42,9 @@
             <p class="left_catalog_point">РАЗМЕР</p>
             <?php foreach ($this->sizes as $size): ?>
                 <div class="size_block">
-                    <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="size" value="<?php echo $size['width'] ?>-<?php echo $size['height'] ?>" type="checkbox"></span><?php echo $size['width'] ?>*<?php echo $size['height'] ?></p>
+                    <p class="niceCheckWrap"><span class="niceCheck"><input class="product-filter-checkbox" name="size" value="<?php echo $size['width'] ?>-<?php echo $size['height'] ?>" type="checkbox"></span>
+                        <?php echo $size['width'] && $size['height'] ? "{$size['width']}*{$size['height']}" : "без размера" ?>
+                    </p>
                 </div>
             <?php endforeach; ?>
         </div>
