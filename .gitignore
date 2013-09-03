@@ -4,4 +4,5 @@
 /public/files/
 /tmp
 !/public/files/.htaccess
+!/public/files/placeholder.jpg
 /application/configs/local.ini
