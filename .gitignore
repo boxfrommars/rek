@@ -1,8 +1,8 @@
 /nbproject/private/
 /.idea
 /.zfproject.xml
-/public/files/
-/tmp
 !/public/files/.htaccess
 !/public/files/placeholder.jpg
+/public/files/*
+/tmp
 /application/configs/local.ini
