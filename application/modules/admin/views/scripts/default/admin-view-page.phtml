@@ -1,14 +1,53 @@
-<h2><?php echo $this->item['title']; ?></h2>
+<h2><?php echo $this->item['title']; ?>
 
+    <?php
+    $label = 'другое';
+    switch ($this->item['entity']) {
+        case 'page':
+            $value = 'страница';
+            $type = 'default';
+            break;
+        case 'brand':
+            $value = 'бренд';
+            $type = 'success';
+            break;
+        case 'category':
+            $value = 'категория';
+            $type = 'success';
+            break;
+        case 'news':
+            $value = 'новость';
+            $type = 'info';
+            break;
+        case 'product':
+            $value = 'продукт';
+            $type = 'success';
+            break;
+        case 'rek':
+            $value = 'рекомендация';
+            $type = 'warning';
+            break;
+        default:
+            $value = 'другое';
+            $type = 'important';
+    }
+    echo '<small>' . $value . '</small>';
+    ?>
+</h2>
+
+<p>
+    <a title="Редактировать"
+       href="<?php echo $this->url(array('action' => 'edit', 'controller' => $this->item['entity'], 'id' => $this->item['id'], 'module' => 'admin'), 'default') ?>"
+       role="button" class="btn btn-primary add"><i class="icon-edit icon-white"></i> Редактировать</a>
 <?php if (subentity($this->item['entity'])): ?>
-    <p><a title="Добавить подпункт"
-       href="<?php echo $this->url(array('action' => 'add', 'controller' => subentity($this->item['entity']), 'idParent' => $this->item['id'], 'module' => 'admin'), 'default') ?>"
-       role="button" class="btn btn-success add">Добавить подпункт</a></p>
+    <a title="Добавить страницу"
+        href="<?php echo $this->url(array('action' => 'add', 'controller' => subentity($this->item['entity']), 'idParent' => $this->item['id'], 'module' => 'admin'), 'default') ?>"
+        role="button" class="btn btn-success add"><i class="icon-plus icon-white"></i> Добавить страницу</a>
+
 <?php endif; ?>
+</p>
 
-<?php if (!empty($this->subItems)): ?>
-
-<h2>Подпункты:</h2>
+<?php if (count($this->subItems) > 0): ?>
 <table class="table table-hover table-striped">
     <thead>
     <tr>

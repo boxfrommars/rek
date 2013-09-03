@@ -1,12 +1,3 @@
-/*              каталог продукции           */
-@font-face {
-    font-family: 'Trebuchet MS';
-    src: url('../font/Trebuchet%20MS.eot#');
-    src: local('Trebuchet MS'),
-       url('../font/Trebuchet%20MS.woff') format('woff'),
-       url('../font/Trebuchet%20MS.ttf') format('truetype');
-}
-
 #price_catalog {
     width: 175px;
     float: left;
@@ -113,7 +104,6 @@
     font-size: 12px;
     font-weight: bold;
     float: left;
-    /*font-family: Trebuchet MS;*/
 }
 
 .size_block p span, .area p span {

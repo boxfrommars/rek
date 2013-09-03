@@ -143,7 +143,7 @@
                             data-tt-parent-id="<?php if (pathdepth($pageitem['path']) != 1) echo implode('.', array_slice(explode('.', $pageitem['path']), 0, -1)) ?>"
                             data-tt-initialState="<?php if (pathdepth($pageitem['path']) == 1) echo 'expanded' ?>">
                             <td>
-                                <a href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'edit'), 'admin') ?>">
+                                <a href="<?php echo $this->url(array('id' => $pageitem['id'], 'controller' => $pageitem['entity'], 'action' => 'view'), 'admin') ?>">
                                     <?php echo mb_strlen($pageitem['title'], 'utf8') > 26 ? trim(mb_substr($pageitem['title'], 0, 26, 'utf8')) . '…' : $pageitem['title'] ?>
                                 </a>
                             </td>
