@@ -1,7 +1,8 @@
 <?php
     $url = '/' . $this->product['category_page_url'] . '/' . $this->product['brand_page_url'] . '/' . $this->product['page_url'];
     $title = $this->product['title'];
-    $imagePreviewUrl = '/files/' . (!empty($this->product['color_image_preview']) ? $this->product['color_image_preview'] : $this->product['image_preview']);
+    $imagePreviewImage = (!empty($this->product['color_image_preview']) ? $this->product['color_image_preview'] : $this->product['image_preview']);
+    $imagePreviewUrl = '/files/' . ($imagePreviewImage ?: 'placeholder.jpg');
     $cost = !empty($this->product['color_cost']) ? (int) $this->product['color_cost'] : (int) $this->product['cost']
 ?>
 
