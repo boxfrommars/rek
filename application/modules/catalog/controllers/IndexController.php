@@ -41,7 +41,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->_setSearchbar(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true));
 
         $productService = new Catalog_Model_ProductService();
-        $products = $productService->fetchAllColored(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true), 'title ASC');
+        $products = $productService->fetchAllColored(array('b.id_parent = ?' => $category['id'], 'is_published = ?' => true), 'p.order');
 
         $this->view->products = $products;
         $this->view->checked = array();
@@ -57,7 +57,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $colorService = new Catalog_Model_ColorService();
         $productColorService = new Catalog_Model_ProductColorService();
 
-        $products = $productService->fetchAllColored($where, 'title ASC');
+        $products = $productService->fetchAllColored($where, 'p.order');
 
         $productIds = array();
         $colorIds = array();
@@ -120,6 +120,10 @@ class Catalog_IndexController extends Whale_Controller_Action
         $page = $this->_getParam('page');
         $rekService = new Catalog_Model_RekService();
 
+        $parent = end(array_values($page['parents']));
+
+        Whale_Log::log($parent);
+
         $rek = $rekService->fetchRow(array('id = ?' => $page['id'], 'is_published' => true));
 
         if (null === $rek) {
@@ -132,7 +136,21 @@ class Catalog_IndexController extends Whale_Controller_Action
 
         $params = json_decode($rek['params']);
 
-        $where = array('b.id_parent = ?' => $page['id_parent'], 'is_published = ?' => true);
+
+        switch ($parent['entity']) {
+            case 'brand':
+                $where = array('b.id = ?' => $page['id_parent'], 'is_published = ?' => true);
+                break;
+            case 'category':
+                $where = array('b.id_parent = ?' => $page['id_parent'], 'is_published = ?' => true);
+                break;
+            default:
+                $where = array('is_published = ?' => true);
+        }
+
+        $collectionsWhere = $where; // для коллекций не нужно больше условий
+
+
         $checked = array();
         Whale_Log::log($params);
         foreach ($params as $param) {
@@ -155,12 +173,42 @@ class Catalog_IndexController extends Whale_Controller_Action
         }
 
         $productService = new Catalog_Model_ProductService();
-        $products = $productService->fetchAllColored($where);
+        $products = $productService->fetchAllColored($where, 'p.order');
 
         $this->view->products = $products;
         $this->view->checked = $checked;
 
-        $this->_setSearchbar(array('b.id_parent = ?' => $page['id_parent'], 'is_published = ?' => true));
+        $this->view->collections = $this->_getProductsCollections($productService->fetchAllColored($collectionsWhere));
+    }
+
+    protected function _getProductsCollections($products) {
+        $collectionPages = array();
+        $prodCollections = array();
+        foreach ($products as $prod) {
+            if (!empty($prod['id_collection']) && !in_array($prod['id_collection'], $prodCollections)) $prodCollections[] = $prod['id_collection'];
+        }
+        $rekService = new Catalog_Model_RekService();
+
+        $collections = $rekService->getByParam(array(
+            array(
+                'name' => 'id_collection',
+                'value' => $prodCollections
+            ),
+        ));
+
+        $collectionIds = array();
+        foreach ($collections as $collection) {
+            $collectionIds[] = $collection['id'];
+        }
+
+
+        $pageService = new Page_Model_Service();
+        if (!empty($collectionIds)) {
+            $select = $pageService->getBaseSelect();
+            $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('id IN(?)', $collectionIds)->where('is_published');
+            $collectionPages = $nextSelect->query()->fetchAll();
+        }
+        return $collectionPages;
     }
 
     public function brandAction()
@@ -171,7 +219,7 @@ class Catalog_IndexController extends Whale_Controller_Action
         $this->view->brand = $this->view->page->getRaw();
 
 
-        $products = $productService->fetchAllColored(array('b.id = ?' => $page['id'], 'is_published = ?' => true));
+        $products = $productService->fetchAllColored(array('b.id = ?' => $page['id'], 'is_published = ?' => true), 'p.order');
         $this->view->products = $products;
 
         $this->view->checked = array('id_brand' => $page['id']);
@@ -237,39 +285,13 @@ class Catalog_IndexController extends Whale_Controller_Action
 
         $brandProducts = $productService->fetchAll(array(
                 'p.id_parent = ?' => $product['id_parent'],
-            ), null, 5
+            )
         );
 
-
-        $collectionPages = array();
-        $prodCollections = array();
-        foreach ($brandProducts as $prod) {
-            if (!empty($prod['id_collection']) && !in_array($prod['id_collection'], $prodCollections)) $prodCollections[] = $prod['id_collection'];
-        }
-        $rekService = new Catalog_Model_RekService();
-
-        $collections = $rekService->getByParam(array(
-            array(
-                'name' => 'id_collection',
-                'value' => $prodCollections
-            ),
-        ));
-
-        $collectionIds = array();
-        foreach ($collections as $collection) {
-            $collectionIds[] = $collection['id'];
-        }
+        $this->view->collections = $this->_getProductsCollections($brandProducts);
 
 
         $pageService = new Page_Model_Service();
-        if (!empty($collectionIds)) {
-            $select = $pageService->getBaseSelect();
-            $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('id IN(?)', $collectionIds)->where('is_published');
-            $collectionPages = $nextSelect->query()->fetchAll();
-        }
-        $this->view->collections = $collectionPages;
-
-
         $select = $pageService->getBaseSelect();
         $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('entity = ?', 'brand')->where('id_parent = ?', $category['id'])->where('is_published');
         $this->view->brands = $nextSelect->query()->fetchAll();

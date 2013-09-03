@@ -1,0 +1,55 @@
+<!--<?php echo '<?xml version="1.0" encoding="utf-8"?>'; ?>-->
+<!DOCTYPE yml_catalog SYSTEM "/home/xu/Downloads/shops.dtd">
+<yml_catalog date="<?php echo date('Y-m-d h:i') ?>">
+    <shop>
+        <name>Рекада</name>
+        <company>Рекада</company>
+        <url>http://rekada.ru/</url>
+        <platform>Flavia</platform>
+        <version>0.5</version>
+        <email>boxfrommars@gmail.com</email>
+        <agency>Dmitry Groza</agency>
+
+        <currencies>
+            <currency id="RUR" rate="1" plus="0"/>
+        </currencies>
+
+        <categories>
+            <?php foreach ($this->categories as $category): ?>
+                <?php if ($category['entity'] == 'category'): ?>
+                    <category id="<?php echo $category['id'] ?>"><?php echo $category['title'] ?></category>
+                <?php else: ?>
+                    <category id="<?php echo $category['id'] ?>" parentId="<?php echo $category['id_parent'] ?>"><?php echo $category['title'] ?></category>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </categories>
+
+        <!--<local_delivery_cost>300</local_delivery_cost>-->
+
+        <offers>
+            <?php foreach ($this->products as $product): ?>
+                <offer id="<?php echo $product['id'] ?>" type="vendor.model" bid="10" available="true">
+                    <url>http://rekada.ru/<?php echo $product['category_page_url'] . '/' . $product['brand_page_url'] . '/' . $product['page_url'] ?></url>
+                    <price><?php echo !empty($product['color_cost']) ? (int) $product['color_cost'] : (int) $product['cost'] ?></price>
+                    <currencyId>RUR</currencyId>
+                    <categoryId type="Own"><?php echo $product['id_parent'] ?></categoryId>
+                    <picture>http://rekada.ru/files/<?php echo !empty($product['color_image']) ? $product['color_image'] : $product['image']; ?></picture>
+                    <!--<delivery>true</delivery>-->
+                    <!--<local_delivery_cost>300</local_delivery_cost>-->
+                    <typePrefix><?php echo $product['brand_title'] ?></typePrefix>
+                    <vendor><?php echo $product['brand_title'] ?></vendor>
+                    <vendorCode><?php echo $product['article'] ?></vendorCode>
+                    <model><?php echo $product['title'] ?></model>
+                    <description><?php echo htmlspecialchars($product['page_description']) ?></description>
+                    <!--<manufacturer_warranty>true</manufacturer_warranty>-->
+                    <country_of_origin><?php echo $product['country_title'] ?></country_of_origin>
+
+                    <param name="Тип поверхности"><?php echo $product['surface_title'] ?></param>
+                    <param name="Цвет"><?php echo $product['color_title'] ?></param>
+
+                </offer>
+            <?php endforeach; ?>
+        </offers>
+
+    </shop>
+</yml_catalog>

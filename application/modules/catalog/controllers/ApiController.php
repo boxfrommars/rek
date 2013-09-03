@@ -18,6 +18,20 @@ class Catalog_ApiController extends Whale_Controller_Action
 
     }
 
+    public function ymlAction(){
+        $this->_helper->layout()->disableLayout();
+        $this->getResponse()
+            ->setHeader('Content-type', 'text/xml');
+        $productService = new Catalog_Model_ProductService();
+        $this->view->products = $productService->fetchAllColored();
+
+        $pageService = new Page_Model_Service();
+        $select = $pageService->getBaseSelect()->where("p.entity in ('brand', 'category')");
+        $this->view->categories = $select->query()->fetchAll();
+        Whale_Log::log($this->view->products);
+
+    }
+
     public function indexAction()
     {
         if ($this->getRequest()->isXmlHttpRequest()) {
@@ -101,6 +115,8 @@ class Catalog_ApiController extends Whale_Controller_Action
         if ($this->getParam('maxdepth')) {
             $select->where('(p.depth <= ? OR p.depth IS NULL)', $this->getParam('maxdepth'));
         }
+        $select->order('p.order');
+        Whale_Log::log('------------------asdddddddddddddddddd');
         Whale_Log::log($select->assemble());
         $this->view->products = $select->query()->fetchAll();
     }
