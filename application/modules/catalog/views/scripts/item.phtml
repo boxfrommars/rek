@@ -1,8 +1,28 @@
+<?php
+    $url = '/' . $this->product['category_page_url'] . '/' . $this->product['brand_page_url'] . '/' . $this->product['page_url'];
+    $title = $this->product['title'];
+    $imagePreviewUrl = '/files/' . (!empty($this->product['color_image_preview']) ? $this->product['color_image_preview'] : $this->product['image_preview']);
+    $cost = !empty($this->product['color_cost']) ? (int) $this->product['color_cost'] : (int) $this->product['cost']
+?>
+
 <div class="product_from_catalog">
-    <p class="left_catalog_point"><a href="/<?php echo $this->product['category_page_url'] . '/' . $this->product['brand_page_url'] . '/' . $this->product['page_url'] ?>"><?php echo $this->product['title']; ?></a></p>
+    <p class="left_catalog_point"><a href="<?php echo $url ?>"><?php echo $title; ?></a></p>
     <div class="cat_product">
-        <a href="/<?php echo $this->product['category_page_url'] . '/' . $this->product['brand_page_url'] . '/' . $this->product['page_url'] ?>"><img src="/files/<?php echo !empty($this->product['color_image_preview']) ? $this->product['color_image_preview'] : $this->product['image_preview']; ?>" alt="<?php echo $this->product['title']; ?>"></a>
+        <?php if ($this->product['color_title'] || $this->product['color_surface_title']): ?>
+        <p class="catalog_color_title">
+            <?php if ($this->product['color_title']): ?>
+                <a href="<?php echo $url ?>"><?php echo $this->product['color_title']; ?></a>
+            <?php endif; ?>
+            <?php if ($this->product['color_title'] && $this->product['color_surface_title']): ?>
+                <br />
+            <?php endif; ?>
+            <?php if ($this->product['color_surface_title']): ?>
+                <a class="surface_title" href="<?php echo $url ?>"><?php echo $this->product['color_surface_title']; ?></a>
+            <?php endif; ?>
+        </p>
+        <?php endif; ?>
+        <a href="<?php echo $url ?>"><img src="<?php echo $imagePreviewUrl ?>" alt="<?php echo $title; ?>"></a>
     </div>
-    <p class="price_prod"> <?php echo !empty($this->product['color_cost']) ? (int) $this->product['color_cost'] : (int) $this->product['cost'] ?> <span>руб./м</span></p>
+    <p class="price_prod"><?php echo $cost ?><span>руб./м</span></p>
     <input onclick="location.href = '<?php echo $this->url(array(), 'feedback') ?>'" type="button" class="zakaz_but" value="">
 </div>
