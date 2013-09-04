@@ -1,5 +1,11 @@
 <?php
 
+function getImage($fileName = '') {
+    if (empty($fileName)) $fileName = 'placeholder.jpg';
+
+    return '/files/' . $fileName;
+}
+
 /**
  * Функция преобразования числового представления месяца в текстовый
  *

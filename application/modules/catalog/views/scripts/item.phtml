@@ -5,7 +5,8 @@
 
     $title = $this->product['title'];
     $imagePreviewImage = (!empty($this->product['color_image_preview']) ? $this->product['color_image_preview'] : $this->product['image_preview']);
-    $imagePreviewUrl = '/files/' . ($imagePreviewImage ?: 'placeholder.jpg');
+//    $imagePreviewUrl = '/files/' . ($imagePreviewImage ?: 'placeholder.jpg');
+    $imagePreviewUrl = getImage($imagePreviewImage);
     $cost = !empty($this->product['color_cost']) ? (int) $this->product['color_cost'] : (int) $this->product['cost']
 ?>
 

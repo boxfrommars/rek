@@ -30,8 +30,8 @@
         <?php echo $this->product['content'] ?>
     </div>
         <div class="catalog_sample" id="product-image">
-            <a href="/files/<?php echo $this->product['image'] ?>" rel="shadowbox">
-                <img style="width:380px;" class="product-image" src="/files/<?php echo $this->product['image'] ?>"/>
+            <a href="<?php echo getImage($this->product['image']) ?>" rel="shadowbox">
+                <img style="width:380px;" class="product-image" src="<?php echo getImage($this->product['image']) ?>"/>
             </a>
         </div>
         <div class="sample_price">
@@ -60,12 +60,12 @@
         <?php foreach ($this->productColors as $color): ?>
             <div class="block_available">
                 <div class="catalog_available">
-                    <a href="#" id="color-<?php echo $color['id'] ?>" class="product-color" data-pc-image="<?php echo $color['image'] ?>" data-pc-cost="<?php echo (int) $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
-                        <img src="/files/<?php echo $color['image_preview'] ?>">
+                    <a href="#" id="color-<?php echo $color['id'] ?>" class="product-color" data-pc-image="<?php echo getImage($color['image_preview']) ?>" data-pc-cost="<?php echo (int) $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
+                        <img src="<?php echo getImage($color['image_preview']) ?>">
                     </a>
                 </div>
                 <p>
-                    <a href="#" class="product-color" data-pc-image="<?php echo $color['image'] ?>" data-pc-cost="<?php echo (int) $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
+                    <a href="#" class="product-color" data-pc-image="<?php echo getImage($color['image']) ?>" data-pc-cost="<?php echo (int) $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
                         <?php echo $color['title'] ?>
                     </a>
                 </p>
@@ -82,7 +82,7 @@
             var surface = $elm.attr('data-pc-surface');
             $('.product-cost').html(cost);
             $('.product-surface').html(surface);
-            $('.product-image').attr('src', '/files/' + image);
+            $('.product-image').attr('src', image);
 
         }
 
@@ -106,8 +106,8 @@
         <?php foreach ($this->productDecors as $color): ?>
             <div class="block_available">
                 <div class="catalog_available">
-                    <a href="/files/<?php echo $color['image'] ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
-                        <img src="/files/<?php echo $color['image_preview'] ?>">
+                    <a href="<?php echo getImage($color['image']) ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
+                        <img src="<?php echo getImage($color['image_preview']) ?>">
                     </a>
                 </div>
                 <p><?php echo $color['title'] ?></p>
@@ -121,8 +121,8 @@
         <?php foreach ($this->productInters as $color): ?>
             <div class="block_available">
                 <div class="catalog_available">
-                    <a href="/files/<?php echo $color['image'] ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
-                        <img src="/files/<?php echo $color['image_preview'] ?>">
+                    <a href="/files/<?php echo getImage($color['image']) ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
+                        <img src="/files/<?php echo getImage($color['image_preview']) ?>">
                     </a>
                 </div>
                 <p><?php echo $color['title'] ?></p>

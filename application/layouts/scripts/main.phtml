@@ -36,7 +36,7 @@
     <div id="c-wrapper">
         <div class="t-carousel">
             <?php foreach ($this->slider as $key => $slider): ?>
-                <img class="c-slider-image-<?php echo $slider['id']; ?>" src="/files/<?php echo $slider['image']; ?>" alt="" style="height: 300px;width: 1100px;" />
+                <img class="c-slider-image-<?php echo $slider['id']; ?>" src="<?php echo getImage($slider['image']); ?>" alt="" style="height: 300px;width: 1100px;" />
             <?php endforeach; ?>
         </div>
         <a href="#" class="c-prev" title="Show previous"> </a>
@@ -99,9 +99,9 @@
         </script>
         <div class="plitka plitka-action">
             <?php foreach ($this->itemsAction as $item): ?>
-                <div class="block"> <img style="height: 190px" src="/files/<?php echo $item['image_preview'] ?>">
+                <div class="block"> <img style="height: 190px" src="<?php echo getImage($item['image_preview']) ?>">
                     <div class="inblock">
-                        <div class="pict"><a rel="shadowbox[Vacation]" href="/files/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
+                        <div class="pict"><a rel="shadowbox[Vacation]" href="<?php echo getImage($item['image']) ?>" ><img src="img/search.png" />посмотреть</a></div>
                         <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
                         <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
                         <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
@@ -112,9 +112,9 @@
         </div>
         <div class="plitka plitka-hit" style="display: none">
             <?php foreach ($this->itemsHit as $item): ?>
-                <div class="block"> <img style="height: 190px" src="/files/<?php echo $item['image_preview'] ?>">
+                <div class="block"> <img style="height: 190px" src="<?php echo getImage($item['image_preview']) ?>">
                     <div class="inblock">
-                        <div class="pict"><a rel="shadowbox[Vacation]" href="/files/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
+                        <div class="pict"><a rel="shadowbox[Vacation]" href="<?php echo getImage($item['image']) ?>" ><img src="img/search.png" />посмотреть</a></div>
                         <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
                         <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
                         <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
@@ -125,9 +125,9 @@
         </div>
         <div class="plitka plitka-new" style="display: none">
             <?php foreach ($this->itemsNew as $item): ?>
-                <div class="block"> <img style="height: 190px" src="/files/<?php echo $item['image_preview'] ?>">
+                <div class="block"> <img style="height: 190px" src="<?php echo getImage($item['image_preview']) ?>">
                     <div class="inblock">
-                        <div class="pict"><a rel="shadowbox[Vacation]" href="/files/<?php echo $item['image'] ?>" ><img src="img/search.png" />посмотреть</a></div>
+                        <div class="pict"><a rel="shadowbox[Vacation]" href="<?php echo getImage($item['image']) ?>" ><img src="img/search.png" />посмотреть</a></div>
                         <p class="cost"><a href="#"><?php echo $item['article'] ?></a></p>
                         <p class="model"><a href="#"><?php echo $item['brand_title'] ?></a></p>
                         <p class="cost"><?php echo $item['cost'] ?> <span>руб./м<a>2</a></span></p>
