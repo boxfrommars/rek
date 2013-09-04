@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/catalog/api/colors" media="screen">
 <div id="left_catalog">
+
+    <?php if (((int) $this->costsRange['max']) != ((int) $this->costsRange['min'])): ?>
     <div id="price_catalog" class="bottom-bordered">
         <p class="left_catalog_point">ЦЕНА</p>
         <p class="slider-input-wrap slider-input-right">
@@ -16,6 +18,7 @@
                 />р/м<span>2</span>
         </p>
     </div>
+    <?php endif; ?>
 
     <?php if (!empty($this->colors)): ?>
         <div class="bottom-bordered">
@@ -49,7 +52,7 @@
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-
+    <?php if (((int) $this->depthRange['max']) != ((int) $this->depthRange['min'])): ?>
     <div id="thickness" class="bottom-bordered">
         <p class="left_catalog_point">ТОЛЩИНА</p>
         <p class="slider-input-wrap slider-input-right">
@@ -66,6 +69,7 @@
                 />мм
         </p>
     </div>
+    <?php endif; ?>
 
     <?php if (!empty($this->surfaces)): ?>
         <div class="bottom-bordered">
