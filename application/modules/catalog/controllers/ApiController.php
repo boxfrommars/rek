@@ -48,7 +48,7 @@ class Catalog_ApiController extends Whale_Controller_Action
         $select->joinLeft(
             array('clr' => 'product_color'),
             'clr.id_product = p.id',
-            array('color_image' => 'image', 'color_image_preview' => 'image_preview', 'color_cost' => 'cost', 'color_id_surface' => 'id_surface', 'color_title' => 'title')
+            array('color_image' => 'image', 'color_image_preview' => 'image_preview', 'color_id' => 'id', 'color_cost' => 'cost', 'color_id_surface' => 'id_surface', 'color_title' => 'title')
         )->joinLeft(
             array('clrs' => 'surface'),
             'clr.id_surface = clrs.id',
