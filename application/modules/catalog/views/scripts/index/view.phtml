@@ -121,8 +121,8 @@
         <?php foreach ($this->productInters as $color): ?>
             <div class="block_available">
                 <div class="catalog_available">
-                    <a href="/files/<?php echo getImage($color['image']) ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
-                        <img src="/files/<?php echo getImage($color['image_preview']) ?>">
+                    <a href="<?php echo getImage($color['image']) ?>" class="product-color" title="<?php echo $color['title'] ?>"  rel="shadowbox">
+                        <img src="<?php echo getImage($color['image_preview']) ?>">
                     </a>
                 </div>
                 <p><?php echo $color['title'] ?></p>
