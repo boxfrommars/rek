@@ -80,7 +80,7 @@ Examples:
 ATTENTION: The trailing slash is required.
 */
 $baseDir = resolveUrl($baseUrl);
-
+file_put_contents('/tmp/ckf.txt', $baseDir . ' ' . $baseUrl);
 /*
  * ### Advanced Settings
  */
@@ -202,19 +202,21 @@ $config['ResourceType'][] = Array(
 
 $config['ResourceType'][] = Array(
 		'name' => 'Images',
-		'url' => $baseUrl . 'images',
-		'directory' => $baseDir . 'images',
+//    'url' => $baseUrl . 'images',
+//    'directory' => $baseDir . 'images',
+        'url' => $baseUrl . '',
+        'directory' => $baseDir . '',
 		'maxSize' => 0,
 		'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
 		'deniedExtensions' => '');
 
-$config['ResourceType'][] = Array(
-		'name' => 'Flash',
-		'url' => $baseUrl . 'flash',
-		'directory' => $baseDir . 'flash',
-		'maxSize' => 0,
-		'allowedExtensions' => 'swf,flv',
-		'deniedExtensions' => '');
+//$config['ResourceType'][] = Array(
+//		'name' => 'Flash',
+//		'url' => $baseUrl . 'flash',
+//		'directory' => $baseDir . 'flash',
+//		'maxSize' => 0,
+//		'allowedExtensions' => 'swf,flv',
+//		'deniedExtensions' => '');
 
 /*
  Due to security issues with Apache modules, it is recommended to leave the

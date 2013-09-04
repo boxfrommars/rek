@@ -6,7 +6,9 @@ ForceType application/octet-stream
 <FilesMatch "(?i)\.(gif|jpe?g|png)$">
   ForceType none
 </FilesMatch>
-
+<IfModule mod_php5.c>
+  php_value engine off
+</IfModule>
 # Uncomment the following lines to prevent unauthorized download of files:
 #AuthName "Authorization required"
 #AuthType Basic
