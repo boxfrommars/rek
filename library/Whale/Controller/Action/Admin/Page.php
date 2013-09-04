@@ -42,12 +42,12 @@ class Whale_Controller_Action_Admin_Page extends Whale_Controller_Action_Admin_A
     protected function _updateFormByIdParent($idParent)
     {
         $pageService = new Page_Model_Service();
-        $pages = $pageService->fetchAll(array('id = ?' => $idParent))->toArray();
+        $parentPage = $pageService->fetchRow(array('id = ?' => $idParent))->toArray();
+        $pages = $pageService->fetchAll(array('id_parent = ?' => $parentPage['id_parent']))->toArray();
         $options = array();
         foreach ($pages as $page) {
             $options[$page['id']] = $page['title'];
         }
-        Whale_Log::log($options);
         /** @var Zend_Form_Element_Multiselect $elm */
         $elm = $this->_form->getElement('id_parent');
         $elm->setMultiOptions($options);
