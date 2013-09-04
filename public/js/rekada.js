@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+
    $('#toggle_1, #granit').hover(function() {
        $('#granit').css({"display": "block"});
        }, function(){

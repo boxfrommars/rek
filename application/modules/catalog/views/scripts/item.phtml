@@ -1,5 +1,8 @@
 <?php
     $url = '/' . $this->product['category_page_url'] . '/' . $this->product['brand_page_url'] . '/' . $this->product['page_url'];
+
+    if (!empty($this->product['color_id'])) $url .= '#!color-' . $this->product['color_id'];
+
     $title = $this->product['title'];
     $imagePreviewImage = (!empty($this->product['color_image_preview']) ? $this->product['color_image_preview'] : $this->product['image_preview']);
     $imagePreviewUrl = '/files/' . ($imagePreviewImage ?: 'placeholder.jpg');

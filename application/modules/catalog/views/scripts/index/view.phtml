@@ -9,22 +9,6 @@
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
-<!--    <div id="dekor">-->
-<!--        <hr noshade size="1">-->
-<!--        <p class="left_catalog_point">ДЕКОР</p>-->
-<!--        <img src="/img/dekor_1.jpg">-->
-<!--        <p class="dekor_model">B1726/SG9057</p>-->
-<!--        <p class="dekor_size">30*7,2*8</p>-->
-<!--        <img src="/img/dekor_2.jpg">-->
-<!--        <p class="dekor_model">B1726/SG9057</p>-->
-<!--        <p class="dekor_size">30*7,2*8</p>-->
-<!--        <img src="/img/dekor_3.jpg">-->
-<!--        <p class="dekor_model">B1726/SG9057</p>-->
-<!--        <p class="dekor_size">30*7,2*8</p>-->
-<!--        <img src="/img/dekor_4.jpg">-->
-<!--        <p class="dekor_model">C1964/SG8014</p>-->
-<!--        <p class="dekor_size">96*96*11</p>-->
-<!--    </div>-->
 </div><!--left_catalog-->
 <div id="right_catalog">
     <div class="nav_catalog">
@@ -45,8 +29,10 @@
           <div id="catalog_info">
         <?php echo $this->product['content'] ?>
     </div>
-        <div class="catalog_sample">
-            <img style="width:380px;" class="product-image" src="/files/<?php echo $this->product['image'] ?>"/>
+        <div class="catalog_sample" id="product-image">
+            <a href="/files/<?php echo $this->product['image'] ?>" rel="shadowbox">
+                <img style="width:380px;" class="product-image" src="/files/<?php echo $this->product['image'] ?>"/>
+            </a>
         </div>
         <div class="sample_price">
             
@@ -64,8 +50,6 @@
             <?php if (!empty($dimensions)): ?>
             <p><span class="param-label">Размер:</span> <?php echo $dimensions; ?></p>
             <?php endif; ?>
-<!--            <p><span>Рисунок:</span> дерево</p>-->
-<!--            <p><span>Цвет:</span> серый</p>-->
             <input type="button" id="catalog_button" value="" onclick="location.href = '<?php echo $this->url(array(), 'feedback') ?>'">
           <p class="price_catalog"> <span class="product-cost"><?php echo (int) $this->product['cost'] ?></span> <span class="product-cost-measure">руб./м</span></p>
         </div>
@@ -76,7 +60,7 @@
         <?php foreach ($this->productColors as $color): ?>
             <div class="block_available">
                 <div class="catalog_available">
-                    <a href="#" class="product-color" data-pc-image="<?php echo $color['image'] ?>" data-pc-cost="<?php echo (int) $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
+                    <a href="#" id="color-<?php echo $color['id'] ?>" class="product-color" data-pc-image="<?php echo $color['image'] ?>" data-pc-cost="<?php echo (int) $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
                         <img src="/files/<?php echo $color['image_preview'] ?>">
                     </a>
                 </div>
@@ -89,7 +73,33 @@
         <?php endforeach; ?>
     </div>
     <?php endif; ?>
- 
+
+    <script>
+
+        var setProductColor = function($elm){
+            var cost = $elm.attr('data-pc-cost');
+            var image = $elm.attr('data-pc-image');
+            var surface = $elm.attr('data-pc-surface');
+            $('.product-cost').html(cost);
+            $('.product-surface').html(surface);
+            $('.product-image').attr('src', '/files/' + image);
+
+        }
+
+        $('#available .product-color').on('click', function(){
+            setProductColor($(this));
+            $('html, body').animate({
+                scrollTop: $("#right_catalog").offset().top
+            }, 400);
+
+            return false;
+        });
+        var hash = window.location.hash;
+        console.log(hash);
+        if (hash.slice(0, 8) == '#!color-') {
+            setProductColor($('#' + hash.slice(2)));
+        }
+    </script>
    
     <?php if (!empty($this->productDecors)): ?>
     <div class="groupfix pr-gallery">
@@ -121,17 +131,6 @@
         <?php endforeach; ?>
     </div>
     <?php endif; ?>
-<script>
-        $('#available .product-color').on('click', function(){
-            var cost = $(this).attr('data-pc-cost');
-            var image = $(this).attr('data-pc-image');
-            var surface = $(this).attr('data-pc-surface');
-            $('.product-cost').html(cost);
-            $('.product-surface').html(surface);
-            $('.product-image').attr('src', '/files/' + image);
-            return false;
-        });
-    </script>
 </div>
 <?php if (!empty($this->lastViewed)): ?>
 <div id="viewed">

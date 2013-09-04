@@ -54,7 +54,6 @@ var paginate = function() {
 }
 
 var refreshPaginator = function(curPage) {
-    console.log(countPages);
     $('.product-pagination').html('');
     if (countPages <= 1) return;
 
