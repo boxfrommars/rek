@@ -31,7 +31,6 @@ class Whale_User_Current
     }
 
     /**
-     * пока для тестов, потом guest запихнём
      *
      * @return array $identity
      */
@@ -51,7 +50,6 @@ class Whale_User_Current
         $auth = Zend_Auth::getInstance();
         $identity = $auth->hasIdentity() ? $auth->getIdentity() : self::_getGuestIdentity(); // если не авторизован, то берём гостевой идентити
 
-        Whale_Log::log($identity);
         return $identity;
     }
 }

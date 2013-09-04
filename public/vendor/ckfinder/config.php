@@ -11,7 +11,6 @@
  * Other settings may be left with their default values, or used to control
  * advanced features of CKFinder.
  */
-
 /**
  * This function must check the user session to be sure that he/she is
  * authorized to upload and access files in the File Browser.
@@ -29,8 +28,41 @@ function CheckAuthentication()
 	// ... where $_SESSION['IsAuthorized'] is set to "true" as soon as the
 	// user logs in your system. To be able to use session variables don't
 	// forget to add session_start() at the top of this file.
+    $startTime = microtime(true);
+// Define path to application directory
+    defined('APPLICATION_PATH')
+    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../../../application'));
 
-	return true;
+// Define application environment
+    defined('APPLICATION_ENV')
+    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+
+// Ensure library/ is on include_path
+    set_include_path(implode(PATH_SEPARATOR, array(
+        realpath(APPLICATION_PATH . '/../library'),
+        get_include_path(),
+    )));
+
+
+    /** Zend_Application */
+    require_once 'Zend/Application.php';
+    require_once 'functions.php';
+
+    $application = new Zend_Application(
+        APPLICATION_ENV,
+        array(
+            'config' => array(APPLICATION_PATH . '/configs/application.ini', APPLICATION_PATH . '/configs/local.ini'),
+        )
+    );
+
+    $application->bootstrap();
+
+    $application->getBootstrap()->bootstrap('log');
+
+    $user = Whale_User_Current::get();
+    $isAllowed = ($user->getRole() === 'admin');
+
+	return $isAllowed;
 }
 
 // LicenseKey : Paste your license key here. If left blank, CKFinder will be
