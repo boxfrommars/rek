@@ -131,26 +131,9 @@
     </div>
     <?php endif; ?>
 </div>
-<?php if (!empty($this->lastViewed)): ?>
-<div id="viewed">
-    <div id="viewed_text"><p>НЕДАВНО ВЫ СМОТРЕЛИ:</p></div>
-    <hr noshade size="1">
-    <div id="viewed_list">
-        <div class="prev_viewed">
-            <img src="/img/catalog_prev.png">
-        </div>
-        <?php foreach ($this->lastViewed as $lastViewed): ?>
-            <?php echo $this->partial('secondaryItem.phtml', array('item' => $lastViewed)); ?>
-        <?php endforeach; ?>
-        <div class="next_viewed">
-            <img src="/img/catalog_next.png">
-        </div>
-    </div><!--viewed_list-->
-</div> <!--viewed-->
-<?php endif; ?>
 <?php if (!empty($this->recommended)): ?>
 <div id="viewed">
-    <div id="viewed_text"><p>АКЦИЯ:</p></div>
+    <div id="viewed_text"><p>РУКОМЕНДОВАННЫЕ ПОХОЖИЕ ТОВАРЫ:</p></div>
     <hr noshade size="1">
     <div id="viewed_list">
         <div class="prev_viewed">

@@ -252,35 +252,39 @@ class Catalog_IndexController extends Whale_Controller_Action
             throw new Zend_Controller_Action_Exception('Такого продукта не существует', 404);
         }
 
-        $lastViewedSessionNamespace = new Zend_Session_Namespace('last_viewed_products');
 
-        $recommendedItems = array();
-        if (empty($lastViewedSessionNamespace->items)) {
-            $lastViewedItemIds = array();
-            $lastViewedItems = array();
+        $rOnPage = 5;
+        $rItems = array();
 
-            $recommendedItems = $productService->fetchAll(array(
-                    'is_action = ?' => true,
-                    'is_published = ?' => true
-                ), null, 5
-            );
-        } else {
-            $lastViewedItemIds = $lastViewedSessionNamespace->items;
-            $lastViewedItemIds = array_filter($lastViewedItemIds, function($elm) use ($product) { return $elm != $product['id']; });
-            if (!empty($lastViewedItemIds)) {
-                $lastViewedItems = $productService->fetchAll(array(
-                        'p.id IN (?)' => $lastViewedItemIds,
-                        'is_published = ?' => true)
-                );
-            } else {
-                $lastViewedItems = array();
-                $recommendedItems = $productService->fetchAll(array(
-                        'is_action = ?' => true,
-                        'is_published = ?' => true
-                    ), null, 5
-                );
+
+        if (count($rItems) < $rOnPage && !empty($product['color_id'])) {
+            $recommendedItems = $productService->fetchAllColored(array('clr.id = ?' => $product['color_id'], 'p.is_published' => true), 'p.order');
+            foreach ($recommendedItems as $r) {
+                if (empty($rItems[$r['id']])) $rItems[$r['id']] = $r;
+                if (count($rItems) >= $rOnPage) break;
             }
         }
+
+        if (count($rItems) < $rOnPage && !empty($product['id_pattern'])) {
+            $recommendedItems = $productService->fetchAllColored(array('p.id_pattern = ?' => $product['id_pattern'], 'p.is_published' => true), 'p.order');
+            foreach ($recommendedItems as $r) {
+                if (empty($rItems[$r['id']])) $rItems[$r['id']] = $r;
+                if (count($rItems) >= $rOnPage) break;
+            }
+        }
+
+        if (count($rItems) < $rOnPage) {
+            $recommendedItems = $productService->fetchAllColored(array('p.id_parent = ?' => $product['id_parent'], 'p.is_published' => true), 'p.order');
+            foreach ($recommendedItems as $r) {
+                if (empty($rItems[$r['id']])) $rItems[$r['id']] = $r;
+                if (count($rItems) >= $rOnPage) break;
+            }
+        }
+
+
+        Whale_Log::log($rItems);
+
+
 
 
         $brandProducts = $productService->fetchAll(array(
@@ -290,19 +294,13 @@ class Catalog_IndexController extends Whale_Controller_Action
 
         $this->view->collections = $this->_getProductsCollections($brandProducts);
 
-
         $pageService = new Page_Model_Service();
         $select = $pageService->getBaseSelect();
         $nextSelect = $pageService->getAdapter()->select()->from(array('s' => $select), '*')->where('entity = ?', 'brand')->where('id_parent = ?', $category['id'])->where('is_published');
         $this->view->brands = $nextSelect->query()->fetchAll();
 
 
-
-        $this->view->lastViewed = $lastViewedItems;
-        $this->view->recommended = $recommendedItems;
-        array_unshift($lastViewedItemIds, $product['id']);
-        $lastViewedItemIds = array_slice($lastViewedItemIds, 0, $this->_lastViewedCount);
-        $lastViewedSessionNamespace->items = $lastViewedItemIds;
+        $this->view->recommended = $rItems;
 
         $productColorsService = new Catalog_Model_ProductColorService();
         $productIntersService = new Catalog_Model_ProductInterService();

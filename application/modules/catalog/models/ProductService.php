@@ -56,6 +56,18 @@ class Catalog_Model_ProductService extends Whale_Db_TableCached
 
     public function fetch($where) {
         $select = $this->getBaseSelect($where);
+
+        $select->joinLeft(
+            array('clr' => 'product_color'),
+            'clr.id_product = p.id',
+            array('color_image' => 'image', 'color_id' => 'id', 'color_image_preview' => 'image_preview', 'color_cost' => 'cost', 'color_id_surface' => 'id_surface', 'color_title' => 'title')
+        )->joinLeft(
+                array('clrs' => 'surface'),
+                'clr.id_surface = clrs.id',
+                array(
+                    'color_surface_title' => 'title',
+                )
+            );
         return $select->query()->fetch();
     }
 
@@ -90,6 +102,7 @@ class Catalog_Model_ProductService extends Whale_Db_TableCached
         if (null !== $order) {
             $select->order($order);
         }
+        Whale_Log::log($select->assemble());
         return $select->query()->fetchAll();
     }
 }
