@@ -256,17 +256,17 @@ class Catalog_IndexController extends Whale_Controller_Action
         $rOnPage = 5;
         $rItems = array();
 
-
-        if (count($rItems) < $rOnPage && !empty($product['color_id'])) {
-            $recommendedItems = $productService->fetchAllColored(array('clr.id = ?' => $product['color_id'], 'p.is_published' => true), 'p.order');
+        if (count($rItems) < $rOnPage && !empty($product['id_pattern'])) {
+            $recommendedItems = $productService->fetchAllColored(array('p.id_pattern = ?' => $product['id_pattern'], 'p.is_published' => true), 'p.order');
             foreach ($recommendedItems as $r) {
                 if (empty($rItems[$r['id']])) $rItems[$r['id']] = $r;
                 if (count($rItems) >= $rOnPage) break;
             }
         }
 
-        if (count($rItems) < $rOnPage && !empty($product['id_pattern'])) {
-            $recommendedItems = $productService->fetchAllColored(array('p.id_pattern = ?' => $product['id_pattern'], 'p.is_published' => true), 'p.order');
+
+        if (count($rItems) < $rOnPage && !empty($product['color_id'])) {
+            $recommendedItems = $productService->fetchAllColored(array('clr.id = ?' => $product['color_id'], 'p.is_published' => true), 'p.order');
             foreach ($recommendedItems as $r) {
                 if (empty($rItems[$r['id']])) $rItems[$r['id']] = $r;
                 if (count($rItems) >= $rOnPage) break;
@@ -280,12 +280,6 @@ class Catalog_IndexController extends Whale_Controller_Action
                 if (count($rItems) >= $rOnPage) break;
             }
         }
-
-
-        Whale_Log::log($rItems);
-
-
-
 
         $brandProducts = $productService->fetchAll(array(
                 'p.id_parent = ?' => $product['id_parent'],
