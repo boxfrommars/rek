@@ -60,7 +60,7 @@
         <?php foreach ($this->productColors as $color): ?>
             <div class="block_available">
                 <div class="catalog_available">
-                    <a href="#" id="color-<?php echo $color['id'] ?>" class="product-color" data-pc-image="<?php echo getImage($color['image_preview']) ?>" data-pc-cost="<?php echo (int) $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
+                    <a href="#" id="color-<?php echo $color['id'] ?>" class="product-color" data-pc-image="<?php echo getImage($color['image']) ?>" data-pc-cost="<?php echo (int) $color['cost'] ?>" data-pc-surface="<?php echo $color['color_surface'] ?>">
                         <img src="<?php echo getImage($color['image_preview']) ?>">
                     </a>
                 </div>
