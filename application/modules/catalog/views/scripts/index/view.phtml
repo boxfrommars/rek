@@ -30,7 +30,7 @@
         <?php echo $this->product['content'] ?>
     </div>
         <div class="catalog_sample" id="product-image">
-            <a href="<?php echo getImage($this->product['image']) ?>" rel="shadowbox">
+            <a href="<?php echo getImage($this->product['image']) ?>" class="product-image-link" rel="shadowbox">
                 <img style="width:380px;" class="product-image" src="<?php echo getImage($this->product['image']) ?>"/>
             </a>
         </div>
@@ -83,6 +83,7 @@
             $('.product-cost').html(cost);
             $('.product-surface').html(surface);
             $('.product-image').attr('src', image);
+            $('.product-image-link').attr('href', image);
 
         }
 
